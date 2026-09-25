@@ -889,8 +889,12 @@ def agent_loop(current_history, steps, use_gpt4, log_dir, args):
                         completion_post = complete_text(prompt_try + anthropic.AI_PROMPT +  completion_pre + "\n\n3. Solution:", model = args.model, ai_prompt = "", log_file=log_file)
                         completion = completion_pre + "\n\n4. Solution:" + completion_post
                 # parse the action and action input
+                import re as _re
+                completion_normalized = _re.sub(
+                                        r'(?im)^\s*#{1,6}\s*\d*\.?\s*Solution\s*$', 'Solution:', completion
+                                                )
                 try:
-                    entries = parse_entries(completion,
+                    entries = parse_entries(completion_normalized,
                                         [e.strip() for e in
                                          valid_format_entires])
                     valid_format = True
@@ -984,8 +988,12 @@ Please do not critique/make changes if there is no need to make a change.
                     completion = complete_text(prompt_try, model = args.model, log_file=log_file)
 
                 # parse the action and action input
+                import re as _re
+                completion_normalized = _re.sub(
+                                             r'(?im)^\s*#{1,6}\s*\d*\.?\s*Solution\s*$', 'Solution:', completion
+                                                )
                 try:
-                    entries = parse_entries(completion,
+                    entries = parse_entries(completion_normalized,
                                         [e.strip() for e in valid_format_entires])
                     valid_format = True
                 except:

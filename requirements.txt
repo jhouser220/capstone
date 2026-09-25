@@ -1,7 +1,7 @@
 anthropic
-torch==2.0.0
-torchvision==0.15.1
-transformers==4.28.0
+torch
+torchvision
+transformers
 Tiktoken
 numpy
 Pandas
@@ -13,3 +13,4 @@ slingpy
 langchain
 genedisco
 gget
+bibtexparser<2

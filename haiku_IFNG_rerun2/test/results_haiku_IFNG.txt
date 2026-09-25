@@ -1,0 +1,9 @@
+All genes
+haiku_IFNG/test/sampled_genes_5.npy
+[0.09239130434782608]
+Model: haiku, Data: IFNG, mean: 0.09239130434782608, std: 0.0
+Non-essential genes:
+haiku_IFNG/test/sampled_genes_5.npy
+[0.10473815461346633]
+Model: haiku, Data: IFNG, mean: 0.10473815461346633, std: 0.0
+

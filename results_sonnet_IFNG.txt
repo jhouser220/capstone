@@ -1,0 +1,3 @@
+sonnet_IFNG/test/sampled_genes_5.npy
+[0.10723192019950124]
+Model: sonnet, Data: IFNG, mean: 0.10723192019950124, std: 0.0

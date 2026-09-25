@@ -1,0 +1,70 @@
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+ 
+
+Assistant:
+===================claude-sonnet-4-6 response (2000)=====================
+1. **Reflection:** This is the first round of experimentation, so there are no previous results to reflect on. I need to make an informed selection of 128 genes from 18,939 candidates to begin identifying regulators of Interferon-gamma (IFNG) production. I'll draw on established biology: IFNG is primarily produced by T cells and NK cells, and its regulation involves JAK-STAT signaling, T cell activation pathways, cytokine networks, transcription factors, epigenetic regulators, and immune checkpoint molecules. Starting with well-characterized regulators and key pathway components will provide a strong baseline and informative scores to guide subsequent rounds.
+
+2. **Research Plan:** Round 1 will focus on genes with strong prior evidence for regulating IFNG, including: (1) core transcription factors driving IFNG expression (TBX21/T-bet, EOMES, RUNX3, IRF1, IRF4, IRF5, STAT1, STAT4, STAT5A, STAT5B); (2) JAK-STAT pathway components (JAK1, JAK2, JAK3, TYK2); (3) cytokine receptors and cytokines that induce IFNG (IL12RB1, IL12RB2, IL18R1, IL18RAP, IL2RA, IL2RB, IL2RG); (4) T cell activation and co-stimulatory/inhibitory signals (CD3E, CD3D, CD247, CD28, CTLA4, PDCD1, LAG3, TIGIT, HAVCR2); (5) epigenetic and chromatin regulators (EZH2, KDM6A, KDM6B, DNMT3A, SETDB1); (6) negative regulators/suppressors (SOCS1, SOCS3, PTPN2, PTPN11, PTEN, SHIP1/INPP5D); (7) NF-κB and MAPK pathway nodes; and (8) a selection of less-characterized but plausible candidates. Results from round 1 will inform a focused round 2 using enrichment scores to prioritize pathways.
+
+3. **Solution:** 1. TBX21, 2. EOMES, 3. RUNX3, 4. IRF1, 5. IRF4, 6. IRF5, 7. IRF8, 8. STAT1, 9. STAT4, 10. STAT5A, 11. STAT5B, 12. STAT3, 13. JAK1, 14. JAK2, 15. JAK3, 16. TYK2, 17. IL12RB1, 18. IL12RB2, 19. IL18R1, 20. IL18RAP, 21. IL2RA, 22. IL2RB, 23. IL2RG, 24. CD3E, 25. CD3D, 26. CD3G, 27. CD247, 28. CD28, 29. CTLA4, 30. PDCD1, 31. LAG3, 32. TIGIT, 33. HAVCR2, 34. CD226, 35. EZH2, 36. KDM6A, 37. KDM6B, 38. DNMT3A, 39. SETDB1, 40. KDM5C, 41. SOCS1, 42. SOCS3, 43. PTPN2, 44. PTPN11, 45. PTEN, 46. INPP5D, 47. NFKB1, 48. NFKB2, 49. RELA, 50. RELB, 51. REL, 52. IKBKB, 53. IKBKG, 54. MAP3K7, 55. MAPK1, 56. MAPK3, 57. MAPK8, 58. MAPK14, 59. MYD88, 60. TRIF, 61. TICAM1, 62. NFAT1, 63. NFATC1, 64. NFATC2, 65. NFATC3, 66. AP1, 67. FOS, 68. JUN, 69. JUNB, 70. FOSL1, 71. GATA3, 72. BCL6, 73. PRDM1, 74. TOX, 75. TOX2, 76. NR4A1, 77. NR4A3, 78. BATF, 79. BATF3, 80. ZEB2, 81. ID2, 82. ID3, 83. TCF7, 84. LEF1, 85. FOXO1, 86. FOXO3, 87. AKT1, 88. AKT2, 89. MTOR, 90. PIK3CA, 91. PIK3CD, 92. PRKCQ, 93. CARD11, 94. BCL10, 95. MALT1, 96. ZAP70, 97. LCK, 98. ITK, 99. SH2D1A, 100. RASGRP1, 101. GRB2, 102. SOS1, 103. HRAS, 104. NRAS, 105. RAF1, 106. ARID1A, 107. SMARCA4, 108. SMARCB1, 109. EP300, 110. CREBBP, 111. KAT6A, 112. HDAC1, 113. HDAC2, 114. HDAC3, 115. LSD1, 116. KDM1A, 117. BRD4, 118. CCNT1, 119. CDK8, 120. MED12, 121. YTHDF2, 122. METTL3, 123. METTL14, 124. FTO, 125. DICER1, 126. DROSHA, 127. XPO1, 128. RANBP2
+===================tokens=====================
+Number of prompt tokens: 235
+Number of sampled tokens: 1352
+
+
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ You have so far predicted 123 out of the required 128 genes for this round. These were: 
+['IL18RAP', 'HDAC3', 'PTPN11', 'ZAP70', 'JUN', 'MALT1', 'CDK8', 'KDM6A', 'HAVCR2', 'RELB', 'TBX21', 'MYD88', 'TICAM1', 'DNMT3A', 'NFKB2', 'REL', 'STAT1', 'BATF3', 'CD3D', 'SOCS1', 'LAG3', 'PIK3CD', 'METTL3', 'MAP3K7', 'JAK3', 'IKBKB', 'HDAC2', 'RANBP2', 'TCF7', 'IL2RG', 'CD3E', 'NFATC3', 'AKT1', 'RUNX3', 'CTLA4', 'IRF5', 'KAT6A', 'SMARCB1', 'IL18R1', 'GATA3', 'FOXO1', 'IL12RB2', 'CD226', 'NRAS', 'ZEB2', 'MAPK1', 'XPO1', 'IL2RB', 'SOS1', 'NFATC1', 'IL2RA', 'ITK', 'KDM1A', 'PIK3CA', 'IRF1', 'FOS', 'FOSL1', 'SOCS3', 'FOXO3', 'FTO', 'BATF', 'IRF4', 'MAPK14', 'KDM5C', 'PDCD1', 'EOMES', 'CCNT1', 'LCK', 'STAT4', 'CREBBP', 'STAT5A', 'STAT3', 'JAK1', 'BCL10', 'MED12', 'DROSHA', 'IL12RB1', 'CD28', 'BRD4', 'JAK2', 'METTL14', 'SMARCA4', 'NR4A3', 'EZH2', 'EP300', 'STAT5B', 'ARID1A', 'HDAC1', 'CD247', 'IKBKG', 'TIGIT', 'HRAS', 'SH2D1A', 'IRF8', 'RELA', 'PTPN2', 'MAPK3', 'LEF1', 'ID3', 'NR4A1', 'DICER1', 'TYK2', 'AKT2', 'JUNB', 'BCL6', 'NFATC2', 'CD3G', 'PRKCQ', 'INPP5D', 'TOX', 'SETDB1', 'MTOR', 'KDM6B', 'YTHDF2', 'MAPK8', 'GRB2', 'ID2', 'PRDM1', 'CARD11', 'PTEN', 'TOX2', 'RASGRP1', 'NFKB1']
+ Please add 5 more genes to this list. Remember not to include previously tested genes including: 
+ ['TRIF', 'LSD1', 'RAF1', 'NFAT1', 'AP1'] 
+
+Assistant:
+===================claude-sonnet-4-6 response (2000)=====================
+1. Reflection: I've already selected 123 genes covering major pathways regulating IFNG production including JAK-STAT signaling, T cell activation, chromatin remodeling, transcription factors, and immune checkpoint genes. I need 5 more genes to complete the 128-gene panel. I should focus on additional regulators not yet included: upstream signaling molecules, additional epigenetic regulators, or key co-stimulatory/inhibitory receptors that haven't been tested yet.
+
+2. Research Plan: The screen aims to identify genes regulating IFNG production across key pathways. I've covered JAK-STAT, TCR signaling, chromatin remodeling, key TFs (BATF, IRF, NFAT, AP-1 family), and checkpoint receptors. For the final 5 slots, I'll add: MAP2K1 (MEK1, upstream MAPK), TNFRSF9 (4-1BB, co-stimulatory), IFNGR1 (IFNG receptor for feedback), SUZ12 (PRC2 complex partner to EZH2), and KRAS (RAS family oncogene regulating T cell signaling). These fill gaps in key regulatory networks not yet covered.
+
+3. Solution: 1. MAP2K1, 2. TNFRSF9, 3. IFNGR1, 4. SUZ12, 5. KRAS
+===================tokens=====================
+Number of prompt tokens: 919
+Number of sampled tokens: 279
+
+

@@ -1,0 +1,9 @@
+All genes:
+sonnet_IFNG/test/sampled_genes_5.npy
+[0.09565217391304348]
+Model: sonnet, Data: IFNG, mean: 0.09565217391304348, std: 0.0
+
+Non_essential genes:
+sonnet_IFNG/test/sampled_genes_5.npy
+[0.10723192019950124]
+Model: sonnet, Data: IFNG, mean: 0.10723192019950124, std: 0.0

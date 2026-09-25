@@ -10,3 +10,4 @@ plot_results.ipynb
 run_script.sh
 simple_benchmark_plot.ipynb
 .DS_Store
+venv/

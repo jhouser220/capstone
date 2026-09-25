@@ -35,7 +35,7 @@ initial_prompt = """You are a scientist working on problems in drug discovery.
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
 
 1. Reflection: Thoughts on previous results and next steps. 
 2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
@@ -48,7 +48,7 @@ initial_prompt_gene_search = """You are a scientist working on problems in drug 
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
 
 1. Reflection: Thoughts on previous results and next steps. 
 2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
@@ -62,7 +62,7 @@ initial_prompt_topk = """You are a scientist working on problems in drug discove
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
 
 1. Reflection: Thoughts on previous results and next steps. 
 2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
@@ -76,7 +76,7 @@ initial_prompt_rna = """You are a scientist working on problems in drug discover
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
 
 1. Reflection: Thoughts on previous results and next steps. 
 2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
@@ -90,7 +90,7 @@ initial_prompt_pathways = """You are a scientist working on problems in drug dis
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
 
 1. Reflection: Thoughts on previous results and next steps. 
 2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
@@ -105,7 +105,7 @@ initial_prompt_pairs_norman = """You are a scientist working on problems in drug
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
 
 1. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
 2. Solution: Propose a list of predicted pairs of genes to test separated by commas in this format: 1. <Gene name 1> + <Gene name 2>, 2. <Gene name 3> + <Gene name 4>, 3... 
@@ -118,7 +118,7 @@ initial_prompt_pairs = """You are a scientist working on problems in drug discov
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
 
 1. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
 2. Reasoning: Explanations of the reasoning behind all the proposed combinations.
@@ -152,7 +152,7 @@ if __name__ == "__main__":
     parser.add_argument("--num_genes", type=int, default=32, help="number of "
                                                                  "genes to sample per round")
     parser.add_argument("--manual_prepare", type=bool, default=False, help="use gpt4")
-    parser.add_argument("--prompt_tries", type=int, default=20)
+    parser.add_argument("--prompt_tries", type=int, default=6)
     parser.add_argument("--critique", type=bool, default=False, help="critique")
     parser.add_argument("--gene_search", type=bool, default=False, help="gene_search")
     parser.add_argument("--gene_search_diverse", type=bool, default=False, help="gene_search")

@@ -5,6 +5,11 @@ from functools import partial
 import tiktoken
 # from schema import TooLongPromptError, LLMError
 
+# These constants were removed from the anthropic package once the legacy
+# Text Completions API was retired. We keep the strings here since this repo
+# only ever used them for prompt formatting / logging, not for the API call itself.
+HUMAN_PROMPT = "\n\nHuman:"
+AI_PROMPT = "\n\nAssistant:"
 enc = tiktoken.get_encoding("cl100k_base")
 
 try:
@@ -43,8 +48,8 @@ def log_to_file(log_file, prompt, completion, model, max_tokens_to_sample):
     """ Log the prompt and completion to a file."""
     with open(log_file, "a") as f:
         f.write("\n===================prompt=====================\n")
-        f.write(f"{anthropic.HUMAN_PROMPT} {prompt} {anthropic.AI_PROMPT}")
-        num_prompt_tokens = len(enc.encode(f"{anthropic.HUMAN_PROMPT} {prompt} {anthropic.AI_PROMPT}"))
+        f.write(f"{HUMAN_PROMPT} {prompt} {AI_PROMPT}")
+        num_prompt_tokens = len(enc.encode(f"{HUMAN_PROMPT} {prompt} {AI_PROMPT}"))
         f.write(f"\n==================={model} response ({max_tokens_to_sample})=====================\n")
         f.write(completion)
         num_sample_tokens = len(enc.encode(completion))
@@ -54,17 +59,17 @@ def log_to_file(log_file, prompt, completion, model, max_tokens_to_sample):
         f.write("\n\n")
 
 
-def complete_text_claude(prompt, stop_sequences=[anthropic.HUMAN_PROMPT], model="claude-v1", max_tokens_to_sample = 2000, temperature=0.5, log_file=None, **kwargs):
+def complete_text_claude(prompt, stop_sequences=[HUMAN_PROMPT], model="claude-v1", max_tokens_to_sample = 2000, temperature=0.5, log_file=None, **kwargs):
     """ Call the Claude API to complete a prompt."""
 
-    ai_prompt = anthropic.AI_PROMPT
+    ai_prompt = AI_PROMPT
     if "ai_prompt" in kwargs is not None:
         ai_prompt = kwargs["ai_prompt"]
         del kwargs["ai_prompt"]
     # model = "claude-2"
-    if model.startswith("claude-3"):
+    if model.startswith("claude-3") or model.startswith("claude-sonnet") or model.startswith("claude-opus") or model.startswith("claude-haiku"):
         messages = [
-            {'role': 'user', 'content': f"{anthropic.HUMAN_PROMPT} {prompt}"}
+            {'role': 'user', 'content': f"{HUMAN_PROMPT} {prompt}"}
         ]
         rsp = anthropic_client.messages.create(
             model=model,
@@ -77,7 +82,7 @@ def complete_text_claude(prompt, stop_sequences=[anthropic.HUMAN_PROMPT], model=
         return completion
     try:
         rsp = anthropic_client.completions.create(
-            prompt=f"{anthropic.HUMAN_PROMPT} {prompt} {ai_prompt}",
+            prompt=f"{HUMAN_PROMPT} {prompt} {ai_prompt}",
             stop_sequences=stop_sequences,
             model=model,
             temperature=temperature,
@@ -172,7 +177,7 @@ def complete_text(prompt, log_file, model, **kwargs):
 
     if model.startswith("claude"):
         # use anthropic API
-        completion = complete_text_claude(prompt, stop_sequences=[anthropic.HUMAN_PROMPT, "Observation:"], log_file=log_file, model=model, **kwargs)
+        completion = complete_text_claude(prompt, stop_sequences=[HUMAN_PROMPT, "Observation:"], log_file=log_file, model=model, **kwargs)
     elif "/" in model:
         # use CRFM API since this specifies organization like "openai/..."
         completion = complete_text_crfm(prompt, stop_sequences=["Observation:"], log_file=log_file, model=model, **kwargs)
