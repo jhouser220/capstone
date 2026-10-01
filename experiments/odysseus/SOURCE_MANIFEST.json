@@ -1,0 +1,50 @@
+[
+  {
+    "file": "Experiments/rich_numeric_feedback_2026-09-29/api.py",
+    "original_sha256": "c21ef570d888582c9e1e8e47ea3cbb20bd9cd07035bf1c8a3b92e98e7f42f67c"
+  },
+  {
+    "file": "Experiments/rich_numeric_feedback_2026-09-29/study.py",
+    "original_sha256": "6cc2e8e5e2bcfd9928da556482952793fdb6d9a2d06b06198955bf498b079394"
+  },
+  {
+    "file": "Experiments/rich_numeric_feedback_2026-09-29/acquisition.py",
+    "original_sha256": "3459c461a8b0a9640787dadf2672cdcc5911cd91b5dae58230f5b7df9c240ee1"
+  },
+  {
+    "file": "Experiments/rich_numeric_feedback_2026-09-29/diagnostics.py",
+    "original_sha256": "479442d6c5a764cf93c98bee039efe0b83efc6e48d82ad7825572371cc6bc24b"
+  },
+  {
+    "file": "Experiments/rich_numeric_feedback_2026-09-29/llm_study.py",
+    "original_sha256": "0fd6b077a604b5828a9ed51f8200ce6df89b580d37baf8064de2805d2a4b7b39"
+  },
+  {
+    "file": "Experiments/rich_numeric_feedback_2026-09-29/llm_campaign.py",
+    "original_sha256": "27c117880f49e3649e38d79cf66743952fed73b93b4dc36e7357d8eb70630096"
+  },
+  {
+    "file": "Experiments/objective_representation_2026-09-29/paid_api.py",
+    "original_sha256": "02d87e7a572e387525389529df25175033cb659d34cedddce2eabd2a2de99b74"
+  },
+  {
+    "file": "Experiments/objective_representation_2026-09-29/study2.py",
+    "original_sha256": "e9c4ac2e4977fa8fd8b3498e457cda60a8d06b13e29f2cc39b2d9ec39530c6d5"
+  },
+  {
+    "file": "Experiments/objective_representation_2026-09-29/router.py",
+    "original_sha256": "e32f90b643fb9ca77ca440df3c6d948005e948d354a610733dd089e3b0a10e16"
+  },
+  {
+    "file": "Experiments/objective_representation_2026-09-29/views.py",
+    "original_sha256": "11734b069536e6e0eb5bb2aecbafbe3259e7a5de9a456836a5a833171b1f57c4"
+  },
+  {
+    "file": "Experiments/cross_dataset_numeric_2026-09-29/run.py",
+    "original_sha256": "ea1afc95ec855400db1793cfd196f6abd2122697bc2c9134865081b3814e8ee1"
+  },
+  {
+    "file": "Experiments/cross_dataset_numeric_2026-09-29/matched_pool.py",
+    "original_sha256": "29de029e4641a9f13643f4c412a6a1264e189ef1e300931d161b237f0795345d"
+  }
+]

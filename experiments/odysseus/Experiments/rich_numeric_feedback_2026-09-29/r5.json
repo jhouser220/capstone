@@ -1,0 +1,1 @@
+{"name":"r5_llm_campaigns","datasets":["IFNG","IL2"],"seeds":[6501,6502],"model":"google/gemini-2.5-flash-lite","steps":3}

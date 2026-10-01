@@ -1,0 +1,1 @@
+{"name":"r3_new_evidence","datasets":["IFNG","IL2"],"seeds":[7301,7302],"methods":["gp_iso","full:effect_median"],"steps":3,"modes":["updated","frozen","shuffle_new"]}

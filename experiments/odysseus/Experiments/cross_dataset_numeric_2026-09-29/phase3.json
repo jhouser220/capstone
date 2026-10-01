@@ -1,0 +1,21 @@
+{
+  "name": "phase3_mean_acquisition",
+  "datasets": [
+    "IFNG",
+    "IL2",
+    "Carnevale22_Adenosine",
+    "Sanchez21",
+    "Sanchez21_down",
+    "Scharenberg22",
+    "Steinhart_crispra_GD2_D22"
+  ],
+  "seeds": [
+    8101,
+    8102,
+    8103
+  ],
+  "initial_mode": "mixed",
+  "methods": [
+    "gp_mean"
+  ]
+}

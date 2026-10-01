@@ -1,0 +1,1 @@
+{"name":"r1_full_pool_models","datasets":["IFNG","IL2"],"seeds":[6101,6102,6103],"methods":["prior","knn","xgb_hit","xgb_effect","gp_iso","gp_ard"],"steps":1}

@@ -1,0 +1,1 @@
+{"name":"r5_flash_spot","datasets":["IFNG","IL2"],"seeds":[6301,6302],"method":"gp_iso","model":"google/gemini-2.5-flash","steps":1}

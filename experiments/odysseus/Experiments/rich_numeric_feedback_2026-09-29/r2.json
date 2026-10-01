@@ -1,0 +1,1 @@
+{"name":"r2_own_history_campaigns","datasets":["IFNG","IL2"],"seeds":[6201,6202],"methods":["prior","knn","xgb_hit","xgb_effect","gp_iso","gp_ard"],"steps":3}

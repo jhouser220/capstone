@@ -1,0 +1,5330 @@
+{
+  "r1_objective_features/protocol.json": {
+    "name": "r1_objective_features",
+    "datasets": ["IFNG", "IL2"],
+    "seeds": [7101, 7102],
+    "methods": ["prior", "gp_iso", "pca:hit_logistic", "pca:hit_squared", "pca:effect_squared", "pca:effect_median", "pca:hit_rank", "full:hit_logistic", "full:hit_squared", "full:effect_squared", "full:effect_median", "full:hit_rank"],
+    "steps": 1,
+    "modes": ["updated"],
+    "initial_mode": "mixed",
+    "initial": 256,
+    "batch": 32,
+    "pool": "all feature-covered untested; unselected retained",
+    "time": "2026-09-29T22:23:25.914989+00:00",
+    "code_sha256": "e9c4ac2e4977fa8fd8b3498e457cda60a8d06b13e29f2cc39b2d9ec39530c6d5"
+  },
+  "r1_objective_features/results.json": [
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "prior",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "curve": [5],
+      "discovery_auc": 5.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [11246, 11219, 3158, 13379, 7857, 610, 7134, 1244, 11707, 6551, 1593, 3935, 11509, 5858, 7718, 11249, 11236, 15893, 3619, 10791, 604, 3883, 3225, 10799, 2595, 2234, 10800, 8563, 5461, 2899, 15987, 11226],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07363784407466699
+          }
+        }
+      ],
+      "runtime_seconds": 0.06672075000096811
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 10,
+      "tests": 32,
+      "hit_rate": 0.3125,
+      "curve": [10],
+      "discovery_auc": 10.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 10,
+          "selected": [12528, 12553, 2197, 531, 4128, 12182, 12113, 11226, 10738, 12166, 9291, 12415, 5163, 2195, 15027, 848, 11239, 4314, 10775, 12108, 14160, 13922, 10796, 5501, 3182, 14559, 6551, 15893, 12809, 15835, 13718, 2595],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06314845256918811,
+            "brier": 0.04801143356468448,
+            "log_loss": 0.20144055989252876
+          }
+        }
+      ],
+      "runtime_seconds": 0.2519369590008864
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "pca:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 4,
+      "tests": 32,
+      "hit_rate": 0.125,
+      "curve": [4],
+      "discovery_auc": 4.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 4,
+          "selected": [12149, 15657, 15845, 12374, 10876, 11117, 12651, 12105, 10177, 12168, 135, 15998, 9413, 13682, 7413, 8824, 6563, 15564, 9179, 12126, 11907, 877, 15861, 14445, 10090, 16443, 12183, 15893, 5702, 4476, 12184, 1206],
+          "diagnostics": {
+            "rank_effect_spearman": 0.02800785670121403,
+            "brier": 0.04886076970269437,
+            "log_loss": 0.20518593638640922
+          }
+        }
+      ],
+      "runtime_seconds": 0.12089070900037768
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "pca:hit_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 2,
+      "tests": 32,
+      "hit_rate": 0.0625,
+      "curve": [2],
+      "discovery_auc": 2.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 2,
+          "selected": [12145, 16284, 12166, 3887, 4493, 6034, 3565, 8568, 12125, 9234, 7134, 324, 15781, 9256, 4465, 10278, 2009, 11789, 7217, 1923, 7604, 14608, 15145, 14136, 6314, 16600, 13362, 12149, 11798, 12504, 12946, 15109],
+          "diagnostics": {
+            "rank_effect_spearman": 0.02898244591414938,
+            "brier": 0.05144450011640435,
+            "log_loss": 0.2861177666722766
+          }
+        }
+      ],
+      "runtime_seconds": 0.10977224999805912
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "pca:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 6,
+      "tests": 32,
+      "hit_rate": 0.1875,
+      "curve": [6],
+      "discovery_auc": 6.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [12105, 12149, 15857, 12159, 15845, 13272, 4128, 4656, 3620, 10177, 12122, 11240, 9073, 3494, 10684, 12147, 6551, 7743, 12166, 10010, 12673, 14445, 4673, 15249, 8403, 13650, 4949, 9495, 11509, 2993, 4106, 10351],
+          "diagnostics": {
+            "rank_effect_spearman": 0.02539662021625005
+          }
+        }
+      ],
+      "runtime_seconds": 0.11228545799895073
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "pca:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 2,
+      "tests": 32,
+      "hit_rate": 0.0625,
+      "curve": [2],
+      "discovery_auc": 2.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 2,
+          "selected": [14204, 7361, 16513, 6806, 16523, 16714, 11320, 951, 12651, 3395, 4047, 1405, 10039, 11824, 9011, 9262, 16417, 12719, 15871, 15144, 3155, 10974, 13120, 15735, 3518, 16163, 4128, 4329, 4204, 11855, 6368, 3241],
+          "diagnostics": {
+            "rank_effect_spearman": 0.010718253893755454
+          }
+        }
+      ],
+      "runtime_seconds": 0.11726887499753502
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "pca:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "curve": [5],
+      "discovery_auc": 5.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [15893, 11372, 12168, 12105, 12661, 12183, 7782, 12145, 3619, 12126, 2260, 2504, 3463, 12147, 4434, 1191, 13177, 11669, 11248, 10723, 13682, 16338, 2562, 11236, 9413, 13652, 7645, 9239, 11112, 13735, 10876, 9225],
+          "diagnostics": {
+            "rank_effect_spearman": 0.046814811228944674
+          }
+        }
+      ],
+      "runtime_seconds": 0.09781887499775621
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "full:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "curve": [5],
+      "discovery_auc": 5.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [12658, 11217, 12103, 8788, 7024, 13927, 2564, 8462, 14916, 12119, 10216, 15455, 15132, 10128, 3466, 13546, 8084, 5451, 4516, 6264, 9067, 5481, 5065, 4111, 10789, 9549, 2386, 16038, 2170, 10919, 5694, 8867],
+          "diagnostics": {
+            "rank_effect_spearman": 0.042877515109827964,
+            "brier": 0.047767692030340606,
+            "log_loss": 0.1998675780109872
+          }
+        }
+      ],
+      "runtime_seconds": 1.161926583998138
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "full:hit_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 1,
+      "tests": 32,
+      "hit_rate": 0.03125,
+      "curve": [1],
+      "discovery_auc": 1.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 1,
+          "selected": [11563, 11470, 7129, 15827, 8233, 7888, 14902, 2020, 4680, 8183, 4999, 3906, 12068, 6747, 4033, 11401, 16658, 9137, 2901, 1277, 1003, 7300, 904, 7033, 11799, 3743, 12337, 15052, 1313, 5142, 2275, 11217],
+          "diagnostics": {
+            "rank_effect_spearman": 0.030053536958773167,
+            "brier": 0.05487165762585547,
+            "log_loss": 0.2790944112988711
+          }
+        }
+      ],
+      "runtime_seconds": 1.6567504999984521
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "full:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 3,
+      "tests": 32,
+      "hit_rate": 0.09375,
+      "curve": [3],
+      "discovery_auc": 3.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 3,
+          "selected": [607, 1237, 10090, 2896, 5858, 1527, 6911, 9975, 13359, 6554, 2907, 6563, 4418, 3336, 11455, 914, 4103, 12183, 8371, 13725, 2818, 11217, 7981, 6730, 877, 9415, 11563, 16372, 11908, 11227, 8649, 12041],
+          "diagnostics": {
+            "rank_effect_spearman": 0.03702124316831244
+          }
+        }
+      ],
+      "runtime_seconds": 1.7599397919984767
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 3,
+      "tests": 32,
+      "hit_rate": 0.09375,
+      "curve": [3],
+      "discovery_auc": 3.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 3,
+          "selected": [11109, 1360, 12890, 12741, 6730, 9674, 10810, 16498, 11455, 2528, 11224, 612, 4429, 11091, 2763, 16349, 11824, 392, 14321, 526, 13079, 5444, 604, 5836, 15387, 7639, 11119, 15629, 9125, 6308, 7716, 3468],
+          "diagnostics": {
+            "rank_effect_spearman": 0.022791293024126993
+          }
+        }
+      ],
+      "runtime_seconds": 1.7466867919974902
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7101,
+      "method": "full:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 7,
+      "tests": 32,
+      "hit_rate": 0.21875,
+      "curve": [7],
+      "discovery_auc": 7.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 7,
+          "selected": [14925, 12087, 12163, 11669, 11670, 12183, 15588, 10684, 9975, 16140, 13605, 12103, 15893, 12149, 4706, 15857, 2194, 3620, 13677, 4133, 8086, 9216, 11563, 9178, 12047, 11005, 13434, 5979, 12205, 2763, 11679, 9422],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06106886919227945
+          }
+        }
+      ],
+      "runtime_seconds": 0.8165659580008651
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "prior",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "curve": [5],
+      "discovery_auc": 5.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [11246, 11219, 3158, 13379, 7857, 610, 7134, 1244, 11707, 6551, 1593, 3935, 11509, 5858, 7718, 11249, 11236, 15893, 3619, 10791, 604, 3883, 3225, 10799, 2595, 2234, 10800, 8563, 5461, 2899, 15987, 11226],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07285413649854999
+          }
+        }
+      ],
+      "runtime_seconds": 0.06610250000085216
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "curve": [5],
+      "discovery_auc": 5.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [2047, 11244, 2072, 11243, 13922, 5868, 12158, 7254, 12660, 12157, 7008, 11120, 15998, 7133, 15893, 1193, 15987, 10349, 1279, 12476, 11226, 3570, 10829, 16050, 848, 3144, 5946, 11239, 16739, 7205, 13669, 16707],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07668291075791075,
+            "brier": 0.048769495590118214,
+            "log_loss": 0.2075493239064358
+          }
+        }
+      ],
+      "runtime_seconds": 0.20147670900041703
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "pca:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 8,
+      "tests": 32,
+      "hit_rate": 0.25,
+      "curve": [8],
+      "discovery_auc": 8.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [16707, 7008, 15873, 16338, 12129, 13191, 15455, 6551, 10976, 11244, 14160, 12528, 4128, 9045, 10684, 16050, 15563, 848, 13718, 12658, 2478, 2328, 3811, 9778, 12373, 2288, 8096, 15400, 12119, 11688, 3161, 13682],
+          "diagnostics": {
+            "rank_effect_spearman": 0.047999366927668104,
+            "brier": 0.050114318064074195,
+            "log_loss": 0.2077851770875381
+          }
+        }
+      ],
+      "runtime_seconds": 0.10516625000309432
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "pca:hit_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 4,
+      "tests": 32,
+      "hit_rate": 0.125,
+      "curve": [4],
+      "discovery_auc": 4.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 4,
+          "selected": [12166, 11227, 9382, 16338, 7134, 4285, 7886, 12374, 9234, 12145, 12217, 12152, 10761, 11695, 1219, 9170, 12006, 12227, 6380, 709, 11669, 3486, 7045, 12119, 4688, 1768, 4604, 15873, 5923, 7706, 16159, 2288],
+          "diagnostics": {
+            "rank_effect_spearman": 0.051559718901956125,
+            "brier": 0.05643136974618213,
+            "log_loss": 0.2750294553635192
+          }
+        }
+      ],
+      "runtime_seconds": 0.1118983330015908
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "pca:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 4,
+      "tests": 32,
+      "hit_rate": 0.125,
+      "curve": [4],
+      "discovery_auc": 4.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 4,
+          "selected": [12114, 12667, 15640, 11243, 5747, 4949, 14078, 2478, 15873, 5837, 8980, 12660, 16338, 2756, 3182, 8096, 12045, 15563, 9091, 15498, 13873, 12373, 11102, 2201, 4730, 10684, 13725, 12658, 4128, 6249, 16707, 16663],
+          "diagnostics": {
+            "rank_effect_spearman": 0.05105189353647474
+          }
+        }
+      ],
+      "runtime_seconds": 0.1140997080001398
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "pca:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 0,
+      "tests": 32,
+      "hit_rate": 0.0,
+      "curve": [0],
+      "discovery_auc": 0.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 0,
+          "selected": [13825, 11211, 16554, 4664, 16428, 9626, 3914, 12990, 2958, 5159, 15788, 14877, 4378, 13549, 460, 3530, 11669, 8231, 12658, 13682, 11365, 8841, 10684, 16291, 13359, 3521, 6197, 6910, 9299, 6545, 5418, 1219],
+          "diagnostics": {
+            "rank_effect_spearman": 0.02288607754572704
+          }
+        }
+      ],
+      "runtime_seconds": 0.11660983399997349
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "pca:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 6,
+      "tests": 32,
+      "hit_rate": 0.1875,
+      "curve": [6],
+      "discovery_auc": 6.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [12108, 11246, 7398, 1502, 2074, 12374, 16400, 6987, 16338, 2288, 16707, 4128, 11217, 5356, 2201, 2893, 8563, 12095, 11253, 2894, 11252, 6738, 4776, 1242, 12528, 3328, 747, 11688, 11247, 8332, 1244, 9882],
+          "diagnostics": {
+            "rank_effect_spearman": 0.020693406305706798
+          }
+        }
+      ],
+      "runtime_seconds": 0.10100729199984926
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "full:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 6,
+      "tests": 32,
+      "hit_rate": 0.1875,
+      "curve": [6],
+      "discovery_auc": 6.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [12145, 2892, 11683, 9237, 9171, 12155, 1378, 3496, 4789, 7255, 12183, 13546, 12966, 14339, 11512, 12100, 11234, 16012, 15869, 3838, 10039, 12659, 12489, 15540, 5578, 1198, 12167, 7123, 12119, 8979, 4359, 2080],
+          "diagnostics": {
+            "rank_effect_spearman": 0.053145686630490956,
+            "brier": 0.04878100648862087,
+            "log_loss": 0.2027460676000718
+          }
+        }
+      ],
+      "runtime_seconds": 1.1511623340011283
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "full:hit_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 4,
+      "tests": 32,
+      "hit_rate": 0.125,
+      "curve": [4],
+      "discovery_auc": 4.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 4,
+          "selected": [16212, 3051, 16627, 7255, 4084, 4580, 7673, 11796, 12146, 16698, 639, 8890, 16137, 13421, 12658, 13659, 14898, 69, 9053, 13668, 10401, 11520, 11672, 16701, 5650, 16758, 12116, 9028, 12486, 16566, 14201, 15393],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04772239627518318,
+            "brier": 0.0612157937702266,
+            "log_loss": 0.3063623361885495
+          }
+        }
+      ],
+      "runtime_seconds": 1.6264259580020735
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "full:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 2,
+      "tests": 32,
+      "hit_rate": 0.0625,
+      "curve": [2],
+      "discovery_auc": 2.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 2,
+          "selected": [13616, 12586, 6012, 6586, 154, 16630, 8980, 4707, 7162, 2591, 15857, 1191, 12068, 15063, 9320, 7076, 11494, 5890, 8761, 15563, 5837, 1653, 7815, 6818, 6368, 4478, 15422, 1113, 10715, 8811, 15331, 4789],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04590991362086992
+          }
+        }
+      ],
+      "runtime_seconds": 1.7663312920012686
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 7,
+      "tests": 32,
+      "hit_rate": 0.21875,
+      "curve": [7],
+      "discovery_auc": 7.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 7,
+          "selected": [4362, 10399, 12637, 10795, 2822, 2194, 12659, 12159, 14773, 8440, 11120, 2071, 4151, 2075, 11455, 12165, 3358, 6024, 16118, 7563, 14911, 611, 6049, 12146, 3630, 4299, 8093, 2349, 5481, 14356, 16292, 13652],
+          "diagnostics": {
+            "rank_effect_spearman": 0.05181470115203971
+          }
+        }
+      ],
+      "runtime_seconds": 1.7401059589974466
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7102,
+      "method": "full:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 8,
+      "tests": 32,
+      "hit_rate": 0.25,
+      "curve": [8],
+      "discovery_auc": 8.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [16124, 11635, 12123, 8081, 8370, 15385, 9425, 6352, 12114, 8771, 15562, 12110, 12639, 3144, 16733, 3214, 6769, 14045, 5264, 13927, 12081, 16780, 11908, 8092, 3479, 11054, 4093, 2255, 10192, 4104, 9994, 6488],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07095868340357278
+          }
+        }
+      ],
+      "runtime_seconds": 0.8284983340017789
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "prior",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 6,
+      "tests": 32,
+      "hit_rate": 0.1875,
+      "curve": [6],
+      "discovery_auc": 6.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [4437, 10892, 10752, 12691, 11730, 16108, 12017, 4204, 11747, 11721, 11748, 3231, 13961, 1258, 7475, 12229, 8229, 624, 1623, 6087, 11738, 16545, 4037, 6868, 12018, 3700, 11751, 8084, 11272, 3979, 11280, 3301],
+          "diagnostics": {
+            "rank_effect_spearman": 0.10119913450894433
+          }
+        }
+      ],
+      "runtime_seconds": 0.06859166699723573
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "curve": [5],
+      "discovery_auc": 5.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [12638, 3527, 3568, 12201, 12931, 2955, 2319, 14287, 1210, 14842, 13951, 12645, 16391, 14756, 15548, 8229, 11748, 1218, 3700, 10752, 12658, 4204, 4828, 7475, 9501, 6876, 14661, 12685, 2398, 14282, 11280, 3765],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09587073992450167,
+            "brier": 0.0364764235828532,
+            "log_loss": 0.17594580100294044
+          }
+        }
+      ],
+      "runtime_seconds": 0.22304320799958077
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "pca:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 4,
+      "tests": 32,
+      "hit_rate": 0.125,
+      "curve": [4],
+      "discovery_auc": 4.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 4,
+          "selected": [10786, 16268, 12027, 3979, 2955, 4543, 14661, 16223, 16525, 2537, 8429, 3568, 12638, 16492, 9546, 11577, 12670, 9286, 16482, 8108, 11748, 16391, 2222, 3464, 9572, 16531, 16108, 9616, 11765, 15889, 4204, 3765],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07236020615564027,
+            "brier": 0.032846994426655944,
+            "log_loss": 0.14035303503530258
+          }
+        }
+      ],
+      "runtime_seconds": 0.1023092909999832
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "pca:hit_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 10,
+      "tests": 32,
+      "hit_rate": 0.3125,
+      "curve": [10],
+      "discovery_auc": 10.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 10,
+          "selected": [4204, 16223, 2293, 2222, 2249, 11468, 3979, 16492, 11748, 6815, 12691, 12638, 5522, 2513, 10786, 11278, 4471, 4840, 11618, 16391, 8108, 11519, 12621, 16108, 15889, 12634, 8429, 3563, 4486, 3568, 15067, 9286],
+          "diagnostics": {
+            "rank_effect_spearman": 0.05924077840756239,
+            "brier": 0.033844044893715064,
+            "log_loss": 0.1927590933817928
+          }
+        }
+      ],
+      "runtime_seconds": 0.11302166699897498
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "pca:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 12,
+      "tests": 32,
+      "hit_rate": 0.375,
+      "curve": [12],
+      "discovery_auc": 12.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 12,
+          "selected": [16268, 16223, 2222, 2513, 4204, 12633, 12638, 10786, 3563, 3464, 12307, 12709, 9607, 5522, 16108, 2226, 2249, 12691, 6815, 9870, 11278, 16545, 2562, 4840, 3059, 3231, 12635, 12921, 2293, 8471, 12621, 3568],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06574952312877168
+          }
+        }
+      ],
+      "runtime_seconds": 0.11267874999975902
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "pca:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 10,
+      "tests": 32,
+      "hit_rate": 0.3125,
+      "curve": [10],
+      "discovery_auc": 10.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 10,
+          "selected": [16108, 16268, 11280, 12691, 8350, 12638, 5522, 13945, 2513, 3231, 1467, 9607, 12685, 16223, 6815, 2293, 7475, 12665, 15860, 3979, 2222, 11519, 12749, 12915, 4486, 4204, 3527, 12633, 2562, 2249, 8471, 11730],
+          "diagnostics": {
+            "rank_effect_spearman": 0.058026402950647336
+          }
+        }
+      ],
+      "runtime_seconds": 0.11792220799907227
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "pca:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "curve": [5],
+      "discovery_auc": 5.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [3545, 12694, 16268, 16482, 12638, 16502, 16223, 1834, 3765, 3979, 6518, 8148, 8427, 8429, 9572, 10786, 12027, 12624, 14842, 16391, 16526, 3568, 2955, 15548, 16525, 1205, 3575, 973, 3057, 6815, 6881, 8108],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08668292207373872
+          }
+        }
+      ],
+      "runtime_seconds": 0.0958931669993035
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "full:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 7,
+      "tests": 32,
+      "hit_rate": 0.21875,
+      "curve": [7],
+      "discovery_auc": 7.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 7,
+          "selected": [1467, 12712, 14193, 15066, 9866, 3700, 7485, 14692, 12633, 10353, 3059, 6889, 5214, 13851, 3546, 12725, 12652, 15203, 16655, 12618, 16268, 15758, 7981, 3464, 6806, 3568, 4828, 13231, 7048, 9602, 12621, 3231],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08507068667477427,
+            "brier": 0.0326812101741525,
+            "log_loss": 0.13832379633539768
+          }
+        }
+      ],
+      "runtime_seconds": 1.0450241250000545
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "full:hit_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 10,
+      "tests": 32,
+      "hit_rate": 0.3125,
+      "curve": [10],
+      "discovery_auc": 10.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 10,
+          "selected": [3568, 15539, 11272, 11519, 15066, 2260, 9866, 4145, 16643, 2235, 593, 14569, 4544, 9599, 12621, 5747, 2957, 4271, 12744, 12628, 10353, 12712, 3059, 12639, 2837, 11202, 7981, 17415, 12634, 16268, 4119, 12691],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07590357893916741,
+            "brier": 0.03765282466619632,
+            "log_loss": 0.19584453036255295
+          }
+        }
+      ],
+      "runtime_seconds": 1.5819397920022311
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "full:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 6,
+      "tests": 32,
+      "hit_rate": 0.1875,
+      "curve": [6],
+      "discovery_auc": 6.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [2235, 9627, 3214, 11307, 10786, 14292, 10353, 3568, 16300, 14533, 16088, 9494, 3056, 12667, 15076, 9202, 12628, 7485, 8229, 7487, 12621, 11737, 2957, 9572, 12691, 12689, 16295, 12685, 17403, 2964, 14131, 12635],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08196650173165806
+          }
+        }
+      ],
+      "runtime_seconds": 1.8361943339987192
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 15,
+      "tests": 32,
+      "hit_rate": 0.46875,
+      "curve": [15],
+      "discovery_auc": 15.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 15,
+          "selected": [10892, 12658, 8229, 12669, 11730, 3568, 11748, 14282, 4127, 13945, 16001, 10818, 12621, 12915, 16298, 1467, 11280, 2957, 12724, 14193, 7475, 12685, 4486, 12633, 13849, 12710, 11276, 16391, 14292, 12691, 9836, 12638],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07411853825252611
+          }
+        }
+      ],
+      "runtime_seconds": 1.7887207500025397
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7101,
+      "method": "full:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 8,
+      "tests": 32,
+      "hit_rate": 0.25,
+      "curve": [8],
+      "discovery_auc": 8.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [10892, 6519, 9868, 4359, 13961, 8547, 8108, 1204, 17370, 13225, 9074, 4199, 12707, 11742, 6067, 6567, 16300, 3350, 11737, 2562, 11468, 15964, 2235, 6877, 6876, 14193, 11754, 16298, 11289, 1216, 2959, 12638],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09237219923387266
+          }
+        }
+      ],
+      "runtime_seconds": 0.6774819579986797
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "prior",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 6,
+      "tests": 32,
+      "hit_rate": 0.1875,
+      "curve": [6],
+      "discovery_auc": 6.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [4437, 10892, 10752, 12691, 11730, 16108, 12017, 4204, 11747, 11721, 11748, 3231, 13961, 1258, 7475, 12229, 8229, 624, 1623, 6087, 11738, 16545, 4037, 6868, 12018, 3700, 11751, 8084, 11272, 3979, 11280, 3301],
+          "diagnostics": {
+            "rank_effect_spearman": 0.10143233476008866
+          }
+        }
+      ],
+      "runtime_seconds": 0.06976587499957532
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 8,
+      "tests": 32,
+      "hit_rate": 0.25,
+      "curve": [8],
+      "discovery_auc": 8.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [12638, 11748, 7475, 12694, 14287, 4204, 12931, 16685, 1204, 11738, 14282, 16391, 1218, 4486, 3527, 13945, 10752, 3828, 16545, 1340, 5521, 13224, 4127, 12915, 2249, 2512, 2222, 12201, 11280, 9869, 3231, 2957],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07356825873382451,
+            "brier": 0.03318379648709953,
+            "log_loss": 0.1521180135765641
+          }
+        }
+      ],
+      "runtime_seconds": 0.22065595900130575
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "pca:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 7,
+      "tests": 32,
+      "hit_rate": 0.21875,
+      "curve": [7],
+      "discovery_auc": 7.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 7,
+          "selected": [3568, 16526, 16223, 2222, 7475, 16268, 12663, 3545, 16391, 12670, 8108, 12694, 11748, 4204, 1834, 2293, 1204, 2513, 9282, 7303, 16525, 3979, 9286, 14842, 14661, 16482, 10786, 12638, 9572, 11050, 8427, 16108],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06326347118994814,
+            "brier": 0.03261417809219457,
+            "log_loss": 0.13956920628532665
+          }
+        }
+      ],
+      "runtime_seconds": 0.15103629200166324
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "pca:hit_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 8,
+      "tests": 32,
+      "hit_rate": 0.25,
+      "curve": [8],
+      "discovery_auc": 8.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [12694, 1834, 16482, 16391, 12663, 16223, 3568, 2222, 12915, 16268, 3979, 11278, 3545, 16526, 11748, 8429, 3705, 6360, 2621, 12670, 2249, 4127, 2562, 8427, 14842, 12638, 12724, 13224, 14282, 2293, 12906, 16502],
+          "diagnostics": {
+            "rank_effect_spearman": 0.05176743978081858,
+            "brier": 0.03679890348116465,
+            "log_loss": 0.2202029687322465
+          }
+        }
+      ],
+      "runtime_seconds": 0.12931204199776403
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "pca:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 7,
+      "tests": 32,
+      "hit_rate": 0.21875,
+      "curve": [7],
+      "discovery_auc": 7.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 7,
+          "selected": [2222, 12691, 12694, 16391, 16268, 8108, 2249, 13945, 15548, 16223, 16108, 11278, 16545, 16502, 8427, 16482, 16525, 11281, 3545, 10786, 7475, 16526, 3979, 4486, 12707, 3568, 5522, 12638, 15758, 3527, 8471, 9572],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0746844986393112
+          }
+        }
+      ],
+      "runtime_seconds": 0.16486333300053957
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "pca:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 10,
+      "tests": 32,
+      "hit_rate": 0.3125,
+      "curve": [10],
+      "discovery_auc": 10.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 10,
+          "selected": [16545, 7475, 13945, 4204, 11280, 4486, 14282, 16223, 2249, 5522, 11748, 11721, 2293, 12706, 14756, 12633, 11729, 12707, 2222, 12569, 14527, 12638, 12694, 11754, 9836, 10892, 3231, 3705, 12667, 12666, 16643, 8983],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06951799725777152
+          }
+        }
+      ],
+      "runtime_seconds": 0.1303880420018686
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "pca:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 8,
+      "tests": 32,
+      "hit_rate": 0.25,
+      "curve": [8],
+      "discovery_auc": 8.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [3545, 12694, 16268, 16482, 12638, 16502, 16525, 16223, 4127, 6519, 11748, 12308, 12915, 1625, 2226, 2317, 4840, 6087, 11272, 11719, 12633, 12658, 12666, 12667, 12906, 13230, 13231, 14282, 14527, 1204, 2956, 3231],
+          "diagnostics": {
+            "rank_effect_spearman": 0.1078487174705789
+          }
+        }
+      ],
+      "runtime_seconds": 0.10141708300216123
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "full:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 9,
+      "tests": 32,
+      "hit_rate": 0.28125,
+      "curve": [9],
+      "discovery_auc": 9.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [3464, 11748, 1212, 12673, 13954, 13225, 14495, 14842, 12743, 11741, 12764, 12638, 4923, 8229, 15548, 16485, 12642, 12694, 220, 1187, 9391, 9836, 7981, 5363, 6807, 12827, 5113, 11893, 12633, 12691, 7487, 16063],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07116612838089148,
+            "brier": 0.03270777744054268,
+            "log_loss": 0.13920886730287405
+          }
+        }
+      ],
+      "runtime_seconds": 1.0394611670017184
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "full:hit_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 2,
+      "tests": 32,
+      "hit_rate": 0.0625,
+      "curve": [2],
+      "discovery_auc": 2.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 2,
+          "selected": [1212, 13851, 15548, 4284, 3464, 11202, 8229, 4543, 9836, 8084, 11998, 3910, 14012, 14260, 16108, 12673, 6807, 16063, 16485, 13225, 9391, 10752, 11038, 4285, 1218, 2959, 12764, 12707, 4044, 220, 11729, 12743],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07193245316042787,
+            "brier": 0.038911588389838284,
+            "log_loss": 0.2044121550706428
+          }
+        }
+      ],
+      "runtime_seconds": 1.6854712499989546
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "full:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 10,
+      "tests": 32,
+      "hit_rate": 0.3125,
+      "curve": [10],
+      "discovery_auc": 10.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 10,
+          "selected": [12569, 16298, 1205, 11280, 12743, 11748, 13225, 2964, 2512, 10752, 11729, 11519, 12638, 12707, 13088, 13956, 13954, 2249, 11746, 1555, 12744, 11741, 3464, 1623, 17415, 11755, 9820, 10892, 9676, 8423, 12931, 12307],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07975003229551096
+          }
+        }
+      ],
+      "runtime_seconds": 1.7795219170002383
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 15,
+      "tests": 32,
+      "hit_rate": 0.46875,
+      "curve": [15],
+      "discovery_auc": 15.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 15,
+          "selected": [11748, 13911, 12624, 12662, 2957, 13961, 12633, 10892, 13945, 11719, 13851, 14569, 1205, 13954, 12626, 12694, 12827, 12569, 12666, 4486, 2821, 6360, 13036, 12635, 13224, 12691, 11751, 11609, 12744, 9876, 10656, 11742],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0790397050378168
+          }
+        }
+      ],
+      "runtime_seconds": 1.7394717909992323
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7102,
+      "method": "full:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 6,
+      "tests": 32,
+      "hit_rate": 0.1875,
+      "curve": [6],
+      "discovery_auc": 6.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [8753, 12673, 12876, 12190, 3464, 13954, 1187, 10452, 11729, 14495, 4284, 11757, 12569, 14012, 11755, 13225, 10892, 6807, 7689, 9246, 3231, 11038, 11289, 4923, 1212, 9836, 4828, 1218, 3280, 13911, 12638, 3173],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08832160136429457
+          }
+        }
+      ],
+      "runtime_seconds": 0.6824419580007088
+    }
+  ],
+  "r1_objective_features/summary.json": {
+    "prior/updated": {
+      "hits": 22,
+      "tests": 128,
+      "cases": [5, 5, 6, 6],
+      "by_dataset": {
+        "IFNG": 10,
+        "IL2": 12
+      }
+    },
+    "gp_iso/updated": {
+      "hits": 28,
+      "tests": 128,
+      "cases": [10, 5, 5, 8],
+      "by_dataset": {
+        "IFNG": 15,
+        "IL2": 13
+      }
+    },
+    "pca:hit_logistic/updated": {
+      "hits": 23,
+      "tests": 128,
+      "cases": [4, 8, 4, 7],
+      "by_dataset": {
+        "IFNG": 12,
+        "IL2": 11
+      }
+    },
+    "pca:hit_squared/updated": {
+      "hits": 24,
+      "tests": 128,
+      "cases": [2, 4, 10, 8],
+      "by_dataset": {
+        "IFNG": 6,
+        "IL2": 18
+      }
+    },
+    "pca:effect_squared/updated": {
+      "hits": 29,
+      "tests": 128,
+      "cases": [6, 4, 12, 7],
+      "by_dataset": {
+        "IFNG": 10,
+        "IL2": 19
+      }
+    },
+    "pca:effect_median/updated": {
+      "hits": 22,
+      "tests": 128,
+      "cases": [2, 0, 10, 10],
+      "by_dataset": {
+        "IFNG": 2,
+        "IL2": 20
+      }
+    },
+    "pca:hit_rank/updated": {
+      "hits": 24,
+      "tests": 128,
+      "cases": [5, 6, 5, 8],
+      "by_dataset": {
+        "IFNG": 11,
+        "IL2": 13
+      }
+    },
+    "full:hit_logistic/updated": {
+      "hits": 27,
+      "tests": 128,
+      "cases": [5, 6, 7, 9],
+      "by_dataset": {
+        "IFNG": 11,
+        "IL2": 16
+      }
+    },
+    "full:hit_squared/updated": {
+      "hits": 17,
+      "tests": 128,
+      "cases": [1, 4, 10, 2],
+      "by_dataset": {
+        "IFNG": 5,
+        "IL2": 12
+      }
+    },
+    "full:effect_squared/updated": {
+      "hits": 21,
+      "tests": 128,
+      "cases": [3, 2, 6, 10],
+      "by_dataset": {
+        "IFNG": 5,
+        "IL2": 16
+      }
+    },
+    "full:effect_median/updated": {
+      "hits": 40,
+      "tests": 128,
+      "cases": [3, 7, 15, 15],
+      "by_dataset": {
+        "IFNG": 10,
+        "IL2": 30
+      }
+    },
+    "full:hit_rank/updated": {
+      "hits": 29,
+      "tests": 128,
+      "cases": [7, 8, 8, 6],
+      "by_dataset": {
+        "IFNG": 15,
+        "IL2": 14
+      }
+    }
+  },
+  "r2_campaign_confirmation/protocol.json": {
+    "name": "r2_campaign_confirmation",
+    "datasets": ["IFNG", "IL2"],
+    "seeds": [7201, 7202],
+    "methods": ["prior", "gp_iso", "pca:effect_median", "full:effect_median", "full:hit_rank", "full:hit_logistic", "pca:effect_squared"],
+    "steps": 3,
+    "modes": ["updated"],
+    "initial_mode": "mixed",
+    "initial": 256,
+    "batch": 32,
+    "pool": "all feature-covered untested; unselected retained",
+    "time": "2026-09-29T22:24:47.433712+00:00",
+    "code_sha256": "e9c4ac2e4977fa8fd8b3498e457cda60a8d06b13e29f2cc39b2d9ec39530c6d5"
+  },
+  "r2_campaign_confirmation/results.json": [
+    {
+      "dataset": "IFNG",
+      "seed": 7201,
+      "method": "prior",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 22,
+      "tests": 96,
+      "hit_rate": 0.22916666666666666,
+      "curve": [5, 13, 22],
+      "discovery_auc": 13.333333333333334,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [11246, 11219, 3158, 13379, 7857, 610, 7134, 1244, 11707, 6551, 1593, 3935, 11509, 5858, 7718, 11249, 11236, 15893, 3619, 10791, 604, 3883, 3225, 10799, 2595, 2234, 10800, 8563, 5461, 2899, 15987, 11226],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07230638117261823
+          }
+        },
+        {
+          "step": 1,
+          "hits": 8,
+          "selected": [10804, 12660, 11516, 10771, 13364, 949, 12166, 16029, 9420, 2989, 10348, 2892, 2341, 12286, 9067, 426, 12145, 10775, 4377, 13969, 2260, 12206, 6061, 9422, 15390, 11372, 11081, 13605, 10792, 3463, 9427, 2894],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0706984067606828
+          }
+        },
+        {
+          "step": 2,
+          "hits": 9,
+          "selected": [13329, 8958, 6309, 12086, 13370, 12655, 11227, 12125, 5327, 4100, 10785, 13375, 11112, 9404, 9189, 15656, 8076, 11000, 12099, 8098, 13378, 10793, 2193, 3481, 3624, 7714, 3494, 14894, 6564, 7717, 2456, 9388],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06874280259508801
+          }
+        }
+      ],
+      "runtime_seconds": 0.2517239160006284
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7201,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 25,
+      "tests": 96,
+      "hit_rate": 0.2604166666666667,
+      "curve": [10, 20, 25],
+      "discovery_auc": 18.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 10,
+          "selected": [5327, 15893, 2027, 12103, 11236, 11239, 11248, 14924, 6559, 12525, 12166, 2070, 13718, 9040, 10796, 6551, 4100, 2595, 10775, 3056, 15021, 14160, 12081, 12108, 13378, 15747, 13690, 11226, 9404, 8168, 610, 218],
+          "diagnostics": {
+            "rank_effect_spearman": -0.004933237539224262,
+            "brier": 0.048069187769032,
+            "log_loss": 0.20005265120142335
+          }
+        },
+        {
+          "step": 1,
+          "hits": 10,
+          "selected": [13682, 12163, 3485, 8076, 426, 15825, 8991, 14894, 15390, 12095, 13359, 12145, 12658, 13605, 6560, 2169, 12113, 12122, 8853, 13927, 13372, 12128, 15236, 12168, 15423, 4377, 12165, 6562, 12126, 8084, 8099, 3624],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0026576047022929894,
+            "brier": 0.05074073102031051,
+            "log_loss": 0.21885161412684412
+          }
+        },
+        {
+          "step": 2,
+          "hits": 5,
+          "selected": [12147, 14454, 13346, 10808, 12084, 11227, 15027, 8777, 12125, 4102, 1197, 1242, 12221, 7717, 2892, 2204, 14159, 3019, 15235, 8772, 12100, 200, 9875, 10770, 4431, 15658, 11509, 13967, 15877, 13314, 12578, 2893],
+          "diagnostics": {
+            "rank_effect_spearman": -0.009263509527070009,
+            "brier": 0.05600248264640538,
+            "log_loss": 0.24357495452972677
+          }
+        }
+      ],
+      "runtime_seconds": 0.956640124997648
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7201,
+      "method": "pca:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 2,
+      "tests": 96,
+      "hit_rate": 0.020833333333333332,
+      "curve": [0, 0, 2],
+      "discovery_auc": 0.6666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 0,
+          "selected": [1912, 11033, 3072, 3945, 6982, 12274, 8184, 2636, 10873, 11304, 3032, 9761, 7704, 12832, 11757, 8201, 13344, 7101, 10983, 10030, 7276, 11995, 7161, 8044, 11292, 7712, 1611, 9990, 15793, 16193, 6370, 8159],
+          "diagnostics": {
+            "rank_effect_spearman": 0.022920998636613288
+          }
+        },
+        {
+          "step": 1,
+          "hits": 0,
+          "selected": [14352, 1076, 5775, 36, 5073, 11993, 10143, 4524, 2284, 9776, 7188, 587, 11513, 13319, 4925, 2585, 5468, 5255, 1998, 13404, 13277, 228, 9796, 2155, 16538, 4119, 13301, 5140, 12324, 9598, 1239, 9100],
+          "diagnostics": {
+            "rank_effect_spearman": 0.02572976630249929
+          }
+        },
+        {
+          "step": 2,
+          "hits": 2,
+          "selected": [11227, 3494, 2070, 12166, 14306, 14553, 96, 12099, 7134, 5473, 9073, 3120, 11983, 15386, 7743, 3974, 13320, 4694, 13079, 9171, 2334, 13027, 11898, 2867, 12663, 11697, 15663, 5798, 11856, 14150, 16211, 16546],
+          "diagnostics": {
+            "rank_effect_spearman": 0.031524300018907846
+          }
+        }
+      ],
+      "runtime_seconds": 0.47322320800230955
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7201,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 9,
+      "tests": 96,
+      "hit_rate": 0.09375,
+      "curve": [1, 4, 9],
+      "discovery_auc": 4.666666666666667,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 1,
+          "selected": [4173, 660, 11238, 1078, 682, 11409, 743, 4403, 3541, 11861, 11420, 3205, 15629, 3113, 14907, 13552, 1052, 15322, 14773, 9019, 9904, 11591, 1121, 55, 13055, 5827, 5560, 14572, 7968, 14490, 8136, 971],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04621219988123983
+          }
+        },
+        {
+          "step": 1,
+          "hits": 3,
+          "selected": [1436, 15590, 4177, 1351, 868, 9496, 8767, 4174, 3923, 12160, 3056, 11670, 14543, 69, 4176, 9271, 2245, 2394, 15455, 8008, 9467, 14937, 12581, 12104, 15242, 12254, 11905, 14461, 6100, 8071, 12126, 8788],
+          "diagnostics": {
+            "rank_effect_spearman": 0.05218892896729137
+          }
+        },
+        {
+          "step": 2,
+          "hits": 5,
+          "selected": [13652, 3818, 2981, 4859, 15411, 3229, 2204, 9046, 12238, 10538, 7644, 8825, 15883, 8337, 7493, 4667, 6824, 3055, 7264, 10499, 366, 8820, 15134, 9707, 8168, 4172, 2898, 8062, 15027, 2438, 2503, 12949],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04723618148672138
+          }
+        }
+      ],
+      "runtime_seconds": 5.6755967079989205
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7201,
+      "method": "full:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 13,
+      "tests": 96,
+      "hit_rate": 0.13541666666666666,
+      "curve": [4, 7, 13],
+      "discovery_auc": 8.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 4,
+          "selected": [12335, 6005, 15826, 10055, 15124, 2907, 1008, 14925, 8094, 3479, 3728, 12212, 11322, 3076, 2318, 9060, 15263, 2307, 7715, 11496, 12708, 13375, 8128, 10038, 4131, 16372, 14738, 1462, 2460, 4188, 4433, 3481],
+          "diagnostics": {
+            "rank_effect_spearman": 0.050678100573829696
+          }
+        },
+        {
+          "step": 1,
+          "hits": 3,
+          "selected": [12312, 13348, 8158, 8054, 10271, 638, 10176, 2934, 2175, 15326, 6966, 13346, 8769, 6239, 4550, 2932, 13933, 1523, 16536, 7729, 11945, 3774, 10945, 7743, 11773, 14141, 2564, 3402, 2465, 14725, 8031, 2913],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04430718369658184
+          }
+        },
+        {
+          "step": 2,
+          "hits": 6,
+          "selected": [8696, 15627, 12659, 5501, 3624, 4056, 9697, 15825, 16105, 2698, 8851, 6523, 3493, 12673, 14009, 142, 6097, 1169, 13921, 11931, 1242, 752, 10399, 3111, 2068, 6762, 9942, 14586, 2989, 4128, 15593, 14162],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06659951326286502
+          }
+        }
+      ],
+      "runtime_seconds": 2.4425001249983325
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7201,
+      "method": "full:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 14,
+      "tests": 96,
+      "hit_rate": 0.14583333333333334,
+      "curve": [5, 9, 14],
+      "discovery_auc": 9.333333333333334,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [15562, 1171, 9180, 15422, 4085, 8095, 7117, 12105, 15866, 15999, 15217, 5835, 5238, 5758, 9171, 6112, 1791, 14313, 2900, 7338, 11735, 4031, 14738, 835, 10781, 494, 14888, 10572, 9420, 6101, 6496, 14564],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04757640670475543,
+            "brier": 0.0489526382459258,
+            "log_loss": 0.21316248397510112
+          }
+        },
+        {
+          "step": 1,
+          "hits": 4,
+          "selected": [15370, 3192, 7433, 6062, 8648, 3774, 16446, 11139, 12084, 15429, 2426, 14386, 12335, 2179, 8184, 15767, 11678, 12656, 3206, 14282, 8693, 12193, 14950, 6239, 10787, 11488, 11425, 4931, 11006, 15868, 9137, 14284],
+          "diagnostics": {
+            "rank_effect_spearman": 0.046690845962206726,
+            "brier": 0.048569814168147395,
+            "log_loss": 0.21308389319344817
+          }
+        },
+        {
+          "step": 2,
+          "hits": 5,
+          "selected": [15879, 529, 8824, 3111, 3818, 4672, 3242, 12241, 8007, 4129, 6777, 682, 16012, 15610, 14159, 8319, 7591, 8556, 3797, 13926, 4262, 3204, 10820, 10800, 8098, 9190, 10471, 16160, 14992, 3243, 8358, 4457],
+          "diagnostics": {
+            "rank_effect_spearman": 0.05108160216112372,
+            "brier": 0.04821763668834003,
+            "log_loss": 0.21183825589814123
+          }
+        }
+      ],
+      "runtime_seconds": 3.658376457999111
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7201,
+      "method": "pca:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 10,
+      "tests": 96,
+      "hit_rate": 0.10416666666666667,
+      "curve": [1, 4, 10],
+      "discovery_auc": 5.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 1,
+          "selected": [12216, 13188, 290, 11161, 13462, 551, 5637, 1359, 9076, 7151, 9568, 315, 3256, 15633, 6103, 14116, 2118, 7940, 10707, 250, 7632, 8296, 4717, 12630, 15952, 9964, 11725, 13987, 15348, 8159, 9065, 11375],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04203684113704066
+          }
+        },
+        {
+          "step": 1,
+          "hits": 3,
+          "selected": [7759, 11085, 12205, 5702, 10911, 2618, 9978, 1488, 12452, 8168, 2456, 5979, 9421, 3092, 12558, 108, 3572, 3464, 16676, 16158, 8316, 15630, 12351, 14162, 11239, 2068, 10515, 7225, 15113, 14050, 5747, 1193],
+          "diagnostics": {
+            "rank_effect_spearman": 0.046337422165194764
+          }
+        },
+        {
+          "step": 2,
+          "hits": 6,
+          "selected": [3977, 6996, 2027, 13967, 3525, 724, 9769, 13718, 354, 14323, 6082, 13271, 4814, 6128, 9297, 12402, 16517, 532, 16499, 12169, 4128, 8826, 765, 3942, 12817, 11002, 12510, 2341, 6716, 15263, 13425, 11025],
+          "diagnostics": {
+            "rank_effect_spearman": 0.023131073249651562
+          }
+        }
+      ],
+      "runtime_seconds": 0.40292862500064075
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7202,
+      "method": "prior",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 22,
+      "tests": 96,
+      "hit_rate": 0.22916666666666666,
+      "curve": [5, 14, 22],
+      "discovery_auc": 13.666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [11246, 11219, 3158, 13379, 7857, 610, 7134, 1244, 11707, 6551, 1593, 3935, 11509, 5858, 7718, 11249, 11236, 15893, 10791, 604, 3883, 3225, 10799, 2595, 2234, 10800, 8563, 5461, 2899, 15987, 11226, 10804],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07408706734219492
+          }
+        },
+        {
+          "step": 1,
+          "hits": 9,
+          "selected": [12660, 11516, 10771, 13364, 949, 12166, 16029, 9420, 2989, 10348, 2892, 2341, 12286, 9067, 426, 12145, 10775, 4377, 13969, 2260, 12206, 6061, 9422, 15390, 11372, 11081, 13605, 3463, 9427, 2894, 13329, 8958],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07246001679723058
+          }
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [6309, 12086, 13370, 12655, 11227, 12125, 5327, 4100, 10785, 13375, 11112, 9404, 9189, 15656, 8076, 11000, 12099, 8098, 13378, 10793, 2193, 3481, 3624, 7714, 3494, 14894, 6564, 7717, 11217, 2456, 9388, 14150],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07060206719257539
+          }
+        }
+      ],
+      "runtime_seconds": 0.2540893750010582
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7202,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 29,
+      "tests": 96,
+      "hit_rate": 0.3020833333333333,
+      "curve": [9, 19, 29],
+      "discovery_auc": 19.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [12108, 12166, 15893, 12103, 12125, 13686, 11226, 11248, 11239, 2497, 6559, 10775, 13690, 13605, 1242, 11236, 14924, 4128, 2893, 15987, 14160, 13285, 5327, 12099, 12661, 12110, 12095, 1191, 12113, 4100, 2027, 848],
+          "diagnostics": {
+            "rank_effect_spearman": 0.061224867629479825,
+            "brier": 0.04970852176320559,
+            "log_loss": 0.21192664166306457
+          }
+        },
+        {
+          "step": 1,
+          "hits": 10,
+          "selected": [12182, 15027, 12158, 6551, 10796, 12147, 12145, 13682, 15021, 13366, 8777, 2070, 15877, 12114, 13718, 12126, 9291, 12374, 13922, 12081, 12221, 12168, 5838, 15825, 8168, 13927, 5501, 3463, 218, 11227, 3494, 10801],
+          "diagnostics": {
+            "rank_effect_spearman": 0.05270294380734454,
+            "brier": 0.0536924756387387,
+            "log_loss": 0.23305480623412403
+          }
+        },
+        {
+          "step": 2,
+          "hits": 10,
+          "selected": [15835, 13996, 2047, 10218, 604, 12415, 865, 2564, 3977, 12097, 2201, 3429, 5837, 12163, 12528, 15188, 2075, 1199, 14925, 14159, 7254, 12149, 9234, 15648, 7739, 4162, 4015, 8084, 12159, 2072, 10349, 6058],
+          "diagnostics": {
+            "rank_effect_spearman": 0.046479533451072044,
+            "brier": 0.059664096990607006,
+            "log_loss": 0.25767414287143153
+          }
+        }
+      ],
+      "runtime_seconds": 0.7930027500005963
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7202,
+      "method": "pca:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 20,
+      "tests": 96,
+      "hit_rate": 0.20833333333333334,
+      "curve": [5, 13, 20],
+      "discovery_auc": 12.666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [10909, 10684, 1731, 8084, 476, 10280, 13718, 15873, 9229, 8315, 14416, 11669, 11240, 6333, 6296, 14160, 12667, 12126, 4356, 7212, 3624, 15455, 9291, 16707, 3361, 3179, 15031, 8753, 4949, 2195, 11243, 15794],
+          "diagnostics": {
+            "rank_effect_spearman": 0.022305484497762002
+          }
+        },
+        {
+          "step": 1,
+          "hits": 8,
+          "selected": [5501, 848, 13549, 11651, 7162, 10803, 6793, 12659, 4112, 8089, 7124, 12108, 4844, 11320, 5271, 13766, 15325, 10767, 3555, 9173, 15323, 9854, 8012, 4967, 15027, 5840, 5925, 4162, 7165, 12113, 11795, 8067],
+          "diagnostics": {
+            "rank_effect_spearman": 0.020203119217216868
+          }
+        },
+        {
+          "step": 2,
+          "hits": 7,
+          "selected": [3143, 761, 11506, 16750, 5939, 4274, 16333, 9685, 9055, 14565, 12110, 9784, 15343, 2620, 1958, 12114, 14521, 14924, 6763, 15007, 6407, 5972, 7332, 382, 16406, 870, 7947, 10570, 5747, 3977, 3128, 12798],
+          "diagnostics": {
+            "rank_effect_spearman": 0.01673747924547178
+          }
+        }
+      ],
+      "runtime_seconds": 0.40393337500063353
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7202,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 16,
+      "tests": 96,
+      "hit_rate": 0.16666666666666666,
+      "curve": [5, 9, 16],
+      "discovery_auc": 10.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [11355, 2204, 2382, 8086, 11494, 1799, 14131, 4667, 12624, 3111, 4047, 10670, 4888, 11610, 10163, 13318, 4656, 4086, 15772, 12373, 7264, 3116, 12127, 7234, 535, 10790, 13682, 781, 8082, 2028, 11706, 1824],
+          "diagnostics": {
+            "rank_effect_spearman": 0.03422406216148152
+          }
+        },
+        {
+          "step": 1,
+          "hits": 4,
+          "selected": [9427, 12088, 2510, 1635, 12125, 16542, 16241, 2194, 2413, 4739, 12113, 12081, 4672, 4377, 16030, 14447, 10051, 10409, 9258, 14786, 11863, 2899, 1048, 7855, 11093, 12163, 12347, 625, 6535, 8682, 4101, 5858],
+          "diagnostics": {
+            "rank_effect_spearman": 0.023072997786798884
+          }
+        },
+        {
+          "step": 2,
+          "hits": 7,
+          "selected": [13340, 12153, 4093, 2047, 9495, 12118, 7743, 4624, 6032, 2595, 4103, 12158, 15868, 2257, 697, 12815, 14672, 5970, 12162, 13377, 949, 9192, 16751, 1484, 6985, 15134, 9762, 1999, 6172, 8604, 14152, 3679],
+          "diagnostics": {
+            "rank_effect_spearman": 0.02990031521899005
+          }
+        }
+      ],
+      "runtime_seconds": 5.816976499998418
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7202,
+      "method": "full:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 22,
+      "tests": 96,
+      "hit_rate": 0.22916666666666666,
+      "curve": [4, 15, 22],
+      "discovery_auc": 13.666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 4,
+          "selected": [9415, 2900, 2901, 11687, 2744, 3496, 16071, 1117, 10409, 6734, 13483, 12844, 4114, 1121, 7717, 460, 11610, 14929, 15323, 3482, 3111, 4915, 530, 3758, 2587, 11637, 3229, 904, 3993, 4102, 11980, 14264],
+          "diagnostics": {
+            "rank_effect_spearman": 0.05211634791553994
+          }
+        },
+        {
+          "step": 1,
+          "hits": 11,
+          "selected": [12103, 11252, 4105, 12086, 14356, 11964, 12099, 2472, 13346, 11226, 11223, 15857, 16676, 15369, 3254, 5702, 12145, 9236, 3116, 15031, 3212, 15876, 12100, 13690, 12112, 12121, 12171, 12286, 12127, 12153, 12108, 16309],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06841526421309556
+          }
+        },
+        {
+          "step": 2,
+          "hits": 7,
+          "selected": [12088, 12115, 12084, 5264, 4377, 12118, 6061, 12090, 13725, 15626, 13691, 5674, 12096, 12123, 11235, 13685, 11908, 9178, 12662, 11337, 15249, 8853, 2763, 14160, 12114, 3615, 2504, 9113, 69, 8338, 9994, 15589],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06193921153071225
+          }
+        }
+      ],
+      "runtime_seconds": 2.503579207997973
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7202,
+      "method": "full:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 18,
+      "tests": 96,
+      "hit_rate": 0.1875,
+      "curve": [6, 13, 18],
+      "discovery_auc": 12.333333333333334,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [15180, 9658, 8782, 11688, 7450, 11223, 1682, 8306, 13725, 15688, 10766, 8538, 2480, 15844, 7718, 12656, 9113, 2900, 2478, 3477, 3466, 11711, 13349, 311, 16614, 12095, 12335, 1593, 14051, 3298, 5253, 2179],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06688858348854217,
+            "brier": 0.04835268369521962,
+            "log_loss": 0.2132089626835417
+          }
+        },
+        {
+          "step": 1,
+          "hits": 7,
+          "selected": [3486, 3874, 8092, 4129, 2899, 5540, 4680, 7144, 8243, 12153, 16577, 6183, 8618, 7369, 15858, 8085, 2595, 1697, 15455, 6489, 8090, 9839, 11081, 11669, 4042, 12145, 2901, 8077, 15868, 3158, 12012, 9835],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06494680927235852,
+            "brier": 0.0481188554181119,
+            "log_loss": 0.21302226543615305
+          }
+        },
+        {
+          "step": 2,
+          "hits": 5,
+          "selected": [11785, 12286, 10949, 10090, 11387, 12149, 3935, 15873, 12125, 16124, 7, 4430, 2910, 10911, 10771, 7719, 1703, 12203, 3679, 12110, 5945, 12163, 14463, 15656, 2700, 2499, 15825, 5702, 15857, 13525, 9677, 16029],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06886718286422917,
+            "brier": 0.04770238595566264,
+            "log_loss": 0.20997102827997624
+          }
+        }
+      ],
+      "runtime_seconds": 3.6116061249995255
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7202,
+      "method": "pca:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 7,
+      "tests": 96,
+      "hit_rate": 0.07291666666666667,
+      "curve": [1, 6, 7],
+      "discovery_auc": 4.666666666666667,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 1,
+          "selected": [269, 4548, 8628, 11424, 4791, 10187, 12007, 3939, 7088, 10694, 3025, 15318, 16649, 9357, 16425, 7223, 4204, 7784, 2243, 14883, 7921, 7505, 1871, 8858, 8149, 1422, 236, 11925, 6900, 14080, 5446, 4909],
+          "diagnostics": {
+            "rank_effect_spearman": 0.036247036369107394
+          }
+        },
+        {
+          "step": 1,
+          "hits": 5,
+          "selected": [4101, 11132, 9421, 5328, 10684, 11025, 15873, 16309, 15180, 4112, 13173, 2456, 11240, 15027, 12147, 12667, 16707, 3624, 6206, 1309, 13346, 6541, 5501, 5714, 4359, 5546, 2131, 11940, 10505, 4435, 13682, 8604],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0275595550696867
+          }
+        },
+        {
+          "step": 2,
+          "hits": 1,
+          "selected": [532, 3808, 13691, 10796, 16059, 1319, 4949, 10576, 2497, 10909, 200, 8749, 16504, 13650, 9928, 209, 1244, 865, 11117, 4388, 5008, 12669, 1851, 15635, 12658, 531, 8625, 7499, 6922, 7076, 6532, 3352],
+          "diagnostics": {
+            "rank_effect_spearman": 0.027617054836393762
+          }
+        }
+      ],
+      "runtime_seconds": 0.40923145900160307
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7201,
+      "method": "prior",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 37,
+      "tests": 96,
+      "hit_rate": 0.3854166666666667,
+      "curve": [6, 21, 37],
+      "discovery_auc": 21.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [4437, 10892, 10752, 12691, 11730, 16108, 12017, 4204, 11747, 11721, 11748, 3231, 13961, 1258, 7475, 12229, 8229, 624, 1623, 6087, 11738, 16545, 4037, 6868, 12018, 3700, 11751, 8084, 11272, 3979, 11280, 3301],
+          "diagnostics": {
+            "rank_effect_spearman": 0.10087391431888944
+          }
+        },
+        {
+          "step": 1,
+          "hits": 15,
+          "selected": [618, 2293, 8983, 11281, 2651, 5665, 11728, 2962, 16643, 7687, 11285, 13229, 12707, 11249, 973, 6965, 13945, 3057, 12027, 9868, 2401, 10818, 2955, 437, 12685, 12827, 12915, 9501, 11253, 4486, 12635, 14569],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09904802149975521
+          }
+        },
+        {
+          "step": 2,
+          "hits": 16,
+          "selected": [12749, 2319, 9870, 11877, 6360, 11577, 16023, 2957, 6624, 14193, 13911, 3545, 9876, 9391, 12624, 4206, 12665, 11729, 9852, 11273, 13224, 13951, 11266, 16298, 11609, 13956, 5524, 11493, 8471, 12638, 9625, 8350],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09588412039681607
+          }
+        }
+      ],
+      "runtime_seconds": 0.265172542000073
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7201,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 26,
+      "tests": 96,
+      "hit_rate": 0.2708333333333333,
+      "curve": [8, 15, 26],
+      "discovery_auc": 16.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [4204, 12638, 7475, 12931, 14282, 16685, 14287, 4486, 10752, 11738, 16391, 3527, 11748, 16545, 1218, 2319, 13945, 1204, 2222, 11280, 12694, 12642, 1258, 3056, 12691, 3828, 2249, 12201, 1340, 11617, 2398, 4840],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07898277250721483,
+            "brier": 0.033001097830410914,
+            "log_loss": 0.15021017589564803
+          }
+        },
+        {
+          "step": 1,
+          "hits": 7,
+          "selected": [12647, 2956, 12633, 11750, 11719, 6876, 2955, 12667, 2555, 1554, 3231, 5524, 4127, 9946, 2078, 13953, 12665, 3126, 11730, 13224, 12707, 16455, 2409, 12628, 12915, 12658, 16643, 16502, 11519, 12936, 12621, 2512],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07169869764259351,
+            "brier": 0.03575393335668247,
+            "log_loss": 0.17143199853157962
+          }
+        },
+        {
+          "step": 2,
+          "hits": 11,
+          "selected": [11729, 12618, 4083, 12666, 2125, 8983, 12685, 4828, 1256, 11253, 16468, 3301, 12644, 4208, 9836, 9205, 13230, 13864, 3545, 5521, 1187, 9857, 9852, 4235, 16108, 14842, 12712, 2957, 12918, 11249, 13079, 14319],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07122628173693643,
+            "brier": 0.03994888013359119,
+            "log_loss": 0.19425764628120548
+          }
+        }
+      ],
+      "runtime_seconds": 0.9415294999998878
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7201,
+      "method": "pca:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 30,
+      "tests": 96,
+      "hit_rate": 0.3125,
+      "curve": [12, 20, 30],
+      "discovery_auc": 20.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 12,
+          "selected": [12685, 16268, 12691, 4204, 11280, 12638, 2222, 3700, 16545, 16108, 3563, 13945, 2293, 12569, 16643, 11719, 15052, 1340, 16409, 8081, 15550, 15889, 11746, 14527, 8484, 13230, 4486, 14282, 3705, 9870, 14768, 11273],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08107886258588591
+          }
+        },
+        {
+          "step": 1,
+          "hits": 8,
+          "selected": [4840, 5522, 3231, 3568, 15860, 11278, 3059, 2513, 12308, 12621, 3527, 4471, 2249, 16001, 8471, 13960, 15758, 11343, 5957, 7475, 10656, 12725, 4201, 8229, 2226, 2319, 16685, 12915, 13231, 488, 4127, 8777],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07332009059604419
+          }
+        },
+        {
+          "step": 2,
+          "hits": 10,
+          "selected": [14756, 9507, 9946, 12073, 9607, 16223, 7303, 7090, 9546, 4828, 16657, 11266, 543, 4212, 8427, 2225, 12687, 1623, 3464, 12876, 16525, 13226, 12665, 2970, 14526, 13959, 5369, 11270, 3979, 9676, 6710, 16088],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06954891570134046
+          }
+        }
+      ],
+      "runtime_seconds": 0.6516945829971519
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7201,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 42,
+      "tests": 96,
+      "hit_rate": 0.4375,
+      "curve": [15, 26, 42],
+      "discovery_auc": 27.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 15,
+          "selected": [11272, 14283, 11280, 4204, 12017, 9836, 13036, 12704, 14193, 12707, 6242, 12666, 12665, 12691, 11253, 12652, 12645, 12644, 12710, 16899, 12639, 12694, 12624, 2222, 11748, 13953, 12712, 12634, 15889, 8427, 6814, 15758],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09828365913803336
+          }
+        },
+        {
+          "step": 1,
+          "hits": 11,
+          "selected": [12621, 12635, 12725, 16502, 3568, 16525, 12628, 4190, 2317, 12658, 12688, 12690, 4037, 8492, 1467, 12765, 9599, 9616, 10353, 12661, 12620, 12668, 3464, 12708, 12655, 4539, 11730, 12696, 12663, 12618, 9507, 3545],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08126714091473171
+          }
+        },
+        {
+          "step": 2,
+          "hits": 16,
+          "selected": [4840, 4828, 12633, 4844, 14260, 16512, 14692, 12709, 12646, 9628, 2252, 14526, 2249, 15548, 16798, 12625, 11754, 12724, 3214, 16298, 12685, 12723, 3563, 12827, 12689, 4471, 16108, 11150, 14661, 14292, 12693, 3554],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08227479396719335
+          }
+        }
+      ],
+      "runtime_seconds": 6.547302708000643
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7201,
+      "method": "full:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 20,
+      "tests": 96,
+      "hit_rate": 0.20833333333333334,
+      "curve": [9, 12, 20],
+      "discovery_auc": 13.666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [13961, 12620, 12691, 12187, 13231, 7303, 12569, 9765, 11519, 13954, 13822, 11749, 12915, 9876, 11609, 13088, 8689, 12624, 3350, 12696, 16088, 1928, 8148, 5965, 11729, 16216, 12694, 5982, 12626, 7566, 10752, 13152],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0785129081960906
+          }
+        },
+        {
+          "step": 1,
+          "hits": 3,
+          "selected": [11721, 11719, 11249, 12628, 945, 9946, 12876, 861, 11280, 3551, 3847, 9501, 6370, 15111, 10932, 1258, 535, 16668, 14274, 16389, 13851, 13396, 11243, 2651, 14660, 15797, 10683, 11444, 12669, 14447, 9075, 14523],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07612060203264928
+          }
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [15098, 5887, 16502, 11281, 9762, 12642, 16007, 9601, 8881, 16120, 1716, 13539, 4218, 14901, 8380, 203, 1126, 2252, 14252, 8647, 16298, 8085, 13224, 11877, 1233, 8459, 5912, 593, 16219, 8752, 3896, 2957],
+          "diagnostics": {
+            "rank_effect_spearman": 0.05544259155198833
+          }
+        }
+      ],
+      "runtime_seconds": 2.337809374999779
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7201,
+      "method": "full:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 35,
+      "tests": 96,
+      "hit_rate": 0.3645833333333333,
+      "curve": [8, 23, 35],
+      "discovery_auc": 22.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [11748, 11721, 12712, 9391, 12622, 3568, 12633, 9501, 12639, 9627, 8350, 4828, 12725, 14692, 7475, 12685, 11577, 14661, 9507, 16455, 4546, 9414, 12687, 9871, 14193, 16545, 4206, 11498, 16023, 12676, 9836, 11742],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08601789535696264,
+            "brier": 0.03258636087886171,
+            "log_loss": 0.13787523480413227
+          }
+        },
+        {
+          "step": 1,
+          "hits": 15,
+          "selected": [8084, 11343, 2512, 1623, 12017, 12628, 12689, 13954, 11276, 9883, 12638, 2427, 13225, 12743, 2235, 12704, 6827, 12635, 15974, 5747, 11740, 16298, 858, 12646, 11519, 11730, 16299, 11751, 13911, 3545, 9868, 12658],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08302344989080424,
+            "brier": 0.0321358055776131,
+            "log_loss": 0.13726997381048336
+          }
+        },
+        {
+          "step": 2,
+          "hits": 12,
+          "selected": [14526, 13041, 2956, 4486, 12724, 11278, 15067, 15539, 12626, 12654, 14842, 4202, 14319, 12569, 8072, 11306, 16108, 12629, 11754, 5462, 12667, 11150, 12229, 1620, 12755, 3732, 4024, 2535, 4218, 11270, 3512, 3231],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08537335205393001,
+            "brier": 0.03157509779311996,
+            "log_loss": 0.1355775513958729
+          }
+        }
+      ],
+      "runtime_seconds": 3.8911746250014403
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7201,
+      "method": "pca:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 27,
+      "tests": 96,
+      "hit_rate": 0.28125,
+      "curve": [9, 18, 27],
+      "discovery_auc": 18.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [2222, 16502, 3979, 2249, 8108, 4486, 16108, 13945, 2293, 11278, 16545, 12691, 4204, 5522, 12704, 3563, 3527, 8427, 11719, 16223, 4471, 7475, 3568, 12915, 14282, 15758, 3545, 12707, 12621, 12638, 8148, 16525],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06695528604536698
+          }
+        },
+        {
+          "step": 1,
+          "hits": 9,
+          "selected": [2955, 11748, 11276, 3705, 13230, 12633, 4201, 16468, 3896, 11280, 12665, 11730, 12931, 11729, 14527, 2406, 3231, 12685, 13224, 3234, 11721, 14130, 11281, 12667, 15548, 2225, 14842, 9836, 12569, 1204, 2512, 12658],
+          "diagnostics": {
+            "rank_effect_spearman": 0.05616409721120333
+          }
+        },
+        {
+          "step": 2,
+          "hits": 9,
+          "selected": [11723, 9473, 12169, 15860, 12187, 15537, 9507, 9946, 11271, 12668, 17415, 13036, 11738, 1731, 12709, 12876, 11272, 4206, 11248, 6623, 14569, 10656, 2317, 16685, 3576, 14765, 15861, 16482, 12017, 2970, 6815, 4840],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06026423380689537
+          }
+        }
+      ],
+      "runtime_seconds": 0.40916324999852804
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7202,
+      "method": "prior",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 36,
+      "tests": 96,
+      "hit_rate": 0.375,
+      "curve": [6, 20, 36],
+      "discovery_auc": 20.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [4437, 10892, 10752, 12691, 11730, 16108, 12017, 4204, 11747, 11721, 11748, 3231, 13961, 1258, 7475, 12229, 8229, 624, 1623, 11738, 16545, 4037, 6868, 12018, 3700, 11751, 8084, 11272, 3979, 11280, 3301, 618],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09884139720808592
+          }
+        },
+        {
+          "step": 1,
+          "hits": 14,
+          "selected": [2293, 8983, 11281, 2651, 5665, 11728, 2962, 16643, 7687, 11285, 13229, 12707, 11249, 973, 6965, 13945, 3057, 12027, 9868, 2401, 10818, 2955, 437, 12685, 12827, 12915, 9501, 11253, 4486, 12635, 12749, 2319],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0968089257723728
+          }
+        },
+        {
+          "step": 2,
+          "hits": 16,
+          "selected": [9870, 11877, 6360, 11577, 16023, 2957, 6624, 14193, 13911, 3545, 9876, 9391, 12624, 4206, 12665, 11729, 9852, 11273, 13224, 13951, 11266, 16298, 11609, 13956, 5524, 11493, 8471, 12638, 9625, 8350, 11920, 13960],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09389196525058763
+          }
+        }
+      ],
+      "runtime_seconds": 0.26334295899869176
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7202,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 25,
+      "tests": 96,
+      "hit_rate": 0.2604166666666667,
+      "curve": [6, 16, 25],
+      "discovery_auc": 15.666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [12638, 1340, 3527, 12931, 13951, 2955, 16396, 7475, 10752, 3568, 12694, 2512, 16391, 2319, 11738, 4127, 16685, 11748, 11280, 12201, 4204, 12915, 14287, 2774, 3828, 4486, 3700, 4212, 13224, 13954, 14282, 14661],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09555393350399385,
+            "brier": 0.03577896620030422,
+            "log_loss": 0.171946974775166
+          }
+        },
+        {
+          "step": 1,
+          "hits": 10,
+          "selected": [8753, 14643, 13253, 13383, 13931, 861, 3064, 16058, 9883, 4211, 7303, 4786, 14526, 12434, 5369, 1549, 2249, 13532, 16455, 4359, 13225, 4840, 16502, 12205, 11270, 3349, 15025, 4221, 1684, 2416, 5006, 6814],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09761521575643825,
+            "brier": 0.03712792068297121,
+            "log_loss": 0.17605915142888992
+          }
+        },
+        {
+          "step": 2,
+          "hits": 9,
+          "selected": [9514, 71, 16017, 11755, 16522, 9246, 14965, 12687, 12621, 16088, 6504, 12667, 14130, 13929, 9626, 11754, 4844, 2535, 10880, 6204, 12652, 10640, 8372, 9525, 11719, 13838, 7485, 4258, 16776, 12658, 12625, 6950],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09556784651771247,
+            "brier": 0.0409197484959163,
+            "log_loss": 0.19562504857923693
+          }
+        }
+      ],
+      "runtime_seconds": 0.7683949589991244
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7202,
+      "method": "pca:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 26,
+      "tests": 96,
+      "hit_rate": 0.2708333333333333,
+      "curve": [9, 18, 26],
+      "discovery_auc": 17.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [13945, 16108, 3231, 7475, 4486, 2293, 11519, 11280, 9607, 3979, 2513, 15537, 3568, 8108, 3527, 10328, 12915, 8536, 16268, 9195, 13224, 14756, 12691, 15860, 12665, 13540, 11039, 4471, 9814, 5522, 12638, 10786],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08496937097868348
+          }
+        },
+        {
+          "step": 1,
+          "hits": 9,
+          "selected": [2883, 4515, 3700, 3464, 12712, 2222, 11278, 1256, 4840, 11748, 11273, 2774, 2249, 13232, 13911, 14139, 16685, 3563, 17305, 12049, 5521, 3561, 10483, 16643, 10892, 11417, 13959, 6204, 12169, 7303, 11610, 16857],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08128043233482853
+          }
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [1204, 13229, 4204, 2562, 12201, 12931, 7596, 11841, 16545, 14450, 3900, 8983, 2126, 16512, 12649, 16708, 1219, 16282, 10929, 12694, 1212, 14768, 16468, 1206, 16017, 14283, 9870, 15535, 8484, 14019, 3546, 4199],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08409084415413905
+          }
+        }
+      ],
+      "runtime_seconds": 0.41616487500141375
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7202,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 36,
+      "tests": 96,
+      "hit_rate": 0.375,
+      "curve": [13, 24, 36],
+      "discovery_auc": 24.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 13,
+          "selected": [11266, 3056, 12691, 12308, 2955, 11609, 2956, 14283, 11729, 12179, 11614, 3979, 5521, 4471, 11723, 2957, 12669, 4844, 12017, 12666, 11751, 10892, 11877, 1623, 6204, 1523, 15814, 12639, 13945, 3700, 13961, 4437],
+          "diagnostics": {
+            "rank_effect_spearman": 0.10189852264384261
+          }
+        },
+        {
+          "step": 1,
+          "hits": 11,
+          "selected": [2249, 15091, 11519, 4486, 12663, 11280, 11748, 12625, 12652, 12915, 16643, 1686, 13851, 16502, 8274, 11754, 12620, 14130, 4127, 12645, 10353, 11257, 2865, 12743, 9415, 10786, 8992, 6518, 2512, 12633, 1997, 12687],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09135397350247117
+          }
+        },
+        {
+          "step": 2,
+          "hits": 12,
+          "selected": [13954, 12694, 6360, 15657, 9836, 12073, 1205, 7303, 11278, 16391, 12708, 12626, 15861, 11749, 12707, 12644, 15548, 3568, 12649, 9320, 16088, 2225, 16017, 7475, 12665, 12686, 12573, 4840, 13959, 9874, 12629, 6519],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09216265451186618
+          }
+        }
+      ],
+      "runtime_seconds": 5.546590500001912
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7202,
+      "method": "full:hit_rank",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 19,
+      "tests": 96,
+      "hit_rate": 0.19791666666666666,
+      "curve": [5, 11, 19],
+      "discovery_auc": 11.666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [4212, 2837, 6562, 16299, 11398, 10469, 14690, 17266, 6395, 9848, 16223, 10353, 9868, 13344, 3712, 5567, 12711, 4402, 12710, 3678, 10681, 11244, 2213, 12108, 16268, 15647, 12174, 4210, 9224, 12670, 14119, 17400],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07398419798666706
+          }
+        },
+        {
+          "step": 1,
+          "hits": 6,
+          "selected": [13961, 12626, 6806, 12915, 13911, 5625, 13954, 8108, 12690, 3289, 1834, 2249, 6204, 4223, 3003, 9627, 7090, 12620, 12743, 11468, 12694, 8884, 12801, 2956, 14283, 11519, 3886, 5752, 16545, 8857, 8841, 2997],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0882086295113843
+          }
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [16512, 11341, 1258, 6067, 12151, 12017, 11396, 2513, 3979, 11187, 12628, 11731, 16526, 12665, 13952, 17182, 11276, 3930, 8081, 15026, 2238, 6242, 11202, 14952, 11228, 1467, 1081, 14765, 12309, 6047, 16324, 5665],
+          "diagnostics": {
+            "rank_effect_spearman": 0.06397623954266646
+          }
+        }
+      ],
+      "runtime_seconds": 2.2273455419999664
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7202,
+      "method": "full:hit_logistic",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 29,
+      "tests": 96,
+      "hit_rate": 0.3020833333333333,
+      "curve": [9, 17, 29],
+      "discovery_auc": 18.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [1205, 12876, 13961, 16268, 2180, 5752, 6360, 4543, 14652, 3691, 11306, 13225, 12827, 12724, 5914, 12906, 14663, 6876, 13703, 8108, 9866, 16391, 16929, 1212, 15875, 12645, 9286, 14292, 12691, 1467, 13956, 16299],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07570659438362556,
+            "brier": 0.03270844640399906,
+            "log_loss": 0.13966892076259677
+          }
+        },
+        {
+          "step": 1,
+          "hits": 8,
+          "selected": [12666, 9628, 15974, 12229, 12936, 6965, 6067, 12625, 3563, 6204, 4844, 15539, 10452, 16017, 3568, 12709, 7303, 17415, 5959, 10433, 2078, 11147, 16502, 16001, 11719, 14287, 4212, 3700, 14193, 2226, 13951, 10929],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08132287302422789,
+            "brier": 0.03202700818284362,
+            "log_loss": 0.13678276608555678
+          }
+        },
+        {
+          "step": 2,
+          "hits": 12,
+          "selected": [12644, 12704, 12658, 11742, 12694, 12700, 12686, 12179, 17182, 12725, 12696, 13852, 5460, 4083, 17242, 12764, 10794, 10371, 10738, 11290, 11278, 6518, 9627, 6806, 12723, 9765, 2293, 535, 3732, 16295, 13959, 8081],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07961989750858997,
+            "brier": 0.03153955005918629,
+            "log_loss": 0.1359589156340811
+          }
+        }
+      ],
+      "runtime_seconds": 3.8137510000015027
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7202,
+      "method": "pca:effect_squared",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 19,
+      "tests": 96,
+      "hit_rate": 0.19791666666666666,
+      "curve": [5, 13, 19],
+      "discovery_auc": 12.333333333333334,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [12575, 3527, 16108, 9600, 5462, 14894, 7775, 16502, 11577, 1017, 2222, 2537, 14277, 8862, 4204, 11257, 13224, 8488, 2955, 4212, 15916, 2958, 1340, 8919, 2293, 2249, 2126, 4258, 4201, 14842, 16689, 3979],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0892577129297727
+          }
+        },
+        {
+          "step": 1,
+          "hits": 8,
+          "selected": [16545, 16492, 9546, 16223, 8427, 15889, 3765, 12670, 2621, 12694, 3568, 2513, 15550, 12307, 13945, 13225, 3231, 16391, 5998, 14661, 16525, 6518, 1187, 4721, 8148, 16482, 3464, 4127, 12743, 15861, 11271, 12624],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08452641607169473
+          }
+        },
+        {
+          "step": 2,
+          "hits": 6,
+          "selected": [2965, 7981, 1625, 9391, 8655, 10656, 543, 14292, 9287, 3056, 5460, 7475, 2317, 12906, 11754, 6519, 13036, 8983, 12629, 12027, 11611, 3896, 9282, 10818, 13954, 12876, 11272, 10892, 9572, 4423, 3691, 12626],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0827990338162431
+          }
+        }
+      ],
+      "runtime_seconds": 0.48821166700145113
+    }
+  ],
+  "r2_campaign_confirmation/summary.json": {
+    "prior/updated": {
+      "hits": 117,
+      "tests": 384,
+      "cases": [22, 22, 37, 36],
+      "by_dataset": {
+        "IFNG": 44,
+        "IL2": 73
+      }
+    },
+    "gp_iso/updated": {
+      "hits": 105,
+      "tests": 384,
+      "cases": [25, 29, 26, 25],
+      "by_dataset": {
+        "IFNG": 54,
+        "IL2": 51
+      }
+    },
+    "pca:effect_median/updated": {
+      "hits": 78,
+      "tests": 384,
+      "cases": [2, 20, 30, 26],
+      "by_dataset": {
+        "IFNG": 22,
+        "IL2": 56
+      }
+    },
+    "full:effect_median/updated": {
+      "hits": 103,
+      "tests": 384,
+      "cases": [9, 16, 42, 36],
+      "by_dataset": {
+        "IFNG": 25,
+        "IL2": 78
+      }
+    },
+    "full:hit_rank/updated": {
+      "hits": 74,
+      "tests": 384,
+      "cases": [13, 22, 20, 19],
+      "by_dataset": {
+        "IFNG": 35,
+        "IL2": 39
+      }
+    },
+    "full:hit_logistic/updated": {
+      "hits": 96,
+      "tests": 384,
+      "cases": [14, 18, 35, 29],
+      "by_dataset": {
+        "IFNG": 32,
+        "IL2": 64
+      }
+    },
+    "pca:effect_squared/updated": {
+      "hits": 63,
+      "tests": 384,
+      "cases": [10, 7, 27, 19],
+      "by_dataset": {
+        "IFNG": 17,
+        "IL2": 46
+      }
+    }
+  },
+  "r3_new_evidence/protocol.json": {
+    "name": "r3_new_evidence",
+    "datasets": ["IFNG", "IL2"],
+    "seeds": [7301, 7302],
+    "methods": ["gp_iso", "full:effect_median"],
+    "steps": 3,
+    "modes": ["updated", "frozen", "shuffle_new"],
+    "initial_mode": "mixed",
+    "initial": 256,
+    "batch": 32,
+    "pool": "all feature-covered untested; unselected retained",
+    "time": "2026-09-29T22:26:28.876610+00:00",
+    "code_sha256": "e9c4ac2e4977fa8fd8b3498e457cda60a8d06b13e29f2cc39b2d9ec39530c6d5"
+  },
+  "r3_new_evidence/results.json": [
+    {
+      "dataset": "IFNG",
+      "seed": 7301,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 24,
+      "tests": 96,
+      "hit_rate": 0.25,
+      "curve": [8, 17, 24],
+      "discovery_auc": 16.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [12103, 5327, 12525, 15893, 6559, 11236, 2027, 13690, 11248, 11239, 13718, 2070, 13370, 3485, 3445, 13372, 1203, 12166, 10801, 9040, 15021, 14924, 13378, 14160, 8168, 2595, 3056, 2988, 4100, 12095, 12385, 13682],
+          "diagnostics": {
+            "rank_effect_spearman": 0.051687605336409446,
+            "brier": 0.048006132420098685,
+            "log_loss": 0.19887408165711837
+          }
+        },
+        {
+          "step": 1,
+          "hits": 9,
+          "selected": [10796, 8076, 12163, 12081, 14894, 8853, 12084, 426, 15825, 9388, 12658, 12126, 13359, 15390, 8991, 16241, 8848, 9404, 13927, 12145, 12662, 2169, 12128, 2170, 2166, 8084, 8099, 2902, 6562, 610, 3481, 4377],
+          "diagnostics": {
+            "rank_effect_spearman": 0.01650472266266892,
+            "brier": 0.04996922134781493,
+            "log_loss": 0.2140904221837664
+          }
+        },
+        {
+          "step": 2,
+          "hits": 7,
+          "selected": [12168, 12147, 13346, 14454, 10808, 12125, 3624, 11227, 12113, 13605, 12221, 12122, 1197, 3494, 10673, 4102, 15423, 5858, 14159, 3358, 12165, 2260, 8772, 15658, 2892, 1242, 6560, 2204, 11217, 10770, 2893, 12661],
+          "diagnostics": {
+            "rank_effect_spearman": 0.012520913067945259,
+            "brier": 0.0535498200575367,
+            "log_loss": 0.232749562344944
+          }
+        }
+      ],
+      "runtime_seconds": 0.8603097919985885
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7301,
+      "method": "gp_iso",
+      "mode": "frozen",
+      "initial_mode": "mixed",
+      "hits": 22,
+      "tests": 96,
+      "hit_rate": 0.22916666666666666,
+      "curve": [8, 14, 22],
+      "discovery_auc": 14.666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [12103, 5327, 12525, 15893, 6559, 11236, 2027, 13690, 11248, 11239, 13718, 2070, 13370, 3485, 3445, 13372, 1203, 12166, 10801, 9040, 15021, 14924, 13378, 14160, 8168, 2595, 3056, 2988, 4100, 12095, 12385, 13682],
+          "diagnostics": {
+            "rank_effect_spearman": 0.051687605336409446,
+            "brier": 0.048006132420098685,
+            "log_loss": 0.19887408165711837
+          }
+        },
+        {
+          "step": 1,
+          "hits": 6,
+          "selected": [4377, 15747, 12165, 14894, 12081, 11251, 9404, 7134, 12128, 3481, 12113, 2497, 6551, 12662, 1191, 12108, 3624, 2170, 12084, 2195, 12658, 10775, 14918, 16737, 2349, 610, 2166, 4128, 11226, 15236, 2456, 8848],
+          "diagnostics": {
+            "rank_effect_spearman": 0.050128598131644955,
+            "brier": 0.04769269142265036,
+            "log_loss": 0.19799306960802054
+          }
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [12374, 13359, 2892, 12126, 2893, 8076, 2902, 12145, 15877, 2408, 10793, 3158, 6773, 4656, 16030, 8853, 3923, 218, 5835, 15825, 9495, 12661, 11217, 10771, 3619, 2260, 4101, 3874, 9388, 12110, 10804, 7717],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04866788587725003,
+            "brier": 0.04747326833685409,
+            "log_loss": 0.19736560372269937
+          }
+        }
+      ],
+      "runtime_seconds": 0.7615057090006303
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7301,
+      "method": "gp_iso",
+      "mode": "shuffle_new",
+      "initial_mode": "mixed",
+      "hits": 22,
+      "tests": 96,
+      "hit_rate": 0.22916666666666666,
+      "curve": [8, 15, 22],
+      "discovery_auc": 15.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [12103, 5327, 12525, 15893, 6559, 11236, 2027, 13690, 11248, 11239, 13718, 2070, 13370, 3485, 3445, 13372, 1203, 12166, 10801, 9040, 15021, 14924, 13378, 14160, 8168, 2595, 3056, 2988, 4100, 12095, 12385, 13682],
+          "diagnostics": {
+            "rank_effect_spearman": 0.051687605336409446,
+            "brier": 0.048006132420098685,
+            "log_loss": 0.19887408165711837
+          }
+        },
+        {
+          "step": 1,
+          "hits": 7,
+          "selected": [12128, 13605, 3619, 13375, 12661, 2349, 426, 12657, 3481, 12145, 16030, 14418, 2338, 8076, 9404, 10711, 7134, 1205, 11651, 13359, 2991, 2769, 1103, 218, 4093, 15747, 2892, 11226, 9073, 2260, 15825, 12168],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04889490204505861,
+            "brier": 0.05005900849709711,
+            "log_loss": 0.21453910609525983
+          }
+        },
+        {
+          "step": 2,
+          "hits": 7,
+          "selected": [12113, 3494, 15648, 14894, 12221, 12163, 15653, 14454, 12081, 10775, 12126, 11656, 15877, 12122, 15027, 1244, 4431, 11244, 12125, 15236, 2408, 10796, 13922, 7739, 5838, 12114, 8772, 4162, 13314, 11251, 13346, 8991],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04906929586895013,
+            "brier": 0.053463486215021096,
+            "log_loss": 0.23221052119603436
+          }
+        }
+      ],
+      "runtime_seconds": 0.8195817500018165
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7301,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 10,
+      "tests": 96,
+      "hit_rate": 0.10416666666666667,
+      "curve": [3, 7, 10],
+      "discovery_auc": 6.666666666666667,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 3,
+          "selected": [4197, 16627, 3298, 4697, 11139, 8838, 338, 8157, 10163, 16646, 3153, 7214, 11717, 5301, 4100, 1014, 6504, 11989, 10516, 12045, 5540, 3194, 7711, 4503, 10323, 4348, 13683, 2896, 9372, 8355, 14162, 11917],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04803848630804623
+          }
+        },
+        {
+          "step": 1,
+          "hits": 4,
+          "selected": [4128, 2070, 12084, 391, 12146, 12088, 4042, 12105, 10409, 15825, 2894, 2497, 12656, 13552, 11231, 14245, 12095, 2170, 10835, 3323, 4151, 2426, 2019, 4105, 9188, 4103, 2336, 15744, 11230, 11409, 12385, 12655],
+          "diagnostics": {
+            "rank_effect_spearman": 0.033414900817620295
+          }
+        },
+        {
+          "step": 2,
+          "hits": 3,
+          "selected": [2194, 12337, 11239, 8076, 13369, 12165, 13996, 5325, 12658, 16378, 855, 12163, 15236, 13690, 12081, 15920, 12662, 5890, 15857, 12118, 12125, 15384, 1818, 10775, 11683, 6025, 11259, 5677, 5640, 15547, 13274, 848],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04433204764425688
+          }
+        }
+      ],
+      "runtime_seconds": 5.6067772089991195
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7301,
+      "method": "full:effect_median",
+      "mode": "frozen",
+      "initial_mode": "mixed",
+      "hits": 7,
+      "tests": 96,
+      "hit_rate": 0.07291666666666667,
+      "curve": [3, 5, 7],
+      "discovery_auc": 5.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 3,
+          "selected": [4197, 16627, 3298, 4697, 11139, 8838, 338, 8157, 10163, 16646, 3153, 7214, 11717, 5301, 4100, 1014, 6504, 11989, 10516, 12045, 5540, 3194, 7711, 4503, 10323, 4348, 13683, 2896, 9372, 8355, 14162, 11917],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04803848630804623
+          }
+        },
+        {
+          "step": 1,
+          "hits": 2,
+          "selected": [141, 9658, 8412, 11855, 11210, 10982, 2070, 16617, 11533, 9831, 12170, 5154, 7054, 12020, 3469, 7097, 7945, 15007, 11239, 15449, 3006, 13694, 4255, 5136, 13652, 15487, 16212, 1636, 2894, 6966, 3774, 2245],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04778421356505395
+          }
+        },
+        {
+          "step": 2,
+          "hits": 2,
+          "selected": [2291, 4789, 8758, 12224, 1449, 8122, 6938, 7981, 5840, 3104, 11559, 14467, 14547, 2169, 10432, 2005, 15423, 5290, 15490, 13650, 8420, 13077, 14559, 15384, 12764, 6024, 9327, 7771, 13058, 14849, 16701, 8387],
+          "diagnostics": {
+            "rank_effect_spearman": 0.047755728565864554
+          }
+        }
+      ],
+      "runtime_seconds": 5.466946625001583
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7301,
+      "method": "full:effect_median",
+      "mode": "shuffle_new",
+      "initial_mode": "mixed",
+      "hits": 11,
+      "tests": 96,
+      "hit_rate": 0.11458333333333333,
+      "curve": [3, 8, 11],
+      "discovery_auc": 7.333333333333333,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 3,
+          "selected": [4197, 16627, 3298, 4697, 11139, 8838, 338, 8157, 10163, 16646, 3153, 7214, 11717, 5301, 4100, 1014, 6504, 11989, 10516, 12045, 5540, 3194, 7711, 4503, 10323, 4348, 13683, 2896, 9372, 8355, 14162, 11917],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04803848630804623
+          }
+        },
+        {
+          "step": 1,
+          "hits": 5,
+          "selected": [11239, 14849, 6488, 5835, 12114, 1065, 13108, 4111, 11231, 12465, 12377, 9832, 8886, 14824, 9073, 3160, 12166, 7229, 12207, 1242, 14414, 279, 6785, 12648, 2497, 6993, 16424, 16329, 3316, 13783, 6100, 8799],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04632811371240697
+          }
+        },
+        {
+          "step": 2,
+          "hits": 3,
+          "selected": [3280, 9975, 10359, 2337, 5821, 12663, 11219, 12658, 8538, 11067, 5708, 3378, 2364, 8917, 1855, 7521, 6911, 7234, 1185, 8138, 8247, 10984, 7053, 16408, 13877, 7488, 11854, 4128, 853, 13967, 11732, 14997],
+          "diagnostics": {
+            "rank_effect_spearman": 0.03863936627092403
+          }
+        }
+      ],
+      "runtime_seconds": 5.590713708999829
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7302,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 24,
+      "tests": 96,
+      "hit_rate": 0.25,
+      "curve": [3, 15, 24],
+      "discovery_auc": 14.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 3,
+          "selected": [6720, 12606, 2144, 12649, 12646, 3097, 11750, 7066, 4234, 4154, 2474, 12921, 14448, 7403, 6258, 8713, 15386, 16679, 13637, 5357, 4166, 7566, 14420, 12721, 14193, 803, 6649, 1997, 6454, 6998, 6310, 7503],
+          "diagnostics": {
+            "rank_effect_spearman": 0.020136060415467154,
+            "brier": 0.06779097892135087,
+            "log_loss": 0.2761962640182454
+          }
+        },
+        {
+          "step": 1,
+          "hits": 12,
+          "selected": [604, 12114, 14055, 3429, 11117, 848, 12113, 12182, 2310, 2201, 12415, 3466, 865, 12130, 15188, 6551, 2075, 2564, 14159, 2824, 8168, 218, 5838, 6053, 12158, 14954, 14163, 3431, 12534, 15391, 10801, 15021],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0631544001855628,
+            "brier": 0.06000956547053898,
+            "log_loss": 0.25827697334349453
+          }
+        },
+        {
+          "step": 2,
+          "hits": 9,
+          "selected": [12528, 4128, 15027, 2047, 12159, 15835, 9291, 5501, 12673, 2197, 13718, 12108, 8084, 12149, 2027, 2195, 10218, 11688, 13922, 12166, 1242, 12110, 12374, 3977, 12809, 12125, 11223, 13996, 15650, 12553, 7489, 10775],
+          "diagnostics": {
+            "rank_effect_spearman": -0.0018519754938714466,
+            "brier": 0.07158388477851749,
+            "log_loss": 0.29728399668684935
+          }
+        }
+      ],
+      "runtime_seconds": 0.7154094170000462
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7302,
+      "method": "gp_iso",
+      "mode": "frozen",
+      "initial_mode": "mixed",
+      "hits": 3,
+      "tests": 96,
+      "hit_rate": 0.03125,
+      "curve": [3, 3, 3],
+      "discovery_auc": 3.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 3,
+          "selected": [6720, 12606, 2144, 12649, 12646, 3097, 11750, 7066, 4234, 4154, 2474, 12921, 14448, 7403, 6258, 8713, 15386, 16679, 13637, 5357, 4166, 7566, 14420, 12721, 14193, 803, 6649, 1997, 6454, 6998, 6310, 7503],
+          "diagnostics": {
+            "rank_effect_spearman": 0.020136060415467154,
+            "brier": 0.06779097892135087,
+            "log_loss": 0.2761962640182454
+          }
+        },
+        {
+          "step": 1,
+          "hits": 0,
+          "selected": [13267, 7966, 2979, 678, 3970, 10652, 10704, 14859, 11400, 9849, 6400, 275, 4947, 13742, 11444, 14014, 7109, 14581, 3997, 14782, 10290, 10592, 387, 6570, 10436, 2710, 2767, 8051, 5776, 7297, 8883, 1514],
+          "diagnostics": {
+            "rank_effect_spearman": 0.02036406981219363,
+            "brier": 0.0669150324945867,
+            "log_loss": 0.27410689593705684
+          }
+        },
+        {
+          "step": 2,
+          "hits": 0,
+          "selected": [2062, 233, 9655, 4455, 1093, 1790, 14633, 6954, 10276, 6218, 188, 6123, 3721, 16534, 13900, 13454, 12321, 9259, 7865, 16666, 8714, 13180, 5125, 6706, 10251, 3443, 13475, 7029, 11043, 6604, 14606, 13408],
+          "diagnostics": {
+            "rank_effect_spearman": 0.01894945920943847,
+            "brier": 0.0663464866165848,
+            "log_loss": 0.2728596918307107
+          }
+        }
+      ],
+      "runtime_seconds": 0.6135589160003292
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7302,
+      "method": "gp_iso",
+      "mode": "shuffle_new",
+      "initial_mode": "mixed",
+      "hits": 15,
+      "tests": 96,
+      "hit_rate": 0.15625,
+      "curve": [3, 14, 15],
+      "discovery_auc": 10.666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 3,
+          "selected": [6720, 12606, 2144, 12649, 12646, 3097, 11750, 7066, 4234, 4154, 2474, 12921, 14448, 7403, 6258, 8713, 15386, 16679, 13637, 5357, 4166, 7566, 14420, 12721, 14193, 803, 6649, 1997, 6454, 6998, 6310, 7503],
+          "diagnostics": {
+            "rank_effect_spearman": 0.020136060415467154,
+            "brier": 0.06779097892135087,
+            "log_loss": 0.2761962640182454
+          }
+        },
+        {
+          "step": 1,
+          "hits": 11,
+          "selected": [604, 14055, 12114, 3429, 11117, 848, 2201, 12113, 2310, 12182, 12415, 15188, 3466, 865, 3431, 2075, 12130, 14954, 6551, 6053, 2824, 12158, 218, 5838, 14159, 2564, 14163, 15391, 8168, 11688, 15650, 8771],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0613725337250406,
+            "brier": 0.06009732836342229,
+            "log_loss": 0.25858678380729866
+          }
+        },
+        {
+          "step": 2,
+          "hits": 1,
+          "selected": [10290, 2979, 13742, 10592, 13267, 8051, 3970, 10652, 6400, 10704, 387, 3721, 11400, 96, 4947, 10650, 11434, 5204, 6218, 14859, 1786, 3139, 1737, 3861, 7966, 8551, 2062, 3946, 13475, 3756, 968, 1735],
+          "diagnostics": {
+            "rank_effect_spearman": 0.061161639331202125,
+            "brier": 0.06874452674857465,
+            "log_loss": 0.2877742423297858
+          }
+        }
+      ],
+      "runtime_seconds": 0.685443041002145
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7302,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 19,
+      "tests": 96,
+      "hit_rate": 0.19791666666666666,
+      "curve": [2, 11, 19],
+      "discovery_auc": 10.666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 2,
+          "selected": [11382, 4273, 10728, 3127, 10873, 12160, 5798, 1764, 7900, 3615, 8143, 6402, 13437, 9191, 12553, 186, 10684, 3393, 4097, 132, 6986, 15661, 8559, 2083, 4450, 9001, 10800, 11736, 15139, 286, 6318, 826],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04185792367054974
+          }
+        },
+        {
+          "step": 1,
+          "hits": 9,
+          "selected": [6985, 8076, 16751, 8788, 937, 4110, 4022, 11943, 12162, 2788, 9397, 16630, 2408, 12167, 2204, 14065, 14057, 11688, 8099, 12170, 3229, 12157, 8370, 12183, 14995, 12145, 4750, 4423, 15187, 15589, 2989, 5747],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04370411002256464
+          }
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [14045, 4667, 15747, 12158, 12107, 6062, 16739, 4111, 8249, 2042, 12084, 16241, 8799, 12122, 12096, 12095, 12165, 4162, 3494, 15857, 11661, 11217, 12149, 11240, 12658, 4437, 10907, 2075, 12081, 4133, 12090, 15893],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04550902156762613
+          }
+        }
+      ],
+      "runtime_seconds": 5.42152545800127
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7302,
+      "method": "full:effect_median",
+      "mode": "frozen",
+      "initial_mode": "mixed",
+      "hits": 11,
+      "tests": 96,
+      "hit_rate": 0.11458333333333333,
+      "curve": [2, 5, 11],
+      "discovery_auc": 6.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 2,
+          "selected": [11382, 4273, 10728, 3127, 10873, 12160, 5798, 1764, 7900, 3615, 8143, 6402, 13437, 9191, 12553, 186, 10684, 3393, 4097, 132, 6986, 15661, 8559, 2083, 4450, 9001, 10800, 11736, 15139, 286, 6318, 826],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04185792367054974
+          }
+        },
+        {
+          "step": 1,
+          "hits": 3,
+          "selected": [11966, 6871, 4106, 16270, 14747, 14530, 11888, 656, 5373, 16067, 11261, 6489, 13314, 13673, 1744, 2898, 5052, 15188, 15747, 8151, 5681, 529, 15562, 12114, 3597, 3818, 15134, 13538, 14444, 2483, 14318, 9585],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04145066395705126
+          }
+        },
+        {
+          "step": 2,
+          "hits": 6,
+          "selected": [9496, 13668, 14863, 10861, 10886, 12921, 11800, 2652, 8611, 15235, 514, 11519, 8247, 701, 15338, 4396, 15057, 12170, 6249, 4667, 9650, 9060, 10945, 11790, 9372, 12103, 10808, 15589, 9186, 3469, 13669, 12122],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04126746290814215
+          }
+        }
+      ],
+      "runtime_seconds": 5.27693120800177
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7302,
+      "method": "full:effect_median",
+      "mode": "shuffle_new",
+      "initial_mode": "mixed",
+      "hits": 11,
+      "tests": 96,
+      "hit_rate": 0.11458333333333333,
+      "curve": [2, 6, 11],
+      "discovery_auc": 6.333333333333333,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 2,
+          "selected": [11382, 4273, 10728, 3127, 10873, 12160, 5798, 1764, 7900, 3615, 8143, 6402, 13437, 9191, 12553, 186, 10684, 3393, 4097, 132, 6986, 15661, 8559, 2083, 4450, 9001, 10800, 11736, 15139, 286, 6318, 826],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04185792367054974
+          }
+        },
+        {
+          "step": 1,
+          "hits": 4,
+          "selected": [2075, 8885, 10886, 9595, 525, 12221, 3158, 10911, 7024, 210, 4164, 4587, 6190, 13377, 2408, 15339, 14055, 16270, 10917, 5653, 12109, 2197, 11678, 12114, 8799, 8789, 848, 8958, 3496, 13347, 10771, 6985],
+          "diagnostics": {
+            "rank_effect_spearman": 0.04372256348504009
+          }
+        },
+        {
+          "step": 2,
+          "hits": 5,
+          "selected": [13677, 11261, 3890, 11238, 12772, 17, 15249, 4436, 12243, 2332, 11524, 7320, 15747, 4438, 3160, 7883, 5836, 13287, 8034, 15850, 2193, 12702, 14440, 12068, 1008, 5546, 1609, 5101, 1203, 2234, 10458, 4578],
+          "diagnostics": {
+            "rank_effect_spearman": 0.03082758583121499
+          }
+        }
+      ],
+      "runtime_seconds": 5.602078584000992
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7301,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 28,
+      "tests": 96,
+      "hit_rate": 0.2916666666666667,
+      "curve": [9, 17, 28],
+      "discovery_auc": 18.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [16685, 12931, 16391, 12638, 14282, 11738, 7475, 14287, 4204, 12694, 3527, 1204, 11748, 4486, 16545, 12642, 13945, 11750, 3126, 10752, 12201, 12691, 3231, 9869, 11519, 4127, 6876, 1340, 13953, 11719, 4840, 2957],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07536230178970799,
+            "brier": 0.033522819201931495,
+            "log_loss": 0.1557967873289663
+          }
+        },
+        {
+          "step": 1,
+          "hits": 8,
+          "selected": [12667, 13224, 12915, 2956, 12633, 12658, 2955, 11730, 12621, 3056, 2555, 11280, 5521, 12647, 12712, 2222, 12628, 2249, 4828, 1554, 11272, 3828, 624, 1258, 13911, 2409, 16455, 2398, 5524, 12665, 9852, 9946],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07228454739061634,
+            "brier": 0.036909299639952285,
+            "log_loss": 0.17877723135554682
+          }
+        },
+        {
+          "step": 2,
+          "hits": 11,
+          "selected": [11729, 12707, 11253, 13864, 2078, 12618, 4083, 11249, 1256, 16643, 2125, 13230, 12724, 12725, 12688, 4235, 9836, 12685, 12692, 4208, 4210, 15974, 3705, 16468, 8983, 14319, 3545, 12706, 16526, 12644, 12936, 6360],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07114077710412871,
+            "brier": 0.041969231984173495,
+            "log_loss": 0.20386546554207652
+          }
+        }
+      ],
+      "runtime_seconds": 0.807944749998569
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7301,
+      "method": "gp_iso",
+      "mode": "frozen",
+      "initial_mode": "mixed",
+      "hits": 31,
+      "tests": 96,
+      "hit_rate": 0.3229166666666667,
+      "curve": [9, 18, 31],
+      "discovery_auc": 19.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [16685, 12931, 16391, 12638, 14282, 11738, 7475, 14287, 4204, 12694, 3527, 1204, 11748, 4486, 16545, 12642, 13945, 11750, 3126, 10752, 12201, 12691, 3231, 9869, 11519, 4127, 6876, 1340, 13953, 11719, 4840, 2957],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07536230178970799,
+            "brier": 0.033522819201931495,
+            "log_loss": 0.1557967873289663
+          }
+        },
+        {
+          "step": 1,
+          "hits": 9,
+          "selected": [12658, 4025, 6360, 2222, 11280, 13951, 13224, 2555, 12667, 12633, 1258, 2249, 12712, 3056, 12915, 9852, 2078, 12647, 2955, 2774, 11272, 5524, 13911, 13230, 12649, 3828, 12707, 12622, 13954, 1554, 16001, 2409],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07300398833986088,
+            "brier": 0.03320567757755706,
+            "log_loss": 0.15497273426530542
+          }
+        },
+        {
+          "step": 2,
+          "hits": 13,
+          "selected": [2956, 5521, 5931, 17400, 16017, 1219, 2512, 12017, 12621, 11253, 13079, 4828, 4208, 4437, 2398, 2125, 11249, 13231, 16643, 3700, 11723, 11729, 11617, 13960, 15548, 624, 2319, 2562, 12668, 15026, 13961, 9946],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0709498558063613,
+            "brier": 0.03288649793695069,
+            "log_loss": 0.1541429021664619
+          }
+        }
+      ],
+      "runtime_seconds": 0.7008554170024581
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7301,
+      "method": "gp_iso",
+      "mode": "shuffle_new",
+      "initial_mode": "mixed",
+      "hits": 32,
+      "tests": 96,
+      "hit_rate": 0.3333333333333333,
+      "curve": [9, 21, 32],
+      "discovery_auc": 20.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [16685, 12931, 16391, 12638, 14282, 11738, 7475, 14287, 4204, 12694, 3527, 1204, 11748, 4486, 16545, 12642, 13945, 11750, 3126, 10752, 12201, 12691, 3231, 9869, 11519, 4127, 6876, 1340, 13953, 11719, 4840, 2957],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07536230178970799,
+            "brier": 0.033522819201931495,
+            "log_loss": 0.1557967873289663
+          }
+        },
+        {
+          "step": 1,
+          "hits": 12,
+          "selected": [13224, 5524, 13911, 11272, 12647, 12915, 2555, 12707, 2078, 12667, 12743, 2409, 2651, 1258, 3056, 5521, 11617, 13954, 2774, 4083, 8428, 9946, 2512, 11741, 12633, 11253, 12936, 2956, 12649, 16643, 2249, 16017],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07737861666020845,
+            "brier": 0.03694412090288975,
+            "log_loss": 0.17893375873312214
+          }
+        },
+        {
+          "step": 2,
+          "hits": 11,
+          "selected": [12073, 376, 11732, 16282, 4221, 11618, 6360, 15025, 16522, 16001, 11270, 15024, 12687, 2416, 11609, 12625, 14283, 12712, 11754, 1834, 16389, 13396, 2837, 9883, 3234, 2535, 9874, 9391, 10892, 11761, 11275, 4212],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07731108743678483,
+            "brier": 0.03917353322762831,
+            "log_loss": 0.18805887241582572
+          }
+        }
+      ],
+      "runtime_seconds": 0.7574602499989851
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7301,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 35,
+      "tests": 96,
+      "hit_rate": 0.3645833333333333,
+      "curve": [13, 24, 35],
+      "discovery_auc": 24.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 13,
+          "selected": [11280, 13945, 16643, 2319, 3896, 12667, 16545, 3828, 11748, 9836, 13961, 12915, 11271, 3568, 14292, 11754, 11723, 16526, 13231, 7475, 12624, 8084, 14193, 12618, 2249, 5522, 11721, 12704, 12665, 13911, 11281, 1187],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09216709554713463
+          }
+        },
+        {
+          "step": 1,
+          "hits": 11,
+          "selected": [12707, 13225, 4486, 9391, 11719, 14283, 12743, 13953, 13230, 12635, 2957, 9320, 12658, 12662, 16502, 12628, 13229, 12644, 13224, 12686, 4437, 16001, 12621, 12687, 4201, 4204, 12709, 12629, 6087, 11729, 12620, 12691],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08335687261334333
+          }
+        },
+        {
+          "step": 2,
+          "hits": 11,
+          "selected": [7303, 2260, 8459, 4212, 8547, 12669, 3056, 12633, 9283, 14756, 1888, 12663, 3548, 4235, 11276, 8362, 12725, 4539, 9866, 6710, 12700, 4359, 3700, 12701, 5667, 1258, 12639, 11343, 11437, 14241, 10686, 14765],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08172465304043737
+          }
+        }
+      ],
+      "runtime_seconds": 5.623720540999784
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7301,
+      "method": "full:effect_median",
+      "mode": "frozen",
+      "initial_mode": "mixed",
+      "hits": 34,
+      "tests": 96,
+      "hit_rate": 0.3541666666666667,
+      "curve": [13, 25, 34],
+      "discovery_auc": 24.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 13,
+          "selected": [11280, 13945, 16643, 2319, 3896, 12667, 16545, 3828, 11748, 9836, 13961, 12915, 11271, 3568, 14292, 11754, 11723, 16526, 13231, 7475, 12624, 8084, 14193, 12618, 2249, 5522, 11721, 12704, 12665, 13911, 11281, 1187],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09216709554713463
+          }
+        },
+        {
+          "step": 1,
+          "hits": 12,
+          "selected": [15974, 12765, 4840, 12658, 12685, 9501, 14282, 12017, 12620, 3056, 15548, 12638, 4486, 10570, 10892, 11289, 13953, 2225, 4024, 2958, 9678, 14283, 12669, 12625, 11278, 4204, 11272, 16088, 12691, 6519, 2123, 1619],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08934041381649707
+          }
+        },
+        {
+          "step": 2,
+          "hits": 9,
+          "selected": [12707, 16525, 3990, 9507, 12712, 12687, 13851, 12621, 12569, 11730, 12748, 13959, 12663, 625, 11437, 16001, 14319, 6087, 12635, 9287, 9765, 9391, 2562, 11609, 3691, 13946, 1834, 8350, 12626, 2260, 11253, 3579],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08769839379071255
+          }
+        }
+      ],
+      "runtime_seconds": 5.514577707999706
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7301,
+      "method": "full:effect_median",
+      "mode": "shuffle_new",
+      "initial_mode": "mixed",
+      "hits": 30,
+      "tests": 96,
+      "hit_rate": 0.3125,
+      "curve": [13, 22, 30],
+      "discovery_auc": 21.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 13,
+          "selected": [11280, 13945, 16643, 2319, 3896, 12667, 16545, 3828, 11748, 9836, 13961, 12915, 11271, 3568, 14292, 11754, 11723, 16526, 13231, 7475, 12624, 8084, 14193, 12618, 2249, 5522, 11721, 12704, 12665, 13911, 11281, 1187],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09216709554713463
+          }
+        },
+        {
+          "step": 1,
+          "hits": 9,
+          "selected": [16001, 3700, 8229, 12707, 4486, 13946, 4840, 14130, 15758, 3056, 16502, 1620, 12685, 12694, 14131, 12621, 5752, 17415, 2260, 3691, 7303, 2123, 11272, 625, 3527, 15548, 9676, 10892, 12620, 12744, 10656, 10117],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09055869668494744
+          }
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [11617, 12633, 14283, 13224, 4119, 8108, 2125, 15860, 12903, 16088, 13230, 12663, 12725, 12628, 4190, 13036, 12743, 12569, 8459, 6965, 3900, 11749, 9765, 11266, 6204, 11288, 9473, 12669, 12644, 13851, 3563, 9287],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08394498348148324
+          }
+        }
+      ],
+      "runtime_seconds": 5.552245082999434
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7302,
+      "method": "gp_iso",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 32,
+      "tests": 96,
+      "hit_rate": 0.3333333333333333,
+      "curve": [14, 20, 32],
+      "discovery_auc": 22.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 14,
+          "selected": [9883, 14283, 2416, 13224, 4221, 7303, 4127, 12915, 13911, 11270, 10892, 2535, 16017, 13945, 13954, 11272, 6087, 12744, 16001, 11754, 12073, 12620, 861, 3896, 16282, 9391, 12743, 8753, 12667, 2249, 4161, 2250],
+          "diagnostics": {
+            "rank_effect_spearman": 0.10106856451182504,
+            "brier": 0.03794255925514469,
+            "log_loss": 0.18197104763254468
+          }
+        },
+        {
+          "step": 1,
+          "hits": 6,
+          "selected": [10656, 7475, 12906, 16685, 13231, 10752, 2222, 3056, 1204, 6204, 14319, 2409, 11610, 12642, 4486, 11278, 11748, 11723, 6360, 625, 11276, 14282, 3126, 12621, 1218, 12687, 15026, 2774, 2957, 3691, 12694, 6710],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07127111373723745,
+            "brier": 0.041974258598686656,
+            "log_loss": 0.2037287871684165
+          }
+        },
+        {
+          "step": 2,
+          "hits": 12,
+          "selected": [12652, 16088, 12573, 9836, 12626, 12669, 4840, 9876, 13237, 11617, 13959, 6519, 1219, 624, 11719, 6874, 12618, 16545, 2970, 12644, 13953, 13960, 10818, 14130, 5524, 17305, 1258, 12931, 16522, 13951, 9869, 9287],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07545763682075804,
+            "brier": 0.045601706226146954,
+            "log_loss": 0.2191718660693588
+          }
+        }
+      ],
+      "runtime_seconds": 0.7855953749967739
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7302,
+      "method": "gp_iso",
+      "mode": "frozen",
+      "initial_mode": "mixed",
+      "hits": 32,
+      "tests": 96,
+      "hit_rate": 0.3333333333333333,
+      "curve": [14, 25, 32],
+      "discovery_auc": 23.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 14,
+          "selected": [9883, 14283, 2416, 13224, 4221, 7303, 4127, 12915, 13911, 11270, 10892, 2535, 16017, 13945, 13954, 11272, 6087, 12744, 16001, 11754, 12073, 12620, 861, 3896, 16282, 9391, 12743, 8753, 12667, 2249, 4161, 2250],
+          "diagnostics": {
+            "rank_effect_spearman": 0.10106856451182504,
+            "brier": 0.03794255925514469,
+            "log_loss": 0.18197104763254468
+          }
+        },
+        {
+          "step": 1,
+          "hits": 11,
+          "selected": [11749, 10656, 2957, 11278, 625, 4486, 12906, 13237, 9876, 11748, 6204, 14319, 11736, 12687, 16088, 16685, 12712, 15025, 12669, 11610, 11276, 15958, 15858, 3231, 12694, 9869, 7475, 7987, 5521, 1340, 11719, 6710],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09809022900317896,
+            "brier": 0.037431528066862715,
+            "log_loss": 0.18070558285840516
+          }
+        },
+        {
+          "step": 2,
+          "hits": 7,
+          "selected": [2774, 12626, 13225, 10371, 11723, 2222, 13231, 1258, 6360, 8428, 9836, 3828, 6504, 9946, 3056, 4840, 1731, 624, 12625, 11271, 13959, 1204, 12652, 16694, 2555, 13226, 1337, 7981, 14130, 16522, 2409, 16575],
+          "diagnostics": {
+            "rank_effect_spearman": 0.09567861970812655,
+            "brier": 0.037028991680821285,
+            "log_loss": 0.1796952982966713
+          }
+        }
+      ],
+      "runtime_seconds": 0.7048385409980256
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7302,
+      "method": "gp_iso",
+      "mode": "shuffle_new",
+      "initial_mode": "mixed",
+      "hits": 33,
+      "tests": 96,
+      "hit_rate": 0.34375,
+      "curve": [14, 24, 33],
+      "discovery_auc": 23.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 14,
+          "selected": [9883, 14283, 2416, 13224, 4221, 7303, 4127, 12915, 13911, 11270, 10892, 2535, 16017, 13945, 13954, 11272, 6087, 12744, 16001, 11754, 12073, 12620, 861, 3896, 16282, 9391, 12743, 8753, 12667, 2249, 4161, 2250],
+          "diagnostics": {
+            "rank_effect_spearman": 0.10106856451182504,
+            "brier": 0.03794255925514469,
+            "log_loss": 0.18197104763254468
+          }
+        },
+        {
+          "step": 1,
+          "hits": 10,
+          "selected": [12694, 11748, 1204, 6204, 17305, 2512, 12626, 7475, 13237, 2555, 5521, 11273, 13225, 12931, 10656, 4486, 11719, 9869, 3828, 16088, 3056, 4840, 12621, 12906, 12687, 6360, 12642, 11738, 4204, 12936, 11278, 16455],
+          "diagnostics": {
+            "rank_effect_spearman": 0.0745861530322962,
+            "brier": 0.04234453021907643,
+            "log_loss": 0.2054518445655515
+          }
+        },
+        {
+          "step": 2,
+          "hits": 9,
+          "selected": [10752, 2235, 1340, 2409, 3126, 13951, 2562, 8084, 16685, 2774, 8428, 5524, 11274, 9876, 624, 16545, 4212, 14130, 1219, 2293, 5931, 8425, 4437, 9868, 3527, 6876, 1258, 12706, 1218, 2651, 14319, 16396],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07510595039486345,
+            "brier": 0.047688101910040186,
+            "log_loss": 0.2273340348750254
+          }
+        }
+      ],
+      "runtime_seconds": 0.7635100830011652
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7302,
+      "method": "full:effect_median",
+      "mode": "updated",
+      "initial_mode": "mixed",
+      "hits": 26,
+      "tests": 96,
+      "hit_rate": 0.2708333333333333,
+      "curve": [4, 16, 26],
+      "discovery_auc": 15.333333333333334,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 4,
+          "selected": [11433, 6279, 8494, 214, 15076, 5971, 4097, 12743, 11278, 10327, 14330, 4202, 16201, 9546, 13980, 11746, 11730, 11748, 9705, 2222, 3846, 11243, 12744, 2249, 1623, 13951, 11280, 14319, 14876, 13961, 2237, 8983],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07888714158701098
+          }
+        },
+        {
+          "step": 1,
+          "hits": 12,
+          "selected": [12827, 12307, 3896, 3527, 13224, 3568, 13945, 8229, 12624, 2537, 8085, 4486, 13851, 9836, 15800, 4543, 4161, 11609, 11468, 13911, 10892, 11618, 16108, 15860, 13230, 12701, 8084, 15539, 11751, 2955, 11281, 4206],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08204315194765249
+          }
+        },
+        {
+          "step": 2,
+          "hits": 10,
+          "selected": [11754, 16643, 12915, 12687, 11729, 7303, 11719, 2957, 6360, 16545, 2837, 10656, 2651, 3301, 3563, 16502, 15025, 14283, 2235, 12635, 11877, 8919, 9857, 12549, 3828, 12644, 9607, 12662, 6087, 12663, 8108, 7475],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07946426919125978
+          }
+        }
+      ],
+      "runtime_seconds": 5.619252583001071
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7302,
+      "method": "full:effect_median",
+      "mode": "frozen",
+      "initial_mode": "mixed",
+      "hits": 24,
+      "tests": 96,
+      "hit_rate": 0.25,
+      "curve": [4, 12, 24],
+      "discovery_auc": 13.333333333333334,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 4,
+          "selected": [11433, 6279, 8494, 214, 15076, 5971, 4097, 12743, 11278, 10327, 14330, 4202, 16201, 9546, 13980, 11746, 11730, 11748, 9705, 2222, 3846, 11243, 12744, 2249, 1623, 13951, 11280, 14319, 14876, 13961, 2237, 8983],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07888714158701098
+          }
+        },
+        {
+          "step": 1,
+          "hits": 8,
+          "selected": [10287, 8899, 3828, 13122, 15866, 12624, 870, 11751, 12748, 15539, 8229, 8084, 3896, 9539, 2643, 6965, 7361, 14669, 2513, 4012, 13230, 7475, 2235, 10570, 15940, 12230, 3061, 12667, 5982, 13017, 16525, 2955],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07776800134637266
+          }
+        },
+        {
+          "step": 2,
+          "hits": 12,
+          "selected": [12691, 11649, 3090, 12694, 15166, 5053, 9961, 13954, 4844, 9836, 3563, 2957, 6360, 12827, 1619, 10070, 3970, 6245, 13224, 15637, 16298, 13851, 16017, 8564, 11371, 11719, 11729, 2250, 11609, 11698, 12707, 13953],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07633289560657756
+          }
+        }
+      ],
+      "runtime_seconds": 5.508493375000398
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7302,
+      "method": "full:effect_median",
+      "mode": "shuffle_new",
+      "initial_mode": "mixed",
+      "hits": 19,
+      "tests": 96,
+      "hit_rate": 0.19791666666666666,
+      "curve": [4, 16, 19],
+      "discovery_auc": 13.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 4,
+          "selected": [11433, 6279, 8494, 214, 15076, 5971, 4097, 12743, 11278, 10327, 14330, 4202, 16201, 9546, 13980, 11746, 11730, 11748, 9705, 2222, 3846, 11243, 12744, 2249, 1623, 13951, 11280, 14319, 14876, 13961, 2237, 8983],
+          "diagnostics": {
+            "rank_effect_spearman": 0.07888714158701098
+          }
+        },
+        {
+          "step": 1,
+          "hits": 12,
+          "selected": [12624, 4486, 6360, 4204, 12229, 2957, 7475, 13226, 3563, 11249, 15800, 13230, 2250, 5521, 13956, 11754, 13224, 12685, 15860, 12827, 10892, 16545, 12694, 9836, 13960, 2123, 12633, 14522, 4024, 13945, 1205, 2955],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08614523483759794
+          }
+        },
+        {
+          "step": 2,
+          "hits": 3,
+          "selected": [472, 2443, 7533, 6856, 6421, 525, 711, 4573, 7692, 948, 11749, 14576, 17069, 8247, 7741, 3093, 9803, 3561, 5400, 5594, 13672, 15141, 13931, 5666, 2350, 17282, 9409, 11281, 17119, 17195, 8044, 2021],
+          "diagnostics": {
+            "rank_effect_spearman": 0.08176567487791139
+          }
+        }
+      ],
+      "runtime_seconds": 5.6102212500009045
+    }
+  ],
+  "r3_new_evidence/summary.json": {
+    "gp_iso/updated": {
+      "hits": 108,
+      "tests": 384,
+      "cases": [24, 24, 28, 32],
+      "by_dataset": {
+        "IFNG": 48,
+        "IL2": 60
+      }
+    },
+    "gp_iso/frozen": {
+      "hits": 88,
+      "tests": 384,
+      "cases": [22, 3, 31, 32],
+      "by_dataset": {
+        "IFNG": 25,
+        "IL2": 63
+      }
+    },
+    "gp_iso/shuffle_new": {
+      "hits": 102,
+      "tests": 384,
+      "cases": [22, 15, 32, 33],
+      "by_dataset": {
+        "IFNG": 37,
+        "IL2": 65
+      }
+    },
+    "full:effect_median/updated": {
+      "hits": 90,
+      "tests": 384,
+      "cases": [10, 19, 35, 26],
+      "by_dataset": {
+        "IFNG": 29,
+        "IL2": 61
+      }
+    },
+    "full:effect_median/frozen": {
+      "hits": 76,
+      "tests": 384,
+      "cases": [7, 11, 34, 24],
+      "by_dataset": {
+        "IFNG": 18,
+        "IL2": 58
+      }
+    },
+    "full:effect_median/shuffle_new": {
+      "hits": 71,
+      "tests": 384,
+      "cases": [11, 11, 30, 19],
+      "by_dataset": {
+        "IFNG": 22,
+        "IL2": 49
+      }
+    }
+  },
+  "r4_observed_history_router/protocol.json": {
+    "time": "2026-09-29T22:28:13.705224+00:00",
+    "datasets": ["IFNG", "IL2"],
+    "seeds": [7401, 7402],
+    "steps": 3,
+    "validation": "first192 initial history train,last64 validation; top16hits or MAE; tieGP; freeze expert before new selections",
+    "experts": ["gp_iso", "full:effect_median"]
+  },
+  "r4_observed_history_router/results.json": [
+    {
+      "dataset": "IFNG",
+      "seed": 7401,
+      "method": "gp_iso",
+      "hits": 26,
+      "tests": 96,
+      "hit_rate": 0.2708333333333333,
+      "curve": [10, 20, 26],
+      "discovery_auc": 18.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 10,
+          "selected": [5327, 15893, 12103, 2027, 11248, 11236, 11239, 6559, 12525, 14924, 12166, 13718, 2070, 10796, 6551, 4100, 2595, 14160, 3056, 12108, 10775, 12081, 15021, 15877, 9040, 13690, 8168, 11226, 13682, 12113, 218, 9404]
+        },
+        {
+          "step": 1,
+          "hits": 10,
+          "selected": [12163, 3485, 8076, 426, 15390, 12095, 8991, 12145, 14894, 13359, 12658, 15027, 2169, 15825, 8853, 8084, 13927, 13378, 13605, 8099, 12122, 15423, 12128, 6562, 6560, 10801, 13372, 12126, 610, 3624, 10808, 11251]
+        },
+        {
+          "step": 2,
+          "hits": 6,
+          "selected": [12168, 14454, 12147, 11227, 12084, 4102, 8777, 13346, 7717, 1242, 1197, 3019, 12125, 8772, 14159, 12221, 15235, 10770, 2204, 13967, 12165, 3358, 9875, 2892, 11509, 2196, 2564, 2893, 9388, 2260, 4431, 15653]
+        }
+      ]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7401,
+      "method": "full:effect_median",
+      "hits": 10,
+      "tests": 96,
+      "hit_rate": 0.10416666666666667,
+      "curve": [2, 7, 10],
+      "discovery_auc": 6.333333333333333,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 2,
+          "selected": [1096, 7371, 16276, 15850, 3625, 2895, 8138, 11048, 10221, 8841, 3882, 13276, 7010, 7372, 3323, 1007, 7262, 6469, 16739, 9933, 12115, 2165, 12074, 6174, 8982, 15699, 7852, 16338, 8538, 16093, 2595, 8800]
+        },
+        {
+          "step": 1,
+          "hits": 5,
+          "selected": [8885, 5501, 13688, 12553, 4438, 9786, 1593, 2778, 12109, 12836, 11116, 7415, 4544, 11238, 12070, 4561, 15591, 9994, 8098, 2197, 12158, 5107, 13869, 14591, 12122, 10002, 15989, 12128, 13058, 3212, 12528, 7888]
+        },
+        {
+          "step": 2,
+          "hits": 3,
+          "selected": [10711, 1064, 15400, 430, 15846, 9507, 12772, 8771, 7971, 15992, 13873, 12157, 9659, 15229, 16539, 10803, 16309, 15141, 982, 3993, 14951, 14413, 12929, 10995, 5136, 5756, 14319, 4142, 13372, 14898, 10670, 7811]
+        }
+      ]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7401,
+      "method": "prior",
+      "hits": 22,
+      "tests": 96,
+      "hit_rate": 0.22916666666666666,
+      "curve": [5, 13, 22],
+      "discovery_auc": 13.333333333333334,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [11246, 11219, 3158, 13379, 7857, 610, 7134, 1244, 11707, 6551, 1593, 3935, 11509, 5858, 7718, 11249, 11236, 15893, 3619, 10791, 604, 3883, 3225, 10799, 2595, 2234, 10800, 8563, 5461, 2899, 15987, 11226]
+        },
+        {
+          "step": 1,
+          "hits": 8,
+          "selected": [10804, 12660, 11516, 10771, 13364, 949, 12166, 16029, 9420, 2989, 10348, 2892, 2341, 12286, 9067, 426, 12145, 10775, 4377, 13969, 2260, 12206, 6061, 9422, 15390, 11372, 11081, 13605, 10792, 3463, 9427, 2894]
+        },
+        {
+          "step": 2,
+          "hits": 9,
+          "selected": [13329, 8958, 6309, 12086, 13370, 12655, 11227, 12125, 5327, 4100, 10785, 13375, 11112, 9404, 9189, 15656, 8076, 11000, 12099, 8098, 13378, 10793, 2193, 3481, 3624, 7714, 3494, 14894, 7717, 11217, 2456, 9388]
+        }
+      ]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7401,
+      "method": "cv_hits",
+      "hits": 26,
+      "tests": 96,
+      "hit_rate": 0.2708333333333333,
+      "curve": [10, 20, 26],
+      "discovery_auc": 18.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 10,
+          "selected": [5327, 15893, 12103, 2027, 11248, 11236, 11239, 6559, 12525, 14924, 12166, 13718, 2070, 10796, 6551, 4100, 2595, 14160, 3056, 12108, 10775, 12081, 15021, 15877, 9040, 13690, 8168, 11226, 13682, 12113, 218, 9404]
+        },
+        {
+          "step": 1,
+          "hits": 10,
+          "selected": [12163, 3485, 8076, 426, 15390, 12095, 8991, 12145, 14894, 13359, 12658, 15027, 2169, 15825, 8853, 8084, 13927, 13378, 13605, 8099, 12122, 15423, 12128, 6562, 6560, 10801, 13372, 12126, 610, 3624, 10808, 11251]
+        },
+        {
+          "step": 2,
+          "hits": 6,
+          "selected": [12168, 14454, 12147, 11227, 12084, 4102, 8777, 13346, 7717, 1242, 1197, 3019, 12125, 8772, 14159, 12221, 15235, 10770, 2204, 13967, 12165, 3358, 9875, 2892, 11509, 2196, 2564, 2893, 9388, 2260, 4431, 15653]
+        }
+      ],
+      "selected_expert": "gp_iso",
+      "shared_deterministic_trajectory": true
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7401,
+      "method": "cv_mae",
+      "hits": 10,
+      "tests": 96,
+      "hit_rate": 0.10416666666666667,
+      "curve": [2, 7, 10],
+      "discovery_auc": 6.333333333333333,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 2,
+          "selected": [1096, 7371, 16276, 15850, 3625, 2895, 8138, 11048, 10221, 8841, 3882, 13276, 7010, 7372, 3323, 1007, 7262, 6469, 16739, 9933, 12115, 2165, 12074, 6174, 8982, 15699, 7852, 16338, 8538, 16093, 2595, 8800]
+        },
+        {
+          "step": 1,
+          "hits": 5,
+          "selected": [8885, 5501, 13688, 12553, 4438, 9786, 1593, 2778, 12109, 12836, 11116, 7415, 4544, 11238, 12070, 4561, 15591, 9994, 8098, 2197, 12158, 5107, 13869, 14591, 12122, 10002, 15989, 12128, 13058, 3212, 12528, 7888]
+        },
+        {
+          "step": 2,
+          "hits": 3,
+          "selected": [10711, 1064, 15400, 430, 15846, 9507, 12772, 8771, 7971, 15992, 13873, 12157, 9659, 15229, 16539, 10803, 16309, 15141, 982, 3993, 14951, 14413, 12929, 10995, 5136, 5756, 14319, 4142, 13372, 14898, 10670, 7811]
+        }
+      ],
+      "selected_expert": "full:effect_median",
+      "shared_deterministic_trajectory": true
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7402,
+      "method": "gp_iso",
+      "hits": 29,
+      "tests": 96,
+      "hit_rate": 0.3020833333333333,
+      "curve": [9, 18, 29],
+      "discovery_auc": 18.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [2027, 11509, 15893, 11248, 11236, 2595, 12110, 5327, 6559, 15021, 11239, 12113, 12103, 2070, 15877, 3977, 13718, 12374, 13922, 2195, 13605, 12108, 12166, 4128, 12122, 2497, 12525, 604, 11226, 6551, 7254, 13690]
+        },
+        {
+          "step": 1,
+          "hits": 9,
+          "selected": [12081, 12095, 12658, 9388, 12163, 15825, 10775, 12165, 8168, 12126, 13378, 9040, 2169, 8099, 9404, 13682, 15747, 14160, 13372, 14894, 4101, 4377, 12662, 14924, 1191, 3624, 3485, 12084, 12105, 11251, 11519, 5858]
+        },
+        {
+          "step": 2,
+          "hits": 11,
+          "selected": [12168, 8991, 12125, 12147, 13346, 15390, 11227, 8084, 12118, 15027, 6562, 12145, 11217, 4667, 200, 12159, 1242, 12100, 7740, 14159, 12385, 12128, 10808, 865, 12661, 9291, 12041, 13274, 13927, 12127, 16241, 11240]
+        }
+      ]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7402,
+      "method": "full:effect_median",
+      "hits": 4,
+      "tests": 96,
+      "hit_rate": 0.041666666666666664,
+      "curve": [1, 1, 4],
+      "discovery_auc": 2.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 1,
+          "selected": [16394, 15105, 8132, 306, 3111, 16058, 5653, 4378, 5161, 15684, 12944, 11320, 6144, 8800, 11246, 9208, 11226, 12113, 2196, 13533, 8761, 10514, 15220, 6549, 11683, 13146, 11050, 15422, 1462, 8957, 604, 12083]
+        },
+        {
+          "step": 1,
+          "hits": 0,
+          "selected": [12658, 12149, 13668, 15877, 3874, 10765, 10218, 8672, 14466, 15048, 7254, 16580, 12125, 15857, 11509, 2813, 3797, 8144, 5989, 10576, 1650, 5271, 11409, 5108, 10183, 10717, 10711, 15590, 15575, 5890, 15027, 6500]
+        },
+        {
+          "step": 2,
+          "hits": 3,
+          "selected": [3205, 11872, 2564, 3818, 7262, 12112, 13783, 5640, 6066, 15090, 1197, 12090, 3604, 9271, 605, 11633, 12158, 2933, 15992, 4377, 5391, 4359, 15286, 12041, 15384, 11252, 11221, 11950, 2914, 2048, 11931, 8096]
+        }
+      ]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7402,
+      "method": "prior",
+      "hits": 22,
+      "tests": 96,
+      "hit_rate": 0.22916666666666666,
+      "curve": [5, 14, 22],
+      "discovery_auc": 13.666666666666666,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 5,
+          "selected": [11246, 11219, 3158, 13379, 7857, 610, 7134, 1244, 11707, 6551, 3935, 11509, 5858, 7718, 11249, 11236, 15893, 3619, 10791, 604, 3883, 3225, 10799, 2595, 2234, 10800, 8563, 5461, 2899, 15987, 11226, 10804]
+        },
+        {
+          "step": 1,
+          "hits": 9,
+          "selected": [12660, 11516, 10771, 13364, 949, 12166, 16029, 9420, 2989, 10348, 2892, 2341, 12286, 9067, 426, 12145, 10775, 4377, 13969, 2260, 6061, 9422, 15390, 11372, 11081, 13605, 10792, 3463, 9427, 2894, 13329, 8958]
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [6309, 12086, 13370, 12655, 11227, 12125, 5327, 4100, 10785, 13375, 11112, 9404, 9189, 15656, 8076, 11000, 12099, 8098, 13378, 10793, 2193, 3481, 3624, 7714, 3494, 14894, 6564, 7717, 11217, 2456, 9388, 14150]
+        }
+      ]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7402,
+      "method": "cv_hits",
+      "hits": 29,
+      "tests": 96,
+      "hit_rate": 0.3020833333333333,
+      "curve": [9, 18, 29],
+      "discovery_auc": 18.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [2027, 11509, 15893, 11248, 11236, 2595, 12110, 5327, 6559, 15021, 11239, 12113, 12103, 2070, 15877, 3977, 13718, 12374, 13922, 2195, 13605, 12108, 12166, 4128, 12122, 2497, 12525, 604, 11226, 6551, 7254, 13690]
+        },
+        {
+          "step": 1,
+          "hits": 9,
+          "selected": [12081, 12095, 12658, 9388, 12163, 15825, 10775, 12165, 8168, 12126, 13378, 9040, 2169, 8099, 9404, 13682, 15747, 14160, 13372, 14894, 4101, 4377, 12662, 14924, 1191, 3624, 3485, 12084, 12105, 11251, 11519, 5858]
+        },
+        {
+          "step": 2,
+          "hits": 11,
+          "selected": [12168, 8991, 12125, 12147, 13346, 15390, 11227, 8084, 12118, 15027, 6562, 12145, 11217, 4667, 200, 12159, 1242, 12100, 7740, 14159, 12385, 12128, 10808, 865, 12661, 9291, 12041, 13274, 13927, 12127, 16241, 11240]
+        }
+      ],
+      "selected_expert": "gp_iso",
+      "shared_deterministic_trajectory": true
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7402,
+      "method": "cv_mae",
+      "hits": 4,
+      "tests": 96,
+      "hit_rate": 0.041666666666666664,
+      "curve": [1, 1, 4],
+      "discovery_auc": 2.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 1,
+          "selected": [16394, 15105, 8132, 306, 3111, 16058, 5653, 4378, 5161, 15684, 12944, 11320, 6144, 8800, 11246, 9208, 11226, 12113, 2196, 13533, 8761, 10514, 15220, 6549, 11683, 13146, 11050, 15422, 1462, 8957, 604, 12083]
+        },
+        {
+          "step": 1,
+          "hits": 0,
+          "selected": [12658, 12149, 13668, 15877, 3874, 10765, 10218, 8672, 14466, 15048, 7254, 16580, 12125, 15857, 11509, 2813, 3797, 8144, 5989, 10576, 1650, 5271, 11409, 5108, 10183, 10717, 10711, 15590, 15575, 5890, 15027, 6500]
+        },
+        {
+          "step": 2,
+          "hits": 3,
+          "selected": [3205, 11872, 2564, 3818, 7262, 12112, 13783, 5640, 6066, 15090, 1197, 12090, 3604, 9271, 605, 11633, 12158, 2933, 15992, 4377, 5391, 4359, 15286, 12041, 15384, 11252, 11221, 11950, 2914, 2048, 11931, 8096]
+        }
+      ],
+      "selected_expert": "full:effect_median",
+      "shared_deterministic_trajectory": true
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7401,
+      "method": "gp_iso",
+      "hits": 29,
+      "tests": 96,
+      "hit_rate": 0.3020833333333333,
+      "curve": [8, 21, 29],
+      "discovery_auc": 19.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [2293, 7475, 16685, 10752, 13945, 1218, 1340, 3056, 4204, 2222, 14287, 11748, 2249, 4437, 5752, 2774, 1258, 2957, 16545, 1204, 4486, 13911, 13954, 14282, 12931, 11272, 3828, 3527, 12638, 11280, 5521, 10656]
+        },
+        {
+          "step": 1,
+          "hits": 13,
+          "selected": [12642, 2409, 4127, 13224, 12694, 8983, 3126, 11738, 16643, 5524, 12712, 14319, 4206, 6876, 11728, 9869, 6204, 12647, 8428, 4161, 13956, 6360, 11273, 3231, 12667, 2398, 3301, 7981, 11617, 12668, 16391, 1219]
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [12626, 2956, 12669, 15889, 4083, 12707, 12633, 11719, 11920, 6710, 12644, 11729, 12936, 6965, 12618, 9946, 2955, 14768, 12169, 2260, 16455, 8484, 9205, 624, 2319, 4359, 9876, 12743, 13230, 11253, 11282, 12665]
+        }
+      ]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7401,
+      "method": "full:effect_median",
+      "hits": 33,
+      "tests": 96,
+      "hit_rate": 0.34375,
+      "curve": [9, 27, 33],
+      "discovery_auc": 23.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [2249, 13961, 12827, 7475, 1623, 11519, 16545, 11721, 12666, 1619, 12712, 3828, 11748, 4437, 15548, 2957, 2513, 10656, 12743, 16223, 1205, 12915, 14130, 5752, 5459, 11610, 14526, 6965, 4828, 4204, 13224, 11271]
+        },
+        {
+          "step": 1,
+          "hits": 18,
+          "selected": [16643, 2535, 12685, 12744, 4486, 12704, 11719, 12691, 8859, 11729, 11754, 13852, 13911, 3896, 5521, 11276, 13849, 16482, 7078, 16298, 4206, 3979, 13230, 6242, 12668, 11272, 16502, 12644, 5031, 12921, 6710, 858]
+        },
+        {
+          "step": 2,
+          "hits": 6,
+          "selected": [6360, 12707, 12621, 1539, 11280, 15860, 3568, 12624, 12667, 9572, 6047, 11303, 12599, 12628, 3527, 15974, 1897, 11609, 16525, 11278, 4190, 10433, 7689, 11244, 2821, 13951, 2516, 15515, 12629, 11749, 14274, 7303]
+        }
+      ]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7401,
+      "method": "prior",
+      "hits": 37,
+      "tests": 96,
+      "hit_rate": 0.3854166666666667,
+      "curve": [6, 21, 37],
+      "discovery_auc": 21.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [4437, 10892, 10752, 12691, 11730, 16108, 12017, 4204, 11747, 11721, 11748, 3231, 13961, 1258, 7475, 12229, 8229, 624, 1623, 6087, 11738, 16545, 4037, 6868, 12018, 3700, 11751, 8084, 11272, 3979, 11280, 3301]
+        },
+        {
+          "step": 1,
+          "hits": 15,
+          "selected": [618, 2293, 8983, 11281, 2651, 5665, 11728, 2962, 16643, 7687, 11285, 13229, 12707, 11249, 973, 6965, 13945, 3057, 12027, 9868, 2401, 10818, 2955, 437, 12685, 12827, 12915, 9501, 11253, 4486, 12635, 14569]
+        },
+        {
+          "step": 2,
+          "hits": 16,
+          "selected": [12749, 2319, 9870, 11877, 6360, 11577, 16023, 2957, 6624, 14193, 13911, 3545, 9876, 9391, 12624, 4206, 12665, 11729, 9852, 11273, 13224, 13951, 11266, 16298, 11609, 13956, 5524, 11493, 8471, 12638, 9625, 11920]
+        }
+      ]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7401,
+      "method": "cv_hits",
+      "hits": 29,
+      "tests": 96,
+      "hit_rate": 0.3020833333333333,
+      "curve": [8, 21, 29],
+      "discovery_auc": 19.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 8,
+          "selected": [2293, 7475, 16685, 10752, 13945, 1218, 1340, 3056, 4204, 2222, 14287, 11748, 2249, 4437, 5752, 2774, 1258, 2957, 16545, 1204, 4486, 13911, 13954, 14282, 12931, 11272, 3828, 3527, 12638, 11280, 5521, 10656]
+        },
+        {
+          "step": 1,
+          "hits": 13,
+          "selected": [12642, 2409, 4127, 13224, 12694, 8983, 3126, 11738, 16643, 5524, 12712, 14319, 4206, 6876, 11728, 9869, 6204, 12647, 8428, 4161, 13956, 6360, 11273, 3231, 12667, 2398, 3301, 7981, 11617, 12668, 16391, 1219]
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [12626, 2956, 12669, 15889, 4083, 12707, 12633, 11719, 11920, 6710, 12644, 11729, 12936, 6965, 12618, 9946, 2955, 14768, 12169, 2260, 16455, 8484, 9205, 624, 2319, 4359, 9876, 12743, 13230, 11253, 11282, 12665]
+        }
+      ],
+      "selected_expert": "gp_iso",
+      "shared_deterministic_trajectory": true
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7401,
+      "method": "cv_mae",
+      "hits": 33,
+      "tests": 96,
+      "hit_rate": 0.34375,
+      "curve": [9, 27, 33],
+      "discovery_auc": 23.0,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [2249, 13961, 12827, 7475, 1623, 11519, 16545, 11721, 12666, 1619, 12712, 3828, 11748, 4437, 15548, 2957, 2513, 10656, 12743, 16223, 1205, 12915, 14130, 5752, 5459, 11610, 14526, 6965, 4828, 4204, 13224, 11271]
+        },
+        {
+          "step": 1,
+          "hits": 18,
+          "selected": [16643, 2535, 12685, 12744, 4486, 12704, 11719, 12691, 8859, 11729, 11754, 13852, 13911, 3896, 5521, 11276, 13849, 16482, 7078, 16298, 4206, 3979, 13230, 6242, 12668, 11272, 16502, 12644, 5031, 12921, 6710, 858]
+        },
+        {
+          "step": 2,
+          "hits": 6,
+          "selected": [6360, 12707, 12621, 1539, 11280, 15860, 3568, 12624, 12667, 9572, 6047, 11303, 12599, 12628, 3527, 15974, 1897, 11609, 16525, 11278, 4190, 10433, 7689, 11244, 2821, 13951, 2516, 15515, 12629, 11749, 14274, 7303]
+        }
+      ],
+      "selected_expert": "full:effect_median",
+      "shared_deterministic_trajectory": true
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7402,
+      "method": "gp_iso",
+      "hits": 29,
+      "tests": 96,
+      "hit_rate": 0.3020833333333333,
+      "curve": [10, 22, 29],
+      "discovery_auc": 20.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 10,
+          "selected": [4204, 16545, 14282, 12638, 4486, 7475, 12642, 12691, 12633, 13945, 10752, 16685, 12647, 12931, 14287, 9836, 11738, 1204, 16391, 11617, 16643, 11719, 1258, 1218, 2222, 3056, 12707, 8983, 12694, 2319, 2957, 13230]
+        },
+        {
+          "step": 1,
+          "hits": 12,
+          "selected": [2535, 15025, 11755, 8470, 13959, 12625, 4221, 16522, 12687, 6504, 12073, 12652, 71, 13029, 12669, 11754, 15858, 11610, 861, 2349, 1337, 8421, 13931, 17182, 625, 15026, 6874, 12644, 12744, 13911, 9883, 2821]
+        },
+        {
+          "step": 2,
+          "hits": 7,
+          "selected": [14329, 16695, 4211, 6228, 9302, 11270, 11519, 12712, 9391, 13954, 4761, 9869, 12667, 9675, 6087, 11877, 12620, 3863, 6519, 2317, 17382, 16282, 12031, 8469, 14283, 12569, 13224, 12743, 10872, 16088, 10892, 6047]
+        }
+      ]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7402,
+      "method": "full:effect_median",
+      "hits": 29,
+      "tests": 96,
+      "hit_rate": 0.3020833333333333,
+      "curve": [9, 21, 29],
+      "discovery_auc": 19.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [4486, 10892, 9286, 13945, 16526, 11754, 11280, 12644, 6504, 10818, 625, 3056, 11729, 4206, 12633, 6087, 7475, 7303, 10566, 13230, 11728, 11751, 14692, 11278, 12652, 15974, 5521, 2125, 11719, 12743, 14292, 12706]
+        },
+        {
+          "step": 1,
+          "hits": 12,
+          "selected": [16643, 13224, 11610, 8085, 11272, 9075, 11281, 5017, 9937, 9836, 12624, 12638, 2235, 13225, 4024, 1619, 13229, 4840, 16298, 8229, 12663, 1623, 8008, 624, 14319, 2963, 13961, 12710, 11721, 8084, 15858, 11253]
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [16502, 12691, 12696, 11249, 12684, 12707, 12621, 9507, 3301, 15066, 3990, 12629, 12073, 12744, 4828, 1337, 14283, 2416, 13231, 13227, 1212, 3545, 12693, 12569, 14287, 12667, 14013, 1205, 14118, 10786, 12635, 13954]
+        }
+      ]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7402,
+      "method": "prior",
+      "hits": 37,
+      "tests": 96,
+      "hit_rate": 0.3854166666666667,
+      "curve": [6, 21, 37],
+      "discovery_auc": 21.333333333333332,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 6,
+          "selected": [4437, 10892, 10752, 12691, 11730, 16108, 12017, 4204, 11747, 11721, 3231, 13961, 1258, 7475, 12229, 8229, 624, 1623, 6087, 11738, 16545, 4037, 6868, 12018, 3700, 11751, 8084, 11272, 3979, 11280, 3301, 618]
+        },
+        {
+          "step": 1,
+          "hits": 15,
+          "selected": [2293, 8983, 11281, 2651, 5665, 11728, 2962, 16643, 7687, 11285, 13229, 12707, 11249, 973, 6965, 13945, 3057, 12027, 9868, 2401, 10818, 2955, 12685, 12827, 12915, 9501, 11253, 4486, 12635, 14569, 12749, 2319]
+        },
+        {
+          "step": 2,
+          "hits": 16,
+          "selected": [9870, 11877, 6360, 11577, 16023, 2957, 6624, 14193, 13911, 3545, 9876, 9391, 12624, 4206, 12665, 11729, 9852, 11273, 13224, 13951, 11266, 16298, 11609, 13956, 5524, 11493, 8471, 12638, 9625, 8350, 11920, 13960]
+        }
+      ]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7402,
+      "method": "cv_hits",
+      "hits": 29,
+      "tests": 96,
+      "hit_rate": 0.3020833333333333,
+      "curve": [9, 21, 29],
+      "discovery_auc": 19.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [4486, 10892, 9286, 13945, 16526, 11754, 11280, 12644, 6504, 10818, 625, 3056, 11729, 4206, 12633, 6087, 7475, 7303, 10566, 13230, 11728, 11751, 14692, 11278, 12652, 15974, 5521, 2125, 11719, 12743, 14292, 12706]
+        },
+        {
+          "step": 1,
+          "hits": 12,
+          "selected": [16643, 13224, 11610, 8085, 11272, 9075, 11281, 5017, 9937, 9836, 12624, 12638, 2235, 13225, 4024, 1619, 13229, 4840, 16298, 8229, 12663, 1623, 8008, 624, 14319, 2963, 13961, 12710, 11721, 8084, 15858, 11253]
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [16502, 12691, 12696, 11249, 12684, 12707, 12621, 9507, 3301, 15066, 3990, 12629, 12073, 12744, 4828, 1337, 14283, 2416, 13231, 13227, 1212, 3545, 12693, 12569, 14287, 12667, 14013, 1205, 14118, 10786, 12635, 13954]
+        }
+      ],
+      "selected_expert": "full:effect_median",
+      "shared_deterministic_trajectory": true
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7402,
+      "method": "cv_mae",
+      "hits": 29,
+      "tests": 96,
+      "hit_rate": 0.3020833333333333,
+      "curve": [9, 21, 29],
+      "discovery_auc": 19.666666666666668,
+      "rounds": [
+        {
+          "step": 0,
+          "hits": 9,
+          "selected": [4486, 10892, 9286, 13945, 16526, 11754, 11280, 12644, 6504, 10818, 625, 3056, 11729, 4206, 12633, 6087, 7475, 7303, 10566, 13230, 11728, 11751, 14692, 11278, 12652, 15974, 5521, 2125, 11719, 12743, 14292, 12706]
+        },
+        {
+          "step": 1,
+          "hits": 12,
+          "selected": [16643, 13224, 11610, 8085, 11272, 9075, 11281, 5017, 9937, 9836, 12624, 12638, 2235, 13225, 4024, 1619, 13229, 4840, 16298, 8229, 12663, 1623, 8008, 624, 14319, 2963, 13961, 12710, 11721, 8084, 15858, 11253]
+        },
+        {
+          "step": 2,
+          "hits": 8,
+          "selected": [16502, 12691, 12696, 11249, 12684, 12707, 12621, 9507, 3301, 15066, 3990, 12629, 12073, 12744, 4828, 1337, 14283, 2416, 13231, 13227, 1212, 3545, 12693, 12569, 14287, 12667, 14013, 1205, 14118, 10786, 12635, 13954]
+        }
+      ],
+      "selected_expert": "full:effect_median",
+      "shared_deterministic_trajectory": true
+    }
+  ],
+  "r4_observed_history_router/summary.json": {
+    "cv_hits": {
+      "hits": 113,
+      "tests": 384,
+      "by_dataset": {
+        "IFNG": 55,
+        "IL2": 58
+      },
+      "cases": [26, 29, 29, 29]
+    },
+    "cv_mae": {
+      "hits": 76,
+      "tests": 384,
+      "by_dataset": {
+        "IFNG": 14,
+        "IL2": 62
+      },
+      "cases": [10, 4, 33, 29]
+    },
+    "full:effect_median": {
+      "hits": 76,
+      "tests": 384,
+      "by_dataset": {
+        "IFNG": 14,
+        "IL2": 62
+      },
+      "cases": [10, 4, 33, 29]
+    },
+    "gp_iso": {
+      "hits": 113,
+      "tests": 384,
+      "by_dataset": {
+        "IFNG": 55,
+        "IL2": 58
+      },
+      "cases": [26, 29, 29, 29]
+    },
+    "prior": {
+      "hits": 118,
+      "tests": 384,
+      "by_dataset": {
+        "IFNG": 44,
+        "IL2": 74
+      },
+      "cases": [22, 22, 37, 37]
+    }
+  },
+  "r5_feedback_views/protocol.json": {
+    "time": "2026-09-29T22:32:03.528399+00:00",
+    "datasets": ["IFNG", "IL2"],
+    "lite_seeds": [7501, 7502],
+    "astra_seeds": [7501],
+    "arms": ["none", "scores", "examples", "shuffled_scores(lite only)"],
+    "batch": 32,
+    "menu": "GPtop48+fullmedianTop48+geometrytop16, shuffled, shared",
+    "sources": "MESA/JitMem view selection projection; LLMNN genuine/no-report/shuffled controls; LGBO numerical/LLM inspiration",
+    "new_batch_cap": 2.5
+  },
+  "r5_feedback_views/results.json": [
+    {
+      "dataset": "IFNG",
+      "seed": 7501,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "none",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "added_hits": 3,
+      "removed_hits": 3,
+      "changes": 18,
+      "output_repaired": false,
+      "preferred_model": "gp",
+      "selected": [1244, 15893, 2195, 2027, 8033, 14210, 2349, 5835, 14162, 14160, 11707, 5327, 3874, 1593, 6559, 6551, 15747, 2991, 12374, 13379, 13366, 7718, 13682, 13314, 11117, 3161, 13718, 994, 610, 213, 15027, 7134]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7501,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "scores",
+      "hits": 10,
+      "tests": 32,
+      "hit_rate": 0.3125,
+      "added_hits": 8,
+      "removed_hits": 3,
+      "changes": 25,
+      "output_repaired": false,
+      "preferred_model": "gp",
+      "selected": [12145, 4656, 3467, 213, 12159, 8788, 12081, 12096, 12104, 12103, 12122, 994, 12167, 5555, 4128, 10090, 15877, 1537, 12182, 12113, 12128, 13695, 14888, 7024, 12108, 4995, 12151, 13922, 2047, 12101, 13378, 13372]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7501,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "examples",
+      "hits": 8,
+      "tests": 32,
+      "hit_rate": 0.25,
+      "added_hits": 8,
+      "removed_hits": 5,
+      "changes": 25,
+      "output_repaired": false,
+      "preferred_model": "gp",
+      "selected": [11227, 12145, 2027, 12149, 4656, 11251, 10106, 9726, 3467, 9425, 213, 13314, 5835, 8099, 8033, 12159, 8788, 4071, 5858, 9388, 15747, 15236, 2349, 12081, 12096, 3298, 12104, 3935, 11217, 11248, 12103, 11236]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7501,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "shuffled_scores",
+      "hits": 8,
+      "tests": 32,
+      "hit_rate": 0.25,
+      "added_hits": 7,
+      "removed_hits": 4,
+      "changes": 25,
+      "output_repaired": true,
+      "preferred_model": "gp",
+      "selected": [3158, 13372, 213, 10090, 3874, 12221, 2027, 8788, 12122, 13682, 1244, 15236, 4128, 12145, 12149, 12151, 11227, 4656, 11251, 9726, 3467, 9425, 5835, 8033, 12159, 4071, 5858, 9388, 15747, 2349, 12081, 12096]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7501,
+      "model": "openai/gpt-6-astra",
+      "arm": "none",
+      "hits": 9,
+      "tests": 32,
+      "hit_rate": 0.28125,
+      "added_hits": 9,
+      "removed_hits": 5,
+      "changes": 26,
+      "output_repaired": false,
+      "preferred_model": "neither",
+      "selected": [10106, 3158, 213, 994, 1537, 7134, 9388, 69, 11227, 11251, 11217, 11248, 11236, 11249, 11219, 11246, 11239, 8099, 8096, 5858, 13922, 13718, 2047, 13695, 12167, 9425, 15747, 4995, 12578, 6551, 6559, 2991]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7501,
+      "model": "openai/gpt-6-astra",
+      "arm": "scores",
+      "hits": 8,
+      "tests": 32,
+      "hit_rate": 0.25,
+      "added_hits": 8,
+      "removed_hits": 5,
+      "changes": 30,
+      "output_repaired": false,
+      "preferred_model": "tree",
+      "selected": [213, 12108, 13372, 3467, 8096, 12167, 12159, 13378, 12122, 4995, 5555, 12101, 12104, 12081, 994, 2047, 4656, 8788, 69, 12221, 8099, 11217, 12096, 1537, 12103, 13695, 4128, 9425, 10106, 9388, 3158, 12145]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7501,
+      "model": "openai/gpt-6-astra",
+      "arm": "examples",
+      "hits": 9,
+      "tests": 32,
+      "hit_rate": 0.28125,
+      "added_hits": 9,
+      "removed_hits": 5,
+      "changes": 29,
+      "output_repaired": false,
+      "preferred_model": "tree",
+      "selected": [12108, 13372, 8096, 12167, 12159, 13378, 12122, 3467, 12081, 4656, 2047, 11217, 8099, 12221, 12096, 12103, 9425, 9388, 10106, 12145, 12149, 8788, 12166, 4128, 13695, 12105, 213, 994, 3158, 69, 15877, 5555]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7501,
+      "model": "numerical",
+      "arm": "gp",
+      "hits": 5,
+      "tests": 32,
+      "selected": [11117, 12113, 15877, 12103, 12528, 11239, 2027, 8033, 10090, 13922, 218, 10718, 5327, 12578, 10801, 3874, 2195, 11248, 14160, 12151, 15893, 12374, 12122, 3161, 12148, 13314, 2991, 10804, 865, 15027, 2349, 11236]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7501,
+      "model": "numerical",
+      "arm": "tree",
+      "hits": 5,
+      "tests": 32,
+      "selected": [213, 12108, 13372, 3467, 8096, 12167, 12159, 13378, 12122, 4995, 5555, 12101, 12104, 12081, 994, 2047, 4656, 8788, 69, 12221, 8099, 11217, 12096, 1537, 14888, 12103, 7024, 13695, 1875, 4128, 9425, 14210]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7502,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "none",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "added_hits": 4,
+      "removed_hits": 10,
+      "changes": 24,
+      "output_repaired": false,
+      "preferred_model": "gp/tree/neither",
+      "selected": [11707, 13926, 7134, 848, 5858, 3158, 5756, 218, 11509, 4864, 868, 3428, 4128, 12659, 1593, 10775, 11249, 11239, 6490, 13718, 3649, 12097, 11219, 3205, 610, 10407, 8280, 13690, 15857, 11246, 15893, 10801]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7502,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "scores",
+      "hits": 10,
+      "tests": 32,
+      "hit_rate": 0.3125,
+      "added_hits": 4,
+      "removed_hits": 5,
+      "changes": 15,
+      "output_repaired": true,
+      "preferred_model": "gp",
+      "selected": [11239, 11226, 12113, 12110, 13686, 15893, 4128, 11236, 848, 2595, 12182, 12103, 12534, 13434, 604, 11248, 7254, 16785, 13979, 11238, 7317, 8280, 12100, 12085, 2497, 10976, 14246, 9271, 12097, 15857, 15876, 3428]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7502,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "examples",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "added_hits": 0,
+      "removed_hits": 6,
+      "changes": 21,
+      "output_repaired": false,
+      "preferred_model": "gp",
+      "selected": [13434, 12534, 604, 12374, 865, 16785, 12182, 12165, 14974, 11707, 7254, 11374, 8099, 1495, 13926, 2197, 13979, 11226, 7134, 848, 2595, 7148, 12103, 5858, 11238, 7718, 8168, 3158, 13372, 13379, 4021, 11248]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7502,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "shuffled_scores",
+      "hits": 10,
+      "tests": 32,
+      "hit_rate": 0.3125,
+      "added_hits": 4,
+      "removed_hits": 5,
+      "changes": 20,
+      "output_repaired": true,
+      "preferred_model": "gp",
+      "selected": [610, 10976, 15593, 12110, 865, 12182, 14974, 12374, 7857, 11509, 3428, 2497, 604, 1495, 13979, 8099, 848, 8168, 3158, 12113, 6559, 13377, 11219, 3205, 11493, 15857, 9040, 15021, 10801, 8337, 13686, 6551]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7502,
+      "model": "numerical",
+      "arm": "gp",
+      "hits": 11,
+      "tests": 32,
+      "selected": [11239, 12110, 11226, 12113, 2195, 11248, 12114, 13686, 15893, 12166, 4128, 14160, 604, 2027, 12182, 2595, 6551, 9040, 12103, 3428, 8771, 218, 12534, 13718, 12528, 11236, 848, 2497, 13690, 2197, 8168, 865]
+    },
+    {
+      "dataset": "IFNG",
+      "seed": 7502,
+      "model": "numerical",
+      "arm": "tree",
+      "hits": 5,
+      "tests": 32,
+      "selected": [7317, 9271, 7254, 10976, 15876, 13979, 11238, 14246, 8280, 10407, 8099, 2047, 7319, 12100, 12085, 13804, 7148, 11635, 4093, 13738, 12097, 3205, 15857, 2497, 12966, 16785, 14466, 1219, 14786, 5043, 12083, 11493]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7501,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "none",
+      "hits": 12,
+      "tests": 32,
+      "hit_rate": 0.375,
+      "added_hits": 11,
+      "removed_hits": 3,
+      "changes": 24,
+      "output_repaired": false,
+      "preferred_model": "gp/tree/neither",
+      "selected": [2319, 2293, 2317, 2252, 2249, 15066, 10656, 1258, 15548, 1467, 9282, 8427, 5521, 5522, 5523, 6360, 13945, 14287, 14282, 13224, 10892, 13961, 13231, 16502, 13953, 9507, 4199, 4119, 12668, 12626, 12685, 12709]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7501,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "scores",
+      "hits": 8,
+      "tests": 32,
+      "hit_rate": 0.25,
+      "added_hits": 7,
+      "removed_hits": 3,
+      "changes": 20,
+      "output_repaired": true,
+      "preferred_model": "gp",
+      "selected": [3527, 1219, 3700, 2319, 7475, 3568, 14282, 12668, 10752, 9507, 2249, 15548, 12633, 13945, 1218, 4204, 8471, 6360, 4119, 4486, 12743, 11278, 12626, 12685, 12704, 10892, 14130, 10656, 11748, 11280, 12658, 3576]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7501,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "examples",
+      "hits": 7,
+      "tests": 32,
+      "hit_rate": 0.21875,
+      "added_hits": 5,
+      "removed_hits": 2,
+      "changes": 13,
+      "output_repaired": false,
+      "preferred_model": "gp",
+      "selected": [3527, 2319, 7475, 3700, 10752, 1219, 2249, 10656, 9507, 2293, 16685, 4025, 3765, 8427, 8471, 12668, 4486, 11748, 14282, 3568, 1258, 1340, 4471, 6360, 3056, 6519, 13945, 12765, 13951, 13956, 11747, 12658]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7501,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "shuffled_scores",
+      "hits": 9,
+      "tests": 32,
+      "hit_rate": 0.28125,
+      "added_hits": 8,
+      "removed_hits": 3,
+      "changes": 19,
+      "output_repaired": true,
+      "preferred_model": "gp",
+      "selected": [12691, 16525, 11730, 4199, 2293, 4025, 11468, 11721, 14282, 9507, 8427, 15548, 2319, 4471, 2317, 6087, 6360, 5521, 1340, 12743, 13945, 6519, 12685, 12633, 12638, 10892, 14130, 2398, 12658, 12152, 1258, 4828]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7501,
+      "model": "openai/gpt-6-astra",
+      "arm": "none",
+      "hits": 6,
+      "tests": 32,
+      "hit_rate": 0.1875,
+      "added_hits": 6,
+      "removed_hits": 4,
+      "changes": 24,
+      "output_repaired": false,
+      "preferred_model": "neither",
+      "selected": [6360, 2319, 8471, 4119, 2293, 3056, 11278, 13945, 12827, 2317, 7475, 14287, 11271, 1212, 14282, 3527, 3700, 2955, 13224, 1205, 10871, 3231, 10892, 11748, 6087, 12152, 4204, 11754, 11730, 3765, 13951, 8492]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7501,
+      "model": "openai/gpt-6-astra",
+      "arm": "scores",
+      "hits": 5,
+      "tests": 32,
+      "hit_rate": 0.15625,
+      "added_hits": 4,
+      "removed_hits": 3,
+      "changes": 17,
+      "output_repaired": false,
+      "preferred_model": "neither",
+      "selected": [9507, 1218, 3527, 2249, 7475, 3568, 14282, 13945, 15548, 4204, 3700, 11748, 2319, 1219, 15029, 3056, 4471, 4840, 12765, 4828, 3828, 10656, 13231, 12633, 4486, 6360, 2317, 8471, 12827, 1205, 11754, 14287]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7501,
+      "model": "openai/gpt-6-astra",
+      "arm": "examples",
+      "hits": 7,
+      "tests": 32,
+      "hit_rate": 0.21875,
+      "added_hits": 4,
+      "removed_hits": 1,
+      "changes": 14,
+      "output_repaired": false,
+      "preferred_model": "neither",
+      "selected": [9507, 3527, 7475, 1218, 3568, 14282, 4204, 2249, 15548, 13945, 2319, 3700, 1219, 4840, 12765, 3056, 15029, 11748, 4486, 4828, 4471, 13953, 12827, 2317, 6360, 1205, 12668, 12638, 12633, 12704, 13951, 14287]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7501,
+      "model": "numerical",
+      "arm": "gp",
+      "hits": 4,
+      "tests": 32,
+      "selected": [3527, 12638, 3700, 1219, 9507, 10752, 2319, 7475, 2398, 16525, 12765, 4840, 13951, 4199, 14282, 3568, 16391, 12668, 1218, 12931, 14287, 1258, 6519, 4828, 6876, 16685, 4204, 9282, 4025, 13956, 4471, 1340]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7501,
+      "model": "numerical",
+      "arm": "tree",
+      "hits": 13,
+      "tests": 32,
+      "selected": [2249, 9507, 11754, 8492, 10656, 3828, 12704, 12626, 13231, 15548, 12633, 5523, 13945, 14130, 10892, 1218, 5522, 11748, 11271, 12666, 11280, 4119, 11721, 12685, 12743, 4486, 3568, 4204, 2252, 15029, 12827, 11278]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7502,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "none",
+      "hits": 9,
+      "tests": 32,
+      "hit_rate": 0.28125,
+      "added_hits": 7,
+      "removed_hits": 7,
+      "changes": 22,
+      "output_repaired": true,
+      "preferred_model": "neither",
+      "selected": [15548, 16643, 7475, 2319, 1258, 8423, 2249, 5521, 3896, 3568, 3231, 3700, 13951, 4437, 14287, 8084, 14282, 13961, 10892, 16298, 12915, 9507, 16088, 11747, 13853, 2555, 12704, 11729, 11730, 2222, 3527, 12638]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7502,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "scores",
+      "hits": 7,
+      "tests": 32,
+      "hit_rate": 0.21875,
+      "added_hits": 4,
+      "removed_hits": 6,
+      "changes": 16,
+      "output_repaired": true,
+      "preferred_model": "gp",
+      "selected": [3828, 2222, 16685, 3527, 16391, 12663, 12666, 14287, 13945, 12931, 4204, 2249, 12743, 14282, 4486, 11519, 7475, 11280, 10892, 12633, 16088, 11747, 13853, 13951, 2555, 12704, 11729, 11730, 12691, 14756, 4437, 12621]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7502,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "examples",
+      "hits": 10,
+      "tests": 32,
+      "hit_rate": 0.3125,
+      "added_hits": 6,
+      "removed_hits": 5,
+      "changes": 19,
+      "output_repaired": false,
+      "preferred_model": "gp",
+      "selected": [16088, 11747, 13853, 13951, 2555, 12704, 11729, 3828, 11730, 2222, 12691, 14756, 4437, 12621, 16685, 12687, 11738, 3527, 16391, 12827, 12663, 12666, 11272, 12658, 11721, 16396, 1258, 14287, 12689, 13945, 1218, 12686]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7502,
+      "model": "google/gemini-2.5-flash-lite",
+      "arm": "shuffled_scores",
+      "status": "invalid_after_one_repair",
+      "hits": null,
+      "tests": 0,
+      "requested_tests": 32
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7502,
+      "model": "numerical",
+      "arm": "gp",
+      "hits": 9,
+      "tests": 32,
+      "selected": [12931, 4204, 3828, 16391, 4486, 3527, 7475, 11280, 14282, 12638, 14287, 12201, 16685, 12645, 2222, 1218, 2319, 10752, 12691, 1258, 11748, 2249, 11738, 11723, 1340, 13961, 16396, 11519, 2398, 4840, 12658, 13945]
+    },
+    {
+      "dataset": "IL2",
+      "seed": 7502,
+      "model": "numerical",
+      "arm": "tree",
+      "hits": 10,
+      "tests": 32,
+      "selected": [13945, 11280, 12743, 7475, 11754, 11519, 12663, 10892, 12569, 12707, 12666, 2249, 12633, 12687, 12626, 12689, 11748, 2555, 16088, 8423, 14130, 4204, 12669, 13951, 3896, 14287, 12915, 9507, 3828, 12694, 12686, 8084]
+    }
+  ],
+  "r5_feedback_views/summary.json": {
+    "google/gemini-2.5-flash-lite": {
+      "examples": {
+        "hits": 30,
+        "tests": 128,
+        "cases": [
+          {
+            "dataset": "IFNG",
+            "seed": 7501,
+            "hits": 8,
+            "repaired": false
+          },
+          {
+            "dataset": "IFNG",
+            "seed": 7502,
+            "hits": 5,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7501,
+            "hits": 7,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7502,
+            "hits": 10,
+            "repaired": false
+          }
+        ],
+        "invalid": 0
+      },
+      "none": {
+        "hits": 31,
+        "tests": 128,
+        "cases": [
+          {
+            "dataset": "IFNG",
+            "seed": 7501,
+            "hits": 5,
+            "repaired": false
+          },
+          {
+            "dataset": "IFNG",
+            "seed": 7502,
+            "hits": 5,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7501,
+            "hits": 12,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7502,
+            "hits": 9,
+            "repaired": true
+          }
+        ],
+        "invalid": 0
+      },
+      "scores": {
+        "hits": 35,
+        "tests": 128,
+        "cases": [
+          {
+            "dataset": "IFNG",
+            "seed": 7501,
+            "hits": 10,
+            "repaired": false
+          },
+          {
+            "dataset": "IFNG",
+            "seed": 7502,
+            "hits": 10,
+            "repaired": true
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7501,
+            "hits": 8,
+            "repaired": true
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7502,
+            "hits": 7,
+            "repaired": true
+          }
+        ],
+        "invalid": 0
+      },
+      "shuffled_scores": {
+        "hits": 27,
+        "tests": 96,
+        "cases": [
+          {
+            "dataset": "IFNG",
+            "seed": 7501,
+            "hits": 8,
+            "repaired": true
+          },
+          {
+            "dataset": "IFNG",
+            "seed": 7502,
+            "hits": 10,
+            "repaired": true
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7501,
+            "hits": 9,
+            "repaired": true
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7502,
+            "hits": null,
+            "repaired": false
+          }
+        ],
+        "invalid": 1
+      }
+    },
+    "numerical": {
+      "gp": {
+        "hits": 29,
+        "tests": 128,
+        "cases": [
+          {
+            "dataset": "IFNG",
+            "seed": 7501,
+            "hits": 5,
+            "repaired": false
+          },
+          {
+            "dataset": "IFNG",
+            "seed": 7502,
+            "hits": 11,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7501,
+            "hits": 4,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7502,
+            "hits": 9,
+            "repaired": false
+          }
+        ],
+        "invalid": 0
+      },
+      "tree": {
+        "hits": 33,
+        "tests": 128,
+        "cases": [
+          {
+            "dataset": "IFNG",
+            "seed": 7501,
+            "hits": 5,
+            "repaired": false
+          },
+          {
+            "dataset": "IFNG",
+            "seed": 7502,
+            "hits": 5,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7501,
+            "hits": 13,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7502,
+            "hits": 10,
+            "repaired": false
+          }
+        ],
+        "invalid": 0
+      }
+    },
+    "openai/gpt-6-astra": {
+      "examples": {
+        "hits": 16,
+        "tests": 64,
+        "cases": [
+          {
+            "dataset": "IFNG",
+            "seed": 7501,
+            "hits": 9,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7501,
+            "hits": 7,
+            "repaired": false
+          }
+        ],
+        "invalid": 0
+      },
+      "none": {
+        "hits": 15,
+        "tests": 64,
+        "cases": [
+          {
+            "dataset": "IFNG",
+            "seed": 7501,
+            "hits": 9,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7501,
+            "hits": 6,
+            "repaired": false
+          }
+        ],
+        "invalid": 0
+      },
+      "scores": {
+        "hits": 13,
+        "tests": 64,
+        "cases": [
+          {
+            "dataset": "IFNG",
+            "seed": 7501,
+            "hits": 8,
+            "repaired": false
+          },
+          {
+            "dataset": "IL2",
+            "seed": 7501,
+            "hits": 5,
+            "repaired": false
+          }
+        ],
+        "invalid": 0
+      }
+    }
+  },
+  "METRICS.json": {
+    "r1_objective_features": {
+      "full:effect_median/updated": {
+        "hits": 40,
+        "tests": 128,
+        "hit_rate": 0.3125,
+        "mean_discovery_auc": 10.0,
+        "cases": [3, 7, 15, 15]
+      },
+      "full:effect_squared/updated": {
+        "hits": 21,
+        "tests": 128,
+        "hit_rate": 0.1640625,
+        "mean_discovery_auc": 5.25,
+        "cases": [3, 2, 6, 10]
+      },
+      "full:hit_logistic/updated": {
+        "hits": 27,
+        "tests": 128,
+        "hit_rate": 0.2109375,
+        "mean_discovery_auc": 6.75,
+        "cases": [5, 6, 7, 9]
+      },
+      "full:hit_rank/updated": {
+        "hits": 29,
+        "tests": 128,
+        "hit_rate": 0.2265625,
+        "mean_discovery_auc": 7.25,
+        "cases": [7, 8, 8, 6]
+      },
+      "full:hit_squared/updated": {
+        "hits": 17,
+        "tests": 128,
+        "hit_rate": 0.1328125,
+        "mean_discovery_auc": 4.25,
+        "cases": [1, 4, 10, 2]
+      },
+      "gp_iso/updated": {
+        "hits": 28,
+        "tests": 128,
+        "hit_rate": 0.21875,
+        "mean_discovery_auc": 7.0,
+        "cases": [10, 5, 5, 8]
+      },
+      "pca:effect_median/updated": {
+        "hits": 22,
+        "tests": 128,
+        "hit_rate": 0.171875,
+        "mean_discovery_auc": 5.5,
+        "cases": [2, 0, 10, 10]
+      },
+      "pca:effect_squared/updated": {
+        "hits": 29,
+        "tests": 128,
+        "hit_rate": 0.2265625,
+        "mean_discovery_auc": 7.25,
+        "cases": [6, 4, 12, 7]
+      },
+      "pca:hit_logistic/updated": {
+        "hits": 23,
+        "tests": 128,
+        "hit_rate": 0.1796875,
+        "mean_discovery_auc": 5.75,
+        "cases": [4, 8, 4, 7]
+      },
+      "pca:hit_rank/updated": {
+        "hits": 24,
+        "tests": 128,
+        "hit_rate": 0.1875,
+        "mean_discovery_auc": 6.0,
+        "cases": [5, 6, 5, 8]
+      },
+      "pca:hit_squared/updated": {
+        "hits": 24,
+        "tests": 128,
+        "hit_rate": 0.1875,
+        "mean_discovery_auc": 6.0,
+        "cases": [2, 4, 10, 8]
+      },
+      "prior/updated": {
+        "hits": 22,
+        "tests": 128,
+        "hit_rate": 0.171875,
+        "mean_discovery_auc": 5.5,
+        "cases": [5, 5, 6, 6]
+      }
+    },
+    "r2_campaign_confirmation": {
+      "full:effect_median/updated": {
+        "hits": 103,
+        "tests": 384,
+        "hit_rate": 0.2682291666666667,
+        "mean_discovery_auc": 16.666666666666668,
+        "cases": [9, 16, 42, 36]
+      },
+      "full:hit_logistic/updated": {
+        "hits": 96,
+        "tests": 384,
+        "hit_rate": 0.25,
+        "mean_discovery_auc": 15.5,
+        "cases": [14, 18, 35, 29]
+      },
+      "full:hit_rank/updated": {
+        "hits": 74,
+        "tests": 384,
+        "hit_rate": 0.19270833333333334,
+        "mean_discovery_auc": 11.749999999999998,
+        "cases": [13, 22, 20, 19]
+      },
+      "gp_iso/updated": {
+        "hits": 105,
+        "tests": 384,
+        "hit_rate": 0.2734375,
+        "mean_discovery_auc": 17.333333333333332,
+        "cases": [25, 29, 26, 25]
+      },
+      "pca:effect_median/updated": {
+        "hits": 78,
+        "tests": 384,
+        "hit_rate": 0.203125,
+        "mean_discovery_auc": 12.916666666666668,
+        "cases": [2, 20, 30, 26]
+      },
+      "pca:effect_squared/updated": {
+        "hits": 63,
+        "tests": 384,
+        "hit_rate": 0.1640625,
+        "mean_discovery_auc": 10.0,
+        "cases": [10, 7, 27, 19]
+      },
+      "prior/updated": {
+        "hits": 117,
+        "tests": 384,
+        "hit_rate": 0.3046875,
+        "mean_discovery_auc": 17.25,
+        "cases": [22, 22, 37, 36]
+      }
+    },
+    "r3_new_evidence": {
+      "full:effect_median/frozen": {
+        "hits": 76,
+        "tests": 384,
+        "hit_rate": 0.19791666666666666,
+        "mean_discovery_auc": 12.083333333333334,
+        "cases": [7, 11, 34, 24]
+      },
+      "full:effect_median/shuffle_new": {
+        "hits": 71,
+        "tests": 384,
+        "hit_rate": 0.18489583333333334,
+        "mean_discovery_auc": 12.083333333333334,
+        "cases": [11, 11, 30, 19]
+      },
+      "full:effect_median/updated": {
+        "hits": 90,
+        "tests": 384,
+        "hit_rate": 0.234375,
+        "mean_discovery_auc": 14.166666666666666,
+        "cases": [10, 19, 35, 26]
+      },
+      "gp_iso/frozen": {
+        "hits": 88,
+        "tests": 384,
+        "hit_rate": 0.22916666666666666,
+        "mean_discovery_auc": 15.166666666666668,
+        "cases": [22, 3, 31, 32]
+      },
+      "gp_iso/shuffle_new": {
+        "hits": 102,
+        "tests": 384,
+        "hit_rate": 0.265625,
+        "mean_discovery_auc": 17.5,
+        "cases": [22, 15, 32, 33]
+      },
+      "gp_iso/updated": {
+        "hits": 108,
+        "tests": 384,
+        "hit_rate": 0.28125,
+        "mean_discovery_auc": 17.583333333333332,
+        "cases": [24, 24, 28, 32]
+      }
+    },
+    "r4_observed_history_router": {
+      "cv_hits/updated": {
+        "hits": 113,
+        "tests": 384,
+        "hit_rate": 0.2942708333333333,
+        "mean_discovery_auc": 19.083333333333336,
+        "cases": [26, 29, 29, 29]
+      },
+      "cv_mae/updated": {
+        "hits": 76,
+        "tests": 384,
+        "hit_rate": 0.19791666666666666,
+        "mean_discovery_auc": 12.75,
+        "cases": [10, 4, 33, 29]
+      },
+      "full:effect_median/updated": {
+        "hits": 76,
+        "tests": 384,
+        "hit_rate": 0.19791666666666666,
+        "mean_discovery_auc": 12.75,
+        "cases": [10, 4, 33, 29]
+      },
+      "gp_iso/updated": {
+        "hits": 113,
+        "tests": 384,
+        "hit_rate": 0.2942708333333333,
+        "mean_discovery_auc": 19.25,
+        "cases": [26, 29, 29, 29]
+      },
+      "prior/updated": {
+        "hits": 118,
+        "tests": 384,
+        "hit_rate": 0.3072916666666667,
+        "mean_discovery_auc": 17.416666666666664,
+        "cases": [22, 22, 37, 37]
+      }
+    },
+    "r5_feedback_views": {
+      "google/gemini-2.5-flash-lite": {
+        "examples": {
+          "hits": 30,
+          "tests": 128,
+          "cases": [
+            {
+              "dataset": "IFNG",
+              "seed": 7501,
+              "hits": 8,
+              "repaired": false
+            },
+            {
+              "dataset": "IFNG",
+              "seed": 7502,
+              "hits": 5,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7501,
+              "hits": 7,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7502,
+              "hits": 10,
+              "repaired": false
+            }
+          ],
+          "invalid": 0
+        },
+        "none": {
+          "hits": 31,
+          "tests": 128,
+          "cases": [
+            {
+              "dataset": "IFNG",
+              "seed": 7501,
+              "hits": 5,
+              "repaired": false
+            },
+            {
+              "dataset": "IFNG",
+              "seed": 7502,
+              "hits": 5,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7501,
+              "hits": 12,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7502,
+              "hits": 9,
+              "repaired": true
+            }
+          ],
+          "invalid": 0
+        },
+        "scores": {
+          "hits": 35,
+          "tests": 128,
+          "cases": [
+            {
+              "dataset": "IFNG",
+              "seed": 7501,
+              "hits": 10,
+              "repaired": false
+            },
+            {
+              "dataset": "IFNG",
+              "seed": 7502,
+              "hits": 10,
+              "repaired": true
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7501,
+              "hits": 8,
+              "repaired": true
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7502,
+              "hits": 7,
+              "repaired": true
+            }
+          ],
+          "invalid": 0
+        },
+        "shuffled_scores": {
+          "hits": 27,
+          "tests": 96,
+          "cases": [
+            {
+              "dataset": "IFNG",
+              "seed": 7501,
+              "hits": 8,
+              "repaired": true
+            },
+            {
+              "dataset": "IFNG",
+              "seed": 7502,
+              "hits": 10,
+              "repaired": true
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7501,
+              "hits": 9,
+              "repaired": true
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7502,
+              "hits": null,
+              "repaired": false
+            }
+          ],
+          "invalid": 1
+        }
+      },
+      "numerical": {
+        "gp": {
+          "hits": 29,
+          "tests": 128,
+          "cases": [
+            {
+              "dataset": "IFNG",
+              "seed": 7501,
+              "hits": 5,
+              "repaired": false
+            },
+            {
+              "dataset": "IFNG",
+              "seed": 7502,
+              "hits": 11,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7501,
+              "hits": 4,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7502,
+              "hits": 9,
+              "repaired": false
+            }
+          ],
+          "invalid": 0
+        },
+        "tree": {
+          "hits": 33,
+          "tests": 128,
+          "cases": [
+            {
+              "dataset": "IFNG",
+              "seed": 7501,
+              "hits": 5,
+              "repaired": false
+            },
+            {
+              "dataset": "IFNG",
+              "seed": 7502,
+              "hits": 5,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7501,
+              "hits": 13,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7502,
+              "hits": 10,
+              "repaired": false
+            }
+          ],
+          "invalid": 0
+        }
+      },
+      "openai/gpt-6-astra": {
+        "examples": {
+          "hits": 16,
+          "tests": 64,
+          "cases": [
+            {
+              "dataset": "IFNG",
+              "seed": 7501,
+              "hits": 9,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7501,
+              "hits": 7,
+              "repaired": false
+            }
+          ],
+          "invalid": 0
+        },
+        "none": {
+          "hits": 15,
+          "tests": 64,
+          "cases": [
+            {
+              "dataset": "IFNG",
+              "seed": 7501,
+              "hits": 9,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7501,
+              "hits": 6,
+              "repaired": false
+            }
+          ],
+          "invalid": 0
+        },
+        "scores": {
+          "hits": 13,
+          "tests": 64,
+          "cases": [
+            {
+              "dataset": "IFNG",
+              "seed": 7501,
+              "hits": 8,
+              "repaired": false
+            },
+            {
+              "dataset": "IL2",
+              "seed": 7501,
+              "hits": 5,
+              "repaired": false
+            }
+          ],
+          "invalid": 0
+        }
+      }
+    }
+  },
+  "AUDIT.json": {
+    "time": "2026-09-29T22:31:28.369968+00:00",
+    "selection_checks": 240,
+    "campaign_checks": 120,
+    "shuffle_pair_preservation_checks": 16,
+    "hidden_outcome_mutation_checks": 22,
+    "feature_sha256": "ff7787507c4b79e98087415c71a2221941c13e6f6d979164a1c0f962e80acc16",
+    "feature_lineage": "known but independent rebuild/assay overlap still unverified",
+    "llm_and_menu_selection_checks": 29,
+    "observed_example_checks": 796,
+    "invalid_outputs_not_imputed": 1
+  }
+}

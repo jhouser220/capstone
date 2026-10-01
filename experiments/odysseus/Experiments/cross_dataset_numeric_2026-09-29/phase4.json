@@ -1,0 +1,18 @@
+{
+  "name": "phase4_small_screen_history",
+  "datasets": [
+    "Scharenberg22"
+  ],
+  "seeds": [
+    8101,
+    8102,
+    8103
+  ],
+  "initial_mode": "random",
+  "initial": 16,
+  "methods": [
+    "prior",
+    "gp_iso",
+    "full:hit_logistic"
+  ]
+}

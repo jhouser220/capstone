@@ -1,0 +1,1 @@
+{"name":"r1_objective_features","datasets":["IFNG","IL2"],"seeds":[7101,7102],"methods":["prior","gp_iso","pca:hit_logistic","pca:hit_squared","pca:effect_squared","pca:effect_median","pca:hit_rank","full:hit_logistic","full:hit_squared","full:effect_squared","full:effect_median","full:hit_rank"],"steps":1}

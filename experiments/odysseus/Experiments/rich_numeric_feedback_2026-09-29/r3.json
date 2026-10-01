@@ -1,0 +1,1 @@
+{"name":"r3_llm_numeric_reports","datasets":["IFNG","IL2"],"seeds":[6301,6302],"method":"gp_iso","model":"google/gemini-2.5-flash-lite","steps":1}

@@ -1,0 +1,1 @@
+{"name": "smoke_check", "datasets": ["IFNG"], "seeds": [8101], "initial_mode": "random", "methods": ["prior", "gp_iso", "full:effect_median", "full:hit_logistic"]}

@@ -1,0 +1,1 @@
+{"name":"r2_campaign_confirmation","datasets":["IFNG","IL2"],"seeds":[7201,7202],"methods":["prior","gp_iso","pca:effect_median","full:effect_median","full:hit_rank","full:hit_logistic","pca:effect_squared"],"steps":3}
