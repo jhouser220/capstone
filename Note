@@ -1,0 +1,9 @@
+Chris branch summary
+
+- Added Gemini 3.5 Flash-Lite support to BioDiscoveryAgent.
+- Added retry/backoff handling for Gemini 429/503 errors.
+- Updated fallback/helper calls to use the active model instead of hard-coded Claude.
+- Reproduced the IFNG baseline with Gemini across 3 runs (128 genes × 5 rounds).
+- Added feedback ablation modes: full, hits-only, and no-feedback.
+- Completed and saved hits-only runs 1 and 2; run 3 was interrupted by Gemini quota limits.
+- Saved baseline and feedback experiment logs/results for reproducibility.
