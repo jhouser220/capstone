@@ -1,0 +1,31 @@
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 32 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+ 
+
+Assistant:
+===================qwen/qwen3.8-27b response (8000)=====================
+1. Reflection: Since this is the initial round of experimentation, there are no previous results to analyze. The strategy must prioritize high-probability targets based on established biological pathways known to regulate IFNG production, specifically focusing on the JAK-STAT signaling cascade and key transcription factors.
+2. Research Plan: I will select 32 genes that are central components of the Interferon-gamma signaling pathway, including JAK kinases, STAT transcription factors, and upstream cytokine receptors. This approach maximizes the chance of identifying significant effectors in the first screen. By targeting these canonical regulators, we establish a baseline for positive and negative controls. Subsequent rounds will use these results to refine the search into less obvious regulatory networks.
+3. Solution: 1. JAK1, 2. JAK2, 3. JAK3, 4. TYK2, 5. STAT1, 6. STAT2, 7. STAT3, 5. IFNGR1, 8. IFNGR2, 9. IRF1, 10. IRF2, 11. IRF7, 12. IRF8, 13. IRF9, 14. NFATC1, 15. NFATC2, 16. NFATC3, 17. NFATC4, 18. FOS, 19. JUN, 20. JUNB, 21. JUND, 22. FOSL1, 23. FOSL2, 24. FOSL3, 25. ETS1, 26. ETS2, 27. ETV1, 28. ETV4, 29. ETV5, 30. ETV6, 31. ETV7, 32. ETV2
+===================tokens=====================
+Number of prompt tokens: 246
+Number of sampled tokens: 384
+
+

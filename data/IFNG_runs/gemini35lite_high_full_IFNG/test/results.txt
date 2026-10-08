@@ -1,0 +1,8 @@
+(venv) (base) jeff@jeff-ThinkPad-P16v-Gen-1:~/Documents/Textbooks/DATASCI_210/capstone$ python analyze.py --model gemini35lite_high_full --dataset IFNG --rounds 5 --essential 1
+gemini35lite_high_full_IFNG/test/sampled_genes_5.npy
+[0.07934782608695652]
+Model: gemini35lite_high_full, Data: IFNG, mean: 0.07934782608695652, std: 0.0
+(venv) (base) jeff@jeff-ThinkPad-P16v-Gen-1:~/Documents/Textbooks/DATASCI_210/capstone$ python analyze.py --model gemini35lite_high_full --dataset IFNG --rounds 5 --essential 0
+gemini35lite_high_full_IFNG/test/sampled_genes_5.npy
+[0.09102244389027432]
+Model: gemini35lite_high_full, Data: IFNG, mean: 0.09102244389027432, std: 0.0

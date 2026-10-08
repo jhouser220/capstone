@@ -1,0 +1,68 @@
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 32 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+ 
+
+Assistant:
+===================openai/gpt-oss-120b response (2000)=====================
+1. Reflection: We have no experimental data yet, so our initial focus should be on leveraging existing knowledge of IFNG transcriptional regulation and signaling pathways to prioritize candidate genes. By integrating literature-curated gene sets with computational predictions (e.g., network centrality, co‑expression with IFNG), we can generate a high‑confidence shortlist. This approach maximizes the information gained from each limited 32‑gene perturbation batch and guides iterative refinement after each round.  
+
+2. Research Plan: Begin with a literature‑driven list of known positive and negative regulators of IFNG signaling and transcription, supplement it with genes identified from public RNA‑seq co‑expression and protein‑protein interaction networks that are highly connected to IFNG. Use a Bayesian ranking to select the top 32 candidates for the first CRISPR perturbation round, measure log fold‑change scores, and then re‑rank remaining genes based on observed effects and updated network models. Subsequent rounds will incorporate the new data to iteratively refine the candidate pool, focusing on genes that show consistent impact or unexpected strong effects.  
+
+3. Solution: 1. TBX21, 2. STAT1, 3. STAT4, 4. IRF1, 5. IRF2, 6. NFATC2, 7. NFATC1, 8. RELA, 9. JAK1, 10. JAK2, 11. IFNGR1, 12. IFNGR2, 13. SOCS1, 14. SOCS3, 15. CBLB, 16. MYD88, 17. TLR2, 18. TLR4, 19. NFKBIA, 20. PTPN22, 21. LCK, 22. CD28, 23. CD40LG, 24. IL12RB1, 25. IL12RB2, 26. TYK2, 27. DDX58, 28. MAVS, 29. TRIM21, 30. GATA3, 31. PRDM1, 32. BCL6.
+===================tokens=====================
+Number of prompt tokens: 246
+Number of sampled tokens: 452
+
+
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 32 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ You have so far predicted 30 out of the required 32 genes for this round. These were: 
+['MAVS', 'IRF2', 'PTPN22', 'SOCS1', 'LCK', 'STAT1', 'TLR2', 'TBX21', 'CBLB', 'TLR4', 'MYD88', 'RELA', 'IL12RB1', 'NFKBIA', 'SOCS3', 'TRIM21', 'NFATC2', 'PRDM1', 'STAT4', 'JAK2', 'IRF1', 'JAK1', 'IL12RB2', 'NFATC1', 'IFNGR2', 'GATA3', 'CD28', 'IFNGR1', 'TYK2', 'CD40LG']
+ Please add 2 more genes to this list. Remember not to include previously tested genes including: 
+ ['', 'DDX58'] 
+
+Assistant:
+===================openai/gpt-oss-120b response (2000)=====================
+1. Reflection: The previous round covered many core signaling and transcription factors, but we still lack representation from downstream effectors and additional transcriptional regulators that could modulate IFNG expression. Adding genes that act either upstream in cytokine signaling or as co‑activators may capture missed regulators.  
+2. Research Plan: We will complete the 32‑gene panel by selecting two high‑confidence candidates not yet tested, focusing on distinct pathways to broaden coverage. STAT3 is a key cytokine‑responsive transcription factor that can both promote and inhibit IFNG depending on context, making it a strong candidate. BATF partners with IRF4 and AP‑1 to drive Th1 differentiation and IFNG transcription, offering complementary insight. Testing these will round out our screen and improve the chance of identifying novel regulators.  
+3. Solution: 1. STAT3, 2. BATF
+===================tokens=====================
+Number of prompt tokens: 445
+Number of sampled tokens: 178
+
+

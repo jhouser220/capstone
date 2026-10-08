@@ -1,0 +1,224 @@
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 32 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text. Respond directly with only the numbered format below. Do not show your reasoning, drafts, or any text outside this format:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+ 
+
+Assistant:
+===================gemma-4-31b-it response (8000)=====================
+<thought>*   Role: Scientist in drug discovery.
+    *   Goal: Identify genes regulating Interferon-gamma (IFNG) production using a genome-wide CRISPR screen.
+    *   Constraints:
+        *   Total genes: 18,939.
+        *   Batch size: 32 genes per perturbation.
+        *   Measurement: Log fold change in IFNG normalized read counts (score).
+        *   Limited rounds of experimentation.
+    *   Format: Strict numbered format (1. Reflection, 2. Research Plan, 3. Solution), no Markdown, no headers, no bold text.
+
+    *   This is Step 0. No previous results exist.
+    *   The objective is to start the screen.
+    *   Since it's a genome-wide screen, the first step is usually a broad sweep or targeting known pathways related to IFNG production (T-cells, NK cells, JAK-STAT pathway, transcription factors like T-bet).
+
+    *   IFNG is primarily produced by Th1 cells, CD8+ T cells, and NK cells.
+    *   Key regulators: T-bet (TBX21), STAT1, STAT4, IL-12 receptor, IFN-gamma receptor, various epigenetic modifiers.
+    *   Since I can only test 32 genes per round and have 18,939 total, a random sample or a targeted approach based on biological priors is best for the first round to establish a baseline.
+
+    *   1. Reflection: This is the initial step of the genome-wide CRISPR screen. No data has been collected yet, so the focus is on establishing a starting set of candidates.
+    *   2. Research Plan: I will implement a staged screening approach starting with known positive regulators and inhibitors of IFNG production. Initial rounds will target transcription factors and signaling molecules in the JAK-STAT pathway. Subsequent rounds will use the results to narrow down candidates via iterative selection. This strategy maximizes the probability of finding high-impact genes early.
+    *   3. Solution: Select 32 genes related to IFNG regulation (T-bet, STATs, etc.).
+
+    *   TBX21 (T-bet)
+    *   STAT1
+    *   STAT4
+    *   STAT6 (inhibitor)
+    *   JAK1
+    *   JAK2
+    *   JAK3
+    *   TYK2
+    *   IRF1
+    *   IRF4
+    *   NFKB1
+    *   RELA
+    *   CBP
+    *   EP300
+    *   P300
+    *   SOCS1
+    *   SOCS3
+    *   IL12RB1
+    *   IL12RB2
+    *   CD28
+    *   CD80
+    *   CD86
+    *   CTLA4
+    *   PDCD1
+    *   LAG3
+    *   TIGIT
+    *   ZAP70
+    *   LCK
+    *   MYC
+    *   JUN
+    *   FOS
+    *   Bcl6 (inhibitor)
+
+    *   No Markdown? Yes.
+    *   No headers? Yes.
+    *   No bold text? Yes.
+    *   Numbered format 1, 2, 3? Yes.
+    *   No reasoning/drafts outside format? Yes.
+    *   No genes from prompt? (IFNG is in the prompt, so I won't include it).
+
+    *   1. Reflection: This is the first round of the screen, so there are no previous results to analyze. The goal is to identify high-confidence regulators of IFNG to establish a baseline for the screen.
+    *   2. Research Plan: I will start by targeting genes known to be involved in the JAK-STAT pathway and T-cell differentiation. I will then use the resulting log fold change scores to identify novel regulators through a combination of targeted and random sampling. The plan is to iteratively refine the gene list based on the observed scores. This will ensure efficient use of the limited experimental rounds.
+    *   3. Solution: 1. TBX21, 2. STAT1, 3. STAT4, 4. STAT6, 5. JAK1, 6. JAK2, 7. JAK3, 8. TYK2, 9. IRF1, 10. IRF4, 11. NFKB1, 12. RELA, 13. CBP, 14. EP300, 15. SOCS1, 16. SOCS3, 17. IL12RB1, 18. IL12RB2, 19. CD28, 20. CTLA4, 21. PDCD1, 22. LAG3, 23. TIGIT, 24. ZAP70, 25. LCK, 26. MYC, 27. JUN, 28. FOS, 29. BCL6, 30. PRDM1, 31. GATA3, 32. RORC
+
+    *   Wait, the prompt says "Respond directly with only the numbered format below."
+    *   1. Reflection: ...
+    *   2. Research Plan: ...
+    *   3. Solution: ...
+    *   Check for bold/markdown. None.
+
+    *   TBX21 (T-bet) - Essential for IFNG.
+    *   STAT1, STAT4 - Key signaling.
+    *   JAK1, JAK2, JAK3, TYK2 - Kinases.
+    *   IRF1, IRF4 - Interferon regulatory factors.
+    *   SOCS1, SOCS3 - Negative regulators.
+    *   IL12RB1, IL12RB2 - Receptors.
+    *   CD28, CTLA4, PDCD1, LAG3, TIGIT - Co-stim/inhibitory.
+    *   ZAP70, LCK - TCR signaling.
+    *   BCL6, GATA3, RORC - Lineage transcription factors (often antagonistic to Th1/IFNG).
+    *   NFKB1, RELA, JUN, FOS, MYC - General transcription.
+    *   CBP, EP300 - Co-activators.
+    *   PRDM1 (Blimp-1) - Regulator.
+
+    *   Total: 32.
+
+    *   No Markdown formatting? Check.
+    *   No headers? Check.
+    *   No bold text? Check.
+    *   Respond directly with only the numbered format? Check.
+    *   No reasoning, drafts, or text outside? Check.
+    *   No genes from prompt? (IFNG is excluded). Check.
+
+    *   1. Reflection: This is the initial phase of the genome-wide screen, and no experimental data has been collected yet. The priority is to select a diverse set of candidates including known positive and negative regulators of IFNG.
+    *   2. Research Plan: I will employ a targeted approach in the first round by selecting genes involved in the JAK-STAT pathway and T-cell activation. Subsequent rounds will use the observed log fold change scores to identify novel regulators via an iterative enrichment process. I will balance known targets with random samples to ensure coverage of the genome. This strategy aims to maximize the discovery of key regulators within a few rounds.
+    *   3. Solution: 1. TBX21, 2. STAT1, 3. STAT4, 4. STAT6, 5. JAK1, 6. JAK2, 7. JAK3, 8. TYK2, 9. IRF1, 10. IRF4, 11. NFKB1, 12. RELA, 13. CBP, 14. EP300, 15. SOCS1, 16. SOCS3, 17. IL12RB1, 18. IL12RB2, 19. CD28, 20. CTLA4, 21. PDCD1, 22. LAG3, 23. TIGIT, 24. ZAP70, 25. LCK, 26. MYC, 27. JUN, 28. FOS, 29. BCL6, 30. PRDM1, 31. GATA3, 32. RORC
+
+    *   Check for any bold or markdown again.
+    *   "1. Reflection: ..."
+    *   "2. Research Plan: ..."
+    *   "3. Solution: ..."
+    *   Looks clean.
+
+    *   Wait, the prompt says "Respond directly with only the numbered format below."
+    *   1. Reflection: ...
+    *   2. Research Plan: ...
+    *   3. Solution: ...
+    *   Ensure no bolding of "Reflection:", "Research Plan:", or "Solution:".
+
+    *   Double check gene count:
+        1 TBX21, 2 STAT1, 3 STAT4, 4 STAT6, 5 JAK1, 6 JAK2, 7 JAK3, 8 TYK2, 9 IRF1, 10 IRF4, 11 NFKB1, 12 RELA, 13 CBP, 14 EP300, 15 SOCS1, 16 SOCS3, 17 IL12RB1, 18 IL12RB2, 19 CD28, 20 CTLA4, 21 PDCD1, 22 LAG3, 23 TIGIT, 24 ZAP70, 25 LCK, 26 MYC, 27 JUN, 28 FOS, 29 BCL6, 30 PRDM1, 31 GATA3, 32 RORC. (32 genes).
+
+    *   One final check on "no Markdown formatting". This means no `*`, `#`, `_`, `**`, etc.
+
+    *   Final string construction:
+        1. Reflection: This is the initial phase of the genome-wide screen, and no experimental data has been collected yet. The priority is to select a diverse set of candidates including known positive and negative regulators of IFNG.
+        2. Research Plan: I will employ a targeted approach in the first round by selecting genes involved in the JAK-STAT pathway and T-cell activation. Subsequent rounds will use the observed log fold change scores to identify novel regulators via an iterative enrichment process. I will balance known targets with random samples to ensure coverage of the genome. This strategy aims to maximize the discovery of key regulators within a few rounds.
+        3. Solution: 1. TBX21, 2. STAT1, 3. STAT4, 4. STAT6, 5. JAK1, 6. JAK2, 7. JAK3, 8. TYK2, 9. IRF1, 10. IRF4, 11. NFKB1, 12. RELA, 13. CBP, 14. EP300, 15. SOCS1, 16. SOCS3, 17. IL12RB1, 18. IL12RB2, 19. CD28, 20. CTLA4, 21. PDCD1, 22. LAG3, 23. TIGIT, 24. ZAP70, 25. LCK, 26. MYC, 27. JUN, 28. FOS, 29. BCL6, 30. PRDM1, 31. GATA3, 32. RORC</thought>1. Reflection: This is the initial phase of the genome-wide screen, and no experimental data has been collected yet. The priority is to select a diverse set of candidates including known positive and negative regulators of IFNG.
+2. Research Plan: I will employ a targeted approach in the first round by selecting genes involved in the JAK-STAT pathway and T-cell activation. Subsequent rounds will use the observed log fold change scores to identify novel regulators via an iterative enrichment process. I will balance known targets with random samples to ensure coverage of the genome. This strategy aims to maximize the discovery of key regulators within a few rounds.
+3. Solution: 1. TBX21, 2. STAT1, 3. STAT4, 4. STAT6, 5. JAK1, 6. JAK2, 7. JAK3, 8. TYK2, 9. IRF1, 10. IRF4, 11. NFKB1, 12. RELA, 13. CBP, 14. EP300, 15. SOCS1, 16. SOCS3, 17. IL12RB1, 18. IL12RB2, 19. CD28, 20. CTLA4, 21. PDCD1, 22. LAG3, 23. TIGIT, 24. ZAP70, 25. LCK, 26. MYC, 27. JUN, 28. FOS, 29. BCL6, 30. PRDM1, 31. GATA3, 32. RORC
+===================tokens=====================
+Number of prompt tokens: 270
+Number of sampled tokens: 2865
+
+
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 32 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text. Respond directly with only the numbered format below. Do not show your reasoning, drafts, or any text outside this format:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ You have so far predicted 31 out of the required 32 genes for this round. These were: 
+['NFKB1', 'JAK1', 'GATA3', 'RELA', 'ZAP70', 'SOCS1', 'LCK', 'MYC', 'LAG3', 'IRF4', 'CTLA4', 'TBX21', 'RORC', 'STAT4', 'STAT1', 'CD28', 'BCL6', 'TIGIT', 'PRDM1', 'PDCD1', 'EP300', 'STAT6', 'IRF1', 'IL12RB2', 'JAK2', 'SOCS3', 'FOS', 'JUN', 'JAK3', 'IL12RB1', 'TYK2']
+ Please add 1 more genes to this list. Remember not to include previously tested genes including: 
+ ['CBP'] 
+
+Assistant:
+===================gemma-4-31b-it response (8000)=====================
+<thought>*   Role: Scientist in drug discovery.
+    *   Goal*   Role: Scientist in drug discovery.
+    *   Goal: Identify genes regulating Interferon-gamma (IFNG) production via genome-wide CRISPR screen.
+    *   Constraints: 18,939 genes total, 32 genes per round.
+    *   Current state: 31 genes already selected for the current round. Need 1 more gene.
+    *   Previously selected/tested genes: ['NFKB1', 'JAK1', 'GATA3', 'RELA', 'ZAP70', 'SOCS1', 'LCK', 'MYC', 'LAG3', 'IRF4', 'CTLA4', 'TBX21', 'RORC', 'STAT4', 'STAT1', 'CD28', 'BCL6', 'TIGIT', 'PRDM1', 'PDCD1', 'EP300', 'STAT6', 'IRF1', 'IL12RB2', 'JAK2', 'SOCS3', 'FOS', 'JUN', 'JAK3', 'IL12RB1', 'TYK2'] and ['CBP'].
+    *   Constraint: No Markdown, no headers, no bold, exact numbered format.
+
+    *   IFNG is primarily produced by T cells (Th1) and NK cells.
+    *   Key regulators: JAK-STAT pathway (JAK1, JAK2, JAK3, TYK2, STAT1, STAT4, STAT6), T-cell receptors (CD28, ZAP70, LCK), transcription factors (TBX21/T-bet, GATA3, RORC, IRF1, IRF4), and inhibitory receptors (PDCD1, CTLA4, LAG3, TIGIT).
+    *   The current list covers most of these.
+    *   What's missing?
+        *   T-bet (TBX21) is there.
+        *   STATs are mostly there.
+        *   Maybe something related to the TCR signaling or cytokine receptors?
+        *   IL-12 signaling is covered (IL12RB1, IL12RB2).
+        *   What about *TBC1D1*? No.
+        *   What about *PTPN22*? (Phosphatase)
+        *   What about *TCR* components? (CD3 subunits)
+        *   What about *NFAT*? (Nuclear factor of activated T-cells). NFATC1, NFATC2.
+        *   What about *BATF*? (Basic leucine zipper ATF-like transcription factor).
+        *   What about *T-bet* co-regulators?
+        *   *STAT3*? (Not in the list: STAT1, 4, 6 are there). STAT3 is often involved in Th17/Treg but also plays roles in IFNG.
+        *   *IRF8*? (Interferon Regulatory Factor 8).
+        *   *PIK3CD*? (Phosphoinositide 3-kinase).
+
+    *   NFATC1 is a crucial transcription factor for T-cell activation and cytokine production, including IFNG.
+
+    *   1. Reflection: The current selection focuses heavily on the JAK-STAT pathway and T-cell lineage-defining transcription factors. Adding a key T-cell activation factor like NFATC1 will broaden the screen to include the TCR-signaling axis.
+    *   2. Research Plan: Identify genes regulating IFNG by screening key signaling pathways. Current status is selecting the first batch of 32 genes. The plan involves targeting transcription factors and kinases known to influence T-cell effector functions.
+    *   3. Solution: 1. NFATC1
+
+    *   Check for Markdown: None.
+    *   Check for headers: None.
+    *   Check for bold: None.
+    *   Check for previously tested genes:
+        *   List: NFKB1, JAK1, GATA3, RELA, ZAP70, SOCS1, LCK, MYC, LAG3, IRF4, CTLA4, TBX21, RORC, STAT4, STAT1, CD28, BCL6, TIGIT, PRDM1, PDCD1, EP300, STAT6, IRF1, IL12RB2, JAK2, SOCS3, FOS, JUN, JAK3, IL12RB1, TYK2, CBP.
+        *   NFATC1 is not in this list.
+
+    1. Reflection: The current selection focuses on the JAK-STAT pathway and lineage-specific transcription factors. Including a member of the NFAT family will allow for the evaluation of TCR-mediated activation signals.
+    2. Research Plan: Identify genes regulating IFNG by screening key signaling pathways. Current status is selecting the first batch of 32 genes. The plan involves targeting transcription factors and kinases known to influence T-cell effector functions.
+    3. Solution: 1. NFATC1</thought>1. Reflection: The current selection focuses on the JAK-STAT pathway and lineage-specific transcription factors. Including a member of the NFAT family will allow for the evaluation of TCR-mediated activation signals.
+2. Research Plan: Identify genes regulating IFNG by screening key signaling pathways. Current status is selecting the first batch of 32 genes. The plan involves targeting transcription factors and kinases known to influence T-cell effector functions.
+3. Solution: 1. NFATC1
+===================tokens=====================
+Number of prompt tokens: 464
+Number of sampled tokens: 1188
+
+

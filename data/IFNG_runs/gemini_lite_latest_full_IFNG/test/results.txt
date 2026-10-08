@@ -1,0 +1,8 @@
+dataset IFNG --rounds 5 --essential 1
+python analyze.py --model gemini_lite_full --dataset IFNG --rounds 5 --essential 0
+gemini_lite_full_IFNG/test/sampled_genes_5.npy
+[0.08369565217391305]
+Model: gemini_lite_full, Data: IFNG, mean: 0.08369565217391305, std: 0.0
+gemini_lite_full_IFNG/test/sampled_genes_5.npy
+[0.09600997506234414]
+Model: gemini_lite_full, Data: IFNG, mean: 0.09600997506234414, std: 0.0

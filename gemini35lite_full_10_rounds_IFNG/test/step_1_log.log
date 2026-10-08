@@ -1,0 +1,314 @@
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 64 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+            Score
+Gene             
+IL10     0.151242
+IRF4     0.059575
+NFATC2   0.120780
+JAK2     0.132444
+IL2     -0.142710
+IL12A    0.128751
+TNF      0.272485
+STAT4   -0.282660
+IRF2    -0.094631
+RORC     0.158696
+IRF1    -0.029467
+SMAD3    0.122430
+MTOR     0.030743
+SMARCA4  0.113642
+IL12B    0.106245
+PIK3CA   0.107444
+IKZF1    0.018345
+STAT6   -0.039385
+SMAD2    0.101575
+NOTCH1   0.021485
+FOXP3    0.145110
+HDAC2   -0.231770
+TET2    -0.274905
+IL18     0.064003
+AKT1     0.217375
+CREB1   -0.099681
+STAT5A   0.070219
+TP53    -0.292370
+IRF8    -0.284585
+STAT1   -0.023106
+BCL6    -0.058293
+FOS     -0.359215
+DNMT1    0.371030
+GATA3    0.057780
+STAT5B   0.010015
+SMAD4    0.080494
+RUNX1    0.075455
+IL4     -0.063854
+MYC      0.365965
+SOCS1    0.185722
+EP300    0.268732
+HDAC1   -0.151240
+ARID1A   0.102370
+NFKB1    0.125557
+NFATC1   0.048841
+ATM     -0.043015
+IRF5    -0.042555
+BCL2     0.016410
+ You have successfully identified 16 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+RELA   -0.840910
+CBFB   -0.467805
+SOCS3   0.536160
+REL    -0.459650
+PRDM1  -0.785260
+CD28   -2.171850
+JAK1   -1.389050
+STAT3  -1.048600
+IFNGR2 -0.975910
+IFNGR1 -0.898070
+JUN    -0.726000
+MAPK1  -0.449405
+CREBBP -0.563725
+IFNG   -1.687800
+MAPK3  -0.734105
+TBX21  -1.401000
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 64 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Reflection: Previous rounds successfully identified major regulators of IFNG production such as CD28, JAK1, STAT3, and TBX21, showing strong negative log fold changes. Building on these pathways, the next step is to target upstream and downstream components of JAK-STAT, MAPK, and TCR signaling, as well as chromatin remodelers and transcription factors known to interact with these hits.
+2. Research Plan: We are executing a genome-wide CRISPR screen in batches of 64 genes to find regulators of IFNG production. Status: Several key hits in cytokine signaling and transcription have been uncovered. Reasoning: We will now select candidate genes from related pathways such as cytokine receptors, NF-kappaB signaling, and additional STAT/IRF family members to expand our network of high-confidence regulators.
+3. Solution: 1. JAK3, 2. TYK2, 3. IL6ST, 4. IL2RA, 5. IL2RB, 6. IL7R, 7. IL12RB1, 8. IL12RB2, 9. IFNAR1, 10. IFNAR2, 11. IRF3, 12. IRF7, 13. IRF9, 14. STAT2, 15. SOCS2, 16. PIK3R1, 17. AKT2, 18. AKT3, 19. PRKCQ, 20. ZAP70, 21. LCK, 22. FYN, 23. VAV1, 24. LAT, 25. PLCG1, 26. NFAM1, 27. IKBKB, 28. CHUK, 29. IKBKG, 30. NFKBIE, 31. BCL10, 32. MALT1, 33. CARD11, 34. TRAF6, 35. IRAK1, 36. IRAK4, 37. MYD88, 38. TLR4, 39. CD80, 40. CD86, 41. CTLA4, 42. PDCD1, 43. CD247, 44. CD3D, 45. CD3E, 46. CD3G, 47. IL15, 48. IL21, 49. IL21R, 50. SMAD1, 51. SMAD5, 52. SMAD7, 53. TGFB1, 54. TGFBR1, 55. TGFBR2, 56. RNF40, 57. SETD2, 58. KMT2A, 59. KMT2C, 60. KMT2D, 61. SMARCB1, 62. SMARCC1, 63. SMARCC2, 64. ACTL6A
+===================tokens=====================
+Number of prompt tokens: 970
+Number of sampled tokens: 625
+
+
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 64 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+            Score
+Gene             
+IL10     0.151242
+IRF4     0.059575
+NFATC2   0.120780
+JAK2     0.132444
+IL2     -0.142710
+IL12A    0.128751
+TNF      0.272485
+STAT4   -0.282660
+IRF2    -0.094631
+RORC     0.158696
+IRF1    -0.029467
+SMAD3    0.122430
+MTOR     0.030743
+SMARCA4  0.113642
+IL12B    0.106245
+PIK3CA   0.107444
+IKZF1    0.018345
+STAT6   -0.039385
+SMAD2    0.101575
+NOTCH1   0.021485
+FOXP3    0.145110
+HDAC2   -0.231770
+TET2    -0.274905
+IL18     0.064003
+AKT1     0.217375
+CREB1   -0.099681
+STAT5A   0.070219
+TP53    -0.292370
+IRF8    -0.284585
+STAT1   -0.023106
+BCL6    -0.058293
+FOS     -0.359215
+DNMT1    0.371030
+GATA3    0.057780
+STAT5B   0.010015
+SMAD4    0.080494
+RUNX1    0.075455
+IL4     -0.063854
+MYC      0.365965
+SOCS1    0.185722
+EP300    0.268732
+HDAC1   -0.151240
+ARID1A   0.102370
+NFKB1    0.125557
+NFATC1   0.048841
+ATM     -0.043015
+IRF5    -0.042555
+BCL2     0.016410
+ You have successfully identified 16 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+RELA   -0.840910
+CBFB   -0.467805
+SOCS3   0.536160
+REL    -0.459650
+PRDM1  -0.785260
+CD28   -2.171850
+JAK1   -1.389050
+STAT3  -1.048600
+IFNGR2 -0.975910
+IFNGR1 -0.898070
+JUN    -0.726000
+MAPK1  -0.449405
+CREBBP -0.563725
+IFNG   -1.687800
+MAPK3  -0.734105
+TBX21  -1.401000
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 64 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 62 out of the required 64 genes for this round. These were: 
+['AKT3', 'TLR4', 'IRF3', 'ZAP70', 'KMT2A', 'AKT2', 'IFNAR1', 'IL2RA', 'CD80', 'IFNAR2', 'IRAK4', 'IKBKB', 'FYN', 'KMT2D', 'SMARCC2', 'IL21R', 'CD86', 'SMAD5', 'TRAF6', 'MALT1', 'MYD88', 'IL15', 'IL12RB2', 'CD247', 'STAT2', 'SOCS2', 'TYK2', 'SETD2', 'IL2RB', 'IL12RB1', 'NFAM1', 'IL21', 'CARD11', 'TGFBR2', 'PRKCQ', 'SMARCC1', 'IL7R', 'CTLA4', 'SMARCB1', 'IRAK1', 'LCK', 'CD3E', 'PLCG1', 'CD3G', 'KMT2C', 'IL6ST', 'ACTL6A', 'VAV1', 'PDCD1', 'IRF7', 'JAK3', 'SMAD7', 'NFKBIE', 'CHUK', 'TGFBR1', 'BCL10', 'IRF9', 'TGFB1', 'RNF40', 'CD3D', 'PIK3R1', 'IKBKG']
+ Please add 2 more genes to this list. Remember not to include previously tested genes including: 
+ ['LAT', 'SMAD1'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Reflection: I have successfully analyzed a robust set of genes regulating IFNG production, incorporating key immune signaling and transcription factors. To complete the batch of 64 genes for this experimental round, I need to select two additional unvalidated candidates involved in T cell activation or cytokine signaling.
+2. Research Plan: The current status involves compiling a comprehensive CRISPR screening library focusing on inflammatory and immunomodulatory pathways. By adding high-confidence targets related to IFNG regulation, I aim to maximize the discovery of novel regulators. The reasoning relies on targeting proximal kinases and transcription factors that drive interferon expression. Current progress stands at 62 genes selected, and adding the final two will complete this round.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. LAT, 2. SMAD1
+===================tokens=====================
+Number of prompt tokens: 1338
+Number of sampled tokens: 174
+
+
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 64 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+            Score
+Gene             
+IL10     0.151242
+IRF4     0.059575
+NFATC2   0.120780
+JAK2     0.132444
+IL2     -0.142710
+IL12A    0.128751
+TNF      0.272485
+STAT4   -0.282660
+IRF2    -0.094631
+RORC     0.158696
+IRF1    -0.029467
+SMAD3    0.122430
+MTOR     0.030743
+SMARCA4  0.113642
+IL12B    0.106245
+PIK3CA   0.107444
+IKZF1    0.018345
+STAT6   -0.039385
+SMAD2    0.101575
+NOTCH1   0.021485
+FOXP3    0.145110
+HDAC2   -0.231770
+TET2    -0.274905
+IL18     0.064003
+AKT1     0.217375
+CREB1   -0.099681
+STAT5A   0.070219
+TP53    -0.292370
+IRF8    -0.284585
+STAT1   -0.023106
+BCL6    -0.058293
+FOS     -0.359215
+DNMT1    0.371030
+GATA3    0.057780
+STAT5B   0.010015
+SMAD4    0.080494
+RUNX1    0.075455
+IL4     -0.063854
+MYC      0.365965
+SOCS1    0.185722
+EP300    0.268732
+HDAC1   -0.151240
+ARID1A   0.102370
+NFKB1    0.125557
+NFATC1   0.048841
+ATM     -0.043015
+IRF5    -0.042555
+BCL2     0.016410
+ You have successfully identified 16 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+RELA   -0.840910
+CBFB   -0.467805
+SOCS3   0.536160
+REL    -0.459650
+PRDM1  -0.785260
+CD28   -2.171850
+JAK1   -1.389050
+STAT3  -1.048600
+IFNGR2 -0.975910
+IFNGR1 -0.898070
+JUN    -0.726000
+MAPK1  -0.449405
+CREBBP -0.563725
+IFNG   -1.687800
+MAPK3  -0.734105
+TBX21  -1.401000
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 64 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 62 out of the required 64 genes for this round. These were: 
+['AKT3', 'TLR4', 'IRF3', 'ZAP70', 'KMT2A', 'AKT2', 'IFNAR1', 'IL2RA', 'CD80', 'IFNAR2', 'IRAK4', 'IKBKB', 'FYN', 'KMT2D', 'SMARCC2', 'IL21R', 'CD86', 'SMAD5', 'TRAF6', 'MALT1', 'MYD88', 'IL15', 'IL12RB2', 'CD247', 'STAT2', 'SOCS2', 'TYK2', 'SETD2', 'IL2RB', 'IL12RB1', 'NFAM1', 'IL21', 'CARD11', 'TGFBR2', 'PRKCQ', 'SMARCC1', 'IL7R', 'CTLA4', 'SMARCB1', 'IRAK1', 'LCK', 'CD3E', 'PLCG1', 'CD3G', 'KMT2C', 'IL6ST', 'ACTL6A', 'VAV1', 'PDCD1', 'IRF7', 'JAK3', 'SMAD7', 'NFKBIE', 'CHUK', 'TGFBR1', 'BCL10', 'IRF9', 'TGFB1', 'RNF40', 'CD3D', 'PIK3R1', 'IKBKG']
+ Please add 2 more genes to this list. Remember not to include previously tested genes including: 
+ ['LAT', 'SMAD1'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Reflection: We have successfully integrated core T cell receptor and cytokine signaling components into our screening library and now need to finalize the 64-gene batch. Adding key co-receptors will help capture broader upstream regulatory nodes of IFNG production.
+2. Research Plan: Our iterative screening strategy targets pathways intimately connected to Interferon-gamma regulation, including JAK-STAT, MAPK, and TCR signaling components. We leverage hits and negative regulators from previous rounds to focus our perturbation space. By completing this 64-gene batch with critical immune receptors, we aim to uncover novel regulators. This brings us closer to mapping the complete regulatory network of IFNG.
+3. Solution: 1. AKT3, 2. TLR4, 3. IRF3, 4. ZAP70, 5. KMT2A, 6. AKT2, 7. IFNAR1, 8. IL2RA, 9. CD80, 10. IFNAR2, 11. IRAK4, 12. IKBKB, 13. FYN, 14. KMT2D, 15. SMARCC2, 16. IL21R, 17. CD86, 18. SMAD5, 19. TRAF6, 20. MALT1, 21. MYD88, 22. IL15, 23. IL12RB2, 24. CD247, 25. STAT2, 26. SOCS2, 27. TYK2, 28. SETD2, 29. IL2RB, 30. IL12RB1, 31. NFAM1, 32. IL21, 33. CARD11, 34. TGFBR2, 35. PRKCQ, 36. SMARCC1, 37. IL7R, 38. CTLA4, 39. SMARCB1, 40. IRAK1, 41. LCK, 42. CD3E, 43. PLCG1, 44. CD3G, 45. KMT2C, 46. IL6ST, 47. ACTL6A, 48. VAV1, 49. PDCD1, 50. IRF7, 51. JAK3, 52. SMAD7, 53. NFKBIE, 54. CHUK, 55. TGFBR1, 56. BCL10, 57. IRF9, 58. TGFB1, 59. RNF40, 60. CD3D, 61. PIK3R1, 62. IKBKG, 63. CD4, 64. CD8A
+===================tokens=====================
+Number of prompt tokens: 1338
+Number of sampled tokens: 593
+
+

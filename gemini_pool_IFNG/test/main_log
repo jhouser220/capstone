@@ -1,0 +1,15 @@
+Enabled Tools:['Reflection', 'Arxiv Search']
+================================Start=============================
+You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text. Respond directly with only the numbered format below. Do not show your reasoning, drafts, or any text outside this format:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of 350 candidate genes to test, each followed by a confidence score from 1 to 5 in parentheses (5 = very confident it will be a strong hit, 1 = speculative), separated by commas in this format: 1. <Gene name 1> (<score>), 2. <Gene name 2> (<score>) ... I will only test the 128 candidates with the highest scores, so use the full 1-5 range and reserve 5 for your most promising candidates.
+Do not include any genes from this prompt (since they're already tested).
+
+
+Step 0:

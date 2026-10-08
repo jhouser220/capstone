@@ -1,0 +1,33 @@
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 32 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+ 
+
+Assistant:
+===================gemini-3.8-flash response (8000)=====================
+1. Reflection: As this is the initial round with no prior perturbation data, the optimal strategy is to test key canonical regulators of IFNG expression spanning master transcription factors, cytokine receptors, TCR signaling components, and known negative feedback regulators. This established baseline will confirm assay sensitivity and map out primary pathways controlling IFNG production.
+
+2. Research Plan: We will start by targeting core pathways known to govern IFNG transcription and T/NK cell activation, including the IL-12/STAT4 axis, TCR signaling machinery, and major epigenetic or repressive checkpoints. After gathering initial scores, we will evaluate pathway enrichment to direct subsequent rounds toward either pathway expansion or discovery of understudied interacting partners. In parallel, identifying potent positive and negative controls will benchmark dynamic range. The current status is Round 1 testing canonical drivers and inhibitors of IFNG.
+
+3. Solution: 1. TBX21, 2. STAT4, 3. RUNX3, 4. EOMES, 5. IL12RB1, 6. IL12RB2, 7. IL18R1, 8. IL18RAP, 9. JAK2, 10. TYK2, 11. IRF1, 12. CD3E, 13. CD28, 14. LCK, 15. ZAP70, 16. NFKB1, 17. RELA, 18. MAP3K8, 19. PRDM1, 20. BCL6, 21. GATA3, 22. STAT6, 23. FOXP3, 24. SOCS1, 25. SOCS3, 26. PTPN2, 27. CBLB, 28. INPP5D, 29. ZEB2, 30. BATF, 31. ITK, 32. NFATC2
+===================tokens=====================
+Number of prompt tokens: 246
+Number of sampled tokens: 402
+
+

@@ -1,0 +1,71 @@
+
+===================prompt=====================
+
+
+Human: You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+            
+
+
+Now for the next round of experiment your students are planning on testing the following genes: 
+['TNFSF4', 'ZAP70', 'RUNX3', 'SOCS3', 'EOMES', 'TNFRSF4', 'IL6', 'TP53', 'IL18R1', 'IFNA1', 'IL12RB1', 'PDCD1', 'CD28', 'JAK2', 'IL13', 'IL4R', 'CD40', 'MTOR', 'MYC', 'IL13RA1', 'IL18', 'IRF3', 'FOS', 'STAT3', 'PRKCQ', 'IKZF3', 'RNF125', 'RELA', 'CBL', 'TBX21', 'IL2RB', 'TNFRSF9', 'BCL6', 'TIGIT', 'OAS1', 'ITK', 'IFNG', 'JAK3', 'EIF2AK2', 'NFATC1', 'CBLB', 'CGAS', 'PLCG1', 'REL', 'FOXP3', 'JUN', 'USP18', 'IL7', 'MALT1', 'STAT1', 'IL12RB2', 'SOCS2', 'AICDA', 'LCK', 'NFKB1', 'LAG3', 'IL4', 'TRIM25', 'IL21R', 'IRF1', 'IL15', 'IRF7', 'PIAS1', 'IKZF1', 'IL27RA', 'ISG15', 'STAT6', 'PRDM1', 'HAVCR2', 'IL2', 'JAK1', 'TYK2', 'STAT2', 'IL1B', 'PTPN1', 'CISH', 'IL10', 'SOCS1', 'GATA3', 'TGFB1', 'TNF', 'RNASEL', 'IRF8', 'BTLA', 'AIM2', 'IL21', 'IRF2', 'STAT5A', 'BCL10', 'STAT4', 'IFNB1', 'IL2RG', 'STAT5B', 'PIK3CA', 'ICOS', 'MX1', 'IL2RA', 'ATM', 'CD3E', 'AKT1', 'IFNAR2', 'IFNAR1', 'CARD11', 'TBK1', 'RORC', 'FYN', 'NFATC2', 'CD40LG', 'CTLA4', 'CD274', 'PTPN2', 'CASP1', 'MAVS', 'CREB1', 'VAV1', 'STING1', 'ADAR', 'ITCH', 'SMAD3', 'PTPN6', 'IRF4', 'CSF2', 'IL9', 'TBKBP1', 'IL17A', 'IRF5', 'TRAF6', 'IRF9']
+
+As an advisor, please critique this plan and suggest some changes to it. Use this format: 
+1. Critique: include all relevant details of the critique.  
+2. Updated Solution: Give an updated selection of 128 genes based on the critique separated by commas in this format:: 1. <Gene name 1>, 2. <Gene name 2> ... 
+
+
+Please do not critique/make changes if there is no need to make a change.
+
+ 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Critique: The students have selected a very logical and biologically relevant set of 128 genes known to be involved in Interferon-gamma (IFNG) regulation, T-cell activation, cytokine signaling (JAK-STAT pathway), and immune checkpoint pathways. However, there are a few notable issues and optimization opportunities:
+- **Redundancy/Duplicates:** The list contains both 'TNFSF4' and 'TNFRSF4' (which are synonyms for OX40 and its ligand). 
+- **Control and Housekeeping Genes:** The current list lacks standard positive and negative controls (such as safe-targeting guides, essential genes for cell survival, or direct known regulators like *STAT1* or *IFNG* itself as a positive control, though *IFNG* is present, explicit non-targeting controls are missing from the gene list itself).
+- **Scope Expansion:** Since the goal of a genome-wide CRISPR screen is often discovery, relying entirely on a biased candidate list of known immunology genes misses the opportunity to explore novel regulators from the broader genome, though candidate-based rounds are standard in active learning loops. Assuming this is an active learning iteration where the model suggested known high-value targets, the inclusion of direct pathway components is good, but we should ensure no critical pathway bottlenecks (like *IRF1*, *STAT1*, *JAK1*, *IFNG*) are missed while removing exact duplicates.
+
+2. Updated Solution: 1. TNFSF4, 2. ZAP70, 3. RUNX3, 4. SOCS3, 5. EOMES, 6. IL6, 7. TP53, 8. IL18R1, 9. IFNA1, 10. IL12RB1, 11. PDCD1, 12. CD28, 13. JAK2, 14. IL13, 15. IL4R, 16. CD40, 17. MTOR, 18. MYC, 19. IL13RA1, 20. IL18, 21. IRF3, 22. FOS, 23. STAT3, 24. PRKCQ, 25. IKZF3, 26. RNF125, 27. RELA, 28. CBL, 29. TBX21, 30. IL2RB, 31. TNFRSF9, 32. BCL6, 33. TIGIT, 34. OAS1, 35. ITK, 36. IFNG, 37. JAK3, 38. EIF2AK2, 39. NFATC1, 40. CBLB, 41. CGAS, 42. PLCG1, 43. REL, 44. FOXP3, 45. JUN, 46. USP18, 47. IL7, 48. MALT1, 49. STAT1, 50. IL12RB2, 51. SOCS2, 52. AICDA, 53. LCK, 54. NFKB1, 55. LAG3, 56. IL4, 57. TRIM25, 58. IL21R, 59. IRF1, 60. IL15, 61. IRF7, 62. PIAS1, 63. IKZF1, 64. IL27RA, 65. ISG15, 66. STAT6, 67. PRDM1, 68. HAVCR2, 69. IL2, 70. JAK1, 71. TYK2, 72. STAT2, 73. IL1B, 74. PTPN1, 75. CISH, 76. IL10, 77. SOCS1, 78. GATA3, 79. TGFB1, 80. TNF, 81. RNASEL, 82. IRF8, 83. BTLA, 84. AIM2, 85. IL21, 86. IRF2, 87. STAT5A, 88. BCL10, 89. STAT4, 90. IFNB1, 91. IL2RG, 92. STAT5B, 93. PIK3CA, 94. ICOS, 95. MX1, 96. IL2RA, 97. ATM, 98. CD3E, 99. AKT1, 100. IFNAR2, 101. IFNAR1, 102. CARD11, 103. TBK1, 104. RORC, 105. FYN, 106. NFATC2, 107. CD40LG, 108. CTLA4, 109. CD274, 110. PTPN2, 111. CASP1, 112. MAVS, 113. CREB1, 114. VAV1, 115. STING1, 116. ADAR, 117. ITCH, 118. SMAD3, 119. PTPN6, 120. IRF4, 121. CSF2, 122. IL9, 123. TBKBP1, 124. IL17A, 125. IRF5, 126. TRAF6, 127. IRF9, 128. SOCS4
+===================tokens=====================
+Number of prompt tokens: 848
+Number of sampled tokens: 1173
+
+
+
+===================prompt=====================
+
+
+Human: You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+            
+
+
+Now for the next round of experiment your students are planning on testing the following genes: 
+['TNFSF4', 'ZAP70', 'RUNX3', 'SOCS3', 'EOMES', 'TNFRSF4', 'IL6', 'TP53', 'IL18R1', 'IFNA1', 'IL12RB1', 'PDCD1', 'CD28', 'JAK2', 'IL13', 'IL4R', 'CD40', 'MTOR', 'MYC', 'IL13RA1', 'IL18', 'IRF3', 'FOS', 'STAT3', 'PRKCQ', 'IKZF3', 'RNF125', 'RELA', 'CBL', 'TBX21', 'IL2RB', 'TNFRSF9', 'BCL6', 'TIGIT', 'OAS1', 'ITK', 'IFNG', 'JAK3', 'EIF2AK2', 'NFATC1', 'CBLB', 'CGAS', 'PLCG1', 'REL', 'FOXP3', 'JUN', 'USP18', 'IL7', 'MALT1', 'STAT1', 'IL12RB2', 'SOCS2', 'AICDA', 'LCK', 'NFKB1', 'LAG3', 'IL4', 'TRIM25', 'IL21R', 'IRF1', 'IL15', 'IRF7', 'PIAS1', 'IKZF1', 'IL27RA', 'ISG15', 'STAT6', 'PRDM1', 'HAVCR2', 'IL2', 'JAK1', 'TYK2', 'STAT2', 'IL1B', 'PTPN1', 'CISH', 'IL10', 'SOCS1', 'GATA3', 'TGFB1', 'TNF', 'RNASEL', 'IRF8', 'BTLA', 'AIM2', 'IL21', 'IRF2', 'STAT5A', 'BCL10', 'STAT4', 'IFNB1', 'IL2RG', 'STAT5B', 'PIK3CA', 'ICOS', 'MX1', 'IL2RA', 'ATM', 'CD3E', 'AKT1', 'IFNAR2', 'IFNAR1', 'CARD11', 'TBK1', 'RORC', 'FYN', 'NFATC2', 'CD40LG', 'CTLA4', 'CD274', 'PTPN2', 'CASP1', 'MAVS', 'CREB1', 'VAV1', 'STING1', 'ADAR', 'ITCH', 'SMAD3', 'PTPN6', 'IRF4', 'CSF2', 'IL9', 'TBKBP1', 'IL17A', 'IRF5', 'TRAF6', 'IRF9']
+
+As an advisor, please critique this plan and suggest some changes to it. Use this format: 
+1. Critique: include all relevant details of the critique.  
+2. Updated Solution: Give an updated selection of 128 genes based on the critique separated by commas in this format:: 1. <Gene name 1>, 2. <Gene name 2> ... 
+
+
+Please do not critique/make changes if there is no need to make a change.
+
+
+ You have so far predicted 127 out of the required 128 genes for this round. These were: 
+['TNFSF4', 'ADAR', 'ZAP70', 'SOCS3', 'RUNX3', 'EOMES', 'IL6', 'TP53', 'IL18R1', 'IFNA1', 'IL12RB1', 'PDCD1', 'CD28', 'JAK2', 'IL13', 'TBKBP1', 'TRAF6', 'IL4R', 'CD40', 'MTOR', 'MYC', 'IL13RA1', 'IL18', 'IL9', 'IRF3', 'FOS', 'STAT3', 'PRKCQ', 'IKZF3', 'RNF125', 'RELA', 'CBL', 'TBX21', 'IL2RB', 'TNFRSF9', 'BCL6', 'TIGIT', 'OAS1', 'ITK', 'IFNG', 'JAK3', 'EIF2AK2', 'NFATC1', 'CBLB', 'CGAS', 'PLCG1', 'REL', 'IRF5', 'FOXP3', 'JUN', 'USP18', 'IL7', 'MALT1', 'STAT1', 'IL12RB2', 'SOCS2', 'AICDA', 'LCK', 'IL4', 'LAG3', 'NFKB1', 'TRIM25', 'IL21R', 'IRF1', 'IL15', 'IRF7', 'PIAS1', 'IKZF1', 'IL27RA', 'ISG15', 'STAT6', 'PRDM1', 'HAVCR2', 'IL2', 'JAK1', 'TYK2', 'STAT2', 'IL1B', 'PTPN1', 'CISH', 'IL10', 'SOCS1', 'GATA3', 'TGFB1', 'TNF', 'RNASEL', 'IRF8', 'BTLA', 'AIM2', 'IL21', 'IRF2', 'STAT5A', 'BCL10', 'STAT4', 'IFNB1', 'IL2RG', 'STAT5B', 'PIK3CA', 'ICOS', 'MX1', 'IL2RA', 'ATM', 'CD3E', 'AKT1', 'IFNAR2', 'IFNAR1', 'CARD11', 'TBK1', 'RORC', 'FYN', 'NFATC2', 'CSF2', 'CD40LG', 'CTLA4', 'CD274', 'IRF9', 'PTPN2', 'CASP1', 'MAVS', 'CREB1', 'VAV1', 'STING1', 'IL17A', 'ITCH', 'SMAD3', 'PTPN6', 'IRF4']
+ Please add 1 more genes to this list. Remember not to include previously tested genes including: 
+ ['SOCS4'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Critique: The students have selected a comprehensive list of 127 genes spanning key immune pathways, cytokine signaling, and transcription factors related to Interferon-gamma (IFNG). However, the list is missing `IFNGR1` (Interferon Gamma Receptor 1), which is a crucial component for IFNG receptor signaling and a primary candidate for regulating IFNG production and feedback loops. 
+
+2. Updated Solution: 1. TNFSF4, 2. ADAR, 3. ZAP70, 4. SOCS3, 5. RUNX3, 6. EOMES, 7. IL6, 8. TP53, 9. IL18R1, 10. IFNA1, 11. IL12RB1, 12. PDCD1, 13. CD28, 14. JAK2, 15. IL13, 16. TBKBP1, 17. TRAF6, 18. IL4R, 19. CD40, 20. MTOR, 21. MYC, 22. IL13RA1, 23. IL18, 24. IL9, 25. IRF3, 26. FOS, 27. STAT3, 28. PRKCQ, 29. IKZF3, 30. RNF125, 31. RELA, 32. CBL, 33. TBX21, 34. IL2RB, 35. TNFRSF9, 36. BCL6, 37. TIGIT, 38. OAS1, 39. ITK, 40. IFNG, 41. JAK3, 42. EIF2AK2, 43. NFATC1, 44. CBLB, 45. CGAS, 46. PLCG1, 47. REL, 48. IRF5, 49. FOXP3, 50. JUN, 51. USP18, 52. IL7, 53. MALT1, 54. STAT1, 55. IL12RB2, 56. SOCS2, 57. AICDA, 58. LCK, 59. IL4, 60. LAG3, 61. NFKB1, 62. TRIM25, 63. IL21R, 64. IRF1, 65. IL15, 66. IRF7, 67. PIAS1, 68. IKZF1, 69. IL27RA, 70. ISG15, 71. STAT6, 72. PRDM1, 73. HAVCR2, 74. IL2, 75. JAK1, 76. TYK2, 77. STAT2, 78. IL1B, 79. PTPN1, 80. CISH, 81. IL10, 82. SOCS1, 83. GATA3, 84. TGFB1, 85. TNF, 86. RNASEL, 87. IRF8, 88. BTLA, 89. AIM2, 90. IL21, 91. IRF2, 92. STAT5A, 93. BCL10, 94. STAT4, 95. IFNB1, 96. IL2RG, 97. STAT5B, 98. PIK3CA, 99. ICOS, 100. MX1, 101. IL2RA, 102. ATM, 103. CD3E, 104. AKT1, 105. IFNAR2, 106. IFNAR1, 107. CARD11, 108. TBK1, 109. RORC, 110. FYN, 111. NFATC2, 112. CSF2, 113. CD40LG, 114. CTLA4, 115. CD274, 116. IRF9, 117. PTPN2, 118. CASP1, 119. MAVS, 120. CREB1, 121. VAV1, 122. STING1, 123. IL17A, 124. ITCH, 125. SMAD3, 126. PTPN6, 127. IRF4, 128. IFNGR1
+===================tokens=====================
+Number of prompt tokens: 1501
+Number of sampled tokens: 962
+
+

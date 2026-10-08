@@ -1,0 +1,101 @@
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 32 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+ 
+
+Assistant:
+===================gemini-flash-lite-latest response (8000)=====================
+1. Reflection: This is the first round of experimentation for the genome-wide CRISPR screen to identify regulators of IFNG production. Since no prior data is available, I need to select a diverse set of 32 high-confidence candidate genes known to be involved in transcriptional regulation, immune signaling, or cytokine production to maximize the chances of identifying true hits.
+
+2. Research Plan: The goal is to screen 18,939 genes in batches of 32 to find regulators of IFNG. In this first round, I will test a batch of 32 well-characterized immune-related and transcription-factor genes to establish a baseline and identify primary regulators. Subsequent rounds will use iterative machine learning models trained on these initial scores to guide the selection of the next 32 genes. This pooled screening strategy balances exploration and exploitation to efficiently map the regulatory network.
+
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. STAT1, 2. STAT4, 3. TBX21, 4. GATA3, 5. IRF1, 6. IRF2, 7. IRF4, 8. IRF8, 9. NFATC1, 10. NFATC2, 11. JUN, 12. FOS, 13. RELA, 14. NFKB1, 15. SPI1, 16. RUNX1, 17. SMAD3, 18. SOCS1, 19. PRDM1, 20. BCL6, 21. IKZF1, 22. EOMES, 23. RUNX3, 24. FOXP3, 25. MYC, 26. EP300, 27. CREBBP, 28. HDAC1, 29. SMARCA4, 30. ATM, 31. MTOR, 32. AKT1
+===================tokens=====================
+Number of prompt tokens: 246
+Number of sampled tokens: 407
+
+
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 32 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+ 
+
+Assistant:
+===================gemini-flash-lite-latest response (8000)=====================
+1. Reflection: This is the first round of the CRISPR screen, so there are no previous results to reflect upon. Since I can test 32 genes and need to find regulators of IFNG production out of nearly 19,000 candidates, I should start by targeting well-known master regulators and transcription factors associated with IFNG signaling and immune response pathways to maximize the chance of a strong initial signal.
+
+2. Research Plan: I will initiate the screen by targeting top-tier transcription factors and cytokine regulators known to control IFNG expression. The current status is round one, where 32 high-priority candidate genes will be screened simultaneously. By probing these established regulatory nodes first, I can quickly identify core pathway components affecting IFNG log fold change. Subsequent rounds will expand to broader kinase cascades and chromatin modifiers based on these initial hits.
+
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. STAT1, 2. TBX21, 3. IRF1, 4. EOMES, 5. RUNX3, 6. JAK1, 7. JAK2, 8. IFNGRL1, 9. RELA, 10. NFKB1, 11. BCL6, 12. PRDM1, 13. MAF, 14. GATA3, 15. FOXP3, 16. IKZF1, 17. IRF2, 18. IRF4, 19. IRF8, 20. SOCS1, 21. PIAS1, 22. CREB1, 23. JUN, 24. FOS, 25. SMARCA4, 26. EP300, 27. CREBBP, 28. HDAC1, 29. DNMT1, 30. TET2, 31. ATM, 32. ATR
+===================tokens=====================
+Number of prompt tokens: 246
+Number of sampled tokens: 408
+
+
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 32 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ You have so far predicted 30 out of the required 32 genes for this round. These were: 
+['RELA', 'TBX21', 'CREBBP', 'DNMT1', 'IRF4', 'IRF1', 'BCL6', 'JUN', 'JAK2', 'TET2', 'HDAC1', 'IRF8', 'FOXP3', 'ATM', 'IRF2', 'STAT1', 'EP300', 'RUNX3', 'IKZF1', 'CREB1', 'NFKB1', 'JAK1', 'FOS', 'EOMES', 'SMARCA4', 'PIAS1', 'GATA3', 'MAF', 'PRDM1', 'SOCS1']
+ Please add 2 more genes to this list. Remember not to include previously tested genes including: 
+ ['ATR', 'IFNGRL1'] 
+
+Assistant:
+===================gemini-flash-lite-latest response (8000)=====================
+1. Reflection: We have selected 30 key immunomodulatory and transcription factor genes related to IFNG regulation, and we now need to complete the set of 32 by adding two more relevant candidates involved in cytokine signaling or T cell activation. 
+2. Research Plan: The high-level plan involves screening major transcriptional regulators and signaling molecules known to influence IFNG production. Currently, 30 genes have been selected, and we are adding two final candidates to complete the batch for this round. The reasoning is to target upstream kinase regulators that modulate these pathways. 
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. STAT3, 2. STAT4
+===================tokens=====================
+Number of prompt tokens: 443
+Number of sampled tokens: 147
+
+

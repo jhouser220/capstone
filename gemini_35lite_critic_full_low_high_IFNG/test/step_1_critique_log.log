@@ -1,0 +1,681 @@
+
+===================prompt=====================
+
+
+Human: You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+            
+
+ All tested genes so far and their measured log fold change are: 
+             Score
+Gene              
+IRF8     -0.284585
+IL7R      0.095685
+HDAC1    -0.151240
+KDM6B     0.063455
+SMAD4     0.080494
+RPTOR     0.005010
+TET2     -0.274905
+ICOSLG   -0.026299
+IL2      -0.142710
+IL4      -0.063854
+TNFRSF4   0.048077
+IL6ST     0.048858
+CCR7     -0.300105
+ARID1A    0.102370
+CD86      0.191305
+ICOS     -0.074485
+CD40      0.055085
+IKZF1     0.018345
+SMARCA4   0.113642
+TRAF1     0.119425
+TNFSF9   -0.115445
+LTB       0.230505
+IL18R1   -0.011445
+CD40LG   -0.171573
+BTLA      0.146855
+RICTOR    0.340625
+TLR4     -0.041558
+RUNX3    -0.170597
+PDCD1     0.120335
+HAVCR2   -0.038240
+TIGIT    -0.060357
+CSF1R     0.259065
+CD274    -0.043830
+IRF3     -0.237845
+SMAD2     0.101575
+CASP3    -0.273730
+KDM4A    -0.023866
+IRF7      0.178988
+TNF       0.272485
+STAT4    -0.282660
+TP53     -0.292370
+IL10      0.151242
+PIK3CA    0.107444
+IL12RB1  -0.034080
+SMAD3     0.122430
+CASP1    -0.064096
+LTA      -0.187780
+FASLG     0.008183
+MTOR      0.030743
+CD80      0.251915
+BCL2      0.016410
+LAG3      0.325340
+STAT1    -0.023106
+IL2RB     0.253174
+BCL6     -0.058293
+JAK2      0.132444
+TNFSF18  -0.045710
+CCR5     -0.066075
+IL21R    -0.254815
+GZMB      0.090265
+CSF1     -0.041785
+CD70      0.147600
+TNFSF4    0.083280
+CSF2RB    0.131810
+TRAF3     0.109792
+TNFRSF9   0.190045
+IRF1     -0.029467
+EOMES    -0.086910
+MYC       0.365965
+NOTCH1    0.021485
+MAPK8    -0.094135
+IL15RA    0.171787
+CSF2      0.143161
+AKT1      0.217375
+IL6       0.064360
+NFKB1     0.125557
+IRF2     -0.094631
+TNFSF8   -0.026060
+TICAM1   -0.157511
+IL15     -0.035326
+CXCR4     0.078652
+IL12RB2   0.050639
+GATA3     0.057780
+TNFRSF18 -0.301050
+CGAS      0.102712
+FOS      -0.359215
+CXCR3    -0.120325
+IL2RA     0.117304
+PTEN     -0.179804
+TLR9      0.006275
+SOCS1     0.185722
+CTLA4     0.015375
+IL21      0.139604
+TGFB1     0.032735
+IL6R     -0.079140
+MAPK14   -0.244472
+EP300     0.268732
+IRF4      0.059575
+STING1   -0.128400
+HDAC2    -0.231770
+CSF2RA   -0.003960
+CREB1    -0.099681
+TBK1      0.013595
+MYD88     0.054350
+DNMT1     0.371030
+MAVS      0.264290
+ The results for the hits are: 
+            Score
+Gene             
+TSC2     0.459780
+TNFRSF8  0.511525
+RBPJ     0.529285
+PRDM1   -0.785260
+RELA    -0.840910
+MAPK1   -0.449405
+CD27    -0.466994
+TSC1     1.089420
+STAT3   -1.048600
+IL2RG   -0.650145
+REL     -0.459650
+NFKB2    1.584300
+CREBBP  -0.563725
+TRAF6   -1.865400
+SOCS3    0.536160
+TBX21   -1.401000
+JUN     -0.726000
+IFNG    -1.687800
+MAPK3   -0.734105
+JAK1    -1.389050
+CD28    -2.171850
+IFIH1    0.451861
+
+Now for the next round of experiment your students are planning on testing the following genes: 
+['IL1RAP', 'TNFSF10', 'IL23R', 'RNASEL', 'IFNAR2', 'ITK', 'GSK3B', 'LCK', 'SRC', 'FADD', 'RORC', 'IKZF5', 'OAS1', 'IL12B', 'CD8B', 'IL1R1', 'SYK', 'LYN', 'TNFRSF10B', 'MALT1', 'RHEB', 'RPS6KB1', 'VAV1', 'IFNAR1', 'PIK3R1', 'IFIT1', 'IL12A', 'TNFRSF10A', 'BTK', 'AKT2', 'PIK3CD', 'STAT5A', 'CHUK', 'IKBKG', 'IRF9', 'IL23A', 'CASP10', 'TYK2', 'EBI3', 'IKBKB', 'CTNNB1', 'CD8A', 'LST1', 'IRF5', 'IFNB1', 'CD4', 'CD226', 'CD247', 'TNFRSF14', 'IFNGR1', 'NFKBIE', 'CD3E', 'LEF1', 'TNFRSF1A', 'IL27RA', 'IKZF2', 'RUNX1', 'PDCD1LG2', 'BCL10', 'FGR', 'PIK3CG', 'IL10RA', 'JAK3', 'PRKCQ', 'PLCG1', 'RELB', 'CD3D', 'SATB1', 'EIF4E', 'RUNX2', 'IFNGR2', 'MX1', 'CD3G', 'HCK', 'PIK3CB', 'TNFRSF1B', 'FYN', 'CARD11', 'FOXP3', 'STAT5B', 'BLNK', 'SOCS2', 'CASP8', 'IL10RB', 'TCF7', 'ZAP70', 'EIF4EBP1', 'IKZF4', 'NFKBIA', 'AKT3', 'STAT6', 'TOX', 'PDPK1', 'IKZF3', 'IFNA1', 'IL1B', 'TOX2', 'STAT2', 'KLRG1', 'OSMR', 'IL22', 'CD200', 'TSLP', 'LIF', 'IL22RA1', 'IL1RL1', 'IL17A', 'IL17RA', 'CD200R1', 'IL33', 'KITLG', 'IL31', 'CD244', 'CD300A', 'IL31RA', 'SIRPA', 'LIFR', 'LAIR1', 'CD47', 'KIT', 'CD160', 'IL18', 'IL34', 'IL32', 'IL36A', 'IL37', 'IL36G', 'IL36B']
+
+As an advisor, please critique this plan and suggest some changes to it. Use this format: 
+1. Critique: include all relevant details of the critique.  
+2. Updated Solution: Give an updated selection of 128 genes based on the critique separated by commas in this format:: 1. <Gene name 1>, 2. <Gene name 2> ... 
+
+
+Please do not critique/make changes if there is no need to make a change.
+
+ 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. **Critique**: 
+While the students' proposed gene panel contains a solid foundation of TCR signaling components (e.g., LCK, ZAP70, ITK, SYK, VAV1, CD3 chains), CBM complex mediators (CARD11, BCL10, MALT1), JAK-STAT pathway members (TYK2, STAT5A/B, STAT6), and key T-cell transcription factors, it exhibits notable omissions and redundancies. Specifically, it omits critical master transcription factors that synergize with NF-κB, AP-1, and T-bet (TBX21) to drive *IFNG* expression—most importantly the **NFAT family** (NFATC1, NFATC2, NFATC3) and additional AP-1/ETS family regulators (JUNB, JUND, FOSB, BATF, ETS1). Additionally, the inclusion of numerous peripheral interleukin and cytokine genes (such as IL31, IL32, IL34, and the IL36 family) at the tail end is less optimal than targeting core intracellular transcription and epigenetic machinery. 
+
+2. **Updated Solution**: 1. IL1RAP, 2. TNFSF10, 3. IL23R, 4. RNASEL, 5. IFNAR2, 6. ITK, 7. GSK3B, 8. LCK, 9. SRC, 10. FADD, 1
+===================tokens=====================
+Number of prompt tokens: 2170
+Number of sampled tokens: 319
+
+
+
+===================prompt=====================
+
+
+Human: You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+            
+
+ All tested genes so far and their measured log fold change are: 
+             Score
+Gene              
+IRF8     -0.284585
+IL7R      0.095685
+HDAC1    -0.151240
+KDM6B     0.063455
+SMAD4     0.080494
+RPTOR     0.005010
+TET2     -0.274905
+ICOSLG   -0.026299
+IL2      -0.142710
+IL4      -0.063854
+TNFRSF4   0.048077
+IL6ST     0.048858
+CCR7     -0.300105
+ARID1A    0.102370
+CD86      0.191305
+ICOS     -0.074485
+CD40      0.055085
+IKZF1     0.018345
+SMARCA4   0.113642
+TRAF1     0.119425
+TNFSF9   -0.115445
+LTB       0.230505
+IL18R1   -0.011445
+CD40LG   -0.171573
+BTLA      0.146855
+RICTOR    0.340625
+TLR4     -0.041558
+RUNX3    -0.170597
+PDCD1     0.120335
+HAVCR2   -0.038240
+TIGIT    -0.060357
+CSF1R     0.259065
+CD274    -0.043830
+IRF3     -0.237845
+SMAD2     0.101575
+CASP3    -0.273730
+KDM4A    -0.023866
+IRF7      0.178988
+TNF       0.272485
+STAT4    -0.282660
+TP53     -0.292370
+IL10      0.151242
+PIK3CA    0.107444
+IL12RB1  -0.034080
+SMAD3     0.122430
+CASP1    -0.064096
+LTA      -0.187780
+FASLG     0.008183
+MTOR      0.030743
+CD80      0.251915
+BCL2      0.016410
+LAG3      0.325340
+STAT1    -0.023106
+IL2RB     0.253174
+BCL6     -0.058293
+JAK2      0.132444
+TNFSF18  -0.045710
+CCR5     -0.066075
+IL21R    -0.254815
+GZMB      0.090265
+CSF1     -0.041785
+CD70      0.147600
+TNFSF4    0.083280
+CSF2RB    0.131810
+TRAF3     0.109792
+TNFRSF9   0.190045
+IRF1     -0.029467
+EOMES    -0.086910
+MYC       0.365965
+NOTCH1    0.021485
+MAPK8    -0.094135
+IL15RA    0.171787
+CSF2      0.143161
+AKT1      0.217375
+IL6       0.064360
+NFKB1     0.125557
+IRF2     -0.094631
+TNFSF8   -0.026060
+TICAM1   -0.157511
+IL15     -0.035326
+CXCR4     0.078652
+IL12RB2   0.050639
+GATA3     0.057780
+TNFRSF18 -0.301050
+CGAS      0.102712
+FOS      -0.359215
+CXCR3    -0.120325
+IL2RA     0.117304
+PTEN     -0.179804
+TLR9      0.006275
+SOCS1     0.185722
+CTLA4     0.015375
+IL21      0.139604
+TGFB1     0.032735
+IL6R     -0.079140
+MAPK14   -0.244472
+EP300     0.268732
+IRF4      0.059575
+STING1   -0.128400
+HDAC2    -0.231770
+CSF2RA   -0.003960
+CREB1    -0.099681
+TBK1      0.013595
+MYD88     0.054350
+DNMT1     0.371030
+MAVS      0.264290
+ The results for the hits are: 
+            Score
+Gene             
+TSC2     0.459780
+TNFRSF8  0.511525
+RBPJ     0.529285
+PRDM1   -0.785260
+RELA    -0.840910
+MAPK1   -0.449405
+CD27    -0.466994
+TSC1     1.089420
+STAT3   -1.048600
+IL2RG   -0.650145
+REL     -0.459650
+NFKB2    1.584300
+CREBBP  -0.563725
+TRAF6   -1.865400
+SOCS3    0.536160
+TBX21   -1.401000
+JUN     -0.726000
+IFNG    -1.687800
+MAPK3   -0.734105
+JAK1    -1.389050
+CD28    -2.171850
+IFIH1    0.451861
+
+Now for the next round of experiment your students are planning on testing the following genes: 
+['IL1RAP', 'TNFSF10', 'IL23R', 'RNASEL', 'IFNAR2', 'ITK', 'GSK3B', 'LCK', 'SRC', 'FADD', 'RORC', 'IKZF5', 'OAS1', 'IL12B', 'CD8B', 'IL1R1', 'SYK', 'LYN', 'TNFRSF10B', 'MALT1', 'RHEB', 'RPS6KB1', 'VAV1', 'IFNAR1', 'PIK3R1', 'IFIT1', 'IL12A', 'TNFRSF10A', 'BTK', 'AKT2', 'PIK3CD', 'STAT5A', 'CHUK', 'IKBKG', 'IRF9', 'IL23A', 'CASP10', 'TYK2', 'EBI3', 'IKBKB', 'CTNNB1', 'CD8A', 'LST1', 'IRF5', 'IFNB1', 'CD4', 'CD226', 'CD247', 'TNFRSF14', 'IFNGR1', 'NFKBIE', 'CD3E', 'LEF1', 'TNFRSF1A', 'IL27RA', 'IKZF2', 'RUNX1', 'PDCD1LG2', 'BCL10', 'FGR', 'PIK3CG', 'IL10RA', 'JAK3', 'PRKCQ', 'PLCG1', 'RELB', 'CD3D', 'SATB1', 'EIF4E', 'RUNX2', 'IFNGR2', 'MX1', 'CD3G', 'HCK', 'PIK3CB', 'TNFRSF1B', 'FYN', 'CARD11', 'FOXP3', 'STAT5B', 'BLNK', 'SOCS2', 'CASP8', 'IL10RB', 'TCF7', 'ZAP70', 'EIF4EBP1', 'IKZF4', 'NFKBIA', 'AKT3', 'STAT6', 'TOX', 'PDPK1', 'IKZF3', 'IFNA1', 'IL1B', 'TOX2', 'STAT2', 'KLRG1', 'OSMR', 'IL22', 'CD200', 'TSLP', 'LIF', 'IL22RA1', 'IL1RL1', 'IL17A', 'IL17RA', 'CD200R1', 'IL33', 'KITLG', 'IL31', 'CD244', 'CD300A', 'IL31RA', 'SIRPA', 'LIFR', 'LAIR1', 'CD47', 'KIT', 'CD160', 'IL18', 'IL34', 'IL32', 'IL36A', 'IL37', 'IL36G', 'IL36B']
+
+As an advisor, please critique this plan and suggest some changes to it. Use this format: 
+1. Critique: include all relevant details of the critique.  
+2. Updated Solution: Give an updated selection of 128 genes based on the critique separated by commas in this format:: 1. <Gene name 1>, 2. <Gene name 2> ... 
+
+
+Please do not critique/make changes if there is no need to make a change.
+
+ 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. **Critique:** The proposed gene selection by your students is exceptionally well-curated and logically builds upon the hits identified in previous rounds (such as `JAK1`, `STAT3`, `RELA`, and `TBX21`). The list strategically focuses on core immunological and signaling pathways known to regulate Interferon-gamma (IFNG) production in T cells and innate immune cells. Specifically, it covers:
+   - **T-cell receptor (TCR) signaling and proximal kinases:** (`CD3D`, `CD3E`, `CD3G`, `CD247`, `LCK`, `FYN`, `ZAP70`, `ITK`, `SYK`, `SRC`, `BTK`, `LYN`)
+   - **Cytokine receptors and networks:** (`IFNGR1`, `IFNGR2`, `IFNAR1`, `IFNAR2`, `IL12A`, `IL12B`, `IL23A`, `IL23R`, `IL27RA`, `IL10RA`, `IL10RB`, etc.)
+   - **Key downstream transcription factors:** (`STAT5A`, `STAT5B`, `STAT6`, `RUNX1`, `RUNX2`, `FOXP3`, `RORC`, `TCF7`, `TOX`, `TOX2`, `IKZF2-5`, `IRF5`, `IRF9`)
+   - **Intracellular signaling cascades:** PI3K-AKT-mTOR (`PIK3R1`, `PIK3CD`, `PIK3CG`, `PIK3CB`, `AKT2`, `AKT3`, `RHEB`, `RPS6KB1`, `PDPK1`, `GSK3B`) and NF-kB regulation (`CHUK`, `IKBKB`, `IKBKG`, `NFKBIA`, `NFKBIE`, `RELB`).
+   
+   There are no duplicate entries, no previously tested genes, and no previously identified hits re-included. All 128 genes are highly relevant candidates. Therefore, no changes are necessary.
+
+2. **Updated Solution:** 
+1. IL1RAP, 2. TNFSF10, 3. IL23R, 4. RNASEL, 5. IFNAR2, 6. ITK, 7. GSK3B, 8. LCK, 9. SRC, 10. FADD, 11. RORC, 12. IKZF5, 13. OAS1, 14. IL12B, 15. CD8B, 16. IL1R1, 17. SYK, 18. LYN, 19. TNFRSF10B, 20. MALT1, 21. RHEB, 22. RPS6KB1, 23. VAV1, 24. IFNAR1, 25. PIK3R1, 26. IFIT1, 27. IL12A, 28. TNFRSF10A, 29. BTK,
+===================tokens=====================
+Number of prompt tokens: 2170
+Number of sampled tokens: 664
+
+
+
+===================prompt=====================
+
+
+Human: You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+            
+
+ All tested genes so far and their measured log fold change are: 
+             Score
+Gene              
+IRF8     -0.284585
+IL7R      0.095685
+HDAC1    -0.151240
+KDM6B     0.063455
+SMAD4     0.080494
+RPTOR     0.005010
+TET2     -0.274905
+ICOSLG   -0.026299
+IL2      -0.142710
+IL4      -0.063854
+TNFRSF4   0.048077
+IL6ST     0.048858
+CCR7     -0.300105
+ARID1A    0.102370
+CD86      0.191305
+ICOS     -0.074485
+CD40      0.055085
+IKZF1     0.018345
+SMARCA4   0.113642
+TRAF1     0.119425
+TNFSF9   -0.115445
+LTB       0.230505
+IL18R1   -0.011445
+CD40LG   -0.171573
+BTLA      0.146855
+RICTOR    0.340625
+TLR4     -0.041558
+RUNX3    -0.170597
+PDCD1     0.120335
+HAVCR2   -0.038240
+TIGIT    -0.060357
+CSF1R     0.259065
+CD274    -0.043830
+IRF3     -0.237845
+SMAD2     0.101575
+CASP3    -0.273730
+KDM4A    -0.023866
+IRF7      0.178988
+TNF       0.272485
+STAT4    -0.282660
+TP53     -0.292370
+IL10      0.151242
+PIK3CA    0.107444
+IL12RB1  -0.034080
+SMAD3     0.122430
+CASP1    -0.064096
+LTA      -0.187780
+FASLG     0.008183
+MTOR      0.030743
+CD80      0.251915
+BCL2      0.016410
+LAG3      0.325340
+STAT1    -0.023106
+IL2RB     0.253174
+BCL6     -0.058293
+JAK2      0.132444
+TNFSF18  -0.045710
+CCR5     -0.066075
+IL21R    -0.254815
+GZMB      0.090265
+CSF1     -0.041785
+CD70      0.147600
+TNFSF4    0.083280
+CSF2RB    0.131810
+TRAF3     0.109792
+TNFRSF9   0.190045
+IRF1     -0.029467
+EOMES    -0.086910
+MYC       0.365965
+NOTCH1    0.021485
+MAPK8    -0.094135
+IL15RA    0.171787
+CSF2      0.143161
+AKT1      0.217375
+IL6       0.064360
+NFKB1     0.125557
+IRF2     -0.094631
+TNFSF8   -0.026060
+TICAM1   -0.157511
+IL15     -0.035326
+CXCR4     0.078652
+IL12RB2   0.050639
+GATA3     0.057780
+TNFRSF18 -0.301050
+CGAS      0.102712
+FOS      -0.359215
+CXCR3    -0.120325
+IL2RA     0.117304
+PTEN     -0.179804
+TLR9      0.006275
+SOCS1     0.185722
+CTLA4     0.015375
+IL21      0.139604
+TGFB1     0.032735
+IL6R     -0.079140
+MAPK14   -0.244472
+EP300     0.268732
+IRF4      0.059575
+STING1   -0.128400
+HDAC2    -0.231770
+CSF2RA   -0.003960
+CREB1    -0.099681
+TBK1      0.013595
+MYD88     0.054350
+DNMT1     0.371030
+MAVS      0.264290
+ The results for the hits are: 
+            Score
+Gene             
+TSC2     0.459780
+TNFRSF8  0.511525
+RBPJ     0.529285
+PRDM1   -0.785260
+RELA    -0.840910
+MAPK1   -0.449405
+CD27    -0.466994
+TSC1     1.089420
+STAT3   -1.048600
+IL2RG   -0.650145
+REL     -0.459650
+NFKB2    1.584300
+CREBBP  -0.563725
+TRAF6   -1.865400
+SOCS3    0.536160
+TBX21   -1.401000
+JUN     -0.726000
+IFNG    -1.687800
+MAPK3   -0.734105
+JAK1    -1.389050
+CD28    -2.171850
+IFIH1    0.451861
+
+Now for the next round of experiment your students are planning on testing the following genes: 
+['IL1RAP', 'TNFSF10', 'IL23R', 'RNASEL', 'IFNAR2', 'ITK', 'GSK3B', 'LCK', 'SRC', 'FADD', 'RORC', 'IKZF5', 'OAS1', 'IL12B', 'CD8B', 'IL1R1', 'SYK', 'LYN', 'TNFRSF10B', 'MALT1', 'RHEB', 'RPS6KB1', 'VAV1', 'IFNAR1', 'PIK3R1', 'IFIT1', 'IL12A', 'TNFRSF10A', 'BTK', 'AKT2', 'PIK3CD', 'STAT5A', 'CHUK', 'IKBKG', 'IRF9', 'IL23A', 'CASP10', 'TYK2', 'EBI3', 'IKBKB', 'CTNNB1', 'CD8A', 'LST1', 'IRF5', 'IFNB1', 'CD4', 'CD226', 'CD247', 'TNFRSF14', 'IFNGR1', 'NFKBIE', 'CD3E', 'LEF1', 'TNFRSF1A', 'IL27RA', 'IKZF2', 'RUNX1', 'PDCD1LG2', 'BCL10', 'FGR', 'PIK3CG', 'IL10RA', 'JAK3', 'PRKCQ', 'PLCG1', 'RELB', 'CD3D', 'SATB1', 'EIF4E', 'RUNX2', 'IFNGR2', 'MX1', 'CD3G', 'HCK', 'PIK3CB', 'TNFRSF1B', 'FYN', 'CARD11', 'FOXP3', 'STAT5B', 'BLNK', 'SOCS2', 'CASP8', 'IL10RB', 'TCF7', 'ZAP70', 'EIF4EBP1', 'IKZF4', 'NFKBIA', 'AKT3', 'STAT6', 'TOX', 'PDPK1', 'IKZF3', 'IFNA1', 'IL1B', 'TOX2', 'STAT2', 'KLRG1', 'OSMR', 'IL22', 'CD200', 'TSLP', 'LIF', 'IL22RA1', 'IL1RL1', 'IL17A', 'IL17RA', 'CD200R1', 'IL33', 'KITLG', 'IL31', 'CD244', 'CD300A', 'IL31RA', 'SIRPA', 'LIFR', 'LAIR1', 'CD47', 'KIT', 'CD160', 'IL18', 'IL34', 'IL32', 'IL36A', 'IL37', 'IL36G', 'IL36B']
+
+As an advisor, please critique this plan and suggest some changes to it. Use this format: 
+1. Critique: include all relevant details of the critique.  
+2. Updated Solution: Give an updated selection of 128 genes based on the critique separated by commas in this format:: 1. <Gene name 1>, 2. <Gene name 2> ... 
+
+
+Please do not critique/make changes if there is no need to make a change.
+
+
+ You have so far predicted 29 out of the required 128 genes for this round. These were: 
+['IL1RAP', 'TNFSF10', 'MALT1', 'RHEB', 'RPS6KB1', 'VAV1', 'IL23R', 'RNASEL', 'IFNAR2', 'SRC', 'LCK', 'ITK', 'GSK3B', 'IFNAR1', 'PIK3R1', 'LYN', 'FADD', 'IFIT1', 'IL12A', 'TNFRSF10A', 'BTK', 'RORC', 'IKZF5', 'OAS1', 'IL12B', 'CD8B', 'IL1R1', 'SYK', 'TNFRSF10B']
+ Please add 99 more genes to this list. Remember not to include previously tested genes including: 
+ [''] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Critique: The students' proposed gene list is well-curated and targets crucial pathways involved in the regulation of Interferon-gamma (IFNG), such as cytokine receptor signaling (IFNAR1/2, IFNGR1/2, IL12, IL23, IL10), JAK-STAT signaling cascades (JAK3, TYK2, STAT5A/B, STAT6, IRF5/9), T cell receptor signaling and proximal kinases (LCK, SRC, ZAP70, ITK, SYK, BTK, CD3 subunits), PI3K-AKT-mTOR and NF-kB signaling networks (PIK3CB/CD/CG, AKT2/3, CHUK, IKBKB, IKBKG, NFKBIA/E, RELB, CARD11, MALT1, BCL10), and transcriptional regulators of immune differentiation (FOXP3, TCF7, TOX, RUNX1/2). To maximize discovery power, we integrate our previously prioritized high-evidence candidates (such as key cytokine receptors, proximal tyrosine kinases, and adapters) at the forefront of the library while maintaining comprehensive coverage across all relevant immunological pathways from the students' selection.
+
+2. Updated Solution: 1. IL1RAP, 2. TNFSF10, 3. MALT1, 4. RHEB, 5. RPS6KB1, 6. VAV1, 7. IL23R, 8. RNASEL, 9. IFNAR2, 10. SRC, 11. LCK, 12. ITK, 13. GSK3B, 14. IFNAR1, 15. PIK3R1, 16. LYN, 17. FADD, 18. IFIT1, 19. IL12A, 20. TNFRSF10A, 21. BTK, 22. RORC, 23. IKZF5, 24. OAS1, 25. IL12B, 26. CD8B, 27. IL1R1, 28. SYK, 29. TNFRSF10B, 30. AKT2, 31. PIK3CD, 32. STAT5A, 33. CHUK, 34. IKBKG, 35. IRF9, 36. IL23A, 37. CASP10, 38. TYK2, 39. EBI3, 40. IKBKB, 41. CTNNB1, 42. CD8A, 43. LST1, 44. IRF5, 45. IFNB1, 46. CD4, 47. CD226, 48. CD247, 49. TNFRSF14, 50. IFNGR1, 51. NFKBIE, 52. CD3E, 53. LEF1, 54. TNFRSF1A, 55. IL27RA, 56. IKZF2, 57. RUNX1, 58. PDCD1LG2, 59. BCL10, 60. FGR, 61. PIK3CG, 62. IL10RA, 63. JAK3, 64. PRKCQ, 65. PLCG1, 66. RELB, 67. CD3D, 68. SATB1, 69. EIF4E, 70. RUNX2, 71. IFNGR2, 72. MX1, 73. CD3G, 74. HCK, 75. PIK3CB, 76. TNFRSF1B, 77. FYN, 78. CARD11, 79. FOXP3, 80. STAT5B, 81. BLNK, 82. SOCS2, 83. CASP8, 
+===================tokens=====================
+Number of prompt tokens: 2364
+Number of sampled tokens: 863
+
+
+
+===================prompt=====================
+
+
+Human: You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+            
+
+ All tested genes so far and their measured log fold change are: 
+             Score
+Gene              
+IRF8     -0.284585
+IL7R      0.095685
+HDAC1    -0.151240
+KDM6B     0.063455
+SMAD4     0.080494
+RPTOR     0.005010
+TET2     -0.274905
+ICOSLG   -0.026299
+IL2      -0.142710
+IL4      -0.063854
+TNFRSF4   0.048077
+IL6ST     0.048858
+CCR7     -0.300105
+ARID1A    0.102370
+CD86      0.191305
+ICOS     -0.074485
+CD40      0.055085
+IKZF1     0.018345
+SMARCA4   0.113642
+TRAF1     0.119425
+TNFSF9   -0.115445
+LTB       0.230505
+IL18R1   -0.011445
+CD40LG   -0.171573
+BTLA      0.146855
+RICTOR    0.340625
+TLR4     -0.041558
+RUNX3    -0.170597
+PDCD1     0.120335
+HAVCR2   -0.038240
+TIGIT    -0.060357
+CSF1R     0.259065
+CD274    -0.043830
+IRF3     -0.237845
+SMAD2     0.101575
+CASP3    -0.273730
+KDM4A    -0.023866
+IRF7      0.178988
+TNF       0.272485
+STAT4    -0.282660
+TP53     -0.292370
+IL10      0.151242
+PIK3CA    0.107444
+IL12RB1  -0.034080
+SMAD3     0.122430
+CASP1    -0.064096
+LTA      -0.187780
+FASLG     0.008183
+MTOR      0.030743
+CD80      0.251915
+BCL2      0.016410
+LAG3      0.325340
+STAT1    -0.023106
+IL2RB     0.253174
+BCL6     -0.058293
+JAK2      0.132444
+TNFSF18  -0.045710
+CCR5     -0.066075
+IL21R    -0.254815
+GZMB      0.090265
+CSF1     -0.041785
+CD70      0.147600
+TNFSF4    0.083280
+CSF2RB    0.131810
+TRAF3     0.109792
+TNFRSF9   0.190045
+IRF1     -0.029467
+EOMES    -0.086910
+MYC       0.365965
+NOTCH1    0.021485
+MAPK8    -0.094135
+IL15RA    0.171787
+CSF2      0.143161
+AKT1      0.217375
+IL6       0.064360
+NFKB1     0.125557
+IRF2     -0.094631
+TNFSF8   -0.026060
+TICAM1   -0.157511
+IL15     -0.035326
+CXCR4     0.078652
+IL12RB2   0.050639
+GATA3     0.057780
+TNFRSF18 -0.301050
+CGAS      0.102712
+FOS      -0.359215
+CXCR3    -0.120325
+IL2RA     0.117304
+PTEN     -0.179804
+TLR9      0.006275
+SOCS1     0.185722
+CTLA4     0.015375
+IL21      0.139604
+TGFB1     0.032735
+IL6R     -0.079140
+MAPK14   -0.244472
+EP300     0.268732
+IRF4      0.059575
+STING1   -0.128400
+HDAC2    -0.231770
+CSF2RA   -0.003960
+CREB1    -0.099681
+TBK1      0.013595
+MYD88     0.054350
+DNMT1     0.371030
+MAVS      0.264290
+ The results for the hits are: 
+            Score
+Gene             
+TSC2     0.459780
+TNFRSF8  0.511525
+RBPJ     0.529285
+PRDM1   -0.785260
+RELA    -0.840910
+MAPK1   -0.449405
+CD27    -0.466994
+TSC1     1.089420
+STAT3   -1.048600
+IL2RG   -0.650145
+REL     -0.459650
+NFKB2    1.584300
+CREBBP  -0.563725
+TRAF6   -1.865400
+SOCS3    0.536160
+TBX21   -1.401000
+JUN     -0.726000
+IFNG    -1.687800
+MAPK3   -0.734105
+JAK1    -1.389050
+CD28    -2.171850
+IFIH1    0.451861
+
+Now for the next round of experiment your students are planning on testing the following genes: 
+['IL1RAP', 'TNFSF10', 'IL23R', 'RNASEL', 'IFNAR2', 'ITK', 'GSK3B', 'LCK', 'SRC', 'FADD', 'RORC', 'IKZF5', 'OAS1', 'IL12B', 'CD8B', 'IL1R1', 'SYK', 'LYN', 'TNFRSF10B', 'MALT1', 'RHEB', 'RPS6KB1', 'VAV1', 'IFNAR1', 'PIK3R1', 'IFIT1', 'IL12A', 'TNFRSF10A', 'BTK', 'AKT2', 'PIK3CD', 'STAT5A', 'CHUK', 'IKBKG', 'IRF9', 'IL23A', 'CASP10', 'TYK2', 'EBI3', 'IKBKB', 'CTNNB1', 'CD8A', 'LST1', 'IRF5', 'IFNB1', 'CD4', 'CD226', 'CD247', 'TNFRSF14', 'IFNGR1', 'NFKBIE', 'CD3E', 'LEF1', 'TNFRSF1A', 'IL27RA', 'IKZF2', 'RUNX1', 'PDCD1LG2', 'BCL10', 'FGR', 'PIK3CG', 'IL10RA', 'JAK3', 'PRKCQ', 'PLCG1', 'RELB', 'CD3D', 'SATB1', 'EIF4E', 'RUNX2', 'IFNGR2', 'MX1', 'CD3G', 'HCK', 'PIK3CB', 'TNFRSF1B', 'FYN', 'CARD11', 'FOXP3', 'STAT5B', 'BLNK', 'SOCS2', 'CASP8', 'IL10RB', 'TCF7', 'ZAP70', 'EIF4EBP1', 'IKZF4', 'NFKBIA', 'AKT3', 'STAT6', 'TOX', 'PDPK1', 'IKZF3', 'IFNA1', 'IL1B', 'TOX2', 'STAT2', 'KLRG1', 'OSMR', 'IL22', 'CD200', 'TSLP', 'LIF', 'IL22RA1', 'IL1RL1', 'IL17A', 'IL17RA', 'CD200R1', 'IL33', 'KITLG', 'IL31', 'CD244', 'CD300A', 'IL31RA', 'SIRPA', 'LIFR', 'LAIR1', 'CD47', 'KIT', 'CD160', 'IL18', 'IL34', 'IL32', 'IL36A', 'IL37', 'IL36G', 'IL36B']
+
+As an advisor, please critique this plan and suggest some changes to it. Use this format: 
+1. Critique: include all relevant details of the critique.  
+2. Updated Solution: Give an updated selection of 128 genes based on the critique separated by commas in this format:: 1. <Gene name 1>, 2. <Gene name 2> ... 
+
+
+Please do not critique/make changes if there is no need to make a change.
+
+
+ You have so far predicted 83 out of the required 128 genes for this round. These were: 
+['IL1RAP', 'TNFSF10', 'MALT1', 'RHEB', 'RPS6KB1', 'VAV1', 'IL23R', 'RNASEL', 'IFNAR2', 'SRC', 'LCK', 'ITK', 'GSK3B', 'IFNAR1', 'PIK3R1', 'LYN', 'FADD', 'IFIT1', 'IL12A', 'TNFRSF10A', 'BTK', 'RORC', 'IKZF5', 'OAS1', 'IL12B', 'CD8B', 'IL1R1', 'SYK', 'TNFRSF10B', 'IFNB1', 'CD4', 'CD226', 'CD247', 'TNFRSF14', 'IFNGR1', 'NFKBIE', 'CD3E', 'LEF1', 'TNFRSF1A', 'IL27RA', 'IKZF2', 'RUNX1', 'PDCD1LG2', 'BCL10', 'FGR', 'PIK3CG', 'IL10RA', 'JAK3', 'PRKCQ', 'PLCG1', 'RELB', 'CD3D', 'SATB1', 'EIF4E', 'RUNX2', 'IFNGR2', 'MX1', 'CD3G', 'HCK', 'PIK3CB', 'TNFRSF1B', 'FYN', 'CARD11', 'FOXP3', 'STAT5B', 'BLNK', 'SOCS2', 'CASP8', 'AKT2', 'STAT5A', 'PIK3CD', 'CHUK', 'IKBKG', 'IRF9', 'IL23A', 'CASP10', 'TYK2', 'EBI3', 'IKBKB', 'CTNNB1', 'CD8A', 'LST1', 'IRF5']
+ Please add 45 more genes to this list. Remember not to include previously tested genes including: 
+ [''] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Critique: The students' proposed gene selection is well-designed, focusing on relevant immunological pathways, cytokine signaling, and transcriptional regulators that modulate Interferon-gamma (IFNG) production. To complete the full experimental capacity of 128 genes for this round, the remaining 45 genes—including crucial interleukins, cytokine receptors, and signaling molecules like TCF7, ZAP70, STAT6, and IL10RB—must be added to ensure thorough and comprehensive screening of the target pathways.
+
+2. Updated Solution: 
+1. IL1RAP, 2. TNFSF10, 3. MALT1, 4. RHEB, 5. RPS6KB1, 6. VAV1, 7. IL23R, 8. RNASEL, 9. IFNAR2, 10. SRC, 11. LCK, 12. ITK, 13. GSK3B, 14. IFNAR1, 15. PIK3R1, 16. LYN, 17. FADD, 18. IFIT1, 19. IL12A, 20. TNFRSF10A, 21. BTK, 22. RORC, 23. IKZF5, 24. OAS1, 25. IL12B, 26. CD8B, 27. IL1R1, 28. SYK, 29. TNFRSF10B, 30. IFNB1, 31. CD4, 32. CD226, 33. CD247, 34. TNFRSF14, 35. IFNGR1, 36. NFKBIE, 37. CD3E, 38. LEF1, 39. TNFRSF1A, 40. IL27RA, 41. IKZF2, 42. RUNX1, 43. PDCD1LG2, 44. BCL10, 45. FGR, 46. PIK3CG, 47. IL10RA, 48. JAK3, 49. PRKCQ, 50. PLCG1, 51. RELB, 52. CD3D, 53. SATB1, 54. EIF4E, 55. RUNX2, 56. IFNGR2, 57. MX1, 58. CD3G, 59. HCK, 60. PIK3CB, 61. TNFRSF1B, 62. FYN, 63. CARD11, 64. FOXP3, 65. STAT5B, 66. BLNK, 67. SOCS2, 68. CASP8, 69. AKT2, 70. STAT5A, 71. PIK3CD, 72. CHUK, 73. IKBKG, 74. IRF9, 75. IL23A, 76. CASP10, 77. TYK2, 78. EBI3, 79. IKBKB, 80. CTNNB1, 81. CD8A, 82. LST1, 83. IRF5, 84. IL10RB, 85. TCF7, 86. ZAP70, 87. EIF4EBP1, 88. IKZF4, 89. NFKBIA, 90. AKT3, 91. STAT6, 92. TOX, 93. PDPK1, 94. IKZF3, 95. IFNA1, 96. IL1B, 97. TOX2, 98. STAT2, 99. KLRG1, 100. OSMR, 101. IL22, 102. CD200, 103. TSLP, 104. LIF, 105. IL22RA1, 106. IL1RL1, 107. IL17A, 108. IL17RA, 109. CD200R1, 110. IL33, 111. KITLG, 112. IL31, 113. CD244, 114. CD300A, 115. IL31RA, 116. SIRPA, 117. LIFR, 118. LAIR1, 119. CD47, 120. KIT, 121. CD160, 122. IL18, 123. IL34, 124. IL32, 125. IL36A, 126. IL37, 127. IL36G, 128. IL36B
+===================tokens=====================
+Number of prompt tokens: 2638
+Number of sampled tokens: 1008
+
+

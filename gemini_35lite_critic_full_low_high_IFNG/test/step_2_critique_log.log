@@ -1,0 +1,592 @@
+
+===================prompt=====================
+
+
+Human: You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+            
+
+ All tested genes so far and their measured log fold change are: 
+              Score
+Gene               
+IRF8      -0.284585
+IL7R       0.095685
+HDAC1     -0.151240
+KDM6B      0.063455
+SMAD4      0.080494
+RPTOR      0.005010
+TET2      -0.274905
+ICOSLG    -0.026299
+IL2       -0.142710
+IL4       -0.063854
+TNFRSF4    0.048077
+IL6ST      0.048858
+CCR7      -0.300105
+ARID1A     0.102370
+CD86       0.191305
+ICOS      -0.074485
+CD40       0.055085
+IKZF1      0.018345
+SMARCA4    0.113642
+TRAF1      0.119425
+TNFSF9    -0.115445
+LTB        0.230505
+IL18R1    -0.011445
+CD40LG    -0.171573
+BTLA       0.146855
+RICTOR     0.340625
+TLR4      -0.041558
+RUNX3     -0.170597
+PDCD1      0.120335
+HAVCR2    -0.038240
+TIGIT     -0.060357
+CSF1R      0.259065
+CD274     -0.043830
+IRF3      -0.237845
+SMAD2      0.101575
+CASP3     -0.273730
+KDM4A     -0.023866
+IRF7       0.178988
+TNF        0.272485
+STAT4     -0.282660
+TP53      -0.292370
+IL10       0.151242
+PIK3CA     0.107444
+IL12RB1   -0.034080
+SMAD3      0.122430
+CASP1     -0.064096
+LTA       -0.187780
+FASLG      0.008183
+MTOR       0.030743
+CD80       0.251915
+BCL2       0.016410
+LAG3       0.325340
+STAT1     -0.023106
+IL2RB      0.253174
+BCL6      -0.058293
+JAK2       0.132444
+TNFSF18   -0.045710
+CCR5      -0.066075
+IL21R     -0.254815
+GZMB       0.090265
+CSF1      -0.041785
+CD70       0.147600
+TNFSF4     0.083280
+CSF2RB     0.131810
+TRAF3      0.109792
+TNFRSF9    0.190045
+IRF1      -0.029467
+EOMES     -0.086910
+MYC        0.365965
+NOTCH1     0.021485
+MAPK8     -0.094135
+IL15RA     0.171787
+CSF2       0.143161
+AKT1       0.217375
+IL6        0.064360
+NFKB1      0.125557
+IRF2      -0.094631
+TNFSF8    -0.026060
+TICAM1    -0.157511
+IL15      -0.035326
+CXCR4      0.078652
+IL12RB2    0.050639
+GATA3      0.057780
+TNFRSF18  -0.301050
+CGAS       0.102712
+FOS       -0.359215
+CXCR3     -0.120325
+IL2RA      0.117304
+PTEN      -0.179804
+TLR9       0.006275
+SOCS1      0.185722
+CTLA4      0.015375
+IL21       0.139604
+TGFB1      0.032735
+IL6R      -0.079140
+MAPK14    -0.244472
+EP300      0.268732
+IRF4       0.059575
+STING1    -0.128400
+HDAC2     -0.231770
+CSF2RA    -0.003960
+CREB1     -0.099681
+TBK1       0.013595
+MYD88      0.054350
+DNMT1      0.371030
+MAVS       0.264290
+IL1RAP    -0.103173
+TNFSF10    0.169205
+RHEB       0.063252
+RPS6KB1    0.057187
+IL23R     -0.137500
+RNASEL     0.065032
+IFNAR2     0.206712
+SRC        0.044180
+GSK3B      0.168679
+IFNAR1     0.220668
+PIK3R1    -0.166965
+LYN        0.095138
+FADD       0.107290
+IFIT1     -0.102270
+IL12A      0.128751
+TNFRSF10A  0.383695
+BTK        0.115309
+RORC       0.158696
+IKZF5      0.220360
+OAS1       0.267680
+IL12B      0.106245
+CD8B      -0.047280
+IL1R1      0.125515
+SYK       -0.019658
+TNFRSF10B -0.229538
+IFNB1      0.023320
+CD226      0.128394
+TNFRSF14   0.033495
+NFKBIE     0.215400
+IL27RA    -0.052131
+IKZF2     -0.340130
+RUNX1      0.075455
+PDCD1LG2  -0.163740
+FGR        0.323950
+PIK3CG    -0.193630
+IL10RA    -0.022117
+SATB1     -0.259400
+EIF4E      0.091378
+RUNX2      0.169745
+MX1        0.019630
+HCK       -0.202115
+PIK3CB    -0.102459
+FYN        0.164187
+CARD11    -0.313452
+FOXP3      0.145110
+STAT5B     0.010015
+BLNK      -0.134545
+SOCS2     -0.006300
+CASP8      0.142034
+AKT2      -0.032708
+STAT5A     0.070219
+PIK3CD     0.033257
+IRF9      -0.126400
+IL23A     -0.002661
+CASP10     0.012842
+TYK2      -0.084040
+EBI3      -0.000445
+CTNNB1     0.077127
+CD8A       0.000085
+LST1       0.124818
+IRF5      -0.042555
+KLRG1     -0.001290
+OSMR       0.095580
+IL22      -0.179084
+CD200      0.024043
+TSLP      -0.116314
+LIF       -0.033047
+IL22RA1   -0.024712
+IL1RL1    -0.129953
+IL32       0.177440
+IL17RA     0.180308
+IL36B     -0.183860
+IL37       0.101515
+CD200R1   -0.096177
+IL33      -0.275055
+KITLG     -0.186637
+IL31       0.063535
+CD244      0.302096
+CD300A     0.282565
+IL36A      0.121620
+IL10RB    -0.091587
+TCF7      -0.137402
+IL31RA     0.023960
+IKZF4     -0.003570
+NFKBIA     0.344135
+LIFR      -0.119585
+IL36G      0.232055
+AKT3       0.027325
+STAT6     -0.039385
+TOX       -0.072623
+PDPK1     -0.133488
+IKZF3      0.336079
+LAIR1      0.161805
+IL18       0.064003
+CD160     -0.236117
+CD47      -0.196102
+IFNA1     -0.092500
+KIT       -0.170171
+IL1B      -0.008130
+IL34      -0.034673
+TOX2       0.213715
+STAT2     -0.121285
+SIRPA     -0.062742
+ The results for the hits are: 
+             Score
+Gene              
+CD4      -0.441485
+TSC2      0.459780
+CD247    -2.497950
+TNFRSF8   0.511525
+CD3E     -2.657250
+IFNGR1   -0.898070
+LEF1     -0.405045
+RBPJ      0.529285
+TNFRSF1A -0.966245
+ITK      -1.814700
+BCL10    -0.869020
+LCK      -1.373600
+PRDM1    -0.785260
+PLCG1    -2.773550
+RELA     -0.840910
+JAK3     -0.524285
+CD3D     -3.313850
+MAPK1    -0.449405
+PRKCQ    -0.442575
+RELB     -0.426405
+IL17A    -0.473900
+CD27     -0.466994
+IFNGR2   -0.975910
+CD3G     -3.626100
+TSC1      1.089420
+STAT3    -1.048600
+IL2RG    -0.650145
+TNFRSF1B -0.807470
+REL      -0.459650
+NFKB2     1.584300
+CREBBP   -0.563725
+TRAF6    -1.865400
+MALT1    -1.063740
+ZAP70    -3.918850
+EIF4EBP1  0.432485
+SOCS3     0.536160
+VAV1     -3.843650
+CHUK     -0.833950
+IKBKG    -0.853900
+TBX21    -1.401000
+JUN      -0.726000
+IFNG     -1.687800
+MAPK3    -0.734105
+JAK1     -1.389050
+IKBKB    -0.922680
+CD28     -2.171850
+IFIH1     0.451861
+
+Now for the next round of experiment your students are planning on testing the following genes: 
+['CARD9', 'MAP2K5', 'PIK3R3', 'VAV3', 'MAP2K7', 'SOCS6', 'BLK', 'CISH', 'MAPK9', 'SOCS5', 'MAP2K4', 'MAPK10', 'MAPK13', 'IFNA2', 'TXK', 'MAP2K3', 'MAPK12', 'MAP3K8', 'TEC', 'NFKBIB', 'IL4R', 'PIK3R2', 'MAP3K7', 'MAP2K1', 'MAP3K1', 'MAP2K2', 'MAP2K6', 'VAV2', 'IRF6', 'MAPK11', 'GRAP2', 'PTPN11', 'RHOA', 'CSK', 'PTPN2', 'CDC42', 'WASL', 'LCP2', 'PTPN22', 'RAC2', 'NCK2', 'NCK1', 'CD53', 'PRKCG', 'SHC1', 'CBLC', 'CBLB', 'ITGB2', 'KLRF1', 'GRAP', 'CBL', 'KLRK1', 'ARHGEF12', 'CD81', 'PRKCI', 'RHOV', 'CD96', 'SOS2', 'CD59', 'LIME1', 'PRKCH', 'SHC2', 'CD300LG', 'ARHGEF3', 'CD300LF', 'CD5', 'CD44', 'PRKCE', 'CD2', 'GRB2', 'KLRC3', 'CD300C', 'SHC4', 'RHOQ', 'SOS1', 'KLRB1', 'PRKCZ', 'CD84', 'PRKCB', 'PRKCD', 'ARHGEF5', 'RHOH', 'KLRC4', 'KLRC2', 'ARHGEF1', 'CD69', 'KLRD1', 'SLA2', 'CD48', 'PTPRC', 'STAP2', 'RHOD', 'PAG1', 'ARHGEF7', 'CD300LD', 'SHC3', 'ARHGEF10', 'CD300LB', 'KLRC1', 'RHOB', 'CD101', 'PRKCA', 'ITGAL', 'CD7', 'CD55', 'CD6', 'ARHGEF11', 'CD300E', 'RHOU', 'ARHGEF4', 'ARHGEF2', 'ARHGEF6', 'CD82', 'PTPN6', 'TRAT1', 'THEMIS', 'CD79A', 'CD37', 'CD63', 'CD38', 'CD22', 'MS4A1', 'CD72', 'CD83', 'CD79B', 'CD19', 'CD9', 'CD24']
+
+As an advisor, please critique this plan and suggest some changes to it. Use this format: 
+1. Critique: include all relevant details of the critique.  
+2. Updated Solution: Give an updated selection of 128 genes based on the critique separated by commas in this format:: 1. <Gene name 1>, 2. <Gene name 2> ... 
+
+
+Please do not critique/make changes if there is no need to make a change.
+
+ 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Critique: The students' proposed gene selection is exceptionally well-designed and logically follows up on the previous screening rounds. The list of 128 genes is entirely composed of novel targets (none have been tested previously) and forms a highly cohesive and targeted library. It heavily focuses on critical nodes in immune cell signaling—such as MAP kinase cascades (e.g., MAP2Ks, MAPKs), protein tyrosine phosphatases (e.g., PTPN11, PTPN2, PTPN22, PTPN6), adaptor proteins (e.g., LCP2, NCKs, SHCs, CBLs), Rho GTPases and their regulators, protein kinase C isoforms, and various immune cell surface markers and receptors. Given that previous hits prominently featured T-cell receptor signaling and kinase cascades (e.g., ZAP70, LCK, ITK, PLCG1), probing this broad network of proximal and distal signaling effectors is the optimal strategy. No changes are required.
+
+2. Updated Solution: 1. CARD9, 2. MAP2K5, 3. PIK3R3, 4. VAV3, 5. MAP2K7, 6. SOCS6, 7. BLK, 8. CISH, 9. MAPK9, 10. SOCS5, 11. MAP2K4, 12. MAPK10, 13. MAPK13, 14. IF
+===================tokens=====================
+Number of prompt tokens: 3450
+Number of sampled tokens: 316
+
+
+
+===================prompt=====================
+
+
+Human: You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+            
+
+ All tested genes so far and their measured log fold change are: 
+              Score
+Gene               
+IRF8      -0.284585
+IL7R       0.095685
+HDAC1     -0.151240
+KDM6B      0.063455
+SMAD4      0.080494
+RPTOR      0.005010
+TET2      -0.274905
+ICOSLG    -0.026299
+IL2       -0.142710
+IL4       -0.063854
+TNFRSF4    0.048077
+IL6ST      0.048858
+CCR7      -0.300105
+ARID1A     0.102370
+CD86       0.191305
+ICOS      -0.074485
+CD40       0.055085
+IKZF1      0.018345
+SMARCA4    0.113642
+TRAF1      0.119425
+TNFSF9    -0.115445
+LTB        0.230505
+IL18R1    -0.011445
+CD40LG    -0.171573
+BTLA       0.146855
+RICTOR     0.340625
+TLR4      -0.041558
+RUNX3     -0.170597
+PDCD1      0.120335
+HAVCR2    -0.038240
+TIGIT     -0.060357
+CSF1R      0.259065
+CD274     -0.043830
+IRF3      -0.237845
+SMAD2      0.101575
+CASP3     -0.273730
+KDM4A     -0.023866
+IRF7       0.178988
+TNF        0.272485
+STAT4     -0.282660
+TP53      -0.292370
+IL10       0.151242
+PIK3CA     0.107444
+IL12RB1   -0.034080
+SMAD3      0.122430
+CASP1     -0.064096
+LTA       -0.187780
+FASLG      0.008183
+MTOR       0.030743
+CD80       0.251915
+BCL2       0.016410
+LAG3       0.325340
+STAT1     -0.023106
+IL2RB      0.253174
+BCL6      -0.058293
+JAK2       0.132444
+TNFSF18   -0.045710
+CCR5      -0.066075
+IL21R     -0.254815
+GZMB       0.090265
+CSF1      -0.041785
+CD70       0.147600
+TNFSF4     0.083280
+CSF2RB     0.131810
+TRAF3      0.109792
+TNFRSF9    0.190045
+IRF1      -0.029467
+EOMES     -0.086910
+MYC        0.365965
+NOTCH1     0.021485
+MAPK8     -0.094135
+IL15RA     0.171787
+CSF2       0.143161
+AKT1       0.217375
+IL6        0.064360
+NFKB1      0.125557
+IRF2      -0.094631
+TNFSF8    -0.026060
+TICAM1    -0.157511
+IL15      -0.035326
+CXCR4      0.078652
+IL12RB2    0.050639
+GATA3      0.057780
+TNFRSF18  -0.301050
+CGAS       0.102712
+FOS       -0.359215
+CXCR3     -0.120325
+IL2RA      0.117304
+PTEN      -0.179804
+TLR9       0.006275
+SOCS1      0.185722
+CTLA4      0.015375
+IL21       0.139604
+TGFB1      0.032735
+IL6R      -0.079140
+MAPK14    -0.244472
+EP300      0.268732
+IRF4       0.059575
+STING1    -0.128400
+HDAC2     -0.231770
+CSF2RA    -0.003960
+CREB1     -0.099681
+TBK1       0.013595
+MYD88      0.054350
+DNMT1      0.371030
+MAVS       0.264290
+IL1RAP    -0.103173
+TNFSF10    0.169205
+RHEB       0.063252
+RPS6KB1    0.057187
+IL23R     -0.137500
+RNASEL     0.065032
+IFNAR2     0.206712
+SRC        0.044180
+GSK3B      0.168679
+IFNAR1     0.220668
+PIK3R1    -0.166965
+LYN        0.095138
+FADD       0.107290
+IFIT1     -0.102270
+IL12A      0.128751
+TNFRSF10A  0.383695
+BTK        0.115309
+RORC       0.158696
+IKZF5      0.220360
+OAS1       0.267680
+IL12B      0.106245
+CD8B      -0.047280
+IL1R1      0.125515
+SYK       -0.019658
+TNFRSF10B -0.229538
+IFNB1      0.023320
+CD226      0.128394
+TNFRSF14   0.033495
+NFKBIE     0.215400
+IL27RA    -0.052131
+IKZF2     -0.340130
+RUNX1      0.075455
+PDCD1LG2  -0.163740
+FGR        0.323950
+PIK3CG    -0.193630
+IL10RA    -0.022117
+SATB1     -0.259400
+EIF4E      0.091378
+RUNX2      0.169745
+MX1        0.019630
+HCK       -0.202115
+PIK3CB    -0.102459
+FYN        0.164187
+CARD11    -0.313452
+FOXP3      0.145110
+STAT5B     0.010015
+BLNK      -0.134545
+SOCS2     -0.006300
+CASP8      0.142034
+AKT2      -0.032708
+STAT5A     0.070219
+PIK3CD     0.033257
+IRF9      -0.126400
+IL23A     -0.002661
+CASP10     0.012842
+TYK2      -0.084040
+EBI3      -0.000445
+CTNNB1     0.077127
+CD8A       0.000085
+LST1       0.124818
+IRF5      -0.042555
+KLRG1     -0.001290
+OSMR       0.095580
+IL22      -0.179084
+CD200      0.024043
+TSLP      -0.116314
+LIF       -0.033047
+IL22RA1   -0.024712
+IL1RL1    -0.129953
+IL32       0.177440
+IL17RA     0.180308
+IL36B     -0.183860
+IL37       0.101515
+CD200R1   -0.096177
+IL33      -0.275055
+KITLG     -0.186637
+IL31       0.063535
+CD244      0.302096
+CD300A     0.282565
+IL36A      0.121620
+IL10RB    -0.091587
+TCF7      -0.137402
+IL31RA     0.023960
+IKZF4     -0.003570
+NFKBIA     0.344135
+LIFR      -0.119585
+IL36G      0.232055
+AKT3       0.027325
+STAT6     -0.039385
+TOX       -0.072623
+PDPK1     -0.133488
+IKZF3      0.336079
+LAIR1      0.161805
+IL18       0.064003
+CD160     -0.236117
+CD47      -0.196102
+IFNA1     -0.092500
+KIT       -0.170171
+IL1B      -0.008130
+IL34      -0.034673
+TOX2       0.213715
+STAT2     -0.121285
+SIRPA     -0.062742
+ The results for the hits are: 
+             Score
+Gene              
+CD4      -0.441485
+TSC2      0.459780
+CD247    -2.497950
+TNFRSF8   0.511525
+CD3E     -2.657250
+IFNGR1   -0.898070
+LEF1     -0.405045
+RBPJ      0.529285
+TNFRSF1A -0.966245
+ITK      -1.814700
+BCL10    -0.869020
+LCK      -1.373600
+PRDM1    -0.785260
+PLCG1    -2.773550
+RELA     -0.840910
+JAK3     -0.524285
+CD3D     -3.313850
+MAPK1    -0.449405
+PRKCQ    -0.442575
+RELB     -0.426405
+IL17A    -0.473900
+CD27     -0.466994
+IFNGR2   -0.975910
+CD3G     -3.626100
+TSC1      1.089420
+STAT3    -1.048600
+IL2RG    -0.650145
+TNFRSF1B -0.807470
+REL      -0.459650
+NFKB2     1.584300
+CREBBP   -0.563725
+TRAF6    -1.865400
+MALT1    -1.063740
+ZAP70    -3.918850
+EIF4EBP1  0.432485
+SOCS3     0.536160
+VAV1     -3.843650
+CHUK     -0.833950
+IKBKG    -0.853900
+TBX21    -1.401000
+JUN      -0.726000
+IFNG     -1.687800
+MAPK3    -0.734105
+JAK1     -1.389050
+IKBKB    -0.922680
+CD28     -2.171850
+IFIH1     0.451861
+
+Now for the next round of experiment your students are planning on testing the following genes: 
+['CARD9', 'MAP2K5', 'PIK3R3', 'VAV3', 'MAP2K7', 'SOCS6', 'BLK', 'CISH', 'MAPK9', 'SOCS5', 'MAP2K4', 'MAPK10', 'MAPK13', 'IFNA2', 'TXK', 'MAP2K3', 'MAPK12', 'MAP3K8', 'TEC', 'NFKBIB', 'IL4R', 'PIK3R2', 'MAP3K7', 'MAP2K1', 'MAP3K1', 'MAP2K2', 'MAP2K6', 'VAV2', 'IRF6', 'MAPK11', 'GRAP2', 'PTPN11', 'RHOA', 'CSK', 'PTPN2', 'CDC42', 'WASL', 'LCP2', 'PTPN22', 'RAC2', 'NCK2', 'NCK1', 'CD53', 'PRKCG', 'SHC1', 'CBLC', 'CBLB', 'ITGB2', 'KLRF1', 'GRAP', 'CBL', 'KLRK1', 'ARHGEF12', 'CD81', 'PRKCI', 'RHOV', 'CD96', 'SOS2', 'CD59', 'LIME1', 'PRKCH', 'SHC2', 'CD300LG', 'ARHGEF3', 'CD300LF', 'CD5', 'CD44', 'PRKCE', 'CD2', 'GRB2', 'KLRC3', 'CD300C', 'SHC4', 'RHOQ', 'SOS1', 'KLRB1', 'PRKCZ', 'CD84', 'PRKCB', 'PRKCD', 'ARHGEF5', 'RHOH', 'KLRC4', 'KLRC2', 'ARHGEF1', 'CD69', 'KLRD1', 'SLA2', 'CD48', 'PTPRC', 'STAP2', 'RHOD', 'PAG1', 'ARHGEF7', 'CD300LD', 'SHC3', 'ARHGEF10', 'CD300LB', 'KLRC1', 'RHOB', 'CD101', 'PRKCA', 'ITGAL', 'CD7', 'CD55', 'CD6', 'ARHGEF11', 'CD300E', 'RHOU', 'ARHGEF4', 'ARHGEF2', 'ARHGEF6', 'CD82', 'PTPN6', 'TRAT1', 'THEMIS', 'CD79A', 'CD37', 'CD63', 'CD38', 'CD22', 'MS4A1', 'CD72', 'CD83', 'CD79B', 'CD19', 'CD9', 'CD24']
+
+As an advisor, please critique this plan and suggest some changes to it. Use this format: 
+1. Critique: include all relevant details of the critique.  
+2. Updated Solution: Give an updated selection of 128 genes based on the critique separated by commas in this format:: 1. <Gene name 1>, 2. <Gene name 2> ... 
+
+
+Please do not critique/make changes if there is no need to make a change.
+
+
+ You have so far predicted 13 out of the required 128 genes for this round. These were: 
+['MAPK10', 'MAPK13', 'MAP2K5', 'CARD9', 'VAV3', 'MAP2K7', 'PIK3R3', 'SOCS6', 'BLK', 'CISH', 'MAPK9', 'SOCS5', 'MAP2K4']
+ Please add 115 more genes to this list. Remember not to include previously tested genes including: 
+ ['IF'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Critique: The students' proposed gene selection is well-designed and logically extends previous findings. Building upon major hits in TCR/CD3 signaling, kinases (e.g., ZAP70, LCK, JAK1/3), and transcription factors, the current round effectively targets upstream regulators, downstream MAPK cascades (MAPKs, MAP2Ks, MAP3Ks), small GTPases and their regulators (RHO, CDC42, ARHGEFs), protein tyrosine phosphatases (PTPN family, CSK, PTPRC), protein kinase C isoforms, and immune cell surface markers/receptors (CD molecules, KLRs). This comprehensive panel will help dissect the signaling networks governing IFNG regulation without introducing previously tested or hit genes. No major modifications are required.
+
+2. Updated Solution: 1. MAPK10, 2. MAPK13, 3. MAP2K5, 4. CARD9, 5. VAV3, 6. MAP2K7, 7. PIK3R3, 8. SOCS6, 9. BLK, 10. CISH, 11. MAPK9, 12. SOCS5, 13. MAP2K4, 14. IFNA2, 15. TXK, 16. MAP2K3, 17. MAPK12, 18. MAP3K8, 19. TEC, 20. NFKBIB, 21. IL4R, 22. PIK3R2, 23. MAP3K7, 24. MAP2K1, 25. MAP3K1, 26. MAP2K2, 27. MAP2K6, 28. VAV2, 29. IRF6, 30. MAPK11, 31. GRAP2, 32. PTPN11, 33. RHOA, 34. CSK, 35. PTPN2, 36. CDC42, 37. WASL, 38. LCP2, 39. PTPN22, 40. RAC2, 41. NCK2, 42. NCK1, 43. CD53, 44. PRKCG, 45. SHC1, 46. CBLC, 47. CBLB, 48. ITGB2, 49. KLRF1, 50. GRAP, 51. CBL, 52. KLRK1, 53. ARHGEF12, 54. CD81, 55. PRKCI, 56. RHOV, 57. CD96, 58. SOS2, 59. CD59, 60. LIME1, 61. PRKCH, 62. SHC2, 63. CD300LG, 64. ARHGEF3, 65. CD300LF, 66. CD5, 67. CD44, 68. PRKCE, 69. CD2, 70. GRB2, 71. KLRC3, 72. CD300C, 73. SHC4, 74. RHOQ, 75. SOS1, 76. KLRB1, 77. PRKCZ, 78. CD84, 79. PRKCB, 80. PRKCD, 81. ARHGEF5, 82. RHOH, 83. KLRC4, 84. KLRC2, 85. ARHGEF1, 86. CD69, 87. KLRD1, 88. SLA2, 89. CD48, 90. PTPRC, 91. STAP2, 92. RHOD, 93. PAG1, 94. ARHGEF7, 95. CD300LD, 96. SHC3, 97. ARHGEF10, 98. CD300LB, 99. KLRC1, 100. RHOB, 101. CD101, 102. PRKCA, 103. ITGAL, 104. CD7, 105. CD55, 106. CD6, 107. ARHGEF11, 108. CD300E, 109. RHOU, 110. ARHGEF4, 111. ARHGEF2, 112. ARHGEF6, 113. CD82, 114. PTPN6, 115. TRAT1, 116. THEMIS, 117. CD79A, 118. CD37, 119. CD63, 120. CD38, 121. CD22, 122. MS4A1, 123. CD72, 124. CD83, 125. CD79B, 126. CD19, 127. CD9, 128. CD24
+===================tokens=====================
+Number of prompt tokens: 3562
+Number of sampled tokens: 1071
+
+

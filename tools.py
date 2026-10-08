@@ -15,6 +15,7 @@ import pandas as pd
 from tqdm import tqdm
 from gene import *
 from achilles import download_csv
+from candidate_pool import run_candidate_pool_round
 
 DEVICE = -1
 PYTHON = "python"
@@ -533,7 +534,7 @@ def print_action(entries):
     return "".join([ k + ": " + v for k,v in  entries.items()])
 
 
-def summarize_remaining_genes(all_genes, summary_size=20, bs=1000):
+def summarize_remaining_genes(all_genes, summary_size=20, bs=1000, model="claude-1"):
 
     blocks = [all_genes[i:i + bs] for i in range(0, len(all_genes), bs)]
     abridged_list = []
@@ -556,7 +557,7 @@ def summarize_remaining_genes(all_genes, summary_size=20, bs=1000):
                 not include any gene that is guessed rather than 
                 directly present in the list.
                 """
-        completion = complete_text(prompt, model="claude-1", log_file=None)
+        completion = complete_text(prompt, model=model, log_file=None)
         abridged_list.append(completion)
 
     abridged_list = ','.join(abridged_list)
@@ -843,6 +844,12 @@ def agent_loop(current_history, steps, use_gpt4, log_dir, args):
 
             curr_sample = []
             genes_remain_summary = None
+            #pool code
+            if args.candidate_pool > 0:
+                run_candidate_pool_round(prompt, log_file, curr_step, gene_sampled,
+                                         measured_genes, all_hit_genes, log_dir, args,
+                                         complete_text)
+                continue
 
             ## Help GPT count and not repeat genes
             for itr in range(args.prompt_tries):
@@ -852,7 +859,7 @@ def agent_loop(current_history, steps, use_gpt4, log_dir, args):
                                         "Observation:"], log_file=log_file)
                 else:
                     
-                    completion = complete_text(prompt_try, model = args.model, log_file=log_file)
+                    completion = complete_text(prompt_try, model = args.model, log_file=log_file, reasoning_effort=args.reasoning_effort)
 
                     if "Gene Search:" in completion:
                         completion_pre = completion.split("4. Solution:")[0] 
@@ -890,6 +897,7 @@ def agent_loop(current_history, steps, use_gpt4, log_dir, args):
                         completion = completion_pre + "\n\n4. Solution:" + completion_post
                 # parse the action and action input
                 import re as _re
+                completion = re.sub(r'<thought>[\s\S]*?</thought>', '', completion)
                 completion_normalized = _re.sub(
                                         r'(?im)^\s*#{1,6}\s*\d*\.?\s*Solution\s*$', 'Solution:', completion
                                                 )
@@ -935,7 +943,7 @@ def agent_loop(current_history, steps, use_gpt4, log_dir, args):
                             # Start choosing from gene list instead of random sample
                             num_genes_pick = args.num_genes - len(curr_sample)
                             genes_remain = list(set(measured_genes).difference(set(gene_sampled)))
-                            genes_remain_summary = summarize_remaining_genes(genes_remain)
+                            genes_remain_summary = summarize_remaining_genes(genes_remain, model=args.model)
                         else:
                             genes_remain_summary = list(set(
                                 genes_remain_summary).difference(set(curr_sample)))
@@ -985,7 +993,7 @@ Please do not critique/make changes if there is no need to make a change.
                     completion = complete_text_gpt4(prompt_try, stop_sequences=[
                                         "Observation:"], log_file=log_file)
                 else:
-                    completion = complete_text(prompt_try, model = args.model, log_file=log_file)
+                    completion = complete_text(prompt_try, model = args.model, log_file=log_file, reasoning_effort=args.critique_reasoning_effort)
 
                 # parse the action and action input
                 import re as _re
@@ -1030,7 +1038,7 @@ Please do not critique/make changes if there is no need to make a change.
                             # Start choosing from gene list instead of random sample
                             num_genes_pick = args.num_genes - len(curr_sample)
                             genes_remain = list(set(measured_genes).difference(set(gene_sampled)))
-                            genes_remain_summary = summarize_remaining_genes(genes_remain)
+                            genes_remain_summary = summarize_remaining_genes(genes_remain, model=args.model)
                         else:
                             genes_remain_summary = list(set(
                                 genes_remain_summary).difference(set(curr_sample)))

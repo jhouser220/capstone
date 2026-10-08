@@ -35,7 +35,7 @@ initial_prompt = """You are a scientist working on problems in drug discovery.
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text. Respond directly with only the numbered format below. Do not show your reasoning, drafts, or any text outside this format:
 
 1. Reflection: Thoughts on previous results and next steps. 
 2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
@@ -48,7 +48,7 @@ initial_prompt_gene_search = """You are a scientist working on problems in drug 
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text. Respond directly with only the numbered format below. Do not show your reasoning, drafts, or any text outside this format:
 
 1. Reflection: Thoughts on previous results and next steps. 
 2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
@@ -62,7 +62,7 @@ initial_prompt_topk = """You are a scientist working on problems in drug discove
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text. Respond directly with only the numbered format below. Do not show your reasoning, drafts, or any text outside this format:
 
 1. Reflection: Thoughts on previous results and next steps. 
 2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
@@ -76,7 +76,7 @@ initial_prompt_rna = """You are a scientist working on problems in drug discover
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text. Respond directly with only the numbered format below. Do not show your reasoning, drafts, or any text outside this format:
 
 1. Reflection: Thoughts on previous results and next steps. 
 2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
@@ -90,7 +90,7 @@ initial_prompt_pathways = """You are a scientist working on problems in drug dis
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text. Respond directly with only the numbered format below. Do not show your reasoning, drafts, or any text outside this format:
 
 1. Reflection: Thoughts on previous results and next steps. 
 2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
@@ -105,7 +105,7 @@ initial_prompt_pairs_norman = """You are a scientist working on problems in drug
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text. Respond directly with only the numbered format below. Do not show your reasoning, drafts, or any text outside this format:
 
 1. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
 2. Solution: Propose a list of predicted pairs of genes to test separated by commas in this format: 1. <Gene name 1> + <Gene name 2>, 2. <Gene name 3> + <Gene name 4>, 3... 
@@ -118,7 +118,7 @@ initial_prompt_pairs = """You are a scientist working on problems in drug discov
 
 Research Problem: {research_problem}
 
-Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text. Respond directly with only the numbered format below. Do not show your reasoning, drafts, or any text outside this format:
 
 1. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
 2. Reasoning: Explanations of the reasoning behind all the proposed combinations.
@@ -152,8 +152,20 @@ if __name__ == "__main__":
     parser.add_argument("--num_genes", type=int, default=32, help="number of "
                                                                  "genes to sample per round")
     parser.add_argument("--manual_prepare", type=bool, default=False, help="use gpt4")
-    parser.add_argument("--prompt_tries", type=int, default=6)
+    parser.add_argument("--prompt_tries", type=int, default=12)
     parser.add_argument("--critique", type=bool, default=False, help="critique")
+    #pool code
+    parser.add_argument("--candidate_pool", type=int, default=0,
+                        help="if > 0, ask for this many candidate genes per round, each with a 1-5 "
+                             "confidence score, then test only the top --num_genes (0 = original method)")
+    #pool code
+    parser.add_argument("--candidate_min", type=int, default=300,
+                        help="minimum valid candidates needed before selecting the top --num_genes")
+    #pool code
+    parser.add_argument("--pool_max_tokens", type=int, default=12000,
+                        help="max output tokens for candidate-pool calls")
+    parser.add_argument("--reasoning_effort", type=str, default="low", help="reasoning effort for the main research assistant model calls (passed through to providers that support it, e.g. Gemini/gpt-oss)")
+    parser.add_argument("--critique_reasoning_effort", type=str, default="low", help="reasoning effort for the AI critic's model calls specifically, independent of --reasoning_effort")
     parser.add_argument("--gene_search", type=bool, default=False, help="gene_search")
     parser.add_argument("--gene_search_diverse", type=bool, default=False, help="gene_search")
     parser.add_argument("--lit_review", type=bool, default=False, help="perform literature review")
@@ -166,6 +178,16 @@ if __name__ == "__main__":
     parser.add_argument("--use_single_gene", type=bool, default=False, help="combinatorial")
     parser.add_argument("--csv_path", type=str, default=".", help="path to save achilles.csv")
     args = parser.parse_args()
+    #pool code
+    if args.candidate_pool > 0:
+        if args.candidate_pool < args.num_genes:
+            raise SystemExit("--candidate_pool ({}) must be >= --num_genes ({})".format(
+                args.candidate_pool, args.num_genes))
+        if args.task != "perturb-genes-brief" or args.combinatorial:
+            raise SystemExit("--candidate_pool currently supports --task perturb-genes-brief "
+                                "(single genes) only.")
+        if args.critique or args.gene_search:
+            print("WARNING: --critique and --gene_search are not used in candidate-pool mode; ignoring.")
 
     tools.DEVICE = args.device
     tools.PYTHON = args.python
@@ -223,6 +245,17 @@ if __name__ == "__main__":
                        "genes. Use HGNC gene naming convention.  " \
                        "DO PREDICT GENES THAT HAVE ALREADY BEEN TESTED " \
                        "".format(args.num_genes)
+        #pool code
+        if args.candidate_pool > 0:
+            instructions = "\n Based on these results and prior knowledge of biology, " \
+                           "propose {pool} candidate genes that could score highly in this " \
+                           "screen, and give each one a confidence score from 1 to 5 " \
+                           "reflecting how likely it is to be a strong hit. I can only test " \
+                           "{n} genes this round and will choose the {n} candidates with the " \
+                           "highest confidence scores, so use the full 1-5 range and reserve " \
+                           "5 for your most promising candidates. Use HGNC gene naming " \
+                           "convention. DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED" \
+                           "".format(pool=args.candidate_pool, n=args.num_genes)
 
     elif args.task == "perturb-genes-brief":
         research_problem = "I'm planning to run a genome-wide CRISPR screen " \
@@ -376,8 +409,20 @@ if __name__ == "__main__":
     #           Prepare for main agent loop               # 
     #                                                     #
     #######################################################
-
-    
+#pool code
+    if args.candidate_pool > 0:
+        _solution_line = ("3. Solution: Propose a list of predicted genes to test separated "
+                          "by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...")
+        assert _solution_line in initial_prompt, \
+            "The 'Solution' line of initial_prompt was edited; update _solution_line to match."
+        initial_prompt = initial_prompt.replace(
+            _solution_line,
+            "3. Solution: Propose a list of {pool} candidate genes to test, each followed by a "
+            "confidence score from 1 to 5 in parentheses (5 = very confident it will be a "
+            "strong hit, 1 = speculative), separated by commas in this format: "
+            "1. <Gene name 1> (<score>), 2. <Gene name 2> (<score>) ... I will only test the {n} "
+            "candidates with the highest scores, so use the full 1-5 range and reserve 5 for "
+            "your most promising candidates.".format(pool=args.candidate_pool, n=args.num_genes))
     if args.gene_search:   
         initial_prompt = initial_prompt_gene_search
     if args.combinatorial:

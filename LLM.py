@@ -172,10 +172,214 @@ def complete_text_openai(prompt, stop_sequences=[], model="gpt-3.5-turbo", max_t
         log_to_file(log_file, prompt, completion, model, max_tokens_to_sample)
     return completion
 
+# ---- Local model support (Ollama / any OpenAI-compatible server) ----
+# ---- OpenRouter support (OpenAI-compatible endpoint, hosted, free tier) ----
+try:
+    from openai import OpenAI as _OpenAI_openrouter
+    openrouter_client = _OpenAI_openrouter(
+        base_url="https://openrouter.ai/api/v1",
+        api_key=open("openrouter_api_key.txt").read().strip(),
+        max_retries=0,
+    )
+except Exception as e:
+    print(e)
+    print("Could not load OpenRouter API key openrouter_api_key.txt.")
+# ---- Gemini support (OpenAI-compatible endpoint, hosted, free tier) ----
+try:
+    from openai import OpenAI as _OpenAI_gemini
+    gemini_client = _OpenAI_gemini(
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+    api_key=open("gemini_api_key.txt").read().strip(),
+    max_retries=0,
+    timeout=120.0,  # fail fast rather than silently hanging for the 10-minute default
+    )
+except Exception as e:
+    print(e)
+    print("Could not load Gemini API key gemini_api_key.txt.")
+
+def complete_text_gemini(prompt, stop_sequences=None, model="gemini-3.5-flash-lite",
+                         max_tokens_to_sample=8000, temperature=0.5, log_file=None,
+                         max_retries=8, reasoning_effort="low", **kwargs):
+    import openai as _openai_module
+    import time
+    for attempt in range(max_retries):
+        try:
+            response = gemini_client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=temperature,
+                max_tokens=max_tokens_to_sample,
+                stop=stop_sequences or None,
+                reasoning_effort=reasoning_effort,
+            )
+            completion = response.choices[0].message.content
+            if not completion or not completion.strip():
+                print(f"Gemini returned an empty completion (attempt {attempt + 1}/{max_retries}), retrying...")
+                continue
+            if log_file is not None:
+                log_to_file(log_file, prompt, completion, model, max_tokens_to_sample)
+            return completion
+        except _openai_module.RateLimitError as e:
+            wait = min(60, 2 ** attempt)
+            print(f"Gemini rate limit hit (attempt {attempt + 1}/{max_retries}): {e}. Waiting {wait}s...")
+            time.sleep(wait)
+        except Exception as e:
+            wait = min(60, 2 ** attempt)
+            print(f"Gemini error (attempt {attempt + 1}/{max_retries}): {type(e).__name__}: {e}. Waiting {wait}s...")
+            time.sleep(wait)
+    raise RuntimeError(f"Gemini call failed after {max_retries} retries.")
+def complete_text_gemma(prompt, stop_sequences=None, model="gemma-4-31b-it",
+                        max_tokens_to_sample=8000, temperature=0.5, log_file=None,
+                        max_retries=8, **kwargs):
+    import openai as _openai_module
+    import time
+    for attempt in range(max_retries):
+        try:
+            response = gemini_client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=temperature,
+                max_tokens=max_tokens_to_sample,
+                stop=stop_sequences or None,
+            )
+            completion = response.choices[0].message.content
+            if not completion or not completion.strip():
+                print(f"Gemma returned an empty completion (attempt {attempt + 1}/{max_retries}), retrying...")
+                continue
+            if log_file is not None:
+                log_to_file(log_file, prompt, completion, model, max_tokens_to_sample)
+            return completion
+        except _openai_module.RateLimitError as e:
+            wait = min(60, 2 ** attempt)
+            print(f"Gemma rate limit hit (attempt {attempt + 1}/{max_retries}): {e}. Waiting {wait}s...")
+            time.sleep(wait)
+        except Exception as e:
+            # Broad catch: Gemini's OpenAI-compat layer has returned at least one
+            # malformed/non-standard error (500 INTERNAL) that may not surface as
+            # a normal openai.APIError. Retry regardless of the exact exception type.
+            wait = min(60, 2 ** attempt)
+            print(f"Gemma error (attempt {attempt + 1}/{max_retries}): {type(e).__name__}: {e}. Waiting {wait}s...")
+            time.sleep(wait)
+    raise RuntimeError(f"Gemma call failed after {max_retries} retries.")
+def complete_text_openrouter(prompt, stop_sequences=None, model="meta-llama/llama-3.3-70b-instruct:free",
+                             max_tokens_to_sample=2000, temperature=0.5, log_file=None,
+                             max_retries=8, **kwargs):
+    import openai as _openai_module
+    import time
+    for attempt in range(max_retries):
+        try:
+            response = openrouter_client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=temperature,
+                max_tokens=max_tokens_to_sample,
+                stop=stop_sequences or None,
+            )
+            completion = response.choices[0].message.content
+            if log_file is not None:
+                log_to_file(log_file, prompt, completion, model, max_tokens_to_sample)
+            return completion
+        except _openai_module.RateLimitError as e:
+            wait = min(60, 2 ** attempt)
+            print(f"OpenRouter rate limit hit (attempt {attempt + 1}/{max_retries}), waiting {wait}s...")
+            time.sleep(wait)
+        except _openai_module.APIError as e:
+            wait = min(60, 2 ** attempt)
+            print(f"OpenRouter API error (attempt {attempt + 1}/{max_retries}): {e}. Waiting {wait}s...")
+            time.sleep(wait)
+    raise RuntimeError(f"OpenRouter call failed after {max_retries} retries.")
+# ---- Groq support (OpenAI-compatible endpoint, hosted, free tier) ----
+try:
+    from openai import OpenAI as _OpenAI_groq
+    groq_client = _OpenAI_groq(
+        base_url="https://api.groq.com/openai/v1",
+        api_key=open("groq_api_key.txt").read().strip(),
+        max_retries=0,  # disable the SDK's own silent retries -- we handle retries explicitly below
+    )
+except Exception as e:
+    print(e)
+    print("Could not load Groq API key groq_api_key.txt.")
+
+
+def complete_text_groq(prompt, stop_sequences=None, model="llama-4-scout-17b-16e-instruct",
+                       max_tokens_to_sample=8000, temperature=0.5, log_file=None,
+                       max_retries=8, **kwargs):
+    # Call Groq's hosted API, with explicit retry-with-backoff on rate limits (429)
+    # and transient server errors.
+    import openai as _openai_module
+    import time
+    # gpt-oss models are reasoning models: internal "thinking" tokens count
+    # against the same max_tokens budget as the visible answer. Without an
+    # explicit low reasoning effort, the model can exhaust its whole budget
+    # thinking and return an empty completion with no error.
+    extra_body = {}
+    if "gpt-oss" in model:
+        extra_body["reasoning_effort"] = "low"
+    elif "qwen3" in model.lower():
+        extra_body["reasoning_effort"] = "none"
+    for attempt in range(max_retries):
+        try:
+            response = groq_client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=temperature,
+                max_tokens=max_tokens_to_sample,
+                stop=stop_sequences or None,
+                extra_body=extra_body or None,
+            )
+            completion = response.choices[0].message.content
+            if not completion or not completion.strip():
+                print(f"Groq returned an empty completion (attempt {attempt + 1}/{max_retries}), retrying...")
+                continue
+            if log_file is not None:
+                log_to_file(log_file, prompt, completion, model, max_tokens_to_sample)
+            return completion
+        except _openai_module.RateLimitError as e:
+            wait = min(60, 2 ** attempt)
+            print(f"Groq rate limit hit (attempt {attempt + 1}/{max_retries}), waiting {wait}s...")
+            time.sleep(wait)
+        except _openai_module.APIError as e:
+            wait = min(60, 2 ** attempt)
+            print(f"Groq API error (attempt {attempt + 1}/{max_retries}): {e}. Waiting {wait}s...")
+            time.sleep(wait)
+    raise RuntimeError(f"Groq call failed after {max_retries} retries.")
+try:
+    from openai import OpenAI as _OpenAI
+    local_client = _OpenAI(
+        base_url=os.environ.get("LOCAL_LLM_BASE_URL", "http://localhost:11434/v1"),
+        api_key="ollama",  # required by the client but ignored by Ollama
+    )
+except Exception as e:
+    print(e)
+    print("Could not create local LLM client (pip install openai).")
+
+def complete_text_local(prompt, stop_sequences=None, model="llama3.1:8b",
+                        max_tokens_to_sample=2000, temperature=0.5, log_file=None, **kwargs):
+    """ Call a locally served model through an OpenAI-compatible endpoint. """
+    response = local_client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=temperature,
+        max_tokens=max_tokens_to_sample,
+        stop=stop_sequences or None,
+    )
+    completion = response.choices[0].message.content
+    if log_file is not None:
+        log_to_file(log_file, prompt, completion, model, max_tokens_to_sample)
+    return completion
 def complete_text(prompt, log_file, model, **kwargs):
     """ Complete text using the specified model with appropriate API. """
-
-    if model.startswith("claude"):
+    if model.startswith("gemma:"):
+        completion = complete_text_gemma(prompt, stop_sequences=["Observation:"], log_file=log_file, model=model[len("gemma:"):], **kwargs)
+    elif model.startswith("gemini:"):
+        completion = complete_text_gemini(prompt, stop_sequences=["Observation:"], log_file=log_file, model=model[len("gemini:"):], **kwargs)
+    elif model.startswith("openrouter:"):
+        completion = complete_text_openrouter(prompt, stop_sequences=["Observation:"], log_file=log_file, model=model[len("openrouter:"):], **kwargs)
+    elif model.startswith("local:"):
+        completion = complete_text_local(prompt, stop_sequences=["Observation:"], log_file=log_file, model=model[len("local:"):], **kwargs)
+    elif model.startswith("groq:"):
+        completion = complete_text_groq(prompt, stop_sequences=["Observation:"], log_file=log_file, model=model[len("groq:"):], **kwargs)
+    elif model.startswith("claude"):
         # use anthropic API
         completion = complete_text_claude(prompt, stop_sequences=[HUMAN_PROMPT, "Observation:"], log_file=log_file, model=model, **kwargs)
     elif "/" in model:

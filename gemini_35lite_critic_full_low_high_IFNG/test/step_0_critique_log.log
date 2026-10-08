@@ -1,0 +1,73 @@
+
+===================prompt=====================
+
+
+Human: You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+            
+
+
+Now for the next round of experiment your students are planning on testing the following genes: 
+['IRF8', 'TSC2', 'HDAC1', 'TNFRSF8', 'IL7R', 'KDM6B', 'SMAD4', 'RBPJ', 'RPTOR', 'TET2', 'ICOSLG', 'IL2', 'IL4', 'TNFRSF4', 'IL6ST', 'CCR7', 'ARID1A', 'TSC1', 'CD86', 'ICOS', 'CD40', 'IKZF1', 'SMARCA4', 'TRAF1', 'NFKB2', 'CSF1', 'CREBBP', 'CD70', 'TNFSF4', 'CSF2RB', 'TRAF3', 'TNFSF9', 'TNFRSF9', 'LTB', 'IL18R1', 'CD40LG', 'BTLA', 'IRF1', 'RICTOR', 'TLR4', 'EOMES', 'TBX21', 'MYC', 'NOTCH1', 'JUN', 'MAPK8', 'IL15RA', 'CSF2', 'PDCD1', 'JAK1', 'AKT1', 'CD28', 'HAVCR2', 'TIGIT', 'CSF1R', 'IL6', 'IFIH1', 'NFKB1', 'CD274', 'IRF3', 'IRF2', 'TNFSF8', 'TICAM1', 'IL15', 'CXCR4', 'SMAD2', 'CASP3', 'IL12RB2', 'KDM4A', 'GATA3', 'IRF7', 'TNFRSF18', 'TNF', 'CGAS', 'STAT4', 'PRDM1', 'RELA', 'TP53', 'IL10', 'MAPK1', 'FOS', 'CXCR3', 'PIK3CA', 'IL2RA', 'IL12RB1', 'SMAD3', 'CD27', 'CASP1', 'LTA', 'FASLG', 'DNMT1', 'IL2RG', 'PTEN', 'MTOR', 'REL', 'TLR9', 'CD80', 'SOCS1', 'TRAF6', 'LAG3', 'STAT1', 'CTLA4', 'SOCS3', 'IL21', 'TGFB1', 'IL6R', 'IL2RB', 'BCL6', 'JAK2', 'TNFSF18', 'MAPK14', 'CCR5', 'IFNG', 'EP300', 'MAPK3', 'STING1', 'HDAC2', 'CSF2RA', 'CREB1', 'TBK1', 'MYD88', 'RUNX3', 'IL21R', 'MAVS', 'BCL2', 'GZMB', 'STAT3', 'IRF4']
+
+As an advisor, please critique this plan and suggest some changes to it. Use this format: 
+1. Critique: include all relevant details of the critique.  
+2. Updated Solution: Give an updated selection of 128 genes based on the critique separated by commas in this format:: 1. <Gene name 1>, 2. <Gene name 2> ... 
+
+
+Please do not critique/make changes if there is no need to make a change.
+
+ 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Critique: 
+There are two main issues with the students' proposed gene selection plan:
+- **Duplicate Entries**: The list contains duplicate entries for four genes (`MAPK14`, `CCR5`, `IFNG`, and `EP300`), which incorrectly brings the total count to 132 genes instead of the maximum allowed constraint of 128 genes per round.
+- **Inclusion of the Readout Gene (`IFNG`)**: The gene being measured and evaluated for log fold change is Interferon-gamma (`IFNG`). Perturbing the output gene itself is redundant and uninformative for discovering novel upstream or downstream regulators, wasting one of the precious 128 perturbation slots. `IFNG` should be replaced with a genuine regulatory candidate (such as `BATF`).
+
+2. Updated Solution: 
+1. IRF8, 2. TSC2, 3. HDAC1, 4. TNFRSF8, 5. IL7R, 6. KDM6B, 7. SMAD4, 8. RBPJ, 9. RPTOR, 10. TET2, 11. ICOSLG, 12. IL2, 13. IL4, 14. TNFRSF4, 15. IL6ST, 16. CCR7, 17. ARID1A, 18. TSC1, 19. CD86, 20. ICOS
+===================tokens=====================
+Number of prompt tokens: 862
+Number of sampled tokens: 306
+
+
+
+===================prompt=====================
+
+
+Human: You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+            
+
+
+Now for the next round of experiment your students are planning on testing the following genes: 
+['IRF8', 'TSC2', 'HDAC1', 'TNFRSF8', 'IL7R', 'KDM6B', 'SMAD4', 'RBPJ', 'RPTOR', 'TET2', 'ICOSLG', 'IL2', 'IL4', 'TNFRSF4', 'IL6ST', 'CCR7', 'ARID1A', 'TSC1', 'CD86', 'ICOS', 'CD40', 'IKZF1', 'SMARCA4', 'TRAF1', 'NFKB2', 'CSF1', 'CREBBP', 'CD70', 'TNFSF4', 'CSF2RB', 'TRAF3', 'TNFSF9', 'TNFRSF9', 'LTB', 'IL18R1', 'CD40LG', 'BTLA', 'IRF1', 'RICTOR', 'TLR4', 'EOMES', 'TBX21', 'MYC', 'NOTCH1', 'JUN', 'MAPK8', 'IL15RA', 'CSF2', 'PDCD1', 'JAK1', 'AKT1', 'CD28', 'HAVCR2', 'TIGIT', 'CSF1R', 'IL6', 'IFIH1', 'NFKB1', 'CD274', 'IRF3', 'IRF2', 'TNFSF8', 'TICAM1', 'IL15', 'CXCR4', 'SMAD2', 'CASP3', 'IL12RB2', 'KDM4A', 'GATA3', 'IRF7', 'TNFRSF18', 'TNF', 'CGAS', 'STAT4', 'PRDM1', 'RELA', 'TP53', 'IL10', 'MAPK1', 'FOS', 'CXCR3', 'PIK3CA', 'IL2RA', 'IL12RB1', 'SMAD3', 'CD27', 'CASP1', 'LTA', 'FASLG', 'DNMT1', 'IL2RG', 'PTEN', 'MTOR', 'REL', 'TLR9', 'CD80', 'SOCS1', 'TRAF6', 'LAG3', 'STAT1', 'CTLA4', 'SOCS3', 'IL21', 'TGFB1', 'IL6R', 'IL2RB', 'BCL6', 'JAK2', 'TNFSF18', 'MAPK14', 'CCR5', 'IFNG', 'EP300', 'MAPK3', 'STING1', 'HDAC2', 'CSF2RA', 'CREB1', 'TBK1', 'MYD88', 'RUNX3', 'IL21R', 'MAVS', 'BCL2', 'GZMB', 'STAT3', 'IRF4']
+
+As an advisor, please critique this plan and suggest some changes to it. Use this format: 
+1. Critique: include all relevant details of the critique.  
+2. Updated Solution: Give an updated selection of 128 genes based on the critique separated by commas in this format:: 1. <Gene name 1>, 2. <Gene name 2> ... 
+
+
+Please do not critique/make changes if there is no need to make a change.
+
+
+ You have so far predicted 20 out of the required 128 genes for this round. These were: 
+['IRF8', 'TSC2', 'IL7R', 'TNFRSF8', 'HDAC1', 'KDM6B', 'SMAD4', 'RBPJ', 'RPTOR', 'TET2', 'ICOSLG', 'IL2', 'IL4', 'TNFRSF4', 'IL6ST', 'CCR7', 'ARID1A', 'TSC1', 'CD86', 'ICOS']
+ Please add 108 more genes to this list. Remember not to include previously tested genes including: 
+ [] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (8000)=====================
+1. Critique: The students' proposed list of 128 genes is well-designed and highly relevant for a genome-wide CRISPR screen targeting Interferon-gamma (IFNG) regulation. It comprehensively covers essential pathways involved in IFNG production and signaling, including key transcription factors (e.g., IRF1, IRF8, TBX21, EOMES, STAT1, STAT3), cytokine and receptor signaling components (e.g., JAK1, JAK2, IL2, IL6, IL12RB1, IFNG), epigenetic regulators (e.g., HDAC1, HDAC2, KDM6B, CREBBP, EP300), and checkpoint/co-stimulatory molecules. All 20 previously specified genes are correctly included, the gene set is non-redundant, and no changes are necessary.
+
+2. Updated Solution: 
+1. IRF8, 2. TSC2, 3. HDAC1, 4. TNFRSF8, 5. IL7R, 6. KDM6B, 7. SMAD4, 8. RBPJ, 9. RPTOR, 10. TET2, 11. ICOSLG, 12. IL2, 13. IL4, 14. TNFRSF4, 15. IL6ST, 16. CCR7, 17. ARID1A, 18. TSC1, 19. CD86, 20. ICOS, 21. CD40, 22. IKZF1, 23. SMARCA4, 24. TRAF1, 25. NFKB2, 26. CSF1, 27. CREBBP, 28. CD70, 29. TNFSF4, 30. CSF2RB, 31. TRAF3, 32. TNFSF9, 33. TNFRSF9, 34. LTB, 35. IL18R1, 36. CD40LG, 37. BTLA, 38. IRF1, 39. RICTOR, 40. TLR4, 41. EOMES, 42. TBX21, 43. MYC, 44. NOTCH1, 45. JUN, 46. MAPK8, 47. IL15RA, 48. CSF2, 49. PDCD1, 50. JAK1, 51. AKT1, 52. CD28, 53. HAVCR2, 54. TIGIT, 55. CSF1R, 56. IL6, 57. IFIH1, 58. NFKB1, 59. CD274, 60. IRF3, 61. IRF2, 62. TNFSF8, 63. TICAM1, 64. IL15, 65. CXCR4, 66. SMAD2, 67. CASP3, 68. IL12RB2, 69. KDM4A, 70. GATA3, 71. IRF7, 72. TNFRSF18, 73. TNF, 74. CGAS, 75. STAT4, 76. PRDM1, 77. RELA, 78. TP53, 79. IL10, 80. MAPK1, 81. FOS, 82. CXCR3, 83. PIK3CA, 84. IL2RA, 85. IL12RB1, 86. SMAD3, 87. CD27, 88. CASP1, 89. LTA, 90. FASLG, 91. DNMT1, 92. IL2RG, 93. PTEN, 94. MTOR, 95. REL, 96. TLR9, 97. CD80, 98. SOCS1, 99. TRAF6, 100. LAG3, 101. STAT1, 102. CTLA4, 103. SOCS3, 104. IL21, 105. TGFB1, 106. IL6R, 107. IL2RB, 108. BCL6, 109. JAK2, 110. TNFSF18, 111. MAPK14, 112. CCR5, 113. IFNG, 114. EP300, 115. MAPK3, 116. STING1, 117. HDAC2, 118. CSF2RA, 119. CREB1, 120. TBK1, 121. MYD88, 122. RUNX3, 123. IL21R, 124. MAVS, 125. BCL2, 126. GZMB, 127. STAT3, 128. IRF4
+===================tokens=====================
+Number of prompt tokens: 1004
+Number of sampled tokens: 1069
+
+

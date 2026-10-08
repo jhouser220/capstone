@@ -1,5 +1,8 @@
 all_tools.sh
 claude_api_key.txt
+groq_api_key.txt
+openrouter_api_key.txt
+gemini_api_key.txt
 clean.py
 crfm_api_key.txt
 no_tools.sh
