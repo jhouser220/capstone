@@ -1,0 +1,254 @@
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. Previously tested genes (do not select again): 
+[np.str_('IFNAR1'), np.str_('ERBB2'), np.str_('NLRP3'), np.str_('MYD88'), np.str_('TET2'), np.str_('TBK1'), np.str_('PRDM1'), np.str_('CXCR3'), np.str_('CASP1'), np.str_('IL7R'), np.str_('IL2RB'), np.str_('IL18RAP'), np.str_('SMAD4'), np.str_('HDAC2'), np.str_('ERBB3'), np.str_('IFNGR2'), np.str_('AIM2'), np.str_('MYC'), np.str_('EP300'), np.str_('IRF4'), np.str_('TNF'), np.str_('CTNNB1'), np.str_('CREB1'), np.str_('CDC42'), np.str_('SMAD5'), np.str_('MAVS'), np.str_('TICAM1'), np.str_('PYCARD'), np.str_('IFNG'), np.str_('IFNAR2'), np.str_('FOS'), np.str_('IL13'), np.str_('MTOR'), np.str_('ACVR1'), np.str_('VHL'), np.str_('SOCS1'), np.str_('STAT1'), np.str_('FN1'), np.str_('CCR5'), np.str_('GATA3'), np.str_('ITGB1'), np.str_('IL12B'), np.str_('TGFB1'), np.str_('INSR'), np.str_('JUN'), np.str_('MAPK14'), np.str_('IFNGR1'), np.str_('NFKB1'), np.str_('NOTCH1'), np.str_('TRAF6'), np.str_('ARID1A'), np.str_('TLR9'), np.str_('RHOA'), np.str_('ACTB'), np.str_('ITGAM'), np.str_('PTEN'), np.str_('HIF1A'), np.str_('TBX21'), np.str_('AKT1'), np.str_('EGFR'), np.str_('VIM'), np.str_('IL12RB2'), np.str_('HDAC1'), np.str_('BCL6'), np.str_('BMP4'), np.str_('IL12RB1'), np.str_('IL6'), np.str_('KDR'), np.str_('TP53'), np.str_('MAPK3'), np.str_('TSC2'), np.str_('CD274'), np.str_('CD40LG'), np.str_('SMAD3'), np.str_('IRF3'), np.str_('SMARCA4'), np.str_('STING1'), np.str_('EGLN1'), np.str_('FLT1'), np.str_('IL10'), np.str_('GLI1'), np.str_('CTLA4'), np.str_('MAPK1'), np.str_('SOCS3'), np.str_('FOXP3'), np.str_('GSK3B'), np.str_('PTCH1'), np.str_('TSC1'), np.str_('IL21'), np.str_('ROCK1'), np.str_('CD40'), np.str_('CD28'), np.str_('BMP2'), np.str_('IL18'), np.str_('IL4'), np.str_('IRF8'), np.str_('PIK3CA'), np.str_('WNT1'), np.str_('PDCD1'), np.str_('RORC'), np.str_('IL2RG'), np.str_('RELA'), np.str_('IGF1R'), np.str_('HHAT'), np.str_('DNMT1'), np.str_('CREBBP'), np.str_('VEGFA'), np.str_('TLR4'), np.str_('IL1B'), np.str_('TUBA1A'), np.str_('IRF1'), np.str_('IL2'), np.str_('JAK1'), np.str_('SHH'), np.str_('JAK2'), np.str_('IRS1'), np.str_('IL12A'), np.str_('IL15RA'), np.str_('CGAS'), np.str_('CD86'), np.str_('CD80'), np.str_('MAPK8'), np.str_('NFATC1'), np.str_('IL17A'), np.str_('IL6R'), np.str_('CASP3'), np.str_('BCL2'), np.str_('STAT2')]
+ You have successfully identified 23 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+RHOA   -0.738540
+IL17A  -0.473900
+PRDM1  -0.785260
+HIF1A  -0.440695
+TBX21  -1.401000
+IFNGR2 -0.975910
+MAPK3  -0.734105
+TSC2    0.459780
+GLI1   -0.424695
+MAPK1  -0.449405
+SOCS3   0.536160
+IFNG   -1.687800
+PTCH1   0.492325
+TSC1    1.089420
+CD28   -2.171850
+WNT1   -0.448450
+IL2RG  -0.650145
+RELA   -0.840910
+CREBBP -0.563725
+JAK1   -1.389050
+JUN    -0.726000
+IFNGR1 -0.898070
+TRAF6  -1.865400
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: Previous rounds successfully identified key regulators of Interferon-gamma production including cytokine receptors, JAK-STAT pathway components, and transcription factors. Building on these hits, I will now target additional upstream signaling molecules, transcriptional co-activators, and downstream effectors related to immune response pathways. 
+2. Research Plan: We will select 128 untested genes implicated in cytokine signaling, T-cell activation, and transcriptional regulation to expand our coverage of the IFNG regulatory network. The selection is guided by prioritizing pathway members interacting with our validated hits like JAK1, TRAF6, and TBX21. This iterative screening approach aims to uncover novel positive and negative regulators of IFNG production.
+3. Solution: 1. STAT3, 2. STAT4, 3. STAT5A, 4. STAT5B, 5. STAT6, 6. JAK3, 7. TYK2, 8. IL6ST, 9. IL2RA, 10. IL2RB, 11. IL15, 12. IL7, 13. IL12RB1, 14. IL12RB2, 15. IL23R, 16. IL27, 17. IL27RA, 18. EBI3, 19. IFNG, 20. IL18R1, 21. IL1RAP, 22. MyD88, 23. IRAK1, 24. IRAK4, 25. TBK1, 26. IKBKB, 27. CHUK, 28. NFKBIE, 29. NFKBIA, 30. REL, 31. RELB, 32. NFATC2, 33. NFATC3, 34. NFATC4, 35. NFAT5, 36. FOSL1, 37. FOSL2, 38. JUNB, 39. JUND, 40. ATF2, 41. ATF3, 42. IRF2, 43. IRF5, 44. IRF7, 45. IRF9, 46. RUNX1, 47. RUNX3, 48. GATA1, 49. GATA2, 50. GATA4, 51. TBX1, 52. EOMES, 53. PRDM1, 54. BHLHE40, 55. IKZF1, 56. IKZF2, 57. IKZF3, 58. SATB1, 59. FOXP1, 60. FOXP4, 61. SMAD1, 62. SMAD2, 63. SMAD6, 64. SMAD7, 65. TGFBR1, 66. TGFBR2, 67. ACVR1B, 68. ACVR2A, 69. BMPR1A, 70. BMPR2, 71. PIK3CB, 72. PIK3CD, 73. PIK3R1, 74. PIK3R2, 75. AKT2, 76. AKT3, 77. PDPK1, 78. RPTOR, 79. RICTOR, 80. MLST8, 81. PRR5, 82. EIF4EBP1, 83. RPS6KB1, 84. RPS6, 85. 4EBP1, 86. TSC1, 87. TSC2, 88. RHEB, 89. PTEN, 90. INPP5D, 91. SHIP1, 92. SYK, 93. ZAP70, 94. LCK, 95. FYN, 96. LAT, 97. PLCG1, 98. PRKCQ, 99. CARD11, 100. BCL10, 101. MALT1, 102. CHUK, 103. IKBKG, 104. TAB1, 105. TAB2, 106. TAB3, 107. MAP3K7, 108. MAP2K4, 109. MAP2K7, 110. MAPK8, 111. MAPK9, 112. MAPK10, 113. MAP2K1, 114. MAP2K2, 115. MAPK3, 116. MAPK1, 117. MAPK14, 118. MAPK11, 119. MAPK12, 120. MAPK13, 121. CASP8, 122. CASP9, 123. CASP10, 124. FADD, 125. TRADD, 126. RIPK1, 127. RIPK3, 128. CYLD
+===================tokens=====================
+Number of prompt tokens: 1442
+Number of sampled tokens: 1054
+
+
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. Previously tested genes (do not select again): 
+[np.str_('IFNAR1'), np.str_('ERBB2'), np.str_('NLRP3'), np.str_('MYD88'), np.str_('TET2'), np.str_('TBK1'), np.str_('PRDM1'), np.str_('CXCR3'), np.str_('CASP1'), np.str_('IL7R'), np.str_('IL2RB'), np.str_('IL18RAP'), np.str_('SMAD4'), np.str_('HDAC2'), np.str_('ERBB3'), np.str_('IFNGR2'), np.str_('AIM2'), np.str_('MYC'), np.str_('EP300'), np.str_('IRF4'), np.str_('TNF'), np.str_('CTNNB1'), np.str_('CREB1'), np.str_('CDC42'), np.str_('SMAD5'), np.str_('MAVS'), np.str_('TICAM1'), np.str_('PYCARD'), np.str_('IFNG'), np.str_('IFNAR2'), np.str_('FOS'), np.str_('IL13'), np.str_('MTOR'), np.str_('ACVR1'), np.str_('VHL'), np.str_('SOCS1'), np.str_('STAT1'), np.str_('FN1'), np.str_('CCR5'), np.str_('GATA3'), np.str_('ITGB1'), np.str_('IL12B'), np.str_('TGFB1'), np.str_('INSR'), np.str_('JUN'), np.str_('MAPK14'), np.str_('IFNGR1'), np.str_('NFKB1'), np.str_('NOTCH1'), np.str_('TRAF6'), np.str_('ARID1A'), np.str_('TLR9'), np.str_('RHOA'), np.str_('ACTB'), np.str_('ITGAM'), np.str_('PTEN'), np.str_('HIF1A'), np.str_('TBX21'), np.str_('AKT1'), np.str_('EGFR'), np.str_('VIM'), np.str_('IL12RB2'), np.str_('HDAC1'), np.str_('BCL6'), np.str_('BMP4'), np.str_('IL12RB1'), np.str_('IL6'), np.str_('KDR'), np.str_('TP53'), np.str_('MAPK3'), np.str_('TSC2'), np.str_('CD274'), np.str_('CD40LG'), np.str_('SMAD3'), np.str_('IRF3'), np.str_('SMARCA4'), np.str_('STING1'), np.str_('EGLN1'), np.str_('FLT1'), np.str_('IL10'), np.str_('GLI1'), np.str_('CTLA4'), np.str_('MAPK1'), np.str_('SOCS3'), np.str_('FOXP3'), np.str_('GSK3B'), np.str_('PTCH1'), np.str_('TSC1'), np.str_('IL21'), np.str_('ROCK1'), np.str_('CD40'), np.str_('CD28'), np.str_('BMP2'), np.str_('IL18'), np.str_('IL4'), np.str_('IRF8'), np.str_('PIK3CA'), np.str_('WNT1'), np.str_('PDCD1'), np.str_('RORC'), np.str_('IL2RG'), np.str_('RELA'), np.str_('IGF1R'), np.str_('HHAT'), np.str_('DNMT1'), np.str_('CREBBP'), np.str_('VEGFA'), np.str_('TLR4'), np.str_('IL1B'), np.str_('TUBA1A'), np.str_('IRF1'), np.str_('IL2'), np.str_('JAK1'), np.str_('SHH'), np.str_('JAK2'), np.str_('IRS1'), np.str_('IL12A'), np.str_('IL15RA'), np.str_('CGAS'), np.str_('CD86'), np.str_('CD80'), np.str_('MAPK8'), np.str_('NFATC1'), np.str_('IL17A'), np.str_('IL6R'), np.str_('CASP3'), np.str_('BCL2'), np.str_('STAT2')]
+ You have successfully identified 23 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+RHOA   -0.738540
+IL17A  -0.473900
+PRDM1  -0.785260
+HIF1A  -0.440695
+TBX21  -1.401000
+IFNGR2 -0.975910
+MAPK3  -0.734105
+TSC2    0.459780
+GLI1   -0.424695
+MAPK1  -0.449405
+SOCS3   0.536160
+IFNG   -1.687800
+PTCH1   0.492325
+TSC1    1.089420
+CD28   -2.171850
+WNT1   -0.448450
+IL2RG  -0.650145
+RELA   -0.840910
+CREBBP -0.563725
+JAK1   -1.389050
+JUN    -0.726000
+IFNGR1 -0.898070
+TRAF6  -1.865400
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 106 out of the required 128 genes for this round. These were: 
+['CHUK', 'CYLD', 'STAT5A', 'AKT3', 'CASP9', 'NFATC4', 'PRR5', 'FOXP4', 'GATA2', 'JAK3', 'TGFBR2', 'IL6ST', 'REL', 'JUND', 'IKZF1', 'IRF9', 'RIPK3', 'FADD', 'TGFBR1', 'STAT6', 'AKT2', 'BCL10', 'EIF4EBP1', 'GATA4', 'IRAK4', 'PLCG1', 'SMAD7', 'CASP8', 'FYN', 'IL18R1', 'MAP2K2', 'MALT1', 'GATA1', 'MAPK12', 'RIPK1', 'PIK3CB', 'PRKCQ', 'CARD11', 'BHLHE40', 'TYK2', 'IRAK1', 'RHEB', 'IRF2', 'ACVR2A', 'MAPK11', 'BMPR2', 'IRF5', 'ATF3', 'SMAD2', 'RICTOR', 'IKBKG', 'TRADD', 'JUNB', 'STAT4', 'LCK', 'FOSL1', 'MAP2K7', 'MAPK9', 'NFATC2', 'RPS6', 'CASP10', 'SMAD6', 'TAB2', 'IRF7', 'NFKBIA', 'MLST8', 'IKZF3', 'SATB1', 'IL1RAP', 'PIK3R1', 'PIK3R2', 'IL23R', 'MAP2K1', 'MAP2K4', 'FOSL2', 'FOXP1', 'TBX1', 'ACVR1B', 'INPP5D', 'IL27RA', 'TAB3', 'ZAP70', 'PIK3CD', 'NFAT5', 'STAT3', 'IKZF2', 'EBI3', 'RELB', 'IL7', 'RPS6KB1', 'MAPK13', 'BMPR1A', 'STAT5B', 'EOMES', 'RUNX1', 'IKBKB', 'PDPK1', 'IL2RA', 'MAP3K7', 'IL15', 'NFATC3', 'SYK', 'MAPK10', 'RUNX3', 'NFKBIE', 'RPTOR']
+ Please add 22 more genes to this list. Remember not to include previously tested genes including: 
+ ['ATF2', '4EBP1', 'LAT', 'SMAD1', 'MyD88', 'IL27', 'SHIP1', 'TAB1'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: The screen is systematically exploring key inflammatory, cytokine signaling, and transcriptional regulatory pathways with a strong focus on JAK-STAT, MAPK, and NF-kB networks. Based on the previous hits like JAK1, TRAF6, and various interleukins, expanding into remaining proximal cytokine signaling components, transcription factors, and pathway modifiers will help capture full regulatory modules influencing IFNG production. To complete the 128 gene requirement for this round, I will now select 22 additional relevant immune and signaling regulators.
+2. Research Plan: I will select 22 untapped genes involved in cytokine signaling, T-cell activation, and transcriptional regulation to complete the current 128-gene set. The selection prioritizes kinases, phosphatases, and transcription factors functionally linked to interferon and interleukin pathways. Each chosen gene has not been tested in prior rounds and adheres to standard HGNC nomenclature. This targeted addition ensures comprehensive coverage of potential regulatory nodes governing IFNG production.
+3. Solution: 1. PRKCA, 2. PRKCB, 3. PRKCD, 4. PRKCZ, 5. SOCS2, 6. PIAS1, 7. PIAS3, 8. PTPN1, 9. PTPN2, 10. PTPN6, 11. CISH, 12. CBL, 13. LYN, 14. SRC, 15. BTK, 16. ITK, 17. TEC, 18. LAT, 19. VAV1, 20. RAC1, 21. RAC2, 22. WAS</i>
+===================tokens=====================
+Number of prompt tokens: 2066
+Number of sampled tokens: 361
+
+
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. Previously tested genes (do not select again): 
+[np.str_('IFNAR1'), np.str_('ERBB2'), np.str_('NLRP3'), np.str_('MYD88'), np.str_('TET2'), np.str_('TBK1'), np.str_('PRDM1'), np.str_('CXCR3'), np.str_('CASP1'), np.str_('IL7R'), np.str_('IL2RB'), np.str_('IL18RAP'), np.str_('SMAD4'), np.str_('HDAC2'), np.str_('ERBB3'), np.str_('IFNGR2'), np.str_('AIM2'), np.str_('MYC'), np.str_('EP300'), np.str_('IRF4'), np.str_('TNF'), np.str_('CTNNB1'), np.str_('CREB1'), np.str_('CDC42'), np.str_('SMAD5'), np.str_('MAVS'), np.str_('TICAM1'), np.str_('PYCARD'), np.str_('IFNG'), np.str_('IFNAR2'), np.str_('FOS'), np.str_('IL13'), np.str_('MTOR'), np.str_('ACVR1'), np.str_('VHL'), np.str_('SOCS1'), np.str_('STAT1'), np.str_('FN1'), np.str_('CCR5'), np.str_('GATA3'), np.str_('ITGB1'), np.str_('IL12B'), np.str_('TGFB1'), np.str_('INSR'), np.str_('JUN'), np.str_('MAPK14'), np.str_('IFNGR1'), np.str_('NFKB1'), np.str_('NOTCH1'), np.str_('TRAF6'), np.str_('ARID1A'), np.str_('TLR9'), np.str_('RHOA'), np.str_('ACTB'), np.str_('ITGAM'), np.str_('PTEN'), np.str_('HIF1A'), np.str_('TBX21'), np.str_('AKT1'), np.str_('EGFR'), np.str_('VIM'), np.str_('IL12RB2'), np.str_('HDAC1'), np.str_('BCL6'), np.str_('BMP4'), np.str_('IL12RB1'), np.str_('IL6'), np.str_('KDR'), np.str_('TP53'), np.str_('MAPK3'), np.str_('TSC2'), np.str_('CD274'), np.str_('CD40LG'), np.str_('SMAD3'), np.str_('IRF3'), np.str_('SMARCA4'), np.str_('STING1'), np.str_('EGLN1'), np.str_('FLT1'), np.str_('IL10'), np.str_('GLI1'), np.str_('CTLA4'), np.str_('MAPK1'), np.str_('SOCS3'), np.str_('FOXP3'), np.str_('GSK3B'), np.str_('PTCH1'), np.str_('TSC1'), np.str_('IL21'), np.str_('ROCK1'), np.str_('CD40'), np.str_('CD28'), np.str_('BMP2'), np.str_('IL18'), np.str_('IL4'), np.str_('IRF8'), np.str_('PIK3CA'), np.str_('WNT1'), np.str_('PDCD1'), np.str_('RORC'), np.str_('IL2RG'), np.str_('RELA'), np.str_('IGF1R'), np.str_('HHAT'), np.str_('DNMT1'), np.str_('CREBBP'), np.str_('VEGFA'), np.str_('TLR4'), np.str_('IL1B'), np.str_('TUBA1A'), np.str_('IRF1'), np.str_('IL2'), np.str_('JAK1'), np.str_('SHH'), np.str_('JAK2'), np.str_('IRS1'), np.str_('IL12A'), np.str_('IL15RA'), np.str_('CGAS'), np.str_('CD86'), np.str_('CD80'), np.str_('MAPK8'), np.str_('NFATC1'), np.str_('IL17A'), np.str_('IL6R'), np.str_('CASP3'), np.str_('BCL2'), np.str_('STAT2')]
+ You have successfully identified 23 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+RHOA   -0.738540
+IL17A  -0.473900
+PRDM1  -0.785260
+HIF1A  -0.440695
+TBX21  -1.401000
+IFNGR2 -0.975910
+MAPK3  -0.734105
+TSC2    0.459780
+GLI1   -0.424695
+MAPK1  -0.449405
+SOCS3   0.536160
+IFNG   -1.687800
+PTCH1   0.492325
+TSC1    1.089420
+CD28   -2.171850
+WNT1   -0.448450
+IL2RG  -0.650145
+RELA   -0.840910
+CREBBP -0.563725
+JAK1   -1.389050
+JUN    -0.726000
+IFNGR1 -0.898070
+TRAF6  -1.865400
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 125 out of the required 128 genes for this round. These were: 
+['CHUK', 'CYLD', 'STAT5A', 'AKT3', 'CASP9', 'NFATC4', 'PRR5', 'FOXP4', 'GATA2', 'JAK3', 'TGFBR2', 'IL6ST', 'REL', 'JUND', 'IKZF1', 'IRF9', 'RIPK3', 'FADD', 'TGFBR1', 'STAT6', 'AKT2', 'BCL10', 'EIF4EBP1', 'GATA4', 'IRAK4', 'PLCG1', 'SMAD7', 'CASP8', 'FYN', 'IL18R1', 'MAP2K2', 'MALT1', 'GATA1', 'MAPK12', 'RIPK1', 'PIK3CB', 'PRKCQ', 'CARD11', 'BHLHE40', 'TYK2', 'IRAK1', 'RHEB', 'IRF2', 'ACVR2A', 'MAPK11', 'BMPR2', 'IRF5', 'ATF3', 'SMAD2', 'RICTOR', 'IKBKG', 'TRADD', 'JUNB', 'STAT4', 'LCK', 'FOSL1', 'MAP2K7', 'MAPK9', 'NFATC2', 'RPS6', 'CASP10', 'SMAD6', 'TAB2', 'IRF7', 'NFKBIA', 'MLST8', 'IKZF3', 'SATB1', 'IL1RAP', 'PIK3R1', 'PIK3R2', 'IL23R', 'MAP2K1', 'MAP2K4', 'FOSL2', 'FOXP1', 'TBX1', 'ACVR1B', 'INPP5D', 'IL27RA', 'TAB3', 'ZAP70', 'PIK3CD', 'NFAT5', 'STAT3', 'IKZF2', 'EBI3', 'RELB', 'IL7', 'RPS6KB1', 'MAPK13', 'BMPR1A', 'STAT5B', 'EOMES', 'RUNX1', 'IKBKB', 'PDPK1', 'IL2RA', 'MAP3K7', 'IL15', 'NFATC3', 'SYK', 'MAPK10', 'RUNX3', 'NFKBIE', 'RPTOR', 'PRKCB', 'SRC', 'RAC2', 'CISH', 'PTPN6', 'TEC', 'PRKCD', 'PRKCA', 'LYN', 'SOCS2', 'ITK', 'BTK', 'VAV1', 'PTPN1', 'PTPN2', 'PRKCZ', 'CBL', 'PIAS1', 'PIAS3']
+ Please add 3 more genes to this list. Remember not to include previously tested genes including: 
+ ['RAC1', 'LAT', 'WAS</i>'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: The screening has successfully identified multiple key regulators of Interferon-gamma production across the JAK-STAT, MAPK, and cytokine signaling pathways, and I am now completing the final three selections for this batch with core immunological and transcriptional regulators. 
+2. Research Plan: I will propose three additional unshielded genes implicated in immune regulation and T-cell signaling. These targets continue the strategy of systematically exploring upstream kinases, phosphatases, and transcription factors associated with IFNG production. Each gene is selected based on its known biological relevance and the absence of prior testing in this screen.
+3. Solution: 1. PIAS4, 2. SOCS4, 3. SOCS5
+===================tokens=====================
+Number of prompt tokens: 2132
+Number of sampled tokens: 149
+
+
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. Previously tested genes (do not select again): 
+[np.str_('IFNAR1'), np.str_('ERBB2'), np.str_('NLRP3'), np.str_('MYD88'), np.str_('TET2'), np.str_('TBK1'), np.str_('PRDM1'), np.str_('CXCR3'), np.str_('CASP1'), np.str_('IL7R'), np.str_('IL2RB'), np.str_('IL18RAP'), np.str_('SMAD4'), np.str_('HDAC2'), np.str_('ERBB3'), np.str_('IFNGR2'), np.str_('AIM2'), np.str_('MYC'), np.str_('EP300'), np.str_('IRF4'), np.str_('TNF'), np.str_('CTNNB1'), np.str_('CREB1'), np.str_('CDC42'), np.str_('SMAD5'), np.str_('MAVS'), np.str_('TICAM1'), np.str_('PYCARD'), np.str_('IFNG'), np.str_('IFNAR2'), np.str_('FOS'), np.str_('IL13'), np.str_('MTOR'), np.str_('ACVR1'), np.str_('VHL'), np.str_('SOCS1'), np.str_('STAT1'), np.str_('FN1'), np.str_('CCR5'), np.str_('GATA3'), np.str_('ITGB1'), np.str_('IL12B'), np.str_('TGFB1'), np.str_('INSR'), np.str_('JUN'), np.str_('MAPK14'), np.str_('IFNGR1'), np.str_('NFKB1'), np.str_('NOTCH1'), np.str_('TRAF6'), np.str_('ARID1A'), np.str_('TLR9'), np.str_('RHOA'), np.str_('ACTB'), np.str_('ITGAM'), np.str_('PTEN'), np.str_('HIF1A'), np.str_('TBX21'), np.str_('AKT1'), np.str_('EGFR'), np.str_('VIM'), np.str_('IL12RB2'), np.str_('HDAC1'), np.str_('BCL6'), np.str_('BMP4'), np.str_('IL12RB1'), np.str_('IL6'), np.str_('KDR'), np.str_('TP53'), np.str_('MAPK3'), np.str_('TSC2'), np.str_('CD274'), np.str_('CD40LG'), np.str_('SMAD3'), np.str_('IRF3'), np.str_('SMARCA4'), np.str_('STING1'), np.str_('EGLN1'), np.str_('FLT1'), np.str_('IL10'), np.str_('GLI1'), np.str_('CTLA4'), np.str_('MAPK1'), np.str_('SOCS3'), np.str_('FOXP3'), np.str_('GSK3B'), np.str_('PTCH1'), np.str_('TSC1'), np.str_('IL21'), np.str_('ROCK1'), np.str_('CD40'), np.str_('CD28'), np.str_('BMP2'), np.str_('IL18'), np.str_('IL4'), np.str_('IRF8'), np.str_('PIK3CA'), np.str_('WNT1'), np.str_('PDCD1'), np.str_('RORC'), np.str_('IL2RG'), np.str_('RELA'), np.str_('IGF1R'), np.str_('HHAT'), np.str_('DNMT1'), np.str_('CREBBP'), np.str_('VEGFA'), np.str_('TLR4'), np.str_('IL1B'), np.str_('TUBA1A'), np.str_('IRF1'), np.str_('IL2'), np.str_('JAK1'), np.str_('SHH'), np.str_('JAK2'), np.str_('IRS1'), np.str_('IL12A'), np.str_('IL15RA'), np.str_('CGAS'), np.str_('CD86'), np.str_('CD80'), np.str_('MAPK8'), np.str_('NFATC1'), np.str_('IL17A'), np.str_('IL6R'), np.str_('CASP3'), np.str_('BCL2'), np.str_('STAT2')]
+ You have successfully identified 23 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+RHOA   -0.738540
+IL17A  -0.473900
+PRDM1  -0.785260
+HIF1A  -0.440695
+TBX21  -1.401000
+IFNGR2 -0.975910
+MAPK3  -0.734105
+TSC2    0.459780
+GLI1   -0.424695
+MAPK1  -0.449405
+SOCS3   0.536160
+IFNG   -1.687800
+PTCH1   0.492325
+TSC1    1.089420
+CD28   -2.171850
+WNT1   -0.448450
+IL2RG  -0.650145
+RELA   -0.840910
+CREBBP -0.563725
+JAK1   -1.389050
+JUN    -0.726000
+IFNGR1 -0.898070
+TRAF6  -1.865400
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 127 out of the required 128 genes for this round. These were: 
+['CHUK', 'CYLD', 'STAT5A', 'AKT3', 'CASP9', 'NFATC4', 'PRR5', 'FOXP4', 'GATA2', 'JAK3', 'TGFBR2', 'IL6ST', 'REL', 'JUND', 'IKZF1', 'IRF9', 'RIPK3', 'FADD', 'TGFBR1', 'STAT6', 'AKT2', 'BCL10', 'EIF4EBP1', 'GATA4', 'IRAK4', 'PLCG1', 'SMAD7', 'CASP8', 'FYN', 'IL18R1', 'MAP2K2', 'MALT1', 'GATA1', 'MAPK12', 'RIPK1', 'PIK3CB', 'PRKCQ', 'CARD11', 'BHLHE40', 'TYK2', 'IRAK1', 'RHEB', 'IRF2', 'ACVR2A', 'MAPK11', 'BMPR2', 'IRF5', 'ATF3', 'SMAD2', 'RICTOR', 'IKBKG', 'TRADD', 'JUNB', 'STAT4', 'LCK', 'FOSL1', 'MAP2K7', 'MAPK9', 'NFATC2', 'RPS6', 'CASP10', 'SMAD6', 'TAB2', 'IRF7', 'NFKBIA', 'MLST8', 'IKZF3', 'SATB1', 'IL1RAP', 'PIK3R1', 'PIK3R2', 'IL23R', 'MAP2K1', 'MAP2K4', 'FOSL2', 'FOXP1', 'TBX1', 'ACVR1B', 'INPP5D', 'IL27RA', 'TAB3', 'ZAP70', 'PIK3CD', 'NFAT5', 'STAT3', 'IKZF2', 'EBI3', 'RELB', 'IL7', 'RPS6KB1', 'MAPK13', 'BMPR1A', 'STAT5B', 'EOMES', 'RUNX1', 'IKBKB', 'PDPK1', 'IL2RA', 'MAP3K7', 'IL15', 'NFATC3', 'SYK', 'MAPK10', 'RUNX3', 'NFKBIE', 'RPTOR', 'PRKCB', 'SRC', 'RAC2', 'CISH', 'PTPN6', 'TEC', 'PRKCD', 'PRKCA', 'LYN', 'SOCS2', 'ITK', 'BTK', 'VAV1', 'PTPN1', 'PTPN2', 'PRKCZ', 'CBL', 'PIAS1', 'PIAS3', 'PIAS4', 'SOCS5']
+  Please add 1 more genes to this list from ['PSEN1', 'GAB2', 'LDLRAD2', 'DNMT3B', 'UBA5', 'GNAS', 'HSPA5', 'TCF12', 'NOTCH1', 'CASP8', 'CD36', 'PTGS1', 'AURKA', 'ZEB1', 'ADAM17', 'SREBF1', 'ESR2', 'FURIN', 'MSH6', 'RPL35A', 'AP3S2', 'MMP7', 'SRY', 'ATP6V0A4', 'CD44', 'SIRT6', 'SLC2A1', 'MICA', 'GNB1', 'PRKAA2', 'ID3', 'TLR2', 'CYP2C9', 'IRX6', 'BAX1B', 'VTN', 'PROM1', 'F2RL1', 'GCLC', 'INSRR', 'CACNG2', 'IL7', 'MT1M', 'HCRT', 'BCL2L2', 'KRAS', 'EWSR1', 'UBE2A', 'BRCA1', 'SPINK1', 'CD53', 'VCL', 'CD248', 'CYP17A1', 'LUM', 'ADM', 'CDC6', 'C3orf80', 'UBB', 'TIMP1', 'HCRTR1', 'IRF2BPL', 'AP2S1', 'ECHS1', 'BMP8A', 'SARS2', 'LIN7C', 'ERLEC1', 'EXOSC1', 'KIF18A', 'ACVR1C', 'ERBB4', 'LPL', 'IRX5', 'TRIM21', 'OGT', 'PTPRC', 'CYPT2J2', 'S100A10', 'MMP14', 'TP53AIP1', 'KMT2A', 'TFRC', 'NRAS', 'CASP1', 'HSPA1A', 'BIRC5', 'GJA3', 'MET', 'SOX8', 'CD14', 'IGFBP5', 'COL1A2', 'ITGAX', 'ATP1B2', 'MTNR1B', 'SF3B1', 'S100A9', 'VAPA', 'CYP2E1', 'SERPINF2', 'KDM3B', 'RRM1', 'ATP6V1B2', 'AXL', 'CLOCK', 'CFB', 'PRSS23', 'ZIC1', 'FZD2', 'TERT5C', 'ALDH1L1', 'FMR1NB', 'STX17', 'KIF2B', 'GPR68', 'HBB', 'CIITA', 'TRPM7', 'IDH3A', 'VBP1', 'FOSL1', 'UCHL1', 'QKI', 'SRF', 'HGD', 'SYK', 'HLA-DRA', 'WEE1', 'HTR2A', 'BCL2L13', 'CD19', 'KRT1', 'FOXO3', 'RORA', 'CD177', 'HPR', 'CYP1B1', 'COL22A1', 'REST', 'FKBP7', 'TPST2', 'TAC1', 'ATP6V1B1', 'UBA1', 'ALDH2', 'VDR', 'ACTA2', 'CASP6', 'GPR37L1', 'PVR', 'DNMT3A', 'TLR3', 'INPP5B', 'LOX', 'SPAG8', 'HFE', 'BIN1', 'CD38', 'GPC4', 'ATM', 'EPHA2', 'FGF23', 'GART', 'HDAC9', 'ITGA2', 'KLF2', 'LRP2', 'MCM4', 'MYBPC3', 'NOG', 'PLXNB1', 'POU3F4', 'PRKACA', 'RASSF8', 'SLC2A4', 'STAT3', 'TTR', 'UGP2', 'ZNF143', 'CXCR4', 'ALKBH8', 'DHODH', 'AHRR', 'XRCC6', 'CACNA1B', 'LDLR', 'ACLY', 'STAT6', 'PAX6', 'CCND1', 'PRDX1', 'TESC', 'CA2', 'ALAD', 'GATM', 'FHIT', 'PIK3R1', 'LAMA1', 'ERCC6', 'CYP1A1', 'SCN2A', 'CSF2', 'PPARA', 'CD55', 'THY1', 'SDHA', 'IL31RA', 'RNF213', 'EPCAM', 'PLAU', 'APOE', 'STAT5A', 'PRDM16', 'BRAF', 'RET', 'LMNA', 'MPO', 'DAPK1', 'GREM1', 'MC4R', 'ANGPT2', 'POLR2J', 'SCNN1B', 'RICTOR', 'THBS1', 'XPO1', 'ARNT', 'CYCS', 'GNG2', 'MBD2', 'PKP2', 'GRM2', 'CD9', 'EPAS1', 'IGF2', 'BAX', 'MSR1', 'RACIP1', 'ERG28', 'CREG1', 'ACOX2', 'GRK5', 'PMM2', 'SIRT2', 'POLR3F', 'TGM1', 'BARD1', 'PYGM', 'GLUL', 'ALPL', 'E2F1', 'CDK8', 'F2', 'RUNX2', 'ACTA1', 'CASP9', 'FTL', 'ESR1', 'MUC12', 'TONSL', 'EXOC2', 'TLR5', 'SASH1', 'NTRK1', 'KIT', 'TP53TG3', 'SMC1A', 'DACH1', 'LIFR', 'MRE11', 'FER', 'TEAD3', 'COL4A2', 'VAMP2', 'ALDH7A1', 'PARP3', 'TCF7L2', 'SCN2B', 'APP', 'BRCA2', 'STATB2', 'IFNB1', 'ALDH3A2', 'KITLG', 'GABARAP', 'B2M', 'NOTCH2NLA', 'CASP12', 'PROX1', 'MAP2K7', 'AHR', 'IL1R1', 'RAB5A', 'CAT', 'FGF5', 'SEMA3A', 'IRF9', 'MCMDC2', 'HSPA5', 'NF1', 'ICAM1', 'GSK3A', 'FZD7', 'EXT1', 'HTR4', 'CTSS', 'PARV1', 'ATP2A2', 'FTH1', 'TLR6', 'MYH9', 'SOX9', 'METTL4', 'TBP', 'ADORA2A', 'ENG', 'ERCC1', 'SOX2', 'VWF', 'GAPDH', 'TP53', 'INS', 'F8', 'CFTR', 'MTHFR', 'ABLIM3', 'NOTCH3', 'VAV2', 'STAT3', 'EGFR', 'IL4R', 'TGFBR2', 'TNF', 'BCL2', 'CASP4', 'PTGS2', 'ALB', 'AKT1', 'MYB', 'PGC', 'PPARGC1A', 'ARF6', 'FOXA2', 'CYLD', 'SLC9A3', 'RIT1', 'CUX1', 'PTPN11', 'HDAC4', 'ATP6V1C2', 'TEK', 'LTN1', 'ACTG1', 'BLM', 'PDGFB', 'DYNC1H1', 'CASQ1', 'TOP1', 'MLH1', 'PMS1', 'MAPT', 'GCH1', 'DLL1', 'SLC7A10', 'CD34', 'LCAT', 'DLAT', 'APC', 'EZH2', 'SIRT1', 'PARP1', 'FBL', 'PCK1', 'KCNQ2', 'TYRO3', 'TGM4', 'WLS', 'CXCL10', 'DSG2'].
+ Remember not to include any previously tested genes. Begin this list with the word 'Solution:'  
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: We have successfully incorporated a large pool of immune and signaling-related genes and now need to finish the set of 128 by selecting a functionally relevant candidate from the provided options. PTPRC is a major leukocyte common antigen (CD45) heavily involved in immune cell signaling and regulation of Interferon-gamma production, making it an ideal choice.
+
+2. Research Plan: We continue our systematic exploration of genes regulating IFNG production by targeting immune signaling components. The current status involves refining our 128-gene set with well-characterized immunomodulatory candidates. Adding PTPRC will complement our existing cytokine and kinase perturbations. We will monitor the screening scores to identify key bottlenecks in IFNG expression pathways.
+
+3. Solution: 1. PTPRC
+===================tokens=====================
+Number of prompt tokens: 4047
+Number of sampled tokens: 162
+
+

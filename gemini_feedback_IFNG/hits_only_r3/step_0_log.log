@@ -1,0 +1,138 @@
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+ 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: As this is the initial round, I need to select an initial batch of 128 diverse candidate genes known or hypothesized to be involved in transcriptional regulation, cytokine signaling, or immune response pathways that might affect IFNG production.
+2. Research Plan: We begin by screening a curated set of 128 high-priority candidate genes related to immune regulation and transcription factors using our pooled CRISPR system. The goal of this first round is to identify strong positive and negative regulators of IFNG production based on their log fold change scores. Subsequent rounds will use iterative machine learning models trained on these initial scores to guide the selection of the next 128 genes. This targeted approach efficiently narrows down the functional genome without requiring exhaustive random screening.
+3. Solution: 1. STAT1, 2. TBX21, 3. IRF1, 4. IFNG, 5. JAK1, 6. JAK2, 7. SOCS1, 8. SOCS3, 9. RELA, 10. NFKB1, 11. SMAD3, 12. SMAD4, 13. FOXP3, 14. GATA3, 15. RORC, 16. BCL6, 17. PRDM1, 18. IRF4, 19. IRF8, 20. JUN, 21. FOS, 22. MYC, 23. TP53, 24. CREB1, 25. ATF2, 26. EP300, 27. CREBBP, 28. HDAC1, 29. HDAC2, 30. DNMT1, 31. TET2, 32. SMARCA4, 33. ARID1A, 34. PIK3CA, 35. AKT1, 36. MTOR, 37. TSC1, 38. TSC2, 39. PTEN, 40. GSK3B, 41. MAPK1, 42. MAPK3, 43. MAPK8, 44. MAPK14, 45. TNF, 46. IL2, 47. IL6, 48. IL10, 49. IL12A, 50. IL12B, 51. IL18, 52. TGFB1, 53. IL4, 54. IL13, 55. IL21, 56. CCR5, 57. CXCR3, 58. CD28, 59. CTLA4, 60. PDCD1, 61. CD274, 62. CD80, 63. CD86, 64. CD40, 65. CD40LG, 66. TLR4, 67. TLR9, 68. MYD88, 69. TICAM1, 70. TRAF6, 71. TBK1, 72. IRF3, 73. MAVS, 74. STING1, 75. CGAS, 76. CASP1, 77. NLRP3, 78. AIM2, 79. PYCARD, 80. IL1B, 81. IL18RAP, 82. IL12RB1, 83. IL12RB2, 84. IFNAR1, 85. IFNAR2, 86. IFNGR1, 87. IFNGR2, 88. IL2RB, 89. IL2RG, 90. IL7R, 91. IL15RA, 92. NOTCH1, 93. HES1, 94. WNT1, 95. CTNNB1, 96. SMO, 97. GLI1, 98. SHH, 99. HHAT, 100. PTCH1, 101. BMP2, 102. BMP4, 103. ACVR1, 104. SMAD1, 105. SMAD5, 106. VEGFA, 107. KDR, 108. FLT1, 109. HIF1A, 110. VHL, 111. EGLN1, 112. EGFR, 113. ERBB2, 114. ERBB3, 115. IGF1R, 116. INSR, 117. IRS1, 118. RHOA, 119. RAC1, 120. CDC42, 121. ROCK1, 122. ACTB, 123. TUBA1A, 124. VIM, 125. CDH1, 126. FN1, 127. ITGB1, 128. ITGAM
+===================tokens=====================
+Number of prompt tokens: 246
+Number of sampled tokens: 1027
+
+
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ You have so far predicted 122 out of the required 128 genes for this round. These were: 
+['IFNAR1', 'ERBB2', 'NLRP3', 'MYD88', 'TET2', 'TBK1', 'PRDM1', 'CXCR3', 'CASP1', 'IL7R', 'IL2RB', 'IL18RAP', 'SMAD4', 'HDAC2', 'ERBB3', 'IFNGR2', 'AIM2', 'MYC', 'EP300', 'IRF4', 'TNF', 'CTNNB1', 'CREB1', 'CDC42', 'SMAD5', 'MAVS', 'TICAM1', 'PYCARD', 'IFNG', 'IFNAR2', 'FOS', 'IL13', 'MTOR', 'ACVR1', 'VHL', 'SOCS1', 'STAT1', 'FN1', 'CCR5', 'GATA3', 'ITGB1', 'IL12B', 'TGFB1', 'INSR', 'JUN', 'MAPK14', 'IFNGR1', 'NFKB1', 'NOTCH1', 'TRAF6', 'ARID1A', 'TLR9', 'RHOA', 'ACTB', 'ITGAM', 'PTEN', 'HIF1A', 'TBX21', 'AKT1', 'EGFR', 'VIM', 'IL12RB2', 'HDAC1', 'BCL6', 'BMP4', 'IL12RB1', 'IL6', 'KDR', 'TP53', 'MAPK3', 'TSC2', 'CD274', 'CD40LG', 'SMAD3', 'IRF3', 'SMARCA4', 'STING1', 'EGLN1', 'FLT1', 'IL10', 'GLI1', 'CTLA4', 'MAPK1', 'SOCS3', 'FOXP3', 'GSK3B', 'PTCH1', 'TSC1', 'IL21', 'ROCK1', 'CD40', 'CD28', 'BMP2', 'IL18', 'IL4', 'IRF8', 'PIK3CA', 'WNT1', 'PDCD1', 'RORC', 'IL2RG', 'RELA', 'IGF1R', 'HHAT', 'DNMT1', 'CREBBP', 'VEGFA', 'TLR4', 'IL1B', 'TUBA1A', 'IRF1', 'IL2', 'JAK1', 'SHH', 'JAK2', 'IRS1', 'IL12A', 'IL15RA', 'CGAS', 'CD86', 'CD80', 'MAPK8']
+ Please add 6 more genes to this list. Remember not to include previously tested genes including: 
+ ['ATF2', 'HES1', 'SMO', 'SMAD1', 'CDH1', 'RAC1'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: We have successfully selected 122 key immunoregulatory, cytokine signaling, and transcriptional genes, and now need to finish the batch with 6 more relevant candidates. Focusing on downstream effectors and upstream receptors will maximize the coverage of IFNG regulation pathways.
+2. Research Plan: We will target genes involved in cytokine receptor signaling, T-cell activation, and transcriptional regulation to identify novel regulators of Interferon-gamma production. By testing these final six candidates, we complete the 128-gene set for the current experimental round. The selected genes are known components of immune cell differentiation and inflammatory signaling pathways. This iterative approach ensures systematic exploration of the genome-wide CRISPR screen design space.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...: 1. IL6R, 2. IL17A, 3. BCL2, 4. FAS, 5. CASP3, 6. NFATC1
+===================tokens=====================
+Number of prompt tokens: 907
+Number of sampled tokens: 228
+
+
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ You have so far predicted 127 out of the required 128 genes for this round. These were: 
+['IFNAR1', 'ERBB2', 'NLRP3', 'MYD88', 'TET2', 'TBK1', 'PRDM1', 'CXCR3', 'CASP1', 'IL7R', 'IL2RB', 'IL18RAP', 'SMAD4', 'HDAC2', 'ERBB3', 'IFNGR2', 'AIM2', 'MYC', 'EP300', 'IRF4', 'TNF', 'CTNNB1', 'CREB1', 'CDC42', 'SMAD5', 'MAVS', 'TICAM1', 'PYCARD', 'IFNG', 'IFNAR2', 'FOS', 'IL13', 'MTOR', 'ACVR1', 'VHL', 'SOCS1', 'STAT1', 'FN1', 'CCR5', 'GATA3', 'ITGB1', 'IL12B', 'TGFB1', 'INSR', 'JUN', 'MAPK14', 'IFNGR1', 'NFKB1', 'NOTCH1', 'TRAF6', 'ARID1A', 'TLR9', 'RHOA', 'ACTB', 'ITGAM', 'PTEN', 'HIF1A', 'TBX21', 'AKT1', 'EGFR', 'VIM', 'IL12RB2', 'HDAC1', 'BCL6', 'BMP4', 'IL12RB1', 'IL6', 'KDR', 'TP53', 'MAPK3', 'TSC2', 'CD274', 'CD40LG', 'SMAD3', 'IRF3', 'SMARCA4', 'STING1', 'EGLN1', 'FLT1', 'IL10', 'GLI1', 'CTLA4', 'MAPK1', 'SOCS3', 'FOXP3', 'GSK3B', 'PTCH1', 'TSC1', 'IL21', 'ROCK1', 'CD40', 'CD28', 'BMP2', 'IL18', 'IL4', 'IRF8', 'PIK3CA', 'WNT1', 'PDCD1', 'RORC', 'IL2RG', 'RELA', 'IGF1R', 'HHAT', 'DNMT1', 'CREBBP', 'VEGFA', 'TLR4', 'IL1B', 'TUBA1A', 'IRF1', 'IL2', 'JAK1', 'SHH', 'JAK2', 'IRS1', 'IL12A', 'IL15RA', 'CGAS', 'CD86', 'CD80', 'MAPK8', 'NFATC1', 'IL17A', 'IL6R', 'CASP3', 'BCL2']
+ Please add 1 more genes to this list. Remember not to include previously tested genes including: 
+ ['<Gene name 1>', 'FAS'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: I have selected 127 candidate genes involved in immune regulation, cytokine signaling, and transcriptional control that are likely to influence IFNG production. To complete the batch of 128 perturbations for this round, I need to select one final high-confidence target from known inflammatory or signaling pathways.
+2. Research Plan: I will propose a key immunoregulatory gene to finish the current plate of 128 perturbations. The overall strategy uses iterative pooling of functionally relevant candidates to maximize discovery power in CRISPR screens. This final selection ensures the batch is complete and targets pathways adjacent to the previously tested receptors and kinases.
+3. Solution: 1. FAS
+===================tokens=====================
+Number of prompt tokens: 915
+Number of sampled tokens: 141
+
+
+
+===================prompt=====================
+
+
+Human: Step 0
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ You have so far predicted 127 out of the required 128 genes for this round. These were: 
+['IFNAR1', 'ERBB2', 'NLRP3', 'MYD88', 'TET2', 'TBK1', 'PRDM1', 'CXCR3', 'CASP1', 'IL7R', 'IL2RB', 'IL18RAP', 'SMAD4', 'HDAC2', 'ERBB3', 'IFNGR2', 'AIM2', 'MYC', 'EP300', 'IRF4', 'TNF', 'CTNNB1', 'CREB1', 'CDC42', 'SMAD5', 'MAVS', 'TICAM1', 'PYCARD', 'IFNG', 'IFNAR2', 'FOS', 'IL13', 'MTOR', 'ACVR1', 'VHL', 'SOCS1', 'STAT1', 'FN1', 'CCR5', 'GATA3', 'ITGB1', 'IL12B', 'TGFB1', 'INSR', 'JUN', 'MAPK14', 'IFNGR1', 'NFKB1', 'NOTCH1', 'TRAF6', 'ARID1A', 'TLR9', 'RHOA', 'ACTB', 'ITGAM', 'PTEN', 'HIF1A', 'TBX21', 'AKT1', 'EGFR', 'VIM', 'IL12RB2', 'HDAC1', 'BCL6', 'BMP4', 'IL12RB1', 'IL6', 'KDR', 'TP53', 'MAPK3', 'TSC2', 'CD274', 'CD40LG', 'SMAD3', 'IRF3', 'SMARCA4', 'STING1', 'EGLN1', 'FLT1', 'IL10', 'GLI1', 'CTLA4', 'MAPK1', 'SOCS3', 'FOXP3', 'GSK3B', 'PTCH1', 'TSC1', 'IL21', 'ROCK1', 'CD40', 'CD28', 'BMP2', 'IL18', 'IL4', 'IRF8', 'PIK3CA', 'WNT1', 'PDCD1', 'RORC', 'IL2RG', 'RELA', 'IGF1R', 'HHAT', 'DNMT1', 'CREBBP', 'VEGFA', 'TLR4', 'IL1B', 'TUBA1A', 'IRF1', 'IL2', 'JAK1', 'SHH', 'JAK2', 'IRS1', 'IL12A', 'IL15RA', 'CGAS', 'CD86', 'CD80', 'MAPK8', 'NFATC1', 'IL17A', 'IL6R', 'CASP3', 'BCL2']
+  Please add 1 more genes to this list from ['BOLA3', 'DYRK1A', 'PSEN1', 'SLC30A1', 'GAB2', 'NPHS1', 'LIAS', 'RIGI', 'F2RL3', 'HSPA5', 'SPTAN1', 'GUCY2D', 'CASP8', 'CD36', 'STAT2', 'PLK3', 'GNAS', 'ZEB1', 'CREBBP', 'MSH6', 'MPV17L', 'TNF', 'RPLP0', 'GHR', 'KRT5', 'CD44', 'JUN', 'ALOX5AP', 'SLC2A1', 'MICA', 'GATA4', 'CASP8', 'UCP2', 'EEF1A1', 'ATP7B', 'INSRR', 'TERT', 'MYH3', 'COL11A2', 'IL33', 'IL6', 'KCNJ14', 'DPM1', 'MVD', 'KLF4', 'KRAS', 'CD58', 'PROC', 'METAP2', 'DES', 'FGGY', 'CDKN2B', 'DMD', 'BRCA1', 'SOX1', 'ITGA6', 'AFP', 'MUC6', 'LIPC', 'NQO1', 'TP53', 'STAC3', 'TIMP1', 'IRF2BPL', 'AP2S1', 'BLCAP', 'KIF18A', 'IRF1', 'ERBB4', 'PTPRC', 'RAG1', 'IRGM', 'CDH16', 'LTB', 'WT1', 'IFNG', 'DSP', 'MUC16', 'SPATA7', 'RAG2', 'SERF2', 'ALDH3B2', 'CPNE1', 'CD82', 'SOS1', 'BCR', 'UGT1A9', 'HES7', 'KMT2A', 'AMH', 'HDAC3', 'XDH', 'BIRC5', 'SCEL', 'TOP3A', 'FBN1', 'MTHFR', 'TP53', 'EGFR', 'IL6', 'IGF1R', 'CUL3', 'HSPA8', 'SOD2', 'AXL', 'FZD2', 'KMT2D', 'TFRC', 'PRSS23', 'PIEZO2', 'GNAS', 'CASP14', 'RRM1', 'NOTCH1', 'JAG1', 'SALL3', 'IL2RB', 'SLC7A14', 'TNFSF11', 'DOCK2', 'UCP1', 'CDKN1A', 'LCK', 'TRAF6', 'HDAC2', 'STAT1', 'LDLRAD4', 'CD28', 'SYK', 'EP300', 'IRF2BP1', 'BCL2L13', 'VEGFA', 'CASR', 'PRKCB', 'NOTCH1', 'IRF8', 'FYN', 'REST', 'HOXA10', 'EGFR', 'VHL', 'MTOR', 'TNF', 'APOE', 'TP53', 'AKT3', 'STAT4', 'NOD2', 'VDR', 'FOS', 'CASP6', 'GCG', 'INS', 'IL6', 'TLR3', 'CD38', 'MPO', 'ALDH2', 'MYC', 'LEF1', 'UGP2', 'ABCC1', 'LRP2', 'INSR', 'ALOX12', 'ATG5', 'FOXI1', 'IL21R', 'STAT3', 'ABL1', 'LEP', 'DPYD', 'HSPA9', 'PTEN', 'INSIG2', 'PRKACA', 'GNA13', 'CASP3', 'TNF', 'NFIA', 'ATM', 'PIK3CA', 'CRB3', 'LDOC1', 'LTA4H', 'CXCR4', 'U2AF1L5', 'MYD88', 'SCN1A', 'DHODH', 'HDAC5', 'SLC7A11', 'VAV1', 'TG', 'CREB1', 'ACE2', 'LDLR', 'EDN3', 'STAT6', 'TP53RK', 'IL1A', 'ERCC6', 'CYP1A1', 'SCN2A', 'CSF2', 'PPARA', 'COL2A1', 'IKBPKB', 'BUB1', 'PTCHD1', 'IRF7', 'ITGB4', 'PLAU', 'TLR1', 'APOE', 'STAT5A', 'BRAF', 'RET', 'TNFRSF1A', 'MPO', 'GBA1', 'PRKCA', 'ANGPT2', 'TLR8', 'ADGRF3', 'RHOA', 'ARNT', 'CYPSAS', 'MKI67', 'STAT3', 'IL17RC', 'CD9', 'EPAS1', 'IGF2', 'WNT1', 'RELN', 'BAX', 'CTSL', 'RPTOR', 'FGFR1OP2', 'BCL6', 'PECAM1', 'ERBB2', 'TGM1', 'SP100', 'E2F1', 'F2', 'RUNX2', 'ACTA1', 'STXBP2', 'SQSTM1', 'ALDH1A3', 'NOTCH4', 'MMP2', 'CASP9', 'C3', 'F7', 'BIRC6', 'S100A2', 'KIT', 'HIF1A', 'NOTCH1', 'RARA', 'SOD1', 'FASN', 'RB1', 'CSF1', 'SCN10A', 'MT2A', 'LGRF', 'ALDH7A1', 'PARP10', 'TRPV1', 'VAMP2', 'G6PD', 'MYH1', 'CFAP57', 'CA3', 'APAF1', 'APP', 'SPAST', 'CD86', 'GOT2', 'MC3R', 'TP53', 'EDNRA', 'CPT2', 'CHRM3', 'BCL2L15', 'AHR', 'PFKM', 'WWOX', 'SETD2', 'SIRT3', 'TP63', 'MSH3', 'IL1R1', 'IDH1', 'AKT1', 'EGF', 'ICAM1', 'RELA', 'WNT5A', 'TP53I3', 'FTH1', 'IL17A', 'DCC', 'PRKAA1', 'ENG', 'SOX2', 'STK11', 'MERTK', 'IRF5', 'CASP2', 'BMP4', 'TLR6', 'SOX9', 'NOTUM', 'MYH9', 'VWF', 'MYC', 'PTGS2', 'GAPDH', 'INS', 'CFTR', 'ALB1', 'OR52N2', 'MTHFR', 'ABLIM3', 'HSPA1A', 'STAT3', 'TP53', 'TNF', 'IL1B', 'EGFR', 'VEGFA', 'AKT1', 'GAPDH', 'PTEN', 'HLA-A', 'PPARGC1A', 'TP53BP1', 'INS1', 'RRM2B', 'VEGFC', 'MYOCD', 'CYLD', 'CD33', 'CASP8AP2', 'CFHR3', 'OAS1', 'UBA2', 'IL10', 'MKI67', 'STAT3', 'ZAP70', 'XPO5', 'GSN', 'TRIB3', 'MUC5AC', 'IFIT1', 'ADIPOQ', 'JUNB', 'CDK4', 'COL4A5', 'HSP90B1', 'MAPT', 'DLL1', 'GSK3B', 'RUNX1', 'FOXP2', 'APC', 'KMT2B', 'SIRT1', 'PARP1', 'EZH2', 'TYRO3', 'CXCL10', 'CD34'].
+ Remember not to include any previously tested genes. Begin this list with the word 'Solution:'  
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: We have successfully curated 127 genes involved in immune regulation, signaling, and transcription for our CRISPR screen. To complete the set of 128 genes, we must select one remaining candidate that has not been tested yet. STAT2 is a critical transcription factor in interferon signaling pathways and acts downstream of type I and type III interferons, making it an ideal final choice to probe IFNG regulation networks.
+
+2. Research Plan: We will finalize the 128-gene perturbation library by adding STAT2 to the existing list. This completes our first targeted screening batch focusing on core cytokine and interferon signaling networks. We will subsequently analyze the measured log fold changes to identify key regulators of IFNG production.
+
+3. Solution: 1. STAT2
+===================tokens=====================
+Number of prompt tokens: 2766
+Number of sampled tokens: 156
+
+
