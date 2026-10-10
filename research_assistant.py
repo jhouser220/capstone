@@ -153,7 +153,7 @@ if __name__ == "__main__":
                                                                  "genes to sample per round")
     parser.add_argument("--manual_prepare", type=bool, default=False, help="use gpt4")
     parser.add_argument("--prompt_tries", type=int, default=6)
-    parser.add_argument("--feedback_mode", choices=["full", "hits_only", "none"], default="full", help="experimental feedback condition")
+    parser.add_argument("--feedback_mode", choices=["full", "hits_only", "none", "full_reflection"], default="full", help="experimental feedback condition")
     parser.add_argument("--critique", type=bool, default=False, help="critique")
     parser.add_argument("--gene_search", type=bool, default=False, help="gene_search")
     parser.add_argument("--gene_search_diverse", type=bool, default=False, help="gene_search")

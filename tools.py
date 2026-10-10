@@ -763,7 +763,7 @@ def agent_loop(current_history, steps, use_gpt4, log_dir, args):
                 #          + ground_truth.loc[hits].to_string()
 
             else:
-                if args.feedback_mode == "full":
+                if args.feedback_mode in ["full", "full_reflection"]:
                     # Original BioDiscoveryAgent feedback:
                     # all non-hit scores + hit identities and scores.
                     if len(gene_readout) < 1500:
@@ -836,6 +836,59 @@ def agent_loop(current_history, steps, use_gpt4, log_dir, args):
 
                         hits_history.append(len(hits))
 
+
+
+                # Add a separate reflection/synthesis agent on top of full feedback
+                if args.feedback_mode == "full_reflection":
+                    reflection_prompt = f"""
+You are a scientific reflection and synthesis agent supporting an iterative
+gene perturbation experiment.
+
+Research problem:
+{research_problem}
+
+Cumulative tested non-hit genes and measured scores:
+{gene_readout.drop(hits).to_string()}
+
+Cumulative identified hits and measured scores:
+{ground_truth.loc[hits].to_string()}
+
+Interpret the experimental evidence so far and provide a short synthesis
+for the primary BioDiscoveryAgent.
+
+Return exactly four concise sections:
+
+1. Successful signals: summarize patterns in the strongest observed results.
+2. Weak signals: summarize patterns in results that have been less informative.
+3. Working hypothesis: state what the results suggest about where productive
+   signal may be coming from.
+4. Next-round principle: give high-level guidance about exploration versus
+   exploitation for the next round.
+
+Do not generate or recommend specific untested genes.
+Do not produce a candidate gene list.
+Do not replace the primary agent's decision.
+Keep the entire response under 250 words.
+Use the experimental evidence as the basis for the synthesis.
+"""
+
+                    reflection_log_file = os.path.join(
+                        log_dir,
+                        f"step_{curr_step}_reflection.log"
+                    )
+
+                    reflection_summary = complete_text(
+                        reflection_prompt,
+                        model=args.model,
+                        log_file=reflection_log_file
+                    )
+
+                    prompt += """
+\nA separate reflection agent analyzed the experimental results.
+Use the following synthesis as additional context when designing
+the next round, while also retaining the raw experimental results above:
+
+""" + reflection_summary
 
                 elif args.feedback_mode == "hits_only":
                     # Keep anti-repeat information constant, but reveal outcomes
