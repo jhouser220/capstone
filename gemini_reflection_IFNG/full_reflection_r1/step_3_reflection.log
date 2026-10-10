@@ -1,0 +1,436 @@
+
+===================prompt=====================
+
+
+Human: 
+You are a scientific reflection and synthesis agent supporting an iterative
+gene perturbation experiment.
+
+Research problem:
+I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Cumulative tested non-hit genes and measured scores:
+              Score
+Gene               
+IL1B      -0.008130
+NFKB1      0.125557
+PRKCB      0.041505
+NOTCH1     0.021485
+JAK2       0.132444
+IRF2      -0.094631
+CEBPA      0.148725
+TET2      -0.274905
+KEAP1      0.210215
+HDAC1     -0.151240
+EOMES     -0.086910
+NLRP3     -0.065815
+GATA3      0.057780
+MAVS       0.264290
+FOXP3      0.145110
+IL13      -0.179470
+BACH2      0.343835
+PIK3CA     0.107444
+IL12RB2    0.050639
+GSK3B      0.168679
+ETS1      -0.163300
+FYN        0.164187
+STING1    -0.128400
+TP53      -0.292370
+SPI1       0.218660
+IRF4       0.059575
+ARNT      -0.274665
+TGFB1      0.032735
+TYK2      -0.084040
+STAT5B     0.010015
+ATM       -0.043015
+RUNX3     -0.170597
+BLNK      -0.134545
+SOCS1      0.185722
+PDCD1      0.120335
+IRAK4      0.015296
+MTOR       0.030743
+VHL        0.167625
+LAG3       0.325340
+PTPN22     0.339770
+NFATC1     0.048841
+PTPN2      0.072855
+MYC        0.365965
+SMAD3      0.122430
+MYD88      0.054350
+STAT5A     0.070219
+CDC42     -0.122044
+PPP3CA     0.034790
+IL12RB1   -0.034080
+CAMK4      0.203400
+TOX       -0.072623
+FOS       -0.359215
+KDM4A     -0.023866
+AKT1       0.217375
+NFE2L2    -0.340925
+IL10       0.151242
+IRF3      -0.237845
+EZH2      -0.130098
+TBK1       0.013595
+MAF        0.091621
+RUNX1      0.075455
+IL6        0.064360
+CARD11    -0.313452
+BATF       0.068202
+NFAT5     -0.268665
+PTEN      -0.179804
+CREB1     -0.099681
+STAT4     -0.282660
+DNMT1      0.371030
+CASP1     -0.064096
+STAT1     -0.023106
+IL4       -0.063854
+IRF5      -0.042555
+TLR4      -0.041558
+BCL6      -0.058293
+TNF        0.272485
+BTK        0.115309
+IKZF1      0.018345
+IRF8      -0.284585
+SMARCA4    0.113642
+IL2RA      0.117304
+IRF1      -0.029467
+CTLA4      0.015375
+EP300      0.268732
+SOCS2     -0.006300
+STAT6     -0.039385
+IL2       -0.142710
+IRF7       0.178988
+PIAS1     -0.113202
+IRF9      -0.126400
+JUND       0.096821
+CASP3     -0.273730
+MAP2K4    -0.024708
+PIK3CB    -0.102459
+JUNB      -0.009110
+NRAS      -0.250049
+FOSL2      0.057732
+IL2RB      0.253174
+INPP5D    -0.048635
+BID        0.345890
+SHC1       0.122828
+IL15RA     0.171787
+PIK3R1    -0.166965
+DUSP6      0.154243
+RASA1     -0.156209
+RPTOR      0.005010
+CARD14    -0.136600
+OTULIN     0.243435
+RICTOR     0.340625
+FYB1       0.018165
+AKT2      -0.032708
+MAPK9      0.206474
+INPP4B     0.197224
+KRAS      -0.236590
+MAPK8     -0.094135
+SYK       -0.019658
+CASP8      0.142034
+STAT2     -0.121285
+CSK       -0.274990
+FOSL1     -0.018860
+SOS2      -0.120686
+MCL1      -0.062024
+RHEB       0.063252
+CD8B      -0.047280
+BAK1      -0.107210
+RORC       0.158696
+MAPK14    -0.244472
+RIPK3      0.010906
+PDPK1     -0.133488
+CYLD       0.305850
+PIK3CD     0.033257
+MLKL       0.020031
+PRKCA      0.014205
+BAX       -0.078246
+ITCH       0.355125
+GRAP       0.102570
+UBASH3A    0.347969
+PIK3R2    -0.000895
+PTPN6      0.247855
+BCL2       0.016410
+IKZF3      0.336079
+RNF11     -0.273675
+FASLG      0.008183
+CBL        0.107865
+PTPN11     0.136000
+TNFAIP3    0.289675
+IKZF2     -0.340130
+GRB2       0.167510
+NEDD4      0.029872
+MAP2K1    -0.209255
+IL7R       0.095685
+BRAF      -0.055025
+THEMIS    -0.353165
+CD8A       0.000085
+HRAS      -0.214290
+RPS6KB1    0.057187
+WWP2       0.286395
+PAG1       0.374825
+SOS1       0.244532
+CD86       0.191305
+ICOS      -0.074485
+IFNB1      0.023320
+TNFRSF9    0.190045
+CD69      -0.158915
+TIGIT     -0.060357
+IL18R1    -0.011445
+LAIR1      0.161805
+IL21R     -0.254815
+CD80       0.251915
+TNFRSF4    0.048077
+IL23R     -0.137500
+KIR2DL1   -0.219656
+CD160     -0.236117
+CD44       0.259483
+BTLA       0.146855
+IL10RA    -0.022117
+IL4R       0.200780
+CSF2       0.143161
+HAVCR2    -0.038240
+PDCD1LG2  -0.163740
+IL21       0.139604
+IL6ST      0.048858
+IL5RA      0.254505
+IL3RA     -0.196470
+IL12B      0.106245
+IL27RA    -0.052131
+IL13RA1   -0.093383
+IL10RB    -0.091587
+IL7       -0.345255
+IL9R       0.216170
+IL15      -0.035326
+CSF2RB     0.131810
+IL22RA1   -0.024712
+CXCR4      0.078652
+DUSP2      0.110698
+MAPK12     0.138772
+DUSP4     -0.050665
+PIK3CG    -0.193630
+MAP2K6     0.059450
+VAV3       0.035910
+IRF6       0.155002
+VAV2      -0.197472
+TRAF1      0.119425
+ATF3       0.222215
+MAPK10    -0.008140
+RHOH      -0.315395
+MAP2K3    -0.166365
+PRKCD     -0.153660
+RNF125     0.165354
+MAPK11     0.022875
+MAPK13     0.146087
+PRKCZ      0.099381
+EIF4E      0.091378
+ATF4       0.084774
+IKZF4     -0.003570
+PRKD1     -0.106144
+TRAF5     -0.140703
+NFKBIA     0.344135
+MAP2K5     0.094133
+IKZF5      0.220360
+TRAF3      0.109792
+NFKBIE     0.215400
+CD40LG    -0.171573
+TICAM1    -0.157511
+CD40       0.055085
+BAD        0.021985
+UNC119     0.263785
+FOXO1      0.125509
+VEGFD     -0.058395
+TNFRSF18  -0.301050
+MMP3      -0.008496
+CCR7      -0.300105
+STAG2      0.036108
+MME        0.102766
+TLR3       0.009555
+MYH11     -0.048182
+CYP27B1    0.149034
+MSH6      -0.013880
+IL1RN      0.037568
+ALOX15    -0.250990
+ABCC2     -0.153596
+RIGI      -0.184645
+ABCB1     -0.266345
+CHEK2     -0.058312
+WNT2       0.023285
+GLDC      -0.048919
+C3AR1      0.027495
+TNFRSF21   0.091295
+PLEC       0.219400
+SRC        0.044180
+LTB        0.230505
+IL17REL   -0.154358
+EIF2AK2   -0.161135
+VDR       -0.071299
+HLA-DPA1  -0.083607
+GCLC       0.147260
+ATP7B      0.189455
+PTN        0.031684
+EGFR       0.031060
+IL17RA     0.180308
+SCN1A      0.354625
+MCM8      -0.019895
+CXCL10    -0.010432
+FBN1      -0.190520
+HLA-A     -0.158825
+TP63       0.209185
+GUCY2C    -0.011140
+DPYD       0.004625
+LTA       -0.187780
+APCDD1L    0.106987
+SLC6A4     0.153207
+NOTCH2NLA -0.019065
+ICAM1      0.078397
+TLR7      -0.111682
+CXCR3     -0.120325
+CD177     -0.148180
+SIRT5      0.346905
+CDK2      -0.014725
+EPHA2     -0.131197
+PVR        0.152045
+RORA      -0.225928
+TESC      -0.199215
+GYS2      -0.277120
+LGI1       0.008362
+THY1      -0.328155
+FCGR2A     0.065832
+FN3K      -0.155009
+HOXA3     -0.061080
+ATP2C1    -0.250690
+CHEK1     -0.069172
+FOXP1      0.231329
+CD37       0.007225
+KRT80      0.135115
+ADM2      -0.031425
+IL5       -0.086806
+SOX11     -0.143560
+ADAM2     -0.278490
+FOXA1      0.010445
+HBB       -0.017056
+FOXI3      0.179163
+WNT4      -0.019523
+FZD4       0.260130
+SHH        0.109767
+DCC        0.037628
+ITGB1BP2   0.046775
+CD36      -0.021351
+ROBO1     -0.070429
+KDM5A      0.301862
+PECAM1    -0.299655
+NPAS2     -0.092614
+ADORA2B    0.081207
+UQCRFS1    0.013631
+ABL1       0.076549
+CD46      -0.147222
+
+Cumulative identified hits and measured scores:
+             Score
+Gene              
+HIF1A    -0.440695
+CD27     -0.466994
+RELA     -0.840910
+SH2D1A   -0.903270
+MAP2K7   -0.446480
+IL17A    -0.473900
+CD4      -0.441485
+SOCS3     0.536160
+RHOA     -0.738540
+CD28     -2.171850
+PTPRCAP  -0.527235
+IFNGR1   -0.898070
+BCL2L1   -0.460815
+PRKCQ    -0.442575
+TNFRSF1A -0.966245
+TNFRSF1B -0.807470
+TSC2      0.459780
+CD3D     -3.313850
+WAS      -1.457350
+JAK3     -0.524285
+PLCG1    -2.773550
+RAC2     -1.337800
+TRADD    -0.623995
+IFNG     -1.687800
+IFNGR2   -0.975910
+IL2RG    -0.650145
+MERTK    -0.433425
+TSC1      1.089420
+RBPJ      0.529285
+BCL10    -0.869020
+CD3E     -2.657250
+IKBKG    -0.853900
+NFKB2     1.584300
+AHR       0.519460
+CPT1A     0.460545
+MALT1    -1.063740
+MAPK3    -0.734105
+LCP2     -2.928700
+MAPK1    -0.449405
+CD3G     -3.626100
+RIPK1     0.606570
+MAP2K2   -0.402665
+LCK      -1.373600
+EIF4EBP1  0.432485
+RELB     -0.426405
+TBX21    -1.401000
+CREBBP   -0.563725
+CISH      0.504325
+GRAP2    -0.979215
+REL      -0.459650
+JAK1     -1.389050
+CD2      -2.464100
+PRDM1    -0.785260
+PTPRC    -1.797100
+ITGB4    -0.396055
+CBLB      1.358100
+TRAF6    -1.865400
+NFKBIB    0.495810
+IKBKB    -0.922680
+CHUK     -0.833950
+CD6      -0.498225
+CD247    -2.497950
+CBFB     -0.467805
+DOCK2    -0.512055
+VAV1     -3.843650
+STAT3    -1.048600
+HSPA4     0.517950
+JUN      -0.726000
+ITK      -1.814700
+ZAP70    -3.918850
+
+Interpret the experimental evidence so far and provide a short synthesis
+for the primary BioDiscoveryAgent.
+
+Return exactly four concise sections:
+
+1. Successful signals: summarize patterns in the strongest observed results.
+2. Weak signals: summarize patterns in results that have been less informative.
+3. Working hypothesis: state what the results suggest about where productive
+   signal may be coming from.
+4. Next-round principle: give high-level guidance about exploration versus
+   exploitation for the next round.
+
+Do not generate or recommend specific untested genes.
+Do not produce a candidate gene list.
+Do not replace the primary agent's decision.
+Keep the entire response under 250 words.
+Use the experimental evidence as the basis for the synthesis.
+ 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Successful signals: Strongest negative scores (reductions in IFNG) overwhelmingly pinpoint core T-cell receptor (TCR) signaling, proximal kinases, and adapters (e.g., ZAP70, VAV1, LCP2, PLCG1, LCK, CD3 subunits, ITK, TRAF6), as well as key transcription factors like TBX21. Positive scores (enhancements) highlight negative regulators and metabolic checkpoints like CBLB, TSC1/2, and NFKB2.
+
+2. Weak signals: Scores near zero or modest magnitudes mostly comprise distal cytokine receptors, metabolic enzymes, and pathway components outside the immediate TCR signaling cascade or immune checkpoint networks (e.g., standard interleukins, broader MAPKs, and general transcription factors).
+
+3. Working hypothesis: Interferon-gamma production in this context is heavily governed by proximal T-cell activation machinery and specific ubiquitin-mediated or mTOR-related negative feedback loops. Perturbing nodes that directly dictate immune synapse formation and downstream transcription robustly modulates output.
+
+4. Next-round principle: Prioritize exploitation around core TCR signalosomes, costimulatory networks, and known negative feedback regulators, while maintaining focused exploration on immediate pathway neighbors of validated hits to map complete regulatory axes.
+===================tokens=====================
+Number of prompt tokens: 4129
+Number of sampled tokens: 268
+
+

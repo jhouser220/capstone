@@ -1,0 +1,180 @@
+
+===================prompt=====================
+
+
+Human: 
+You are a scientific reflection and synthesis agent supporting an iterative
+gene perturbation experiment.
+
+Research problem:
+I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interferon-gamma (IFNG). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interferon-gamma (IFNG) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Cumulative tested non-hit genes and measured scores:
+            Score
+Gene             
+IL1B    -0.008130
+NFKB1    0.125557
+PRKCB    0.041505
+NOTCH1   0.021485
+JAK2     0.132444
+IRF2    -0.094631
+CEBPA    0.148725
+TET2    -0.274905
+KEAP1    0.210215
+HDAC1   -0.151240
+EOMES   -0.086910
+NLRP3   -0.065815
+GATA3    0.057780
+MAVS     0.264290
+FOXP3    0.145110
+IL13    -0.179470
+BACH2    0.343835
+PIK3CA   0.107444
+IL12RB2  0.050639
+GSK3B    0.168679
+ETS1    -0.163300
+FYN      0.164187
+STING1  -0.128400
+TP53    -0.292370
+SPI1     0.218660
+IRF4     0.059575
+ARNT    -0.274665
+TGFB1    0.032735
+TYK2    -0.084040
+STAT5B   0.010015
+ATM     -0.043015
+RUNX3   -0.170597
+BLNK    -0.134545
+SOCS1    0.185722
+PDCD1    0.120335
+IRAK4    0.015296
+MTOR     0.030743
+VHL      0.167625
+LAG3     0.325340
+PTPN22   0.339770
+NFATC1   0.048841
+PTPN2    0.072855
+MYC      0.365965
+SMAD3    0.122430
+MYD88    0.054350
+STAT5A   0.070219
+CDC42   -0.122044
+PPP3CA   0.034790
+IL12RB1 -0.034080
+CAMK4    0.203400
+TOX     -0.072623
+FOS     -0.359215
+KDM4A   -0.023866
+AKT1     0.217375
+NFE2L2  -0.340925
+IL10     0.151242
+IRF3    -0.237845
+EZH2    -0.130098
+TBK1     0.013595
+MAF      0.091621
+RUNX1    0.075455
+IL6      0.064360
+CARD11  -0.313452
+BATF     0.068202
+NFAT5   -0.268665
+PTEN    -0.179804
+CREB1   -0.099681
+STAT4   -0.282660
+DNMT1    0.371030
+CASP1   -0.064096
+STAT1   -0.023106
+IL4     -0.063854
+IRF5    -0.042555
+TLR4    -0.041558
+BCL6    -0.058293
+TNF      0.272485
+BTK      0.115309
+IKZF1    0.018345
+IRF8    -0.284585
+SMARCA4  0.113642
+IL2RA    0.117304
+IRF1    -0.029467
+CTLA4    0.015375
+EP300    0.268732
+SOCS2   -0.006300
+STAT6   -0.039385
+IL2     -0.142710
+IRF7     0.178988
+PIAS1   -0.113202
+IRF9    -0.126400
+
+Cumulative identified hits and measured scores:
+           Score
+Gene            
+HIF1A  -0.440695
+RELA   -0.840910
+IL17A  -0.473900
+SOCS3   0.536160
+RHOA   -0.738540
+CD28   -2.171850
+PRKCQ  -0.442575
+TSC2    0.459780
+WAS    -1.457350
+PLCG1  -2.773550
+IFNG   -1.687800
+IFNGR2 -0.975910
+TSC1    1.089420
+RBPJ    0.529285
+BCL10  -0.869020
+CD3E   -2.657250
+AHR     0.519460
+MALT1  -1.063740
+MAPK3  -0.734105
+MAPK1  -0.449405
+RIPK1   0.606570
+LCK    -1.373600
+TBX21  -1.401000
+CREBBP -0.563725
+CISH    0.504325
+REL    -0.459650
+JAK1   -1.389050
+PRDM1  -0.785260
+TRAF6  -1.865400
+NFKBIB  0.495810
+IKBKB  -0.922680
+CHUK   -0.833950
+CBFB   -0.467805
+VAV1   -3.843650
+STAT3  -1.048600
+JUN    -0.726000
+ITK    -1.814700
+ZAP70  -3.918850
+
+Interpret the experimental evidence so far and provide a short synthesis
+for the primary BioDiscoveryAgent.
+
+Return exactly four concise sections:
+
+1. Successful signals: summarize patterns in the strongest observed results.
+2. Weak signals: summarize patterns in results that have been less informative.
+3. Working hypothesis: state what the results suggest about where productive
+   signal may be coming from.
+4. Next-round principle: give high-level guidance about exploration versus
+   exploitation for the next round.
+
+Do not generate or recommend specific untested genes.
+Do not produce a candidate gene list.
+Do not replace the primary agent's decision.
+Keep the entire response under 250 words.
+Use the experimental evidence as the basis for the synthesis.
+ 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Successful signals: Strongest negative scores (inhibitory effects on IFNG production) cluster heavily in T-cell receptor signaling (ZAP70, VAV1, ITK, CD3E, CD28, LCK) and core transcription factors driving T-helper differentiation (TBX21, STAT3, RELA). Positive scores (repressors of IFNG) highlight negative regulators of immune activation and mTOR (TSC1, TSC2, SOCS3, CISH).
+
+2. Weak signals: Scores close to zero or with modest magnitudes involve broader metabolic regulators, general kinases, and transcription factors not centrally wired into proximal lymphocyte activation or cytokine receptor feedback loops (e.g., IL1B, NFKB1, TYK2, CASP1). 
+
+3. Working hypothesis: Productive signal originates primarily from the proximal T-cell receptor (TCR) signaling cascade, downstream costimulatory pathways, and specific negative feedback loops (such as suppressors of cytokine signaling and mTOR pathway components). Perturbing components that tune lymphocyte activation states yields the highest magnitude changes in IFNG production.
+
+4. Next-round principle: Prioritize exploitation over exploration by focusing heavily on immediate interactors, paralogs, and direct downstream effectors of the validated TCR signaling and negative regulatory networks. Limit broad random screening in favor of deep neighborhood expansion around the strongest negative and positive hits identified so far.
+===================tokens=====================
+Number of prompt tokens: 1548
+Number of sampled tokens: 295
+
+
