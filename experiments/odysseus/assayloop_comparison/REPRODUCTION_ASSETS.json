@@ -1,0 +1,13 @@
+{
+  "filename": "assayloop-presentation-reproduction-2026-10-22.tar.gz",
+  "sha256": "19d409b2ab048ff1b8f402183d33bd0073efb0995a5ffa8049b6e08dc0e93903",
+  "bytes": 186856583,
+  "input_manifest_sha256": "ec378fec957029ed39f6402910185949e414f3e73a1b257fb39c037d9e79be50",
+  "campaigns": 342,
+  "language_requests": 864,
+  "screens": 18,
+  "description": "Frozen inputs, genuine language receipts and pinned upstream runtime for exact replay. No account credentials or private launchers.",
+  "release_tag": "odysseus-assayloop-reproduction-2026-10-22",
+  "release_url": "https://github.com/jhouser220/capstone/releases/tag/odysseus-assayloop-reproduction-2026-10-22",
+  "download_url": "https://github.com/jhouser220/capstone/releases/download/odysseus-assayloop-reproduction-2026-10-22/assayloop-presentation-reproduction-2026-10-22.tar.gz"
+}

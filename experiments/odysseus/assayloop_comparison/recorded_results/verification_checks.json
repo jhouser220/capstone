@@ -1,0 +1,60 @@
+{
+  "archive_sha256": "19d409b2ab048ff1b8f402183d33bd0073efb0995a5ffa8049b6e08dc0e93903",
+  "verified_files": 547,
+  "upstream_remote_comparison": [
+    {
+      "path": "src/assayloop/acquisitions/llm_single_acq.py",
+      "match": true,
+      "remote_sha256": "8fdb5374370487d4148c25effb3f659d9bd74c88005e76b439c2669a19d3d930",
+      "local_sha256": "8fdb5374370487d4148c25effb3f659d9bd74c88005e76b439c2669a19d3d930"
+    },
+    {
+      "path": "src/assayloop/acquisitions/greedy_from_model.py",
+      "match": true,
+      "remote_sha256": "5d5e902b8698a63e7e474b498b33f04abe1d2925bc41e42732e75dc226133316",
+      "local_sha256": "5d5e902b8698a63e7e474b498b33f04abe1d2925bc41e42732e75dc226133316"
+    },
+    {
+      "path": "src/assayloop/models/amortized_ranker.py",
+      "match": true,
+      "remote_sha256": "7b2d802a810e73b526cf5c7de9e8782a5af285c1f697e84586880b877955b94d",
+      "local_sha256": "7b2d802a810e73b526cf5c7de9e8782a5af285c1f697e84586880b877955b94d"
+    },
+    {
+      "path": "src/assayloop/tasks/gene_batch.py",
+      "match": true,
+      "remote_sha256": "93755c9c5fe05841e45023528b4a57a11ffdeb14454b1cfe9dbc96c70615000f",
+      "local_sha256": "93755c9c5fe05841e45023528b4a57a11ffdeb14454b1cfe9dbc96c70615000f"
+    },
+    {
+      "path": "src/assayloop/llm/client.py",
+      "match": true,
+      "remote_sha256": "e0c60a3b0cd59cb60a86f5abd6ea59836033870589287295825dbb0961ccc8ef",
+      "local_sha256": "e0c60a3b0cd59cb60a86f5abd6ea59836033870589287295825dbb0961ccc8ef"
+    },
+    {
+      "path": "src/assayloop/amortized/model.py",
+      "match": true,
+      "remote_sha256": "0314ecc7058529ef0f2f6ebfabe16ceadcc891a5761388cdbb4c43bec8f6e9a9",
+      "local_sha256": "0314ecc7058529ef0f2f6ebfabe16ceadcc891a5761388cdbb4c43bec8f6e9a9"
+    }
+  ],
+  "altered_evidence_tests": [
+    {
+      "mutation": "history",
+      "rejected": true,
+      "reason": "Language history/context/candidate mismatch at step 1"
+    },
+    {
+      "mutation": "request",
+      "rejected": true,
+      "reason": "Exact request body mismatch"
+    },
+    {
+      "mutation": "proposal",
+      "rejected": true,
+      "reason": "Receipt count or original parser output mismatch"
+    }
+  ],
+  "unit_tests_passed": 11
+}

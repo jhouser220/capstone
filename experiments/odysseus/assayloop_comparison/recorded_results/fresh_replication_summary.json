@@ -1,0 +1,85 @@
+{
+  "campaigns": 144,
+  "cohorts": {
+    "test_additional6": {
+      "means": {
+        "incumbent": {
+          "unique_hits": 175.95833333333334,
+          "selected": 1000.0,
+          "measured": 960.5,
+          "measured_precision": 0.17979971365129763,
+          "ef": 4.756228330101535
+        },
+        "native_filled": {
+          "unique_hits": 148.375,
+          "selected": 1000.0,
+          "measured": 914.5,
+          "measured_precision": 0.16055826038357898,
+          "ef": 3.9998346328278083
+        }
+      },
+      "incumbent_minus_native_filled": 27.583333333333343
+    },
+    "test_original3": {
+      "means": {
+        "incumbent": {
+          "unique_hits": 96.75,
+          "selected": 1000.0,
+          "measured": 963.9166666666666,
+          "measured_precision": 0.10145960614064797,
+          "ef": 3.733815576954768
+        },
+        "native_filled": {
+          "unique_hits": 93.08333333333333,
+          "selected": 1000.0,
+          "measured": 911.5833333333334,
+          "measured_precision": 0.10138558358587628,
+          "ef": 3.4875582518332333
+        }
+      },
+      "incumbent_minus_native_filled": 3.6666666666666714
+    },
+    "train": {
+      "means": {
+        "incumbent": {
+          "unique_hits": 57.5,
+          "selected": 1000.0,
+          "measured": 823.1666666666666,
+          "measured_precision": 0.06524883110525728,
+          "ef": 6.502787693257264
+        },
+        "native_filled": {
+          "unique_hits": 44.666666666666664,
+          "selected": 1000.0,
+          "measured": 585.0833333333334,
+          "measured_precision": 0.07699831971804634,
+          "ef": 7.686829922461229
+        }
+      },
+      "incumbent_minus_native_filled": 12.833333333333336
+    },
+    "validation": {
+      "means": {
+        "incumbent": {
+          "unique_hits": 161.16666666666666,
+          "selected": 1000.0,
+          "measured": 377.875,
+          "measured_precision": 0.20156078657898657,
+          "ef": 4.598746663358906
+        },
+        "native_filled": {
+          "unique_hits": 147.08333333333334,
+          "selected": 1000.0,
+          "measured": 394.7083333333333,
+          "measured_precision": 0.18773593794784418,
+          "ef": 3.9925357501736287
+        }
+      },
+      "incumbent_minus_native_filled": 14.083333333333314
+    }
+  },
+  "publication_wins": 12,
+  "publication_losses": 6,
+  "publication_ties": 0,
+  "historical_csv_verified": false
+}

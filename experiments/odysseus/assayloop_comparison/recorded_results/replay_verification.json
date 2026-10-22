@@ -1,0 +1,197 @@
+{
+  "campaigns": 342,
+  "cohorts": {
+    "test_additional6": {
+      "means": {
+        "incumbent": {
+          "unique_hits": 173.83333333333334,
+          "selected": 1000.0,
+          "measured": 959.2083333333334,
+          "measured_precision": 0.17791507100055992,
+          "ef": 4.715509130479778
+        },
+        "native": {
+          "unique_hits": 126.5,
+          "selected": 860.4166666666666,
+          "measured": 783.5416666666666,
+          "measured_precision": 0.16080016704805175,
+          "ef": 3.4725510890960396
+        },
+        "native_filled": {
+          "unique_hits": 147.5,
+          "selected": 1000.0,
+          "measured": 916.3333333333334,
+          "measured_precision": 0.159443253941142,
+          "ef": 4.098090801974119
+        },
+        "ordinary_full": {
+          "unique_hits": 164.91666666666666,
+          "selected": 1000.0,
+          "measured": 934.125,
+          "measured_precision": 0.1746636021032468,
+          "ef": 4.391223584031233
+        },
+        "scalar": {
+          "unique_hits": 167.08333333333334,
+          "selected": 1000.0,
+          "measured": 959.1666666666666,
+          "measured_precision": 0.17146708066694996,
+          "ef": 4.567614943953568
+        },
+        "source": {
+          "unique_hits": 160.5,
+          "selected": 1000.0,
+          "measured": 918.0,
+          "measured_precision": 0.17224135148771622,
+          "ef": 4.154060959278993
+        }
+      },
+      "incumbent_minus_native_filled": 26.333333333333343
+    },
+    "test_original3": {
+      "means": {
+        "incumbent": {
+          "unique_hits": 98.33333333333333,
+          "selected": 1000.0,
+          "measured": 965.6666666666666,
+          "measured_precision": 0.10265495534443597,
+          "ef": 3.2104610393191435
+        },
+        "native": {
+          "unique_hits": 76.83333333333333,
+          "selected": 856.75,
+          "measured": 776.6666666666666,
+          "measured_precision": 0.10048564407204334,
+          "ef": 3.3399041740653654
+        },
+        "native_filled": {
+          "unique_hits": 86.58333333333333,
+          "selected": 1000.0,
+          "measured": 908.3333333333334,
+          "measured_precision": 0.09474646703435281,
+          "ef": 3.5085040071009392
+        },
+        "ordinary_full": {
+          "unique_hits": 101.08333333333333,
+          "selected": 1000.0,
+          "measured": 917.0,
+          "measured_precision": 0.10946261524285301,
+          "ef": 4.224580433260166
+        },
+        "scalar": {
+          "unique_hits": 92.0,
+          "selected": 1000.0,
+          "measured": 960.3333333333334,
+          "measured_precision": 0.09594701656278871,
+          "ef": 3.361199934950545
+        },
+        "source": {
+          "unique_hits": 89.33333333333333,
+          "selected": 1000.0,
+          "measured": 890.6666666666666,
+          "measured_precision": 0.09738560535187275,
+          "ef": 3.601233813785811
+        }
+      },
+      "incumbent_minus_native_filled": 11.75
+    },
+    "train": {
+      "means": {
+        "incumbent": {
+          "unique_hits": 59.583333333333336,
+          "selected": 1000.0,
+          "measured": 831.5,
+          "measured_precision": 0.06698734994352801,
+          "ef": 6.624631660632157
+        },
+        "native": {
+          "unique_hits": 36.583333333333336,
+          "selected": 871.5833333333334,
+          "measured": 489.5,
+          "measured_precision": 0.0759792999501755,
+          "ef": 5.899321269341549
+        },
+        "native_filled": {
+          "unique_hits": 43.166666666666664,
+          "selected": 1000.0,
+          "measured": 578.6666666666666,
+          "measured_precision": 0.07492411425071495,
+          "ef": 7.486273493243192
+        },
+        "ordinary_full": {
+          "unique_hits": 44.25,
+          "selected": 1000.0,
+          "measured": 572.75,
+          "measured_precision": 0.07709441499286851,
+          "ef": 7.56601174928376
+        },
+        "scalar": {
+          "unique_hits": 56.666666666666664,
+          "selected": 1000.0,
+          "measured": 809.6666666666666,
+          "measured_precision": 0.0664484293920684,
+          "ef": 6.6942756984742635
+        },
+        "source": {
+          "unique_hits": 43.333333333333336,
+          "selected": 1000.0,
+          "measured": 561.3333333333334,
+          "measured_precision": 0.07672538091863172,
+          "ef": 7.9904010595651185
+        }
+      },
+      "incumbent_minus_native_filled": 16.41666666666667
+    },
+    "validation": {
+      "means": {
+        "incumbent": {
+          "unique_hits": 160.83333333333334,
+          "selected": 1000.0,
+          "measured": 377.1666666666667,
+          "measured_precision": 0.19735574614162912,
+          "ef": 4.269640390526635
+        },
+        "native": {
+          "unique_hits": 129.625,
+          "selected": 868.9166666666666,
+          "measured": 356.0833333333333,
+          "measured_precision": 0.1860584171290588,
+          "ef": 2.8617158385025134
+        },
+        "native_filled": {
+          "unique_hits": 145.625,
+          "selected": 1000.0,
+          "measured": 397.75,
+          "measured_precision": 0.18310289000770474,
+          "ef": 3.7557339141520796
+        },
+        "ordinary_full": {
+          "unique_hits": 157.04166666666666,
+          "selected": 1000.0,
+          "measured": 382.1666666666667,
+          "measured_precision": 0.20868645894188995,
+          "ef": 4.673260708333693
+        },
+        "scalar": {
+          "unique_hits": 161.08333333333334,
+          "selected": 1000.0,
+          "measured": 366.4166666666667,
+          "measured_precision": 0.20741623071063073,
+          "ef": 4.833316732162015
+        },
+        "source": {
+          "unique_hits": 155.83333333333334,
+          "selected": 1000.0,
+          "measured": 374.6666666666667,
+          "measured_precision": 0.20900391920928066,
+          "ef": 4.926583948908784
+        }
+      },
+      "incumbent_minus_native_filled": 15.208333333333343
+    }
+  },
+  "publication_wins": 11,
+  "publication_losses": 7,
+  "publication_ties": 0,
+  "historical_csv_verified": true
+}

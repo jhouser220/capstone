@@ -11,3 +11,6 @@ run_script.sh
 simple_benchmark_plot.ipynb
 .DS_Store
 venv/
+
+# Local reproduction assets, receipts and run outputs
+_reproduction/

@@ -1,0 +1,18 @@
+# Tested runtime. Upstream AssayLoop source is supplied separately; see REPRODUCING.md.
+numpy==2.4.6
+scipy==1.17.1
+torch==2.12.0
+openai==3.4.0
+httpx==0.28.1
+pandas==2.2.3
+pydantic==2.13.4
+scikit-learn==1.5.2
+assaybench==0.2.0
+anthropic==1.13.0
+transformers==5.12.0
+datasets==5.0.0
+huggingface-hub==1.19.0
+tqdm==4.67.3
+pyyaml==6.0.1
+python-dotenv==0.21.0
+requests==2.33.1

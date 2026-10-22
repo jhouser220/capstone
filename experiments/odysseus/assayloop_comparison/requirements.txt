@@ -1,0 +1,3 @@
+numpy>=2.0,<3
+scipy>=1.16,<2
+# Full loop also uses separately pinned AssayLoop/AssayBench and torch; see README.

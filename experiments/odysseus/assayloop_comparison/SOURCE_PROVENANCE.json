@@ -1,0 +1,67 @@
+{
+  "upstream": {
+    "repository": "https://github.com/Genentech/AssayLoop",
+    "commit": "e7251afacda88c803864896e0d1444196f482471"
+  },
+  "sources": [
+    {
+      "research_relative_path": "Experiments/native_fr2b_scalar_fill_2026-10-19/run_e116_map.py",
+      "sha256": "c61e83e09f58e61da5c44ce34863060b3b979a033da8a1f0fbed39ad30e94a05"
+    },
+    {
+      "research_relative_path": "Experiments/native_fr2b_scalar_fill_2026-10-19/run_e117.py",
+      "sha256": "4ecf3fa0b1c5df59b2778f9af1c2509d60bc28d66887d6a9b265df18939a40ab"
+    },
+    {
+      "research_relative_path": "Experiments/native_frozen_readout_2026-10-17/run_e101.py",
+      "sha256": "5d28d65ac42f2ecc0c4dae3931545d5dae2163ff797177d79c8588ffa115f8a8"
+    },
+    {
+      "research_relative_path": "Experiments/history_signal_tf3_2026-10-21/runner.py",
+      "sha256": "a8cbd229a0ecae51182dbb544e41d5a3094bdc4de1a72b71b17f3009d00741c2"
+    },
+    {
+      "research_relative_path": "Experiments/native_full_budget_2026-10-22/runner.py",
+      "sha256": "c271413b2a4d96cf371a7d10c5ff2ac09224ab42c8495afbb481369aefe23951"
+    },
+    {
+      "research_relative_path": "Experiments/native_full_budget_2026-10-22/CAMPAIGN_METRICS.csv",
+      "sha256": "83e077e8065ded92ac80811b6c7315dec7ed0dfee2bc74ac389be6acbe148c9f"
+    },
+    {
+      "research_relative_path": "Experiments/native_full_budget_2026-10-22/COHORT_MEANS.csv",
+      "sha256": "f4e3e1611a8d849cfa585efde7ebf500016dfacc26dd277c3df6c4db585f14e9"
+    },
+    {
+      "research_relative_path": "Experiments/native_history_correction_2026-10-17/core.py",
+      "sha256": "a715a679c40f5ea4b12a455ccb384f941772070b223b6e8b2d5d31a0345aa279"
+    },
+    {
+      "research_relative_path": "Experiments/full_native_benchmark_2026-10-17/run_e100_numerical.py",
+      "sha256": "662a914b0942fb24d59d500a4a66c10a90a14db443a8013c7ae3fab952e7e677"
+    }
+  ],
+  "changes": [
+    "Explicit array/model inputs replace private research imports and paths",
+    "Original E116 solver copied unchanged",
+    "Method/adapters extracted for current incumbent/native/filled/ordinary controls",
+    "Historical metrics omit absolute artifact paths; retain scientific hashes",
+    "Paid provider transport and funding checks remain caller-owned",
+    "Synthetic verification is distinct from a fresh real-actor reproduction"
+  ],
+  "portable_code_snapshot": {
+    "sha256": "c8eca0f81f6fc48e29acce1805f6a04ad36afa82f2fd31f57415eb257baba73c",
+    "scheme": "SHA-256 of sorted package-relative path + NUL + file SHA-256 + newline, for every Python source file",
+    "files": {
+      "__init__.py": "69dc399779d43c6c9ca12a532739e796ee0f51986087d2027152de192f974ffa",
+      "adapter.py": "b01a1cbb0e099baa9f934e0555ff7e0c2ceb731aaffca9733013a406ad88d6f3",
+      "assets.py": "a6e6d168cade2962903f64abcecfefad2e0f9fe41388704217ee537eea4c9104",
+      "audit_results.py": "7a519e59d70bd028e3f7dbdf2e70223e56b470331786337ffe28cf48f1bf708f",
+      "live.py": "8855bf07a2f59a7cb6c11e65a4b59f5446ee8ebdc2baf4f125f995b11f992bf7",
+      "numerics.py": "10087cb5eb10ae72615d3010261916714e13bf1425676522925a48cecdf5b06f",
+      "reproduce.py": "a32641bedb270ebf89493fe256ee8406da562f7c15844fb889382b4a7d2cff9b",
+      "summarize_run.py": "8104dc64b88cdc8adaa7d43117793052d49336ba9c13aab79307446b0a8acaeb",
+      "tests/test_comparison.py": "bae0155b8f7816fdb7fd72f0580d6433483784c648ee09c1f6b97a75bfc7a678"
+    }
+  }
+}

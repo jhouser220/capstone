@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-22T15:35:09+01:00",
+  "historical_campaigns_passed": 342,
+  "historical_decisions": 3420,
+  "historical_requests_verified": 864,
+  "historical_seconds": 276.61941495799874,
+  "fresh_campaigns_passed": 144,
+  "fresh_seconds": 1876.400931708,
+  "fresh_costs": {
+    "known_usage_usd": 0.20431913000000024,
+    "uncertain_billing_usd": 0.0,
+    "physical_calls": 432,
+    "inflight": 0,
+    "cap_usd": 1.0
+  },
+  "pushed": false
+}
