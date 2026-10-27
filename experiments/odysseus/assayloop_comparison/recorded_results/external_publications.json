@@ -1,0 +1,93 @@
+[
+  {
+    "source": "Schukken",
+    "assays": 1,
+    "native_hits": 47.75,
+    "hsa_hits": 50,
+    "delta_hits": 2.25,
+    "relative_gain_percent": 4.712041884816754,
+    "paired_positive": 3,
+    "paired_zero": 0,
+    "paired_negative": 1,
+    "native_measured": 926.5,
+    "hsa_measured": 890.75
+  },
+  {
+    "source": "Abt\u2013Wang",
+    "assays": 1,
+    "native_hits": 322,
+    "hsa_hits": 365.5,
+    "delta_hits": 43.5,
+    "relative_gain_percent": 13.509316770186336,
+    "paired_positive": 4,
+    "paired_zero": 0,
+    "paired_negative": 0,
+    "native_measured": 770.75,
+    "hsa_measured": 774.75
+  },
+  {
+    "source": "Wilson",
+    "assays": 1,
+    "native_hits": 97.25,
+    "hsa_hits": 107.75,
+    "delta_hits": 10.5,
+    "relative_gain_percent": 10.796915167095115,
+    "paired_positive": 4,
+    "paired_zero": 0,
+    "paired_negative": 0,
+    "native_measured": 916,
+    "hsa_measured": 949
+  },
+  {
+    "source": "Nguyen",
+    "assays": 1,
+    "native_hits": 13.5,
+    "hsa_hits": 15,
+    "delta_hits": 1.5,
+    "relative_gain_percent": 11.11111111111111,
+    "paired_positive": 2,
+    "paired_zero": 0,
+    "paired_negative": 2,
+    "native_measured": 902,
+    "hsa_measured": 920.75
+  },
+  {
+    "source": "Shan",
+    "assays": 3,
+    "native_hits": 76.41666666666667,
+    "hsa_hits": 86.83333333333333,
+    "delta_hits": 10.416666666666657,
+    "relative_gain_percent": 13.63140676117774,
+    "paired_positive": 11,
+    "paired_zero": 0,
+    "paired_negative": 1,
+    "native_measured": 921.25,
+    "hsa_measured": 898.9166666666666
+  },
+  {
+    "source": "Herranz-Ors",
+    "assays": 3,
+    "native_hits": 657.0833333333334,
+    "hsa_hits": 712.0,
+    "delta_hits": 54.91666666666663,
+    "relative_gain_percent": 8.357641090678497,
+    "paired_positive": 12,
+    "paired_zero": 0,
+    "paired_negative": 0,
+    "native_measured": 886.1666666666666,
+    "hsa_measured": 904.5833333333334
+  },
+  {
+    "source": "Samelson",
+    "assays": 1,
+    "native_hits": 113,
+    "hsa_hits": 155,
+    "delta_hits": 42,
+    "relative_gain_percent": 37.16814159292036,
+    "paired_positive": 4,
+    "paired_zero": 0,
+    "paired_negative": 0,
+    "native_measured": 876.25,
+    "hsa_measured": 880
+  }
+]

@@ -1,0 +1,231 @@
+{
+  "purpose": "Optional real-data offline replay and source provenance; assets are not included in public Git",
+  "assets": [
+    {
+      "research_relative_path": "Experiments/native_subset_training_2026-10-17/UNIVERSE_validation.json",
+      "bytes": 200071,
+      "sha256": "788fc4fb95bdd2f6c8fd624f9e66350c75860fe92bc664446dacccf6d73715bb"
+    },
+    {
+      "research_relative_path": "Experiments/full_native_benchmark_2026-10-17/train_1349_archive.npz",
+      "bytes": 9199120,
+      "sha256": "8a55b5dba3c9bef0c9fdcae45ab6e6d2c6a0e7696bfa89636057262cb5a657f3"
+    },
+    {
+      "research_relative_path": "Experiments/native_frozen_readout_2026-10-17/artifacts/pub_subspaces_140.pt",
+      "bytes": 496865897,
+      "sha256": "4f74a23ad8c665d432a72d7b4e4b8e6abd689c66caf35487ff7ec8a38b376ed0"
+    },
+    {
+      "research_relative_path": "Experiments/boundary_calibration_e209_2026-10-25/SCALAR_PRIORS.json",
+      "bytes": 4241,
+      "sha256": "55df56df25b744eec3d5abf6f21587ce2df65efd6e27a3e798e2d9adcc1b65c0"
+    },
+    {
+      "research_relative_path": "Experiments/external_aml_e232_2026-10-26/TARGET.json",
+      "bytes": 1074167,
+      "sha256": "ee2c75f35d14785ecd5638b82f21aef581c7c949cc1e83e9ef88088654d0a9e9"
+    },
+    {
+      "research_relative_path": "Experiments/external_aml_e232_2026-10-26/DESCRIPTION.npy",
+      "bytes": 6272,
+      "sha256": "9a1de4ec40fb510bfa82cbe06fc2797b48d918a0970271e05fc4c58e897e6093"
+    },
+    {
+      "research_relative_path": "Experiments/external_aml_e232_2026-10-26/build_target.py",
+      "bytes": 3373,
+      "sha256": "c23063f565f1376df058e6d0a1dc2a48461295d8e87f37e016248698e12ef753"
+    },
+    {
+      "research_relative_path": "Experiments/external_aml_e232_2026-10-26/FREEZE.json",
+      "bytes": 5079,
+      "sha256": "82befd4db93797fc85cac2c13b03f3c27f12597b9556b35641cde983b211b6c3"
+    },
+    {
+      "research_relative_path": "Experiments/external_aml_e232_2026-10-26/run.py",
+      "bytes": 12038,
+      "sha256": "d82c5703616691f084650857f2bbc58ded83970a362397573d7df84f690df148"
+    },
+    {
+      "research_relative_path": "Experiments/external_aneuploid_e224_2026-10-26/TARGET.json",
+      "bytes": 1264764,
+      "sha256": "d670dcc0dc290fb4eda45b91ea5f78d66bb119ad6b10a4429ea9c17a3b63a951"
+    },
+    {
+      "research_relative_path": "Experiments/external_aneuploid_e224_2026-10-26/DESCRIPTION.npy",
+      "bytes": 6272,
+      "sha256": "53a5b007b8a3e98e22ecbc9aea871c3a71baca930d77f818f2966a43095a9d5e"
+    },
+    {
+      "research_relative_path": "Experiments/external_aneuploid_e224_2026-10-26/build_target.py",
+      "bytes": 3653,
+      "sha256": "f757cce46843bde8fbdd5fde7987569752324af4c6ef174bb47d2bb85fbc5b8a"
+    },
+    {
+      "research_relative_path": "Experiments/external_aneuploid_e224_2026-10-26/FREEZE.json",
+      "bytes": 8860,
+      "sha256": "0f6301eabe3bfc1c36104fe66d9196fc919be1eb3fb694867142c20a7cfbd322"
+    },
+    {
+      "research_relative_path": "Experiments/external_aneuploid_e224_2026-10-26/run.py",
+      "bytes": 9451,
+      "sha256": "5e79953b3007f1dce9a91365dceae9fd1a201ae2d9ec96c4bd256ca35c17d246"
+    },
+    {
+      "research_relative_path": "Experiments/external_parcb_e225_2026-10-26/TARGET.json",
+      "bytes": 852043,
+      "sha256": "ecdc72f5dce6a8364844def708ee1a4e39b4ea8d028ba60f61fd22f3ab6de6f7"
+    },
+    {
+      "research_relative_path": "Experiments/external_parcb_e225_2026-10-26/DESCRIPTION.npy",
+      "bytes": 6272,
+      "sha256": "34912205fd54c3ea8fc0d5018564f07c0886cf0eaf3ae3c0c6988b1012d2d68d"
+    },
+    {
+      "research_relative_path": "Experiments/external_parcb_e225_2026-10-26/build_target.py",
+      "bytes": 3498,
+      "sha256": "be2e13e1f9db773ef26fd37d66d80382cd580c6f08e6aac48e2006e3c0469d4e"
+    },
+    {
+      "research_relative_path": "Experiments/external_parcb_e225_2026-10-26/FREEZE.json",
+      "bytes": 6154,
+      "sha256": "1e7cfb94bfe0ea2fc4d905f19a1e7b790253b86db88c12e2abad002c67c72d4c"
+    },
+    {
+      "research_relative_path": "Experiments/external_parcb_e225_2026-10-26/run.py",
+      "bytes": 9462,
+      "sha256": "8366888236dc01411e5a014a34e6cb9a8dc3c9d227608f5820fc50a29005376e"
+    },
+    {
+      "research_relative_path": "Experiments/external_wilson_e226_2026-10-26/TARGET.json",
+      "bytes": 1191556,
+      "sha256": "6103719b03e4570888d01d6ecb931cd5e5cd8505ed79bbb4529c5b2f4829b2e4"
+    },
+    {
+      "research_relative_path": "Experiments/external_wilson_e226_2026-10-26/DESCRIPTION.npy",
+      "bytes": 6272,
+      "sha256": "94801851a735d9d01ae48eb532c828672edcb5019cb5f11de196b12e94e02248"
+    },
+    {
+      "research_relative_path": "Experiments/external_wilson_e226_2026-10-26/build_target.py",
+      "bytes": 3326,
+      "sha256": "bcfe7963cc1fc4555d80424d6a80205a4a35d4042bafb85b5f24a33467d6996e"
+    },
+    {
+      "research_relative_path": "Experiments/external_wilson_e226_2026-10-26/FREEZE.json",
+      "bytes": 5036,
+      "sha256": "55901efbee9600f67092dac444d21e87d74c1257ca93a544bb5784cf8f534ee2"
+    },
+    {
+      "research_relative_path": "Experiments/external_wilson_e226_2026-10-26/run.py",
+      "bytes": 9548,
+      "sha256": "40c0bde9eca3fb46501346a7148bbf59d9a514e3d7f2091f945af1115be45c01"
+    },
+    {
+      "research_relative_path": "Experiments/organoid_frozen_hsa_e239_2026-10-26/TARGETS.json",
+      "bytes": 2904842,
+      "sha256": "f76356c5e1bce7e636bbb23df793b9e7239859d288ca3255f6c9bd8c65fb7088"
+    },
+    {
+      "research_relative_path": "Experiments/organoid_frozen_hsa_e239_2026-10-26/DESCRIPTION_oeso.npy",
+      "bytes": 6272,
+      "sha256": "c99dad803e1d395bf6426bd9e4eef604f8d6276b8aec2424ceedf7571edd7867"
+    },
+    {
+      "research_relative_path": "Experiments/organoid_frozen_hsa_e239_2026-10-26/DESCRIPTION_ovar.npy",
+      "bytes": 6272,
+      "sha256": "c33b692f4bbf13ed547408f6424643de2b0583a00883c5bd2d984345a2036c8c"
+    },
+    {
+      "research_relative_path": "Experiments/organoid_frozen_hsa_e239_2026-10-26/DESCRIPTION_colo.npy",
+      "bytes": 6272,
+      "sha256": "7f91ab3479f6b9a0441884fd47376c49a144939f842ee856393128f8f4b04223"
+    },
+    {
+      "research_relative_path": "Experiments/organoid_frozen_hsa_e239_2026-10-26/build_target.py",
+      "bytes": 4135,
+      "sha256": "e009d36654de12e2dedc312416fd09569eb9bfad8e5a9fbf802f12b1a1131572"
+    },
+    {
+      "research_relative_path": "Experiments/organoid_frozen_hsa_e239_2026-10-26/FREEZE.json",
+      "bytes": 5282,
+      "sha256": "7fe716ca41362e7f1226922962aad82a1d52d795952a7831b53bf7183768698c"
+    },
+    {
+      "research_relative_path": "Experiments/organoid_frozen_hsa_e239_2026-10-26/run.py",
+      "bytes": 10085,
+      "sha256": "f23510818011a903859d3378191fec6165dd33dce6533a0c77814358ffa7f923"
+    },
+    {
+      "research_relative_path": "Experiments/shan_frozen_hsa_e236_2026-10-26/TARGETS.json",
+      "bytes": 3353301,
+      "sha256": "dc83b332d1dc4d741cee8e32f23305a204006d117869e1386befbffaa789629a"
+    },
+    {
+      "research_relative_path": "Experiments/shan_frozen_hsa_e236_2026-10-26/DESCRIPTION_screen1.npy",
+      "bytes": 6272,
+      "sha256": "6b72240f16e3fad4404d802ea84800a33bb64ebb944742a22148255285fdcfbe"
+    },
+    {
+      "research_relative_path": "Experiments/shan_frozen_hsa_e236_2026-10-26/DESCRIPTION_screen3.npy",
+      "bytes": 6272,
+      "sha256": "a70aec6e8ca6170463454ef9e4514b43e43e9467062c5379a534d989a63a7f75"
+    },
+    {
+      "research_relative_path": "Experiments/shan_frozen_hsa_e236_2026-10-26/DESCRIPTION_screen2.npy",
+      "bytes": 6272,
+      "sha256": "df06c3b77b6b6463b5262ee2ea37f5ab090b61aeb675ec827a874d1036c7a028"
+    },
+    {
+      "research_relative_path": "Experiments/shan_frozen_hsa_e236_2026-10-26/build_target.py",
+      "bytes": 3783,
+      "sha256": "b64eeb9941a1c2689fb5b4dd428cf7e0a8330a0ab30c5a2758537b5fd9160376"
+    },
+    {
+      "research_relative_path": "Experiments/shan_frozen_hsa_e236_2026-10-26/FREEZE.json",
+      "bytes": 4901,
+      "sha256": "a393bcc5c6e2e990ec3492f5258ab5c0e81e437807694b7e3a56918957fd4d34"
+    },
+    {
+      "research_relative_path": "Experiments/shan_frozen_hsa_e236_2026-10-26/run.py",
+      "bytes": 9976,
+      "sha256": "38fd0109f9bfbdbf0e1c0f2cc1a4333d7c2b95e4e0eb9585079c7a1ed952ff6c"
+    },
+    {
+      "research_relative_path": "Experiments/tau_source_e245_2026-10-26/TARGETS.json",
+      "bytes": 1103735,
+      "sha256": "f3cd2c8431220a16400dde63413b1217ee45aafd70d2515fa89ae852a534592d"
+    },
+    {
+      "research_relative_path": "Experiments/tau_source_e245_2026-10-26/DESCRIPTION_tau.npy",
+      "bytes": 6272,
+      "sha256": "c17e1b499e1648f984659284f09b66faa01aa90f1dd5ddbd908bf19dfb095e5b"
+    },
+    {
+      "research_relative_path": "Experiments/tau_source_e245_2026-10-26/build_target.py",
+      "bytes": 5577,
+      "sha256": "b16b1e4a15af4206804d097c33c2fd9660012a87b1f99fd85e6e00b51b3773ce"
+    },
+    {
+      "research_relative_path": "Experiments/tau_source_e245_2026-10-26/SOURCE_VERIFICATION.json",
+      "bytes": 703,
+      "sha256": "91934755ad640a103a5cc96b089de2c6dfa687378183b49df5c995c8886c85ec"
+    },
+    {
+      "research_relative_path": "Experiments/tau_source_e245_2026-10-26/FREEZE.json",
+      "bytes": 541813,
+      "sha256": "61d0ef1cdb209547f8eaa1972984cae16cf3c07b64aad72fe0ca74de97d4ab0e"
+    },
+    {
+      "research_relative_path": "Experiments/tau_source_e245_2026-10-26/run.py",
+      "bytes": 10140,
+      "sha256": "cc83b323c434e1a1339c57095e700d1eb514230a4f916969e5af36336207b6ff"
+    }
+  ],
+  "checkpoint": {
+    "repository": "Genentech/assayformer",
+    "revision": "4927703e5903984ae0254a9fe8e93ec0b29c27e4",
+    "file": "model_last.pt"
+  },
+  "redistribution": "Use original dataset/model licenses; retain frozen source contracts. No raw author tables, weights or provider receipts are part of this public payload."
+}

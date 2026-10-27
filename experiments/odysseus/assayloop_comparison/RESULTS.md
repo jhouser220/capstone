@@ -22,3 +22,7 @@ Keep a short dated entry here for each result-affecting commit: what changed, th
 **Conclusion:** the whole-system gain persists in all four cohort averages; the original-test gain is smaller in the fresh run. Fresh publication averages: 12 wins, 6 losses. These are exposed development cohorts. Selected budgets match; measured availability varies. Attribution to individual components remains an ablation question.
 
 **Evidence:** [full report](REPRODUCTION_REPORT.md), [historical campaign results](recorded_results/campaign_metrics.csv), [fresh campaign results](recorded_results/fresh_replication_campaigns.csv), [reproduction commands and asset requirements](REPRODUCING.md).
+
+## 2026-10-27 — external transfer packaging (no new experiments)
+
+Added seven external publication sources / eleven selected assays, paired HSA and budget-completed Original AssayLoop records, an explicit external measured-only feedback adapter, and a saved-proposal full-loop replay. Current code is based on c72a034 and preserves its original six-arm implementation and fresh-reproduction evidence. All 88 external campaigns matched at every selection/outcome; 15 tests passed. [Dataset contracts and limitations](DATASETS.md), [validation](VALIDATION.md), and [source/code hashes](SOURCE_PROVENANCE.json) identify this version. HSA128 remains the incumbent; recent RL refinements are not promoted.

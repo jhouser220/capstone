@@ -39,6 +39,10 @@
     {
       "research_relative_path": "Experiments/full_native_benchmark_2026-10-17/run_e100_numerical.py",
       "sha256": "662a914b0942fb24d59d500a4a66c10a90a14db443a8013c7ae3fab952e7e677"
+    },
+    {
+      "research_relative_path": "Experiments/boundary_calibration_e209_2026-10-25/feedback.py",
+      "sha256": "df3f3befc50884c4c0ccdb2ef0f2d4349024c59f39377aa5a120292b0fd556f7"
     }
   ],
   "changes": [
@@ -47,9 +51,11 @@
     "Method/adapters extracted for current incumbent/native/filled/ordinary controls",
     "Historical metrics omit absolute artifact paths; retain scientific hashes",
     "Paid provider transport and funding checks remain caller-owned",
-    "Synthetic verification is distinct from a fresh real-actor reproduction"
+    "Synthetic verification is distinct from a fresh real-actor reproduction",
+    "External compact records and offline replay added; remote October 22 six-arm implementation and fresh reproduction preserved",
+    "External measured-only language feedback adapter exported; older original-benchmark contract remains separately documented"
   ],
-  "portable_code_snapshot": {
+  "original_portable_code_snapshot_2026_10_22": {
     "sha256": "c8eca0f81f6fc48e29acce1805f6a04ad36afa82f2fd31f57415eb257baba73c",
     "scheme": "SHA-256 of sorted package-relative path + NUL + file SHA-256 + newline, for every Python source file",
     "files": {
@@ -62,6 +68,27 @@
       "reproduce.py": "a32641bedb270ebf89493fe256ee8406da562f7c15844fb889382b4a7d2cff9b",
       "summarize_run.py": "8104dc64b88cdc8adaa7d43117793052d49336ba9c13aab79307446b0a8acaeb",
       "tests/test_comparison.py": "bae0155b8f7816fdb7fd72f0580d6433483784c648ee09c1f6b97a75bfc7a678"
+    }
+  },
+  "updated": "2026-10-27",
+  "method_name": "Historical Subspace Adaptation",
+  "portable_code_snapshot": {
+    "sha256": "3428ae9c0dcebfd384ace3cef33fcee2c9dc9e4c1f1812c1a99ad39f5d9a79a8",
+    "scheme": "SHA-256 of sorted package-relative path + NUL + file SHA-256 + newline, for every Python source file",
+    "files": {
+      "__init__.py": "e121e92fd5a8872fa25de4680e0294718979021e51820ee4b5413304a40d914a",
+      "adapter.py": "b01a1cbb0e099baa9f934e0555ff7e0c2ceb731aaffca9733013a406ad88d6f3",
+      "assets.py": "a6e6d168cade2962903f64abcecfefad2e0f9fe41388704217ee537eea4c9104",
+      "audit_external.py": "554749b3b1b9a1be767e4dc5f7cdb03930f36d84f84acc381f192fdba970bf5a",
+      "audit_results.py": "7a519e59d70bd028e3f7dbdf2e70223e56b470331786337ffe28cf48f1bf708f",
+      "feedback.py": "e9ec11fd6c4c4e042a3d5324ff3bac141d557888dda35000bb1c0797ac348689",
+      "live.py": "8855bf07a2f59a7cb6c11e65a4b59f5446ee8ebdc2baf4f125f995b11f992bf7",
+      "numerics.py": "10087cb5eb10ae72615d3010261916714e13bf1425676522925a48cecdf5b06f",
+      "replay_saved.py": "02545306c4bc4d731670bbb25ac34eb989153b70a0e93b1e151533d706ee9204",
+      "reproduce.py": "a32641bedb270ebf89493fe256ee8406da562f7c15844fb889382b4a7d2cff9b",
+      "summarize_run.py": "8104dc64b88cdc8adaa7d43117793052d49336ba9c13aab79307446b0a8acaeb",
+      "tests/test_comparison.py": "bae0155b8f7816fdb7fd72f0580d6433483784c648ee09c1f6b97a75bfc7a678",
+      "tests/test_external.py": "11964af2cc33d6221b772f8fc28caf5fb3b2610f2d3e4f49f665d4336e7290ac"
     }
   }
 }

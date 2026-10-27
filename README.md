@@ -4,7 +4,7 @@
 
 [AssayLoop results history](experiments/odysseus/assayloop_comparison/RESULTS.md) links the tested code snapshot to its historical and fresh-run results.
 
-[Odysseus: native AssayLoop versus Historical Response Subspace Adaptation](experiments/odysseus/assayloop_comparison/README.md) contains the current method, explicit baseline definitions and verified matched-budget results. It is a separate experiment package; the BioDiscoveryAgent instructions below retain their original scope.
+[Odysseus: Original AssayLoop versus Historical Subspace Adaptation](experiments/odysseus/assayloop_comparison/README.md) contains the current method, explicit baseline definitions and verified matched-budget results. It is a separate experiment package; the BioDiscoveryAgent instructions below retain their original scope.
 
 
 BioDiscoveryAgent is an AI agent for closed loop design of 
