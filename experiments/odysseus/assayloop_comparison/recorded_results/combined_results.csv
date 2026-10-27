@@ -1,0 +1,16 @@
+dataset,evidence,original_hits,hsa_hits,gain_hits,relative_gain_percent,campaigns,source_file
+Original benchmark: initial test (3 publications),Historical E160,86.58333333333333,98.33333333333333,11.75,13.570741097208856,24,campaign_metrics.csv
+Original benchmark: additional test (6 publications),Historical E160,147.5,173.83333333333334,26.333333333333343,17.853107344632775,48,campaign_metrics.csv
+Original benchmark: validation (6 publications),Historical E160,145.625,160.83333333333334,15.208333333333343,10.443490701001437,48,campaign_metrics.csv
+Original benchmark: training (3 publications),Historical E160,43.166666666666664,59.583333333333336,16.41666666666667,38.03088803088804,24,campaign_metrics.csv
+Original benchmark: initial test (3 publications),Fresh rerun (same exposed cohorts),93.08333333333333,96.75,3.6666666666666714,3.9391226499552427,24,fresh_replication_campaigns.csv
+Original benchmark: additional test (6 publications),Fresh rerun (same exposed cohorts),148.375,175.95833333333334,27.583333333333343,18.590283628194335,48,fresh_replication_campaigns.csv
+Original benchmark: validation (6 publications),Fresh rerun (same exposed cohorts),147.08333333333334,161.16666666666666,14.083333333333314,9.575070821529732,48,fresh_replication_campaigns.csv
+Original benchmark: training (3 publications),Fresh rerun (same exposed cohorts),44.666666666666664,57.5,12.833333333333336,28.731343283582095,24,fresh_replication_campaigns.csv
+External: Schukken (1 assay),Historical external,47.75,50,2.25,4.712041884816754,8,external_campaigns.json
+External: Abt–Wang (1 assay),Historical external,322,365.5,43.5,13.509316770186336,8,external_campaigns.json
+External: Wilson (1 assay),Historical external,97.25,107.75,10.5,10.796915167095115,8,external_campaigns.json
+External: Nguyen (1 assay),Historical external,13.5,15,1.5,11.11111111111111,8,external_campaigns.json
+External: Shan (3 assays),Historical external,76.41666666666667,86.83333333333333,10.416666666666657,13.63140676117774,24,external_campaigns.json
+External: Herranz-Ors (3 assays),Historical external,657.0833333333334,712.0,54.91666666666663,8.357641090678497,24,external_campaigns.json
+External: Samelson (1 assay),Historical external,113,155,42,37.16814159292036,8,external_campaigns.json

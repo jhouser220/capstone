@@ -27,17 +27,35 @@ These external results use measured-only language feedback. The original E160 be
 
 **Original AssayLoop + matched-budget completion** versus **AssayLoop + HSA** is the main comparison. “Original” identifies the source model/policy; our language actors, measured-only feedback and budget completion are declared substitutions/extensions, not exact reproduction of the paper's original actors. HSA remains the incumbent after E252. This is a lean method package, not the full research archive.
 
-| External source | Original + budget fill | AssayLoop + HSA | Relative gain |
-|---|---:|---:|---:|
-| Schukken | 47.75 | 50.00 | 4.7% |
-| Abt–Wang | 322.00 | 365.50 | 13.5% |
-| Wilson | 97.25 | 107.75 | 10.8% |
-| Nguyen | 13.50 | 15.00 | 11.1% |
-| Shan (3 assays) | 76.42 | 86.83 | 13.6% |
-| Herranz-Ors (3 cultures) | 657.08 | 712.00 | 8.4% |
-| Samelson | 113.00 | 155.00 | 37.2% |
+## All benchmark and external results together
 
-Means are unique measured hits per 1,000 requested slots: four actor/draw paths per assay, then equal assay means within each publication. Seven publications are not eleven independent sources. Strong cold HSA/MAP/frequency controls often match or exceed language+HSA; Nguyen loses on two of four paired paths. These gains do not establish a benefit from language, isolated subspace causality, no training exposure, or independent confirmation. [Full comparison boundaries](DATASETS.md).
+**Mean unique measured hits after 10 rounds × 100 selected candidates.** HSA means **Historical Subspace Adaptation**. Both systems use AWS Gemma 4 31B and Qwen3 32B, two runs per model per task, frozen AssayFormer, and three language-assisted rounds followed by seven numerical rounds. Original AssayLoop proposal shortfalls are filled to match the selection budget. These are our runs of the original policy with substituted actors, not numbers copied from the original paper.
+
+| Dataset / cohort | Evidence | Original AssayLoop + budget fill | AssayLoop + HSA | Gain in hits | Relative gain |
+|---|---|---:|---:|---:|---:|
+| Original benchmark: initial test (3 publications) | Historical E160 | 86.58 | 98.33 | +11.75 | +13.6% |
+| Original benchmark: additional test (6 publications) | Historical E160 | 147.50 | 173.83 | +26.33 | +17.9% |
+| Original benchmark: validation (6 publications) | Historical E160 | 145.63 | 160.83 | +15.21 | +10.4% |
+| Original benchmark: training (3 publications) | Historical E160 | 43.17 | 59.58 | +16.42 | +38.0% |
+| Original benchmark: initial test (3 publications) | Fresh rerun (same exposed cohorts) | 93.08 | 96.75 | +3.67 | +3.9% |
+| Original benchmark: additional test (6 publications) | Fresh rerun (same exposed cohorts) | 148.38 | 175.96 | +27.58 | +18.6% |
+| Original benchmark: validation (6 publications) | Fresh rerun (same exposed cohorts) | 147.08 | 161.17 | +14.08 | +9.6% |
+| Original benchmark: training (3 publications) | Fresh rerun (same exposed cohorts) | 44.67 | 57.50 | +12.83 | +28.7% |
+| External: Schukken (1 assay) | Historical external | 47.75 | 50.00 | +2.25 | +4.7% |
+| External: Abt–Wang (1 assay) | Historical external | 322.00 | 365.50 | +43.50 | +13.5% |
+| External: Wilson (1 assay) | Historical external | 97.25 | 107.75 | +10.50 | +10.8% |
+| External: Nguyen (1 assay) | Historical external | 13.50 | 15.00 | +1.50 | +11.1% |
+| External: Shan (3 assays) | Historical external | 76.42 | 86.83 | +10.42 | +13.6% |
+| External: Herranz-Ors (3 assays) | Historical external | 657.08 | 712.00 | +54.92 | +8.4% |
+| External: Samelson (1 assay) | Historical external | 113.00 | 155.00 | +42.00 | +37.2% |
+
+The historical E160 and external rows are the results used in the presentation. Fresh-rerun rows are a separate completed replication on the same exposed original cohorts, not additional datasets or independent confirmation. No new inference was performed for this table. **Training rows are explicitly training-cohort evaluations, not held-out generalization evidence and not LLM weight training.** The original panel contains 18 selected publications (9 test, 6 validation, 3 training), not the full original paper's splits. The external panel contains 7 publications / 11 selected assays, not all conditions available in their source papers.
+
+Average the four actor/repetition campaigns within each task, then weight publications equally within original cohorts and assays equally within each external publication. Each original panel has 144 campaigns; the external panel has 88. Never sum or pool these table rows into one grand score. Historical E160 and external language-feedback conventions differ; see [dataset contracts](DATASETS.md). Gains use unrounded means. The 1,000 selections are not 1,000 measured outcomes; availability differs between policies.
+
+All four original cohort averages improve, but historical publication means have **11 wins / 7 losses**, and fresh reruns **12 wins / 6 losses**. External publication means all improve, but individual paths can lose, and strong numerical controls often match or beat language + HSA. These whole-system comparisons do not isolate HSA's subspace component, certify absence of pretraining exposure, or establish benefit from language alone.
+
+[Machine-readable combined table](recorded_results/combined_results.csv) · [historical campaign records](recorded_results/campaign_metrics.csv) · [fresh campaign records](recorded_results/fresh_replication_campaigns.csv) · [external campaign records](recorded_results/external_campaigns.json) · [reproduction report](REPRODUCTION_REPORT.md).
 
 ## What differs between the systems?
 

@@ -1,5 +1,8 @@
 # BioDiscoveryAgent
 
+**[One combined results table: original test, validation, training, fresh rerun and seven external sources](experiments/odysseus/assayloop_comparison/README.md#all-benchmark-and-external-results-together).**
+
+
 ## Team research additions
 
 [AssayLoop results history](experiments/odysseus/assayloop_comparison/RESULTS.md) links the tested code snapshot to its historical and fresh-run results.

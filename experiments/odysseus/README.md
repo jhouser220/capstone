@@ -1,5 +1,8 @@
 # Odysseus: AssayLoop comparison
 
+**[One combined results table: original test, validation, training, fresh rerun and seven external sources](assayloop_comparison/README.md#all-benchmark-and-external-results-together).**
+
+
 Start with **[Original AssayLoop versus AssayLoop + HSA](assayloop_comparison/README.md)**.
 
 This is the current team-facing package: Historical Subspace Adaptation, the native and budget-completed native controls, and compact verified results. The README explains what changes, what the comparison establishes, and how to inspect the code and recount the results offline.
