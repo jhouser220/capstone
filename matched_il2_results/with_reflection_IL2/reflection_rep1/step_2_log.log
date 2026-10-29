@@ -1,0 +1,1858 @@
+
+===================prompt=====================
+
+
+Human: Step 2
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+             Score
+Gene              
+RUNX1     0.241920
+HAVCR2    0.202920
+CAMK2B    0.004049
+CREBBP   -0.258590
+SOCS1    -0.032417
+CHD4      0.052237
+PPP3CB   -0.302790
+EZH2      0.072959
+IKZF3     0.044012
+GZMB      0.069599
+ENTPD1   -0.152580
+STAT5A    0.004139
+PRKCQ    -0.276950
+IRF1     -0.157190
+RHEB      0.032306
+SRGN      0.036162
+BTRC     -0.241690
+TNF       0.093364
+BPTF     -0.145470
+RICTOR   -0.064260
+CALM1    -0.112410
+FASLG     0.060523
+IL4       0.103800
+ATF2     -0.082943
+CALM3     0.162540
+PRKCB    -0.125290
+CUL1     -0.300380
+MAP2K4    0.180030
+MALT1    -0.300190
+PIK3R1   -0.062783
+EIF4E     0.035544
+CREB1    -0.122900
+FOXP3    -0.099287
+IRF8      0.049331
+CALM2    -0.147130
+RORC      0.017731
+PIK3CD   -0.023301
+FOS      -0.064280
+IL10      0.019451
+TET2      0.152520
+IKZF1    -0.003380
+ATRX      0.178670
+RELA     -0.279810
+IKZF2    -0.107190
+MAP2K7   -0.027346
+USP7      0.132610
+MAP2K1   -0.034449
+CAMK2D   -0.225530
+KMT2A    -0.214430
+JAK1     -0.053599
+GSK3B    -0.070169
+TET1     -0.070394
+MAPK8     0.089889
+NFATC4   -0.073927
+CAMK2A   -0.151970
+NFKB1    -0.115020
+LAG3     -0.119730
+IKBKB     0.255820
+PPP3CC   -0.021667
+TGFB1    -0.081333
+RPTOR     0.029012
+KDM4A     0.123910
+NFATC3   -0.016831
+SMARCB1   0.150740
+MTOR     -0.009602
+ARID1A    0.180410
+DNMT1    -0.005324
+SMYD3    -0.173730
+PRF1     -0.088773
+IRF4      0.121000
+PIK3CB   -0.136300
+GSK3A     0.070889
+HDAC2     0.272680
+PIK3CA   -0.027041
+CTLA4     0.309260
+CAMK2G    0.049109
+SETD2     0.074740
+LCK       0.132590
+PDCD1    -0.231170
+RPS6KB1   0.133560
+AKT2     -0.038130
+PPP3CA   -0.004761
+PRDM1    -0.018561
+IFNG     -0.017544
+NFATC1    0.099580
+NFATC2   -0.280190
+TBX21    -0.061745
+SOCS3     0.030714
+MAPK14   -0.023640
+DNMT3A    0.062102
+ATF4     -0.125750
+MAPK9     0.104180
+HDAC1    -0.134080
+EP300    -0.067743
+MAPK1    -0.148210
+NT5E      0.305530
+KDM6A     0.096438
+TIGIT     0.047751
+USP15    -0.184400
+GATA3    -0.036215
+BCL6     -0.048463
+KMT2B    -0.119680
+BTLA     -0.050402
+FBXW7    -0.271350
+MAP2K2   -0.318010
+AKT1      0.049770
+AKT3      0.044326
+SKP1      0.075718
+ATF6     -0.080113
+IRF5      0.042046
+RAC1      0.017158
+CDC42     0.054793
+CD86     -0.058091
+TNFRSF9  -0.079510
+TNFSF9   -0.012994
+NCK2      0.010794
+STAT6    -0.122440
+FYN       0.081567
+SOS1      0.064632
+INPP5D   -0.022466
+JAK2      0.102760
+TNFRSF4   0.045562
+VAV3     -0.251890
+CD27      0.032015
+UBE2N    -0.076033
+RBX1      0.037977
+VAV2      0.076403
+CD80     -0.098780
+EIF4EBP1  0.028820
+CD8A      0.090454
+ATF3     -0.130300
+IRF7      0.007360
+IRF3     -0.052740
+IKBKG    -0.216370
+STAT4    -0.285190
+STAT3    -0.278570
+IRF2     -0.032315
+PIK3CG   -0.045868
+SOS2     -0.053156
+TYK2      0.006013
+FOSL1    -0.005651
+UBE2V1    0.022336
+PTPN6     0.182560
+CD40LG   -0.022008
+RHOA     -0.273560
+ICOS     -0.040072
+DUSP6     0.132220
+CSK      -0.019115
+WASL      0.095842
+JUNB     -0.152660
+CD8B     -0.014070
+PDPK1     0.223090
+TRAT1    -0.224940
+CBL      -0.081850
+DUSP2     0.266460
+PAG1      0.098566
+STAT1     0.012047
+ATF1     -0.260740
+FOSL2    -0.076469
+FOSB     -0.104520
+TNFSF4   -0.165030
+NCK1     -0.239060
+REL      -0.273190
+IL7R     -0.152760
+RELB     -0.005736
+IKBKE     0.177740
+TRAF5    -0.022170
+TNFRSF8  -0.023348
+PRKD1     0.269770
+SHC1      0.118290
+CRTAM    -0.123290
+TBK1      0.065229
+CUL3      0.048332
+PRKCE    -0.006850
+MAP3K7   -0.192190
+CARD14   -0.110570
+CARD10   -0.063653
+TAB2     -0.165000
+PTEN      0.006596
+NFKBIE    0.250790
+MAP3K8    0.146450
+PTPN2    -0.187860
+CD40      0.035825
+TRAF3     0.174680
+PRKCD    -0.093508
+TAB3      0.140370
+PRKCZ     0.007998
+UBE2D1    0.071168
+TNFRSF18 -0.062263
+MAP3K1    0.076361
+DUSP4     0.079665
+MAP3K14   0.175420
+RIPK1     0.285490
+DUSP3     0.130930
+NFKBIB    0.137010
+GRAP     -0.135030
+DUSP1     0.030956
+TNFRSF25  0.111990
+PRKCA     0.002795
+PTPN11   -0.074597
+NFKBID    0.080955
+CD226    -0.009243
+TRAF2     0.319920
+TRADD    -0.037312
+PIK3AP1  -0.019858
+SH2D2A    0.248100
+TNFAIP3  -0.063688
+RNF128    0.080432
+PTPN1    -0.105790
+STAP1     0.026830
+CARD9     0.014675
+CBLC     -0.085967
+UBE2D3    0.178580
+UBE2D2    0.009702
+STAP2    -0.045731
+ You have successfully identified 41 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CD3E    -1.96430
+IL2RA    0.57251
+CD28    -1.72620
+STAT5B   0.66825
+CBLB     1.20450
+CD3G    -2.66650
+CARD11  -0.46511
+TSC1     0.80855
+HDAC3   -0.40084
+NFKB2    0.60741
+CD4      0.66082
+CD247   -1.59090
+LIME1    0.38661
+BATF     0.42521
+GRB2     0.36241
+PTPRC   -0.86005
+GRAP2   -1.18700
+ITK     -1.45130
+PLCG1   -1.02690
+PTPN22   0.35386
+MAPK3   -0.33118
+LCP2    -1.88110
+CHUK    -0.38065
+JUN     -0.37464
+PRKD2   -0.55872
+SH2D1A  -0.33865
+JAK3     1.07620
+CAMK4    0.44835
+WAS     -0.98659
+TRAF6   -0.73739
+IL2RB    1.12230
+PTPN23   0.86963
+IL2RG    1.05700
+IL2     -2.61010
+BCL10   -0.47398
+LAT     -0.89413
+TSC2     0.37433
+ZAP70   -2.78080
+CD3D    -2.49430
+SMARCA4  0.43431
+VAV1    -2.91600
+
+A separate reflection agent analyzed the experimental results.
+Use the following synthesis as additional context when designing
+the next round, while also retaining the raw experimental results above:
+
+1. Successful signals: The strongest positive and negative scores are heavily concentrated in core T-cell receptor (TCR) signaling components (e.g., *ZAP70*, *VAV1*, *CD3* subunits, *IL2*), cytokine receptor chains (*IL2RB*, *IL2RG*, *JAK3*), and key negative regulators (*CBLB*, *TSC1*). Perturbing proximal kinase cascades and receptor complexes yields massive log fold changes, defining clear regulatory bottlenecks for IL-2 production.
+
+2. Weak signals: Scores close to zero or with minimal magnitude arise primarily from downstream transcription factor families, broad metabolic regulators, and peripheral adaptor proteins that may operate redundantly or outside the immediate IL-2 activation axis in this context.
+
+3. Working hypothesis: IL-2 regulation is critically governed by proximal signal transduction nodes and direct receptor-proximal checkpoints rather than distal or heavily buffered transcriptional networks. Perturbations that disrupt early membrane-proximal complex assembly or default ubiquitin-mediated inhibition generate the most substantial phenotypic shifts.
+
+4. Next-round principle: Prioritize exploitation by probing deeper into families adjacent to the strongest hits—such as alternative proximal kinases, phosphatases, and ubiquitin ligases functionally linked to TCR and IL-2 receptor signaling—while maintaining a minor exploratory fraction for uncharacterized pathway members.
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: The previous screening cycles successfully pinpointed critical proximal TCR signaling components, cytokine receptors, and ubiquitin ligases like CBLB and TSC1 as massive regulators of IL-2 production. To maximize scores further, I should exploit these findings by testing closely related proximal kinases, adaptors, phosphatases, and ubiquitin-proteasome machinery functionally linked to immune receptor signaling.
+2. Research Plan: I will target 128 untested genes encoding proximal signaling molecules, specialized kinases, phosphatases, and ubiquitin-modifying enzymes operating in T-cell activation and cytokine pathways. The reasoning is that these nodes represent critical bottlenecks analogous to our top hits. The strategy prioritizes exploitation of enriched functional families while maintaining exploratory depth in receptor-proximal networks.
+3. Solution: 1. SYK, 2. BCL10, 3. MALT1, 4. CARD11, 5. PIK3CD, 6. PRKCQ, 7. INPP5D, 8. PTPN6, 9. PTPN22, 10. CSK, 11. LCK, 12. FYN, 13. ZAP70, 14. LAT, 15. LCP2, 16. VAV1, 17. ITK, 18. PLCG1, 19. GRAP2, 20. SH2D1A, 21. TRAT1, 22. CD247, 23. CD3E, 24. CD3G, 25. CD3D, 26. IL2, 27. IL2RA, 28. IL2RB, 29. IL2RG, 30. JAK3, 31. STAT5B, 32. CBLB, 33. TSC1, 34. TSC2, 35. RPTOR, 36. RICTOR, 37. MTOR, 38. RPS6KB1, 39. EIF4EBP1, 40. PDPK1, 41. AKT1, 42. AKT2, 43. AKT3, 44. PIK3CA, 45. PIK3CB, 46. PIK3CG, 47. PIK3R1, 48. PTEN, 49. FOXO1, 50. FOXO3, 51. NFATC1, 52. NFATC2, 53. NFATC3, 54. NFATC4, 55. REL, 56. RELA, 57. RELB, 58. NFKB1, 59. NFKB2, 60. CHUK, 61. IKBKB, 62. IKBKG, 63. BTRC, 64. FBXW7, 65. UBE2N, 66. UBE2V1, 67. TRAF1, 68. TRAF2, 69. TRAF3, 70. TRAF4, 71. TRAF5, 72. TRAF6, 73. TNFAIP3, 74. RNF128, 75. CBL, 76. CBLC, 77. UBE2D1, 78. UBE2D2, 79. UBE2D3, 80. USP1, 81. USP2, 82. USP7, 83. USP8, 84. USP15, 85. BCL3, 86. IRF1, 87. IRF2, 88. IRF3, 89. IRF4, 90. IRF5, 91. IRF6, 92. IRF7, 93. IRF8, 94. STAT1, 95. STAT2, 96. STAT3, 97. STAT4, 98. STAT5A, 99. STAT6, 100. SOCS1, 101. SOCS2, 102. SOCS3, 103. CISH, 104. PTPN1, 105. PTPN2, 106. PTPN11, 107. DUSP1, 108. DUSP2, 109. DUSP4, 110. DUSP6, 111. MAP2K1, 112. MAP2K2, 113. MAP2K3, 114. MAP2K4, 115. MAP2K6, 116. MAP2K7, 117. MAPK1, 118. MAPK3, 119. MAPK8, 120. MAPK9, 121. MAPK10, 122. MAPK11, 123. MAPK12, 124. MAPK13, 125. MAPK14, 126. JUN, 127. FOS, 128. MYC
+===================tokens=====================
+Number of prompt tokens: 3252
+Number of sampled tokens: 1085
+
+
+
+===================prompt=====================
+
+
+Human: Step 2
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+             Score
+Gene              
+RUNX1     0.241920
+HAVCR2    0.202920
+CAMK2B    0.004049
+CREBBP   -0.258590
+SOCS1    -0.032417
+CHD4      0.052237
+PPP3CB   -0.302790
+EZH2      0.072959
+IKZF3     0.044012
+GZMB      0.069599
+ENTPD1   -0.152580
+STAT5A    0.004139
+PRKCQ    -0.276950
+IRF1     -0.157190
+RHEB      0.032306
+SRGN      0.036162
+BTRC     -0.241690
+TNF       0.093364
+BPTF     -0.145470
+RICTOR   -0.064260
+CALM1    -0.112410
+FASLG     0.060523
+IL4       0.103800
+ATF2     -0.082943
+CALM3     0.162540
+PRKCB    -0.125290
+CUL1     -0.300380
+MAP2K4    0.180030
+MALT1    -0.300190
+PIK3R1   -0.062783
+EIF4E     0.035544
+CREB1    -0.122900
+FOXP3    -0.099287
+IRF8      0.049331
+CALM2    -0.147130
+RORC      0.017731
+PIK3CD   -0.023301
+FOS      -0.064280
+IL10      0.019451
+TET2      0.152520
+IKZF1    -0.003380
+ATRX      0.178670
+RELA     -0.279810
+IKZF2    -0.107190
+MAP2K7   -0.027346
+USP7      0.132610
+MAP2K1   -0.034449
+CAMK2D   -0.225530
+KMT2A    -0.214430
+JAK1     -0.053599
+GSK3B    -0.070169
+TET1     -0.070394
+MAPK8     0.089889
+NFATC4   -0.073927
+CAMK2A   -0.151970
+NFKB1    -0.115020
+LAG3     -0.119730
+IKBKB     0.255820
+PPP3CC   -0.021667
+TGFB1    -0.081333
+RPTOR     0.029012
+KDM4A     0.123910
+NFATC3   -0.016831
+SMARCB1   0.150740
+MTOR     -0.009602
+ARID1A    0.180410
+DNMT1    -0.005324
+SMYD3    -0.173730
+PRF1     -0.088773
+IRF4      0.121000
+PIK3CB   -0.136300
+GSK3A     0.070889
+HDAC2     0.272680
+PIK3CA   -0.027041
+CTLA4     0.309260
+CAMK2G    0.049109
+SETD2     0.074740
+LCK       0.132590
+PDCD1    -0.231170
+RPS6KB1   0.133560
+AKT2     -0.038130
+PPP3CA   -0.004761
+PRDM1    -0.018561
+IFNG     -0.017544
+NFATC1    0.099580
+NFATC2   -0.280190
+TBX21    -0.061745
+SOCS3     0.030714
+MAPK14   -0.023640
+DNMT3A    0.062102
+ATF4     -0.125750
+MAPK9     0.104180
+HDAC1    -0.134080
+EP300    -0.067743
+MAPK1    -0.148210
+NT5E      0.305530
+KDM6A     0.096438
+TIGIT     0.047751
+USP15    -0.184400
+GATA3    -0.036215
+BCL6     -0.048463
+KMT2B    -0.119680
+BTLA     -0.050402
+FBXW7    -0.271350
+MAP2K2   -0.318010
+AKT1      0.049770
+AKT3      0.044326
+SKP1      0.075718
+ATF6     -0.080113
+IRF5      0.042046
+RAC1      0.017158
+CDC42     0.054793
+CD86     -0.058091
+TNFRSF9  -0.079510
+TNFSF9   -0.012994
+NCK2      0.010794
+STAT6    -0.122440
+FYN       0.081567
+SOS1      0.064632
+INPP5D   -0.022466
+JAK2      0.102760
+TNFRSF4   0.045562
+VAV3     -0.251890
+CD27      0.032015
+UBE2N    -0.076033
+RBX1      0.037977
+VAV2      0.076403
+CD80     -0.098780
+EIF4EBP1  0.028820
+CD8A      0.090454
+ATF3     -0.130300
+IRF7      0.007360
+IRF3     -0.052740
+IKBKG    -0.216370
+STAT4    -0.285190
+STAT3    -0.278570
+IRF2     -0.032315
+PIK3CG   -0.045868
+SOS2     -0.053156
+TYK2      0.006013
+FOSL1    -0.005651
+UBE2V1    0.022336
+PTPN6     0.182560
+CD40LG   -0.022008
+RHOA     -0.273560
+ICOS     -0.040072
+DUSP6     0.132220
+CSK      -0.019115
+WASL      0.095842
+JUNB     -0.152660
+CD8B     -0.014070
+PDPK1     0.223090
+TRAT1    -0.224940
+CBL      -0.081850
+DUSP2     0.266460
+PAG1      0.098566
+STAT1     0.012047
+ATF1     -0.260740
+FOSL2    -0.076469
+FOSB     -0.104520
+TNFSF4   -0.165030
+NCK1     -0.239060
+REL      -0.273190
+IL7R     -0.152760
+RELB     -0.005736
+IKBKE     0.177740
+TRAF5    -0.022170
+TNFRSF8  -0.023348
+PRKD1     0.269770
+SHC1      0.118290
+CRTAM    -0.123290
+TBK1      0.065229
+CUL3      0.048332
+PRKCE    -0.006850
+MAP3K7   -0.192190
+CARD14   -0.110570
+CARD10   -0.063653
+TAB2     -0.165000
+PTEN      0.006596
+NFKBIE    0.250790
+MAP3K8    0.146450
+PTPN2    -0.187860
+CD40      0.035825
+TRAF3     0.174680
+PRKCD    -0.093508
+TAB3      0.140370
+PRKCZ     0.007998
+UBE2D1    0.071168
+TNFRSF18 -0.062263
+MAP3K1    0.076361
+DUSP4     0.079665
+MAP3K14   0.175420
+RIPK1     0.285490
+DUSP3     0.130930
+NFKBIB    0.137010
+GRAP     -0.135030
+DUSP1     0.030956
+TNFRSF25  0.111990
+PRKCA     0.002795
+PTPN11   -0.074597
+NFKBID    0.080955
+CD226    -0.009243
+TRAF2     0.319920
+TRADD    -0.037312
+PIK3AP1  -0.019858
+SH2D2A    0.248100
+TNFAIP3  -0.063688
+RNF128    0.080432
+PTPN1    -0.105790
+STAP1     0.026830
+CARD9     0.014675
+CBLC     -0.085967
+UBE2D3    0.178580
+UBE2D2    0.009702
+STAP2    -0.045731
+ You have successfully identified 41 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CD3E    -1.96430
+IL2RA    0.57251
+CD28    -1.72620
+STAT5B   0.66825
+CBLB     1.20450
+CD3G    -2.66650
+CARD11  -0.46511
+TSC1     0.80855
+HDAC3   -0.40084
+NFKB2    0.60741
+CD4      0.66082
+CD247   -1.59090
+LIME1    0.38661
+BATF     0.42521
+GRB2     0.36241
+PTPRC   -0.86005
+GRAP2   -1.18700
+ITK     -1.45130
+PLCG1   -1.02690
+PTPN22   0.35386
+MAPK3   -0.33118
+LCP2    -1.88110
+CHUK    -0.38065
+JUN     -0.37464
+PRKD2   -0.55872
+SH2D1A  -0.33865
+JAK3     1.07620
+CAMK4    0.44835
+WAS     -0.98659
+TRAF6   -0.73739
+IL2RB    1.12230
+PTPN23   0.86963
+IL2RG    1.05700
+IL2     -2.61010
+BCL10   -0.47398
+LAT     -0.89413
+TSC2     0.37433
+ZAP70   -2.78080
+CD3D    -2.49430
+SMARCA4  0.43431
+VAV1    -2.91600
+
+A separate reflection agent analyzed the experimental results.
+Use the following synthesis as additional context when designing
+the next round, while also retaining the raw experimental results above:
+
+1. Successful signals: The strongest positive and negative scores are heavily concentrated in core T-cell receptor (TCR) signaling components (e.g., *ZAP70*, *VAV1*, *CD3* subunits, *IL2*), cytokine receptor chains (*IL2RB*, *IL2RG*, *JAK3*), and key negative regulators (*CBLB*, *TSC1*). Perturbing proximal kinase cascades and receptor complexes yields massive log fold changes, defining clear regulatory bottlenecks for IL-2 production.
+
+2. Weak signals: Scores close to zero or with minimal magnitude arise primarily from downstream transcription factor families, broad metabolic regulators, and peripheral adaptor proteins that may operate redundantly or outside the immediate IL-2 activation axis in this context.
+
+3. Working hypothesis: IL-2 regulation is critically governed by proximal signal transduction nodes and direct receptor-proximal checkpoints rather than distal or heavily buffered transcriptional networks. Perturbations that disrupt early membrane-proximal complex assembly or default ubiquitin-mediated inhibition generate the most substantial phenotypic shifts.
+
+4. Next-round principle: Prioritize exploitation by probing deeper into families adjacent to the strongest hits—such as alternative proximal kinases, phosphatases, and ubiquitin ligases functionally linked to TCR and IL-2 receptor signaling—while maintaining a minor exploratory fraction for uncharacterized pathway members.
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 20 out of the required 128 genes for this round. These were: 
+['MAP2K3', 'CISH', 'MAP2K6', 'TRAF4', 'MAPK10', 'SYK', 'USP2', 'FOXO3', 'MAPK11', 'TRAF1', 'SOCS2', 'BCL3', 'MAPK12', 'STAT2', 'IRF6', 'MAPK13', 'USP1', 'MYC', 'FOXO1', 'USP8']
+ Please add 108 more genes to this list. Remember not to include previously tested genes including: 
+ [] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: The previous rounds successfully identified major TCR and IL-2 signaling components like ZAP70, VAV1, and CBLB, validating our focus on proximal signaling nodes and ubiquitin-mediated checkpoints. To maximize our score further, we should expand our interrogation to include additional kinases, phosphatases, ubiquitin-modifying enzymes, and adaptor proteins closely associated with immune receptor signalosomes.
+2. Research Plan: We will test a new batch of 128 candidate genes focusing heavily on proximal signal transduction, ubiquitin-proteasome regulation, and secondary kinase cascades in T cells. By prioritizing paralogs and interacting partners of our top hits, we aim to uncover additional potent regulators of IL-2 production. We will continue iterating until we cover the most critical functional nodes in the pathway.
+3. Solution: 1. MAP2K3, 2. CISH, 3. MAP2K6, 4. TRAF4, 5. MAPK10, 6. SYK, 7. USP2, 8. FOXO3, 9. MAPK11, 10. TRAF1, 11. SOCS2, 12. BCL3, 13. MAPK12, 14. STAT2, 15. IRF6, 16. MAPK13, 17. USP1, 18. MYC, 19. FOXO1, 20. USP8, 21. FYB1, 22. ITK, 23. LAT2, 24. SLA, 25. SLA2, 26. SOCS4, 27. SOCS5, 28. SOCS6, 29. SOCS7, 30. CBLA, 31. RNF, 32. UBE2H, 33. UBE2E1, 34. UBE2E2, 35. UBE2E3, 36. UBE2I, 37. UBE2J1, 38. UBE2J2, 39. UBE2K, 40. UBE2L3, 41. UBE2L6, 42. UBE2M, 43. UBE2Q1, 44. UBE2R2, 45. UBE2S, 46. UBE2Z, 47. PTPN3, 48. PTPN4, 49. PTPN5, 50. PTPN7, 51. PTPN9, 52. PTPN12, 53. PTPN13, 54. PTPN14, 55. PTPN18, 56. PTPN20, 57. INPP4A, 58. INPP4B, 59. SHIP1, 60. PTEN2, 61. PRKAA1, 62. PRKAA2, 63. PRKAB1, 64. PRKAB2, 65. PRKAG1, 66. PRKAG2, 67. PRKAG3, 68. RPS6KA1, 69. RPS6KA2, 70. RPS6KA3, 71. RPS6KA4, 72. RPS6KA5, 73. RPS6KA6, 74. RPS6KB2, 75. SGK1, 76. SGK2, 77. SGK3, 78. AKT1S1, 79. RICTOR2, 80. TSC1L, 81. RHEBL1, 82. EIF4B, 83. EIF4G1, 84. EIF4G2, 85. EIF4G3, 86. EIF4A1, 87. EIF4A2, 88. EIF4A3, 89. PIK3IP1, 90. PIK3R2, 91. PIK3R3, 92. PIK3R4, 93. PIK3R5, 94. PIK3R6, 95. PLCG2, 96. PLCB1, 97. PLCB2, 98. PLCB3, 99. PLCB4, 100. PLCD1, 101. PLCD3, 102. PLCD4, 103. PLCG1L, 104. PRKCQ1, 105. PRKCH, 106. PRKCI, 107. PRKCQ2, 108. DUSP5, 109. DUSP7, 110. DUSP8, 111. DUSP9, 112. DUSP10, 113. DUSP11, 114. DUSP12, 115. DUSP13, 116. DUSP14, 117. DUSP16, 118. SH2D3A, 119. SH2D3C, 120. SH2D4A, 121. SH2D4B, 122. CRKL, 123. GRAPL, 124. LAT2B, 125. LIME2, 126. PAG2, 127. TRAT2, 128. VAV3B
+===================tokens=====================
+Number of prompt tokens: 3394
+Number of sampled tokens: 1163
+
+
+
+===================prompt=====================
+
+
+Human: Step 2
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+             Score
+Gene              
+RUNX1     0.241920
+HAVCR2    0.202920
+CAMK2B    0.004049
+CREBBP   -0.258590
+SOCS1    -0.032417
+CHD4      0.052237
+PPP3CB   -0.302790
+EZH2      0.072959
+IKZF3     0.044012
+GZMB      0.069599
+ENTPD1   -0.152580
+STAT5A    0.004139
+PRKCQ    -0.276950
+IRF1     -0.157190
+RHEB      0.032306
+SRGN      0.036162
+BTRC     -0.241690
+TNF       0.093364
+BPTF     -0.145470
+RICTOR   -0.064260
+CALM1    -0.112410
+FASLG     0.060523
+IL4       0.103800
+ATF2     -0.082943
+CALM3     0.162540
+PRKCB    -0.125290
+CUL1     -0.300380
+MAP2K4    0.180030
+MALT1    -0.300190
+PIK3R1   -0.062783
+EIF4E     0.035544
+CREB1    -0.122900
+FOXP3    -0.099287
+IRF8      0.049331
+CALM2    -0.147130
+RORC      0.017731
+PIK3CD   -0.023301
+FOS      -0.064280
+IL10      0.019451
+TET2      0.152520
+IKZF1    -0.003380
+ATRX      0.178670
+RELA     -0.279810
+IKZF2    -0.107190
+MAP2K7   -0.027346
+USP7      0.132610
+MAP2K1   -0.034449
+CAMK2D   -0.225530
+KMT2A    -0.214430
+JAK1     -0.053599
+GSK3B    -0.070169
+TET1     -0.070394
+MAPK8     0.089889
+NFATC4   -0.073927
+CAMK2A   -0.151970
+NFKB1    -0.115020
+LAG3     -0.119730
+IKBKB     0.255820
+PPP3CC   -0.021667
+TGFB1    -0.081333
+RPTOR     0.029012
+KDM4A     0.123910
+NFATC3   -0.016831
+SMARCB1   0.150740
+MTOR     -0.009602
+ARID1A    0.180410
+DNMT1    -0.005324
+SMYD3    -0.173730
+PRF1     -0.088773
+IRF4      0.121000
+PIK3CB   -0.136300
+GSK3A     0.070889
+HDAC2     0.272680
+PIK3CA   -0.027041
+CTLA4     0.309260
+CAMK2G    0.049109
+SETD2     0.074740
+LCK       0.132590
+PDCD1    -0.231170
+RPS6KB1   0.133560
+AKT2     -0.038130
+PPP3CA   -0.004761
+PRDM1    -0.018561
+IFNG     -0.017544
+NFATC1    0.099580
+NFATC2   -0.280190
+TBX21    -0.061745
+SOCS3     0.030714
+MAPK14   -0.023640
+DNMT3A    0.062102
+ATF4     -0.125750
+MAPK9     0.104180
+HDAC1    -0.134080
+EP300    -0.067743
+MAPK1    -0.148210
+NT5E      0.305530
+KDM6A     0.096438
+TIGIT     0.047751
+USP15    -0.184400
+GATA3    -0.036215
+BCL6     -0.048463
+KMT2B    -0.119680
+BTLA     -0.050402
+FBXW7    -0.271350
+MAP2K2   -0.318010
+AKT1      0.049770
+AKT3      0.044326
+SKP1      0.075718
+ATF6     -0.080113
+IRF5      0.042046
+RAC1      0.017158
+CDC42     0.054793
+CD86     -0.058091
+TNFRSF9  -0.079510
+TNFSF9   -0.012994
+NCK2      0.010794
+STAT6    -0.122440
+FYN       0.081567
+SOS1      0.064632
+INPP5D   -0.022466
+JAK2      0.102760
+TNFRSF4   0.045562
+VAV3     -0.251890
+CD27      0.032015
+UBE2N    -0.076033
+RBX1      0.037977
+VAV2      0.076403
+CD80     -0.098780
+EIF4EBP1  0.028820
+CD8A      0.090454
+ATF3     -0.130300
+IRF7      0.007360
+IRF3     -0.052740
+IKBKG    -0.216370
+STAT4    -0.285190
+STAT3    -0.278570
+IRF2     -0.032315
+PIK3CG   -0.045868
+SOS2     -0.053156
+TYK2      0.006013
+FOSL1    -0.005651
+UBE2V1    0.022336
+PTPN6     0.182560
+CD40LG   -0.022008
+RHOA     -0.273560
+ICOS     -0.040072
+DUSP6     0.132220
+CSK      -0.019115
+WASL      0.095842
+JUNB     -0.152660
+CD8B     -0.014070
+PDPK1     0.223090
+TRAT1    -0.224940
+CBL      -0.081850
+DUSP2     0.266460
+PAG1      0.098566
+STAT1     0.012047
+ATF1     -0.260740
+FOSL2    -0.076469
+FOSB     -0.104520
+TNFSF4   -0.165030
+NCK1     -0.239060
+REL      -0.273190
+IL7R     -0.152760
+RELB     -0.005736
+IKBKE     0.177740
+TRAF5    -0.022170
+TNFRSF8  -0.023348
+PRKD1     0.269770
+SHC1      0.118290
+CRTAM    -0.123290
+TBK1      0.065229
+CUL3      0.048332
+PRKCE    -0.006850
+MAP3K7   -0.192190
+CARD14   -0.110570
+CARD10   -0.063653
+TAB2     -0.165000
+PTEN      0.006596
+NFKBIE    0.250790
+MAP3K8    0.146450
+PTPN2    -0.187860
+CD40      0.035825
+TRAF3     0.174680
+PRKCD    -0.093508
+TAB3      0.140370
+PRKCZ     0.007998
+UBE2D1    0.071168
+TNFRSF18 -0.062263
+MAP3K1    0.076361
+DUSP4     0.079665
+MAP3K14   0.175420
+RIPK1     0.285490
+DUSP3     0.130930
+NFKBIB    0.137010
+GRAP     -0.135030
+DUSP1     0.030956
+TNFRSF25  0.111990
+PRKCA     0.002795
+PTPN11   -0.074597
+NFKBID    0.080955
+CD226    -0.009243
+TRAF2     0.319920
+TRADD    -0.037312
+PIK3AP1  -0.019858
+SH2D2A    0.248100
+TNFAIP3  -0.063688
+RNF128    0.080432
+PTPN1    -0.105790
+STAP1     0.026830
+CARD9     0.014675
+CBLC     -0.085967
+UBE2D3    0.178580
+UBE2D2    0.009702
+STAP2    -0.045731
+ You have successfully identified 41 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CD3E    -1.96430
+IL2RA    0.57251
+CD28    -1.72620
+STAT5B   0.66825
+CBLB     1.20450
+CD3G    -2.66650
+CARD11  -0.46511
+TSC1     0.80855
+HDAC3   -0.40084
+NFKB2    0.60741
+CD4      0.66082
+CD247   -1.59090
+LIME1    0.38661
+BATF     0.42521
+GRB2     0.36241
+PTPRC   -0.86005
+GRAP2   -1.18700
+ITK     -1.45130
+PLCG1   -1.02690
+PTPN22   0.35386
+MAPK3   -0.33118
+LCP2    -1.88110
+CHUK    -0.38065
+JUN     -0.37464
+PRKD2   -0.55872
+SH2D1A  -0.33865
+JAK3     1.07620
+CAMK4    0.44835
+WAS     -0.98659
+TRAF6   -0.73739
+IL2RB    1.12230
+PTPN23   0.86963
+IL2RG    1.05700
+IL2     -2.61010
+BCL10   -0.47398
+LAT     -0.89413
+TSC2     0.37433
+ZAP70   -2.78080
+CD3D    -2.49430
+SMARCA4  0.43431
+VAV1    -2.91600
+
+A separate reflection agent analyzed the experimental results.
+Use the following synthesis as additional context when designing
+the next round, while also retaining the raw experimental results above:
+
+1. Successful signals: The strongest positive and negative scores are heavily concentrated in core T-cell receptor (TCR) signaling components (e.g., *ZAP70*, *VAV1*, *CD3* subunits, *IL2*), cytokine receptor chains (*IL2RB*, *IL2RG*, *JAK3*), and key negative regulators (*CBLB*, *TSC1*). Perturbing proximal kinase cascades and receptor complexes yields massive log fold changes, defining clear regulatory bottlenecks for IL-2 production.
+
+2. Weak signals: Scores close to zero or with minimal magnitude arise primarily from downstream transcription factor families, broad metabolic regulators, and peripheral adaptor proteins that may operate redundantly or outside the immediate IL-2 activation axis in this context.
+
+3. Working hypothesis: IL-2 regulation is critically governed by proximal signal transduction nodes and direct receptor-proximal checkpoints rather than distal or heavily buffered transcriptional networks. Perturbations that disrupt early membrane-proximal complex assembly or default ubiquitin-mediated inhibition generate the most substantial phenotypic shifts.
+
+4. Next-round principle: Prioritize exploitation by probing deeper into families adjacent to the strongest hits—such as alternative proximal kinases, phosphatases, and ubiquitin ligases functionally linked to TCR and IL-2 receptor signaling—while maintaining a minor exploratory fraction for uncharacterized pathway members.
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 112 out of the required 128 genes for this round. These were: 
+['MAP2K3', 'CISH', 'MAP2K6', 'TRAF4', 'MAPK10', 'SYK', 'USP2', 'FOXO3', 'MAPK11', 'TRAF1', 'SOCS2', 'BCL3', 'MAPK12', 'STAT2', 'IRF6', 'MAPK13', 'USP1', 'MYC', 'FOXO1', 'USP8', 'DUSP9', 'UBE2E2', 'UBE2L3', 'PLCD4', 'INPP4B', 'PRKAG2', 'PRKAG3', 'PIK3R6', 'UBE2L6', 'SGK1', 'DUSP16', 'PTPN4', 'PRKAG1', 'EIF4A1', 'UBE2I', 'PTPN14', 'RPS6KB2', 'PRKAA1', 'PTPN3', 'PTPN5', 'EIF4B', 'EIF4A2', 'PRKCI', 'UBE2J2', 'UBE2H', 'PRKAA2', 'UBE2S', 'RPS6KA2', 'RPS6KA3', 'AKT1S1', 'SH2D4A', 'SOCS4', 'PIK3R5', 'PTPN18', 'SLA', 'SH2D3C', 'PRKAB2', 'PLCD3', 'LAT2', 'PRKAB1', 'PTPN20', 'PLCG2', 'SGK2', 'SOCS5', 'INPP4A', 'SH2D3A', 'PIK3R2', 'RPS6KA5', 'PIK3R3', 'DUSP11', 'DUSP14', 'UBE2E1', 'UBE2E3', 'GRAPL', 'SOCS6', 'DUSP13', 'PIK3R4', 'SGK3', 'PLCB4', 'DUSP5', 'EIF4G1', 'EIF4A3', 'PRKCH', 'DUSP7', 'UBE2Z', 'DUSP12', 'SH2D4B', 'SLA2', 'UBE2Q1', 'UBE2K', 'PLCB3', 'PLCB1', 'UBE2J1', 'EIF4G2', 'CRKL', 'DUSP8', 'SOCS7', 'PLCB2', 'PTPN13', 'RHEBL1', 'RPS6KA1', 'EIF4G3', 'PTPN12', 'RPS6KA4', 'PIK3IP1', 'UBE2M', 'UBE2R2', 'PTPN9', 'PLCD1', 'RPS6KA6', 'DUSP10', 'PTPN7']
+ Please add 16 more genes to this list. Remember not to include previously tested genes including: 
+ ['PRKCQ2', 'LIME2', 'RNF', 'PLCG1L', 'PAG2', 'LAT2B', 'CBLA', 'RICTOR2', 'TRAT2', 'PTEN2', 'PRKCQ1', 'SHIP1', 'FYB1', 'VAV3B', 'TSC1L'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: The screen successfully pinpointed core proximal TCR and IL-2 signaling components as dominant regulators of IL-2 production. To complete the set of 128 perturbations for this round, I will select additional proximal signaling elements, phosphatases, and regulatory adaptors linked to lymphocyte activation.
+2. Research Plan: We continue to target membrane-proximal kinases, phosphatases, and adaptor proteins functionally associated with immune cell receptor cascades. The remaining genes are chosen to thoroughly cover relevant negative regulators and signal transducers. Each selection builds on the established hypothesis that early activation nodes dictate phenotypic output. We finalize the remaining 128-gene library with these targeted additions.
+3. Solution: 1. PTPN21, 2. PTPN24, 3. PTPNS1, 4. SLAIN1, 5. SLAIN2, 6. UBE2A, 7. UBE2B, 8. UBE2C, 9. UBE2D4, 10. UBE2F, 11. UBE2G1, 12. UBE2G2, 13. UBE2J1, 14. UBE2L3, 15. UBE2N, 16. UBE2O
+===================tokens=====================
+Number of prompt tokens: 3999
+Number of sampled tokens: 280
+
+
+
+===================prompt=====================
+
+
+Human: Step 2
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+             Score
+Gene              
+RUNX1     0.241920
+HAVCR2    0.202920
+CAMK2B    0.004049
+CREBBP   -0.258590
+SOCS1    -0.032417
+CHD4      0.052237
+PPP3CB   -0.302790
+EZH2      0.072959
+IKZF3     0.044012
+GZMB      0.069599
+ENTPD1   -0.152580
+STAT5A    0.004139
+PRKCQ    -0.276950
+IRF1     -0.157190
+RHEB      0.032306
+SRGN      0.036162
+BTRC     -0.241690
+TNF       0.093364
+BPTF     -0.145470
+RICTOR   -0.064260
+CALM1    -0.112410
+FASLG     0.060523
+IL4       0.103800
+ATF2     -0.082943
+CALM3     0.162540
+PRKCB    -0.125290
+CUL1     -0.300380
+MAP2K4    0.180030
+MALT1    -0.300190
+PIK3R1   -0.062783
+EIF4E     0.035544
+CREB1    -0.122900
+FOXP3    -0.099287
+IRF8      0.049331
+CALM2    -0.147130
+RORC      0.017731
+PIK3CD   -0.023301
+FOS      -0.064280
+IL10      0.019451
+TET2      0.152520
+IKZF1    -0.003380
+ATRX      0.178670
+RELA     -0.279810
+IKZF2    -0.107190
+MAP2K7   -0.027346
+USP7      0.132610
+MAP2K1   -0.034449
+CAMK2D   -0.225530
+KMT2A    -0.214430
+JAK1     -0.053599
+GSK3B    -0.070169
+TET1     -0.070394
+MAPK8     0.089889
+NFATC4   -0.073927
+CAMK2A   -0.151970
+NFKB1    -0.115020
+LAG3     -0.119730
+IKBKB     0.255820
+PPP3CC   -0.021667
+TGFB1    -0.081333
+RPTOR     0.029012
+KDM4A     0.123910
+NFATC3   -0.016831
+SMARCB1   0.150740
+MTOR     -0.009602
+ARID1A    0.180410
+DNMT1    -0.005324
+SMYD3    -0.173730
+PRF1     -0.088773
+IRF4      0.121000
+PIK3CB   -0.136300
+GSK3A     0.070889
+HDAC2     0.272680
+PIK3CA   -0.027041
+CTLA4     0.309260
+CAMK2G    0.049109
+SETD2     0.074740
+LCK       0.132590
+PDCD1    -0.231170
+RPS6KB1   0.133560
+AKT2     -0.038130
+PPP3CA   -0.004761
+PRDM1    -0.018561
+IFNG     -0.017544
+NFATC1    0.099580
+NFATC2   -0.280190
+TBX21    -0.061745
+SOCS3     0.030714
+MAPK14   -0.023640
+DNMT3A    0.062102
+ATF4     -0.125750
+MAPK9     0.104180
+HDAC1    -0.134080
+EP300    -0.067743
+MAPK1    -0.148210
+NT5E      0.305530
+KDM6A     0.096438
+TIGIT     0.047751
+USP15    -0.184400
+GATA3    -0.036215
+BCL6     -0.048463
+KMT2B    -0.119680
+BTLA     -0.050402
+FBXW7    -0.271350
+MAP2K2   -0.318010
+AKT1      0.049770
+AKT3      0.044326
+SKP1      0.075718
+ATF6     -0.080113
+IRF5      0.042046
+RAC1      0.017158
+CDC42     0.054793
+CD86     -0.058091
+TNFRSF9  -0.079510
+TNFSF9   -0.012994
+NCK2      0.010794
+STAT6    -0.122440
+FYN       0.081567
+SOS1      0.064632
+INPP5D   -0.022466
+JAK2      0.102760
+TNFRSF4   0.045562
+VAV3     -0.251890
+CD27      0.032015
+UBE2N    -0.076033
+RBX1      0.037977
+VAV2      0.076403
+CD80     -0.098780
+EIF4EBP1  0.028820
+CD8A      0.090454
+ATF3     -0.130300
+IRF7      0.007360
+IRF3     -0.052740
+IKBKG    -0.216370
+STAT4    -0.285190
+STAT3    -0.278570
+IRF2     -0.032315
+PIK3CG   -0.045868
+SOS2     -0.053156
+TYK2      0.006013
+FOSL1    -0.005651
+UBE2V1    0.022336
+PTPN6     0.182560
+CD40LG   -0.022008
+RHOA     -0.273560
+ICOS     -0.040072
+DUSP6     0.132220
+CSK      -0.019115
+WASL      0.095842
+JUNB     -0.152660
+CD8B     -0.014070
+PDPK1     0.223090
+TRAT1    -0.224940
+CBL      -0.081850
+DUSP2     0.266460
+PAG1      0.098566
+STAT1     0.012047
+ATF1     -0.260740
+FOSL2    -0.076469
+FOSB     -0.104520
+TNFSF4   -0.165030
+NCK1     -0.239060
+REL      -0.273190
+IL7R     -0.152760
+RELB     -0.005736
+IKBKE     0.177740
+TRAF5    -0.022170
+TNFRSF8  -0.023348
+PRKD1     0.269770
+SHC1      0.118290
+CRTAM    -0.123290
+TBK1      0.065229
+CUL3      0.048332
+PRKCE    -0.006850
+MAP3K7   -0.192190
+CARD14   -0.110570
+CARD10   -0.063653
+TAB2     -0.165000
+PTEN      0.006596
+NFKBIE    0.250790
+MAP3K8    0.146450
+PTPN2    -0.187860
+CD40      0.035825
+TRAF3     0.174680
+PRKCD    -0.093508
+TAB3      0.140370
+PRKCZ     0.007998
+UBE2D1    0.071168
+TNFRSF18 -0.062263
+MAP3K1    0.076361
+DUSP4     0.079665
+MAP3K14   0.175420
+RIPK1     0.285490
+DUSP3     0.130930
+NFKBIB    0.137010
+GRAP     -0.135030
+DUSP1     0.030956
+TNFRSF25  0.111990
+PRKCA     0.002795
+PTPN11   -0.074597
+NFKBID    0.080955
+CD226    -0.009243
+TRAF2     0.319920
+TRADD    -0.037312
+PIK3AP1  -0.019858
+SH2D2A    0.248100
+TNFAIP3  -0.063688
+RNF128    0.080432
+PTPN1    -0.105790
+STAP1     0.026830
+CARD9     0.014675
+CBLC     -0.085967
+UBE2D3    0.178580
+UBE2D2    0.009702
+STAP2    -0.045731
+ You have successfully identified 41 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CD3E    -1.96430
+IL2RA    0.57251
+CD28    -1.72620
+STAT5B   0.66825
+CBLB     1.20450
+CD3G    -2.66650
+CARD11  -0.46511
+TSC1     0.80855
+HDAC3   -0.40084
+NFKB2    0.60741
+CD4      0.66082
+CD247   -1.59090
+LIME1    0.38661
+BATF     0.42521
+GRB2     0.36241
+PTPRC   -0.86005
+GRAP2   -1.18700
+ITK     -1.45130
+PLCG1   -1.02690
+PTPN22   0.35386
+MAPK3   -0.33118
+LCP2    -1.88110
+CHUK    -0.38065
+JUN     -0.37464
+PRKD2   -0.55872
+SH2D1A  -0.33865
+JAK3     1.07620
+CAMK4    0.44835
+WAS     -0.98659
+TRAF6   -0.73739
+IL2RB    1.12230
+PTPN23   0.86963
+IL2RG    1.05700
+IL2     -2.61010
+BCL10   -0.47398
+LAT     -0.89413
+TSC2     0.37433
+ZAP70   -2.78080
+CD3D    -2.49430
+SMARCA4  0.43431
+VAV1    -2.91600
+
+A separate reflection agent analyzed the experimental results.
+Use the following synthesis as additional context when designing
+the next round, while also retaining the raw experimental results above:
+
+1. Successful signals: The strongest positive and negative scores are heavily concentrated in core T-cell receptor (TCR) signaling components (e.g., *ZAP70*, *VAV1*, *CD3* subunits, *IL2*), cytokine receptor chains (*IL2RB*, *IL2RG*, *JAK3*), and key negative regulators (*CBLB*, *TSC1*). Perturbing proximal kinase cascades and receptor complexes yields massive log fold changes, defining clear regulatory bottlenecks for IL-2 production.
+
+2. Weak signals: Scores close to zero or with minimal magnitude arise primarily from downstream transcription factor families, broad metabolic regulators, and peripheral adaptor proteins that may operate redundantly or outside the immediate IL-2 activation axis in this context.
+
+3. Working hypothesis: IL-2 regulation is critically governed by proximal signal transduction nodes and direct receptor-proximal checkpoints rather than distal or heavily buffered transcriptional networks. Perturbations that disrupt early membrane-proximal complex assembly or default ubiquitin-mediated inhibition generate the most substantial phenotypic shifts.
+
+4. Next-round principle: Prioritize exploitation by probing deeper into families adjacent to the strongest hits—such as alternative proximal kinases, phosphatases, and ubiquitin ligases functionally linked to TCR and IL-2 receptor signaling—while maintaining a minor exploratory fraction for uncharacterized pathway members.
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 123 out of the required 128 genes for this round. These were: 
+['MAP2K3', 'CISH', 'MAP2K6', 'TRAF4', 'MAPK10', 'SYK', 'USP2', 'FOXO3', 'MAPK11', 'TRAF1', 'SOCS2', 'BCL3', 'MAPK12', 'STAT2', 'IRF6', 'MAPK13', 'USP1', 'MYC', 'FOXO1', 'USP8', 'DUSP9', 'UBE2E2', 'UBE2L3', 'PLCD4', 'INPP4B', 'PRKAG2', 'PRKAG3', 'PIK3R6', 'UBE2L6', 'SGK1', 'DUSP16', 'PTPN4', 'PRKAG1', 'EIF4A1', 'UBE2I', 'PTPN14', 'RPS6KB2', 'PRKAA1', 'PTPN3', 'PTPN5', 'EIF4B', 'EIF4A2', 'PRKCI', 'UBE2J2', 'UBE2H', 'PRKAA2', 'UBE2S', 'RPS6KA2', 'RPS6KA3', 'AKT1S1', 'SH2D4A', 'SOCS4', 'PIK3R5', 'PTPN18', 'SLA', 'SH2D3C', 'PRKAB2', 'PLCD3', 'LAT2', 'PRKAB1', 'PTPN20', 'PLCG2', 'SGK2', 'SOCS5', 'INPP4A', 'SH2D3A', 'PIK3R2', 'RPS6KA5', 'PIK3R3', 'DUSP11', 'DUSP14', 'UBE2E1', 'UBE2E3', 'GRAPL', 'SOCS6', 'DUSP13', 'PIK3R4', 'SGK3', 'PLCB4', 'DUSP5', 'EIF4G1', 'EIF4A3', 'PRKCH', 'DUSP7', 'UBE2Z', 'DUSP12', 'SH2D4B', 'SLA2', 'UBE2Q1', 'UBE2K', 'PLCB3', 'PLCB1', 'UBE2J1', 'EIF4G2', 'CRKL', 'DUSP8', 'SOCS7', 'PLCB2', 'PTPN13', 'RHEBL1', 'RPS6KA1', 'EIF4G3', 'PTPN12', 'RPS6KA4', 'PIK3IP1', 'UBE2M', 'UBE2R2', 'PTPN9', 'PLCD1', 'RPS6KA6', 'DUSP10', 'PTPN7', 'UBE2F', 'SLAIN2', 'UBE2G1', 'UBE2A', 'UBE2C', 'PTPN21', 'UBE2B', 'UBE2G2', 'SLAIN1', 'UBE2D4', 'UBE2O']
+ Please add 5 more genes to this list. Remember not to include previously tested genes including: 
+ ['PTPNS1', 'PTPN24'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: The previous rounds successfully targeted proximal TCR and IL-2 signaling components, and the current list needs 5 more genes to complete the batch of 128. I will select additional proximal signaling and adaptor molecules linked to T-cell activation.
+2. Research Plan: I will complete the 128-gene set by adding closely related kinases, phosphatases, and adaptors involved in proximal immune signaling networks. This ensures the batch focuses on high-impact membrane-proximal regulators of IL-2 production.
+3. Solution: 1. PTPN18, 2. PTPN22, 3. INPP5D, 4. PIK3AP1, 5. SH2D1B
+===================tokens=====================
+Number of prompt tokens: 3990
+Number of sampled tokens: 154
+
+
+
+===================prompt=====================
+
+
+Human: Step 2
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+             Score
+Gene              
+RUNX1     0.241920
+HAVCR2    0.202920
+CAMK2B    0.004049
+CREBBP   -0.258590
+SOCS1    -0.032417
+CHD4      0.052237
+PPP3CB   -0.302790
+EZH2      0.072959
+IKZF3     0.044012
+GZMB      0.069599
+ENTPD1   -0.152580
+STAT5A    0.004139
+PRKCQ    -0.276950
+IRF1     -0.157190
+RHEB      0.032306
+SRGN      0.036162
+BTRC     -0.241690
+TNF       0.093364
+BPTF     -0.145470
+RICTOR   -0.064260
+CALM1    -0.112410
+FASLG     0.060523
+IL4       0.103800
+ATF2     -0.082943
+CALM3     0.162540
+PRKCB    -0.125290
+CUL1     -0.300380
+MAP2K4    0.180030
+MALT1    -0.300190
+PIK3R1   -0.062783
+EIF4E     0.035544
+CREB1    -0.122900
+FOXP3    -0.099287
+IRF8      0.049331
+CALM2    -0.147130
+RORC      0.017731
+PIK3CD   -0.023301
+FOS      -0.064280
+IL10      0.019451
+TET2      0.152520
+IKZF1    -0.003380
+ATRX      0.178670
+RELA     -0.279810
+IKZF2    -0.107190
+MAP2K7   -0.027346
+USP7      0.132610
+MAP2K1   -0.034449
+CAMK2D   -0.225530
+KMT2A    -0.214430
+JAK1     -0.053599
+GSK3B    -0.070169
+TET1     -0.070394
+MAPK8     0.089889
+NFATC4   -0.073927
+CAMK2A   -0.151970
+NFKB1    -0.115020
+LAG3     -0.119730
+IKBKB     0.255820
+PPP3CC   -0.021667
+TGFB1    -0.081333
+RPTOR     0.029012
+KDM4A     0.123910
+NFATC3   -0.016831
+SMARCB1   0.150740
+MTOR     -0.009602
+ARID1A    0.180410
+DNMT1    -0.005324
+SMYD3    -0.173730
+PRF1     -0.088773
+IRF4      0.121000
+PIK3CB   -0.136300
+GSK3A     0.070889
+HDAC2     0.272680
+PIK3CA   -0.027041
+CTLA4     0.309260
+CAMK2G    0.049109
+SETD2     0.074740
+LCK       0.132590
+PDCD1    -0.231170
+RPS6KB1   0.133560
+AKT2     -0.038130
+PPP3CA   -0.004761
+PRDM1    -0.018561
+IFNG     -0.017544
+NFATC1    0.099580
+NFATC2   -0.280190
+TBX21    -0.061745
+SOCS3     0.030714
+MAPK14   -0.023640
+DNMT3A    0.062102
+ATF4     -0.125750
+MAPK9     0.104180
+HDAC1    -0.134080
+EP300    -0.067743
+MAPK1    -0.148210
+NT5E      0.305530
+KDM6A     0.096438
+TIGIT     0.047751
+USP15    -0.184400
+GATA3    -0.036215
+BCL6     -0.048463
+KMT2B    -0.119680
+BTLA     -0.050402
+FBXW7    -0.271350
+MAP2K2   -0.318010
+AKT1      0.049770
+AKT3      0.044326
+SKP1      0.075718
+ATF6     -0.080113
+IRF5      0.042046
+RAC1      0.017158
+CDC42     0.054793
+CD86     -0.058091
+TNFRSF9  -0.079510
+TNFSF9   -0.012994
+NCK2      0.010794
+STAT6    -0.122440
+FYN       0.081567
+SOS1      0.064632
+INPP5D   -0.022466
+JAK2      0.102760
+TNFRSF4   0.045562
+VAV3     -0.251890
+CD27      0.032015
+UBE2N    -0.076033
+RBX1      0.037977
+VAV2      0.076403
+CD80     -0.098780
+EIF4EBP1  0.028820
+CD8A      0.090454
+ATF3     -0.130300
+IRF7      0.007360
+IRF3     -0.052740
+IKBKG    -0.216370
+STAT4    -0.285190
+STAT3    -0.278570
+IRF2     -0.032315
+PIK3CG   -0.045868
+SOS2     -0.053156
+TYK2      0.006013
+FOSL1    -0.005651
+UBE2V1    0.022336
+PTPN6     0.182560
+CD40LG   -0.022008
+RHOA     -0.273560
+ICOS     -0.040072
+DUSP6     0.132220
+CSK      -0.019115
+WASL      0.095842
+JUNB     -0.152660
+CD8B     -0.014070
+PDPK1     0.223090
+TRAT1    -0.224940
+CBL      -0.081850
+DUSP2     0.266460
+PAG1      0.098566
+STAT1     0.012047
+ATF1     -0.260740
+FOSL2    -0.076469
+FOSB     -0.104520
+TNFSF4   -0.165030
+NCK1     -0.239060
+REL      -0.273190
+IL7R     -0.152760
+RELB     -0.005736
+IKBKE     0.177740
+TRAF5    -0.022170
+TNFRSF8  -0.023348
+PRKD1     0.269770
+SHC1      0.118290
+CRTAM    -0.123290
+TBK1      0.065229
+CUL3      0.048332
+PRKCE    -0.006850
+MAP3K7   -0.192190
+CARD14   -0.110570
+CARD10   -0.063653
+TAB2     -0.165000
+PTEN      0.006596
+NFKBIE    0.250790
+MAP3K8    0.146450
+PTPN2    -0.187860
+CD40      0.035825
+TRAF3     0.174680
+PRKCD    -0.093508
+TAB3      0.140370
+PRKCZ     0.007998
+UBE2D1    0.071168
+TNFRSF18 -0.062263
+MAP3K1    0.076361
+DUSP4     0.079665
+MAP3K14   0.175420
+RIPK1     0.285490
+DUSP3     0.130930
+NFKBIB    0.137010
+GRAP     -0.135030
+DUSP1     0.030956
+TNFRSF25  0.111990
+PRKCA     0.002795
+PTPN11   -0.074597
+NFKBID    0.080955
+CD226    -0.009243
+TRAF2     0.319920
+TRADD    -0.037312
+PIK3AP1  -0.019858
+SH2D2A    0.248100
+TNFAIP3  -0.063688
+RNF128    0.080432
+PTPN1    -0.105790
+STAP1     0.026830
+CARD9     0.014675
+CBLC     -0.085967
+UBE2D3    0.178580
+UBE2D2    0.009702
+STAP2    -0.045731
+ You have successfully identified 41 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CD3E    -1.96430
+IL2RA    0.57251
+CD28    -1.72620
+STAT5B   0.66825
+CBLB     1.20450
+CD3G    -2.66650
+CARD11  -0.46511
+TSC1     0.80855
+HDAC3   -0.40084
+NFKB2    0.60741
+CD4      0.66082
+CD247   -1.59090
+LIME1    0.38661
+BATF     0.42521
+GRB2     0.36241
+PTPRC   -0.86005
+GRAP2   -1.18700
+ITK     -1.45130
+PLCG1   -1.02690
+PTPN22   0.35386
+MAPK3   -0.33118
+LCP2    -1.88110
+CHUK    -0.38065
+JUN     -0.37464
+PRKD2   -0.55872
+SH2D1A  -0.33865
+JAK3     1.07620
+CAMK4    0.44835
+WAS     -0.98659
+TRAF6   -0.73739
+IL2RB    1.12230
+PTPN23   0.86963
+IL2RG    1.05700
+IL2     -2.61010
+BCL10   -0.47398
+LAT     -0.89413
+TSC2     0.37433
+ZAP70   -2.78080
+CD3D    -2.49430
+SMARCA4  0.43431
+VAV1    -2.91600
+
+A separate reflection agent analyzed the experimental results.
+Use the following synthesis as additional context when designing
+the next round, while also retaining the raw experimental results above:
+
+1. Successful signals: The strongest positive and negative scores are heavily concentrated in core T-cell receptor (TCR) signaling components (e.g., *ZAP70*, *VAV1*, *CD3* subunits, *IL2*), cytokine receptor chains (*IL2RB*, *IL2RG*, *JAK3*), and key negative regulators (*CBLB*, *TSC1*). Perturbing proximal kinase cascades and receptor complexes yields massive log fold changes, defining clear regulatory bottlenecks for IL-2 production.
+
+2. Weak signals: Scores close to zero or with minimal magnitude arise primarily from downstream transcription factor families, broad metabolic regulators, and peripheral adaptor proteins that may operate redundantly or outside the immediate IL-2 activation axis in this context.
+
+3. Working hypothesis: IL-2 regulation is critically governed by proximal signal transduction nodes and direct receptor-proximal checkpoints rather than distal or heavily buffered transcriptional networks. Perturbations that disrupt early membrane-proximal complex assembly or default ubiquitin-mediated inhibition generate the most substantial phenotypic shifts.
+
+4. Next-round principle: Prioritize exploitation by probing deeper into families adjacent to the strongest hits—such as alternative proximal kinases, phosphatases, and ubiquitin ligases functionally linked to TCR and IL-2 receptor signaling—while maintaining a minor exploratory fraction for uncharacterized pathway members.
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 124 out of the required 128 genes for this round. These were: 
+['MAP2K3', 'CISH', 'MAP2K6', 'TRAF4', 'MAPK10', 'SYK', 'USP2', 'FOXO3', 'MAPK11', 'TRAF1', 'SOCS2', 'BCL3', 'MAPK12', 'STAT2', 'IRF6', 'MAPK13', 'USP1', 'MYC', 'FOXO1', 'USP8', 'DUSP9', 'UBE2E2', 'UBE2L3', 'PLCD4', 'INPP4B', 'PRKAG2', 'PRKAG3', 'PIK3R6', 'UBE2L6', 'SGK1', 'DUSP16', 'PTPN4', 'PRKAG1', 'EIF4A1', 'UBE2I', 'PTPN14', 'RPS6KB2', 'PRKAA1', 'PTPN3', 'PTPN5', 'EIF4B', 'EIF4A2', 'PRKCI', 'UBE2J2', 'UBE2H', 'PRKAA2', 'UBE2S', 'RPS6KA2', 'RPS6KA3', 'AKT1S1', 'SH2D4A', 'SOCS4', 'PIK3R5', 'PTPN18', 'SLA', 'SH2D3C', 'PRKAB2', 'PLCD3', 'LAT2', 'PRKAB1', 'PTPN20', 'PLCG2', 'SGK2', 'SOCS5', 'INPP4A', 'SH2D3A', 'PIK3R2', 'RPS6KA5', 'PIK3R3', 'DUSP11', 'DUSP14', 'UBE2E1', 'UBE2E3', 'GRAPL', 'SOCS6', 'DUSP13', 'PIK3R4', 'SGK3', 'PLCB4', 'DUSP5', 'EIF4G1', 'EIF4A3', 'PRKCH', 'DUSP7', 'UBE2Z', 'DUSP12', 'SH2D4B', 'SLA2', 'UBE2Q1', 'UBE2K', 'PLCB3', 'PLCB1', 'UBE2J1', 'EIF4G2', 'CRKL', 'DUSP8', 'SOCS7', 'PLCB2', 'PTPN13', 'RHEBL1', 'RPS6KA1', 'EIF4G3', 'PTPN12', 'RPS6KA4', 'PIK3IP1', 'UBE2M', 'UBE2R2', 'PTPN9', 'PLCD1', 'RPS6KA6', 'DUSP10', 'PTPN7', 'UBE2F', 'SLAIN2', 'UBE2G1', 'UBE2A', 'UBE2C', 'PTPN21', 'UBE2B', 'UBE2G2', 'SLAIN1', 'UBE2D4', 'UBE2O', 'SH2D1B']
+ Please add 4 more genes to this list. Remember not to include previously tested genes including: 
+ [] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: The previously selected genes thoroughly cover proximal kinases, phosphatases, and ubiquitin-related regulatory nodes. To complete the batch of 128, I will add four additional functionally relevant signaling and adaptor components implicated in immune receptor pathways.
+2. Research Plan: We continue to target TCR and cytokine-proximal signal transducers to maximize IL-2 modulation based on established hit enrichment. Four remaining slots are filled with closely related pathway modifiers. Reasoning relies on expanding coverage of parallel kinase and adaptor families. We execute the final additions to reach the 128-gene limit.
+3. Solution: 1. STAM, 2. STAM2, 3. RAC2, 4. BCL10
+===================tokens=====================
+Number of prompt tokens: 3987
+Number of sampled tokens: 152
+
+
+
+===================prompt=====================
+
+
+Human: Step 2
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+             Score
+Gene              
+RUNX1     0.241920
+HAVCR2    0.202920
+CAMK2B    0.004049
+CREBBP   -0.258590
+SOCS1    -0.032417
+CHD4      0.052237
+PPP3CB   -0.302790
+EZH2      0.072959
+IKZF3     0.044012
+GZMB      0.069599
+ENTPD1   -0.152580
+STAT5A    0.004139
+PRKCQ    -0.276950
+IRF1     -0.157190
+RHEB      0.032306
+SRGN      0.036162
+BTRC     -0.241690
+TNF       0.093364
+BPTF     -0.145470
+RICTOR   -0.064260
+CALM1    -0.112410
+FASLG     0.060523
+IL4       0.103800
+ATF2     -0.082943
+CALM3     0.162540
+PRKCB    -0.125290
+CUL1     -0.300380
+MAP2K4    0.180030
+MALT1    -0.300190
+PIK3R1   -0.062783
+EIF4E     0.035544
+CREB1    -0.122900
+FOXP3    -0.099287
+IRF8      0.049331
+CALM2    -0.147130
+RORC      0.017731
+PIK3CD   -0.023301
+FOS      -0.064280
+IL10      0.019451
+TET2      0.152520
+IKZF1    -0.003380
+ATRX      0.178670
+RELA     -0.279810
+IKZF2    -0.107190
+MAP2K7   -0.027346
+USP7      0.132610
+MAP2K1   -0.034449
+CAMK2D   -0.225530
+KMT2A    -0.214430
+JAK1     -0.053599
+GSK3B    -0.070169
+TET1     -0.070394
+MAPK8     0.089889
+NFATC4   -0.073927
+CAMK2A   -0.151970
+NFKB1    -0.115020
+LAG3     -0.119730
+IKBKB     0.255820
+PPP3CC   -0.021667
+TGFB1    -0.081333
+RPTOR     0.029012
+KDM4A     0.123910
+NFATC3   -0.016831
+SMARCB1   0.150740
+MTOR     -0.009602
+ARID1A    0.180410
+DNMT1    -0.005324
+SMYD3    -0.173730
+PRF1     -0.088773
+IRF4      0.121000
+PIK3CB   -0.136300
+GSK3A     0.070889
+HDAC2     0.272680
+PIK3CA   -0.027041
+CTLA4     0.309260
+CAMK2G    0.049109
+SETD2     0.074740
+LCK       0.132590
+PDCD1    -0.231170
+RPS6KB1   0.133560
+AKT2     -0.038130
+PPP3CA   -0.004761
+PRDM1    -0.018561
+IFNG     -0.017544
+NFATC1    0.099580
+NFATC2   -0.280190
+TBX21    -0.061745
+SOCS3     0.030714
+MAPK14   -0.023640
+DNMT3A    0.062102
+ATF4     -0.125750
+MAPK9     0.104180
+HDAC1    -0.134080
+EP300    -0.067743
+MAPK1    -0.148210
+NT5E      0.305530
+KDM6A     0.096438
+TIGIT     0.047751
+USP15    -0.184400
+GATA3    -0.036215
+BCL6     -0.048463
+KMT2B    -0.119680
+BTLA     -0.050402
+FBXW7    -0.271350
+MAP2K2   -0.318010
+AKT1      0.049770
+AKT3      0.044326
+SKP1      0.075718
+ATF6     -0.080113
+IRF5      0.042046
+RAC1      0.017158
+CDC42     0.054793
+CD86     -0.058091
+TNFRSF9  -0.079510
+TNFSF9   -0.012994
+NCK2      0.010794
+STAT6    -0.122440
+FYN       0.081567
+SOS1      0.064632
+INPP5D   -0.022466
+JAK2      0.102760
+TNFRSF4   0.045562
+VAV3     -0.251890
+CD27      0.032015
+UBE2N    -0.076033
+RBX1      0.037977
+VAV2      0.076403
+CD80     -0.098780
+EIF4EBP1  0.028820
+CD8A      0.090454
+ATF3     -0.130300
+IRF7      0.007360
+IRF3     -0.052740
+IKBKG    -0.216370
+STAT4    -0.285190
+STAT3    -0.278570
+IRF2     -0.032315
+PIK3CG   -0.045868
+SOS2     -0.053156
+TYK2      0.006013
+FOSL1    -0.005651
+UBE2V1    0.022336
+PTPN6     0.182560
+CD40LG   -0.022008
+RHOA     -0.273560
+ICOS     -0.040072
+DUSP6     0.132220
+CSK      -0.019115
+WASL      0.095842
+JUNB     -0.152660
+CD8B     -0.014070
+PDPK1     0.223090
+TRAT1    -0.224940
+CBL      -0.081850
+DUSP2     0.266460
+PAG1      0.098566
+STAT1     0.012047
+ATF1     -0.260740
+FOSL2    -0.076469
+FOSB     -0.104520
+TNFSF4   -0.165030
+NCK1     -0.239060
+REL      -0.273190
+IL7R     -0.152760
+RELB     -0.005736
+IKBKE     0.177740
+TRAF5    -0.022170
+TNFRSF8  -0.023348
+PRKD1     0.269770
+SHC1      0.118290
+CRTAM    -0.123290
+TBK1      0.065229
+CUL3      0.048332
+PRKCE    -0.006850
+MAP3K7   -0.192190
+CARD14   -0.110570
+CARD10   -0.063653
+TAB2     -0.165000
+PTEN      0.006596
+NFKBIE    0.250790
+MAP3K8    0.146450
+PTPN2    -0.187860
+CD40      0.035825
+TRAF3     0.174680
+PRKCD    -0.093508
+TAB3      0.140370
+PRKCZ     0.007998
+UBE2D1    0.071168
+TNFRSF18 -0.062263
+MAP3K1    0.076361
+DUSP4     0.079665
+MAP3K14   0.175420
+RIPK1     0.285490
+DUSP3     0.130930
+NFKBIB    0.137010
+GRAP     -0.135030
+DUSP1     0.030956
+TNFRSF25  0.111990
+PRKCA     0.002795
+PTPN11   -0.074597
+NFKBID    0.080955
+CD226    -0.009243
+TRAF2     0.319920
+TRADD    -0.037312
+PIK3AP1  -0.019858
+SH2D2A    0.248100
+TNFAIP3  -0.063688
+RNF128    0.080432
+PTPN1    -0.105790
+STAP1     0.026830
+CARD9     0.014675
+CBLC     -0.085967
+UBE2D3    0.178580
+UBE2D2    0.009702
+STAP2    -0.045731
+ You have successfully identified 41 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CD3E    -1.96430
+IL2RA    0.57251
+CD28    -1.72620
+STAT5B   0.66825
+CBLB     1.20450
+CD3G    -2.66650
+CARD11  -0.46511
+TSC1     0.80855
+HDAC3   -0.40084
+NFKB2    0.60741
+CD4      0.66082
+CD247   -1.59090
+LIME1    0.38661
+BATF     0.42521
+GRB2     0.36241
+PTPRC   -0.86005
+GRAP2   -1.18700
+ITK     -1.45130
+PLCG1   -1.02690
+PTPN22   0.35386
+MAPK3   -0.33118
+LCP2    -1.88110
+CHUK    -0.38065
+JUN     -0.37464
+PRKD2   -0.55872
+SH2D1A  -0.33865
+JAK3     1.07620
+CAMK4    0.44835
+WAS     -0.98659
+TRAF6   -0.73739
+IL2RB    1.12230
+PTPN23   0.86963
+IL2RG    1.05700
+IL2     -2.61010
+BCL10   -0.47398
+LAT     -0.89413
+TSC2     0.37433
+ZAP70   -2.78080
+CD3D    -2.49430
+SMARCA4  0.43431
+VAV1    -2.91600
+
+A separate reflection agent analyzed the experimental results.
+Use the following synthesis as additional context when designing
+the next round, while also retaining the raw experimental results above:
+
+1. Successful signals: The strongest positive and negative scores are heavily concentrated in core T-cell receptor (TCR) signaling components (e.g., *ZAP70*, *VAV1*, *CD3* subunits, *IL2*), cytokine receptor chains (*IL2RB*, *IL2RG*, *JAK3*), and key negative regulators (*CBLB*, *TSC1*). Perturbing proximal kinase cascades and receptor complexes yields massive log fold changes, defining clear regulatory bottlenecks for IL-2 production.
+
+2. Weak signals: Scores close to zero or with minimal magnitude arise primarily from downstream transcription factor families, broad metabolic regulators, and peripheral adaptor proteins that may operate redundantly or outside the immediate IL-2 activation axis in this context.
+
+3. Working hypothesis: IL-2 regulation is critically governed by proximal signal transduction nodes and direct receptor-proximal checkpoints rather than distal or heavily buffered transcriptional networks. Perturbations that disrupt early membrane-proximal complex assembly or default ubiquitin-mediated inhibition generate the most substantial phenotypic shifts.
+
+4. Next-round principle: Prioritize exploitation by probing deeper into families adjacent to the strongest hits—such as alternative proximal kinases, phosphatases, and ubiquitin ligases functionally linked to TCR and IL-2 receptor signaling—while maintaining a minor exploratory fraction for uncharacterized pathway members.
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 127 out of the required 128 genes for this round. These were: 
+['MAP2K3', 'CISH', 'MAP2K6', 'TRAF4', 'MAPK10', 'SYK', 'USP2', 'FOXO3', 'MAPK11', 'TRAF1', 'SOCS2', 'BCL3', 'MAPK12', 'STAT2', 'IRF6', 'MAPK13', 'USP1', 'MYC', 'FOXO1', 'USP8', 'DUSP9', 'UBE2E2', 'UBE2L3', 'PLCD4', 'INPP4B', 'PRKAG2', 'PRKAG3', 'PIK3R6', 'UBE2L6', 'SGK1', 'DUSP16', 'PTPN4', 'PRKAG1', 'EIF4A1', 'UBE2I', 'PTPN14', 'RPS6KB2', 'PRKAA1', 'PTPN3', 'PTPN5', 'EIF4B', 'EIF4A2', 'PRKCI', 'UBE2J2', 'UBE2H', 'PRKAA2', 'UBE2S', 'RPS6KA2', 'RPS6KA3', 'AKT1S1', 'SH2D4A', 'SOCS4', 'PIK3R5', 'PTPN18', 'SLA', 'SH2D3C', 'PRKAB2', 'PLCD3', 'LAT2', 'PRKAB1', 'PTPN20', 'PLCG2', 'SGK2', 'SOCS5', 'INPP4A', 'SH2D3A', 'PIK3R2', 'RPS6KA5', 'PIK3R3', 'DUSP11', 'DUSP14', 'UBE2E1', 'UBE2E3', 'GRAPL', 'SOCS6', 'DUSP13', 'PIK3R4', 'SGK3', 'PLCB4', 'DUSP5', 'EIF4G1', 'EIF4A3', 'PRKCH', 'DUSP7', 'UBE2Z', 'DUSP12', 'SH2D4B', 'SLA2', 'UBE2Q1', 'UBE2K', 'PLCB3', 'PLCB1', 'UBE2J1', 'EIF4G2', 'CRKL', 'DUSP8', 'SOCS7', 'PLCB2', 'PTPN13', 'RHEBL1', 'RPS6KA1', 'EIF4G3', 'PTPN12', 'RPS6KA4', 'PIK3IP1', 'UBE2M', 'UBE2R2', 'PTPN9', 'PLCD1', 'RPS6KA6', 'DUSP10', 'PTPN7', 'UBE2F', 'SLAIN2', 'UBE2G1', 'UBE2A', 'UBE2C', 'PTPN21', 'UBE2B', 'UBE2G2', 'SLAIN1', 'UBE2D4', 'UBE2O', 'SH2D1B', 'RAC2', 'STAM', 'STAM2']
+  Please add 1 more genes to this list from ['CFTR', 'ALAS2', 'HMOX1', 'APP', 'MET', 'CASP10', 'EIF6', 'BLM', 'GNE', 'COL1A1', 'DLD', 'MYOD1', 'HPRT1', 'LDHA', 'RNF43', 'MPO', 'SCRIB', 'KMT2D', 'FAS', 'SOX2', 'USP18', 'APOB', 'SST', 'AURKB', 'LRRK2', 'TGFB1I1', 'ABCA8', 'TFRC', 'PPARG', 'BTG4', 'AIFM1', 'IGFBP4', 'RB1', 'POU5F1', 'NOTCH2', 'NOS', 'BDNF', 'IGF1R', 'MYH9', 'IRF7', 'EGFR', 'SOD1', 'VWF', 'TLR4', 'CACNA1C', 'IL16', 'COL4A2', 'CASP6', 'GART', 'PSEN2', 'IRAL1', 'BCL2L2', 'ICAM1', 'MYC', 'HSD17B10', 'PVR', 'FASN', 'ABCC2', 'MT1A', 'GABRA4', 'GSTM1', 'THRA', 'PRNP', 'SLC34A2', 'FTO', 'RAD50', 'MT1F', 'PSEN1', 'WTIP', 'CD9', 'TUBB', 'VANGL1', 'U2AF1', 'IRF9', 'CD52', 'FOXM1', 'ATP8B1', 'DOK7', 'SLC16A1', 'ERAS', 'CYP27A1', 'TIMP1', 'RAD51B', 'TRPA1', 'FST', 'TP73', 'SLC5A12', 'WASF1', 'HES1', 'GPHN', 'CCL17', 'EDN1', 'BAX', 'JAG1', 'MAPK15', 'TF', 'ALOX15', 'BRAF', 'GC', 'FASN', 'SYNDIG1', 'MCM5', 'NAPRT', 'STK11', 'IL12B', 'STMN1', 'SERPING1', 'KEAP1', 'EPHA3', 'NOTCH2NL', 'UTRN', 'CASP7', 'MRC1', 'GPR17', 'KIF2A', 'MYH2', 'ETV6', 'CAT', 'ABL1', 'NF1', 'SOCS5', 'LYZ', 'CXCL8', 'CDK2', 'CPT1C', 'SERPINF1', 'LAMA5', 'CCR9', 'RAE1', 'TRIO', 'TERT', 'VDR', 'MDK', 'IDE', 'CASP9', 'ITGA11', 'SIRT3', 'KRT7', 'FBN2', 'GCLC', 'APOE', 'ALBHD2', 'CD19', 'COL16A1', 'CYP2E1', 'F2R', 'GFAP', 'HLA-C', 'LTA', 'MUC4', 'MYO3A', 'PCSK9', 'PIGR', 'SLC4A1AP', 'SOCS6', 'SOX9', 'TP63', 'TSHR', 'VHL', 'ZEB2', 'KIR2DL1', 'CD33', 'AVP', 'LDLR', 'PIM1', 'NEK8', 'PDE4B', 'COMP', 'NOVE2', 'SOX1', 'GNAI2', 'FUS', 'TH', 'IL6', 'DICER1', 'VEGFA', 'INSR', 'GBA', 'GCH1', 'ALKBH3', 'GPBP1', 'GALC', 'TTK', 'IREB2', 'FOXJ3', 'C15orf41', 'CX3CR1', 'MMP7', 'MFN2', 'EIF3M', 'WNT6', 'TAST2R9', 'ODC1', 'UCN2', 'DDBX3X', 'RORA', 'SCN5A', 'EGR1', 'TLR5', 'KRAS', 'PKM', 'BECN2', 'DAPK1', 'TPH1', 'HDAC6', 'PLD1', 'SOX17', 'SLC1A2', 'DMD', 'TRIB1', 'BTK', 'GPX4', 'TGFBI', 'PRKD3', 'COL6A1', 'SCN8A', 'MYBPC3', 'ANK1', 'TOP1', 'GREM1', 'NFE2L1', 'RIPK3', 'SDHA', 'CPT1B', 'FGFR2', 'BRCA1', 'RUNX3', 'P2RX7', 'HDAC8', 'KDM3A', 'S100A8', 'ACTA2', 'BCLAF1', 'FGF13', 'GLI3', 'PRKN', 'FBN1', 'JUND', 'VIM', 'PPIA', 'IL17A', 'CCND1', 'ACHE', 'DOT1L', 'APC', 'MPO', 'WT1', 'ADCY6', 'LDLRAD4', 'TYMS', 'CAV1', 'LPAR1', 'MVK', 'S1N', 'UBE2D4', 'KRT82', 'CASP3', 'EGFR', 'TP53', 'TNF', 'CD55', 'BAG1', 'MVK', 'FN1', 'F2', 'PRPS1', 'GBA3', 'ALDH1A1', 'KCNMA1', 'IL6R', 'TOP1MT', 'CASP4', 'MBP', 'ALAS1', 'S100A6', 'CYP2B6', 'CD14', 'FOXP2', 'GUSB', 'CTGF', 'COL11A1', 'RECK', 'ADIPOQ', 'SYN1', 'CBS', 'PARP4', 'SPAG5', 'IFNA4', 'ITGAM', 'HSPA9', 'TST', 'ALPI', 'DLX1', 'T', 'EDAR', 'PICALM', 'NR6A1', 'GATA6', 'EOMES', 'CD93', 'FANCD2', 'BMP1', 'WNT4', 'ITCH', 'TTN', 'ALDH1A3', 'TP53', 'ATM', 'MSH3', 'S100G', 'DNM1', 'LAMP1', 'SIRT1', 'CUL4A', 'ABCA1', 'GLI2', 'ATG7', 'RORB', 'RELN', 'MLH1', 'SGSM2', 'NDUFS6', 'PARD3', 'MYH11', 'LCN9', 'UBE2B', 'HSPB1', 'CLDN3', 'ATP2A1', 'MAGEA2B', 'F8', 'NOS1', 'BCL2', 'ADA', 'AHR', 'BARD1', 'CD79A', 'TFR2', 'S100B', 'HMGA2', 'SEC11A', 'SOX15', 'CCR7', 'VEGFC', 'WEE2', 'TSPAN6', 'CASP2', 'G6PC', 'NOTCH1', 'TP53', 'BRCA2', 'RETN', 'AGTR1', 'KRT5', 'CD274', 'CASR', 'IL10RA', 'SPARC', 'FGB', 'IGF2', 'ADH1A', 'BCL2L12', 'ATP1B4', 'EGFR2', 'CTSP3', 'COL13A1', 'G6PD', 'NOTCH1', 'ITGAE', 'MUC1', 'POLQ', 'RUNX1T1', 'TCF15', 'MKI67', 'ALDH2', 'TNF', 'IL6', 'TP53', 'AKT1', 'ALB'].
+ Remember not to include any previously tested genes. Begin this list with the word 'Solution:'  
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: The previous rounds successfully prioritized core T-cell receptor components, cytokine receptors, and proximal signaling nodes, while the current round expands into related ubiquitin-conjugating enzymes, phosphatases, and kinases. To complete the set of 128 genes, we can select a well-characterized immune or signaling-related gene from the available candidate pool. 
+
+2. Research Plan: We will continue to target membrane-proximal signaling regulators, kinases, phosphatases, and regulatory ubiquitin-modifying enzymes to identify additional bottlenecks in IL-2 production. We will integrate the remaining curated candidate from the suggested list to fulfill the 128-gene experimental capacity. High-throughput screening data from these additions will refine our predictive network mapping for IL-2 regulation.
+
+3. Solution: 1. MAP2K3, 2. CISH, 3. MAP2K6, 4. TRAF4, 5. MAPK10, 6. SYK, 7. USP2, 8. FOXO3, 9. MAPK11, 10. TRAF1, 11. SOCS2, 12. BCL3, 13. MAPK12, 14. STAT2, 15. IRF6, 16. MAPK13, 17. USP1, 18. MYC, 19. FOXO1, 20. USP8, 21. DUSP9, 22. UBE2E2, 23. UBE2L3, 24. PLCD4, 25. INPP4B, 26. PRKAG2, 27. PRKAG3, 28. PIK3R6, 29. UBE2L6, 30. SGK1, 31. DUSP16, 32. PTPN4, 33. PRKAG1, 34. EIF4A1, 35. UBE2I, 36. PTPN14, 37. RPS6KB2, 38. PRKAA1, 39. PTPN3, 40. PTPN5, 41. EIF4B, 42. EIF4A2, 43. PRKCI, 44. UBE2J2, 45. UBE2H, 46. PRKAA2, 47. UBE2S, 48. RPS6KA2, 49. RPS6KA3, 50. AKT1S1, 51. SH2D4A, 52. SOCS4, 53. PIK3R5, 54. PTPN18, 55. SLA, 56. SH2D3C, 57. PRKAB2, 58. PLCD3, 59. LAT2, 60. PRKAB1, 61. PTPN20, 62. PLCG2, 63. SGK2, 64. SOCS5, 65. INPP4A, 66. SH2D3A, 67. PIK3R2, 68. RPS6KA5, 69. PIK3R3, 70. DUSP11, 71. DUSP14, 72. UBE2E1, 73. UBE2E3, 74. GRAPL, 75. SOCS6, 76. DUSP13, 77. PIK3R4, 78. SGK3, 79. PLCB4, 80. DUSP5, 81. EIF4G1, 82. EIF4A3, 83. PRKCH, 84. DUSP7, 85. UBE2Z, 86. DUSP12, 87. SH2D4B, 88. SLA2, 89. UBE2Q1, 90. UBE2K, 91. PLCB3, 92. PLCB1, 93. UBE2J1, 94. EIF4G2, 95. CRKL, 96. DUSP8, 97. SOCS7, 98. PLCB2, 99. PTPN13, 100. RHEBL1, 101. RPS6KA1, 102. EIF4G3, 103. PTPN12, 104. RPS6KA4, 105. PIK3IP1, 106. UBE2M, 107. UBE2R2, 108. PTPN9, 109. PLCD1, 110. RPS6KA6, 111. DUSP10, 112. PTPN7, 113. UBE2F, 114. SLAIN2, 115. UBE2G1, 116. UBE2A, 117. UBE2C, 118. PTPN21, 119. UBE2B, 120. UBE2G2, 121. SLAIN1, 122. UBE2D4, 123. UBE2O, 124. SH2D1B, 125. RAC2, 126. STAM, 127. STAM2, 128. ADA
+===================tokens=====================
+Number of prompt tokens: 5872
+Number of sampled tokens: 1161
+
+

@@ -682,6 +682,34 @@ def agent_loop(current_history, steps, use_gpt4, log_dir, args):
         hits_history = []
         lit_review_summary = ""
         for curr_step in range(steps):
+
+            # MATCHED_START_IL2
+            if curr_step == 0 and getattr(args, "shared_seed_file", None):
+                seed = np.load(
+                    args.shared_seed_file,
+                    allow_pickle=False
+                ).astype(str)
+
+                if len(seed) != args.num_genes:
+                    raise ValueError("Incorrect seed batch size")
+
+                if len(set(seed)) != len(seed):
+                    raise ValueError("Duplicate genes in seed batch")
+
+                if not set(seed).issubset(set(map(str, measured_genes))):
+                    raise ValueError("Unknown genes in seed batch")
+
+                np.save(
+                    os.path.join(log_dir, "sampled_genes_1.npy"),
+                    seed
+                )
+
+                f.write(
+                    f"Round 1: shared seed ({len(seed)} genes)\n"
+                )
+                print("Shared starting batch loaded:", len(seed))
+                continue
+
             
             #curr_step = len(current_history["actions"])
 
@@ -920,7 +948,7 @@ the next round, while also retaining the raw experimental results above:
                     hits_history.append(len(hits))
 
 
-                else:
+                elif args.feedback_mode not in ("full", "full_reflection"):
                     raise ValueError(
                         f"Unknown feedback mode: {args.feedback_mode}"
                     )

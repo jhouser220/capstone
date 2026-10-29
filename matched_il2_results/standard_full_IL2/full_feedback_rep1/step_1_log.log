@@ -1,0 +1,846 @@
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+            Score
+Gene             
+RUNX1    0.241920
+HAVCR2   0.202920
+CAMK2B   0.004049
+CREBBP  -0.258590
+SOCS1   -0.032417
+CHD4     0.052237
+PPP3CB  -0.302790
+EZH2     0.072959
+IKZF3    0.044012
+GZMB     0.069599
+ENTPD1  -0.152580
+STAT5A   0.004139
+PRKCQ   -0.276950
+IRF1    -0.157190
+RHEB     0.032306
+SRGN     0.036162
+BTRC    -0.241690
+TNF      0.093364
+BPTF    -0.145470
+RICTOR  -0.064260
+CALM1   -0.112410
+FASLG    0.060523
+IL4      0.103800
+ATF2    -0.082943
+CALM3    0.162540
+PRKCB   -0.125290
+CUL1    -0.300380
+MAP2K4   0.180030
+MALT1   -0.300190
+PIK3R1  -0.062783
+EIF4E    0.035544
+CREB1   -0.122900
+FOXP3   -0.099287
+IRF8     0.049331
+CALM2   -0.147130
+RORC     0.017731
+PIK3CD  -0.023301
+FOS     -0.064280
+IL10     0.019451
+TET2     0.152520
+IKZF1   -0.003380
+ATRX     0.178670
+RELA    -0.279810
+IKZF2   -0.107190
+MAP2K7  -0.027346
+USP7     0.132610
+MAP2K1  -0.034449
+CAMK2D  -0.225530
+KMT2A   -0.214430
+JAK1    -0.053599
+GSK3B   -0.070169
+TET1    -0.070394
+MAPK8    0.089889
+NFATC4  -0.073927
+CAMK2A  -0.151970
+NFKB1   -0.115020
+LAG3    -0.119730
+IKBKB    0.255820
+PPP3CC  -0.021667
+TGFB1   -0.081333
+RPTOR    0.029012
+KDM4A    0.123910
+NFATC3  -0.016831
+SMARCB1  0.150740
+MTOR    -0.009602
+ARID1A   0.180410
+DNMT1   -0.005324
+SMYD3   -0.173730
+PRF1    -0.088773
+IRF4     0.121000
+PIK3CB  -0.136300
+GSK3A    0.070889
+HDAC2    0.272680
+PIK3CA  -0.027041
+CTLA4    0.309260
+CAMK2G   0.049109
+SETD2    0.074740
+LCK      0.132590
+PDCD1   -0.231170
+RPS6KB1  0.133560
+AKT2    -0.038130
+PPP3CA  -0.004761
+PRDM1   -0.018561
+IFNG    -0.017544
+NFATC1   0.099580
+NFATC2  -0.280190
+TBX21   -0.061745
+SOCS3    0.030714
+MAPK14  -0.023640
+DNMT3A   0.062102
+ATF4    -0.125750
+MAPK9    0.104180
+HDAC1   -0.134080
+EP300   -0.067743
+MAPK1   -0.148210
+NT5E     0.305530
+KDM6A    0.096438
+TIGIT    0.047751
+USP15   -0.184400
+GATA3   -0.036215
+BCL6    -0.048463
+KMT2B   -0.119680
+BTLA    -0.050402
+FBXW7   -0.271350
+MAP2K2  -0.318010
+AKT1     0.049770
+AKT3     0.044326
+ You have successfully identified 21 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CHUK    -0.38065
+BCL10   -0.47398
+JUN     -0.37464
+IL2RA    0.57251
+CARD11  -0.46511
+CD28    -1.72620
+SMARCA4  0.43431
+TSC1     0.80855
+LAT     -0.89413
+JAK3     1.07620
+PLCG1   -1.02690
+STAT5B   0.66825
+IL2RB    1.12230
+ITK     -1.45130
+NFKB2    0.60741
+TSC2     0.37433
+VAV1    -2.91600
+BATF     0.42521
+MAPK3   -0.33118
+ZAP70   -2.78080
+HDAC3   -0.40084
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: The previous rounds identified strong regulators of IL-2 production such as CD28, ZAP70, VAV1, and IL2RB, highlighting key pathways like TCR signaling and cytokine receptor signaling. The next step is to target genes functionally related to these hits, focusing on kinases, phosphatases, transcription factors, and epigenetic modulators involved in T cell activation and IL-2 transcription.
+2. Research Plan: I will prioritize testing genes associated with the TCR signaling cascade, calcium-calcineurin pathway, and core T cell transcription factors. By exploring interaction partners of our established hits, we can systematically uncover both positive and negative regulators of IL-2. We will select 128 uncharacterized candidates from relevant immunological pathways to maximize our hit discovery rate.
+3. Solution: 1. CD4, 2. CD8A, 3. CD8B, 4. CD3D, 5. CD3E, 6. CD3G, 7. CD3Z, 8. LCP2, 9. FYN, 10. CSK, 11. PTPN22, 12. PTPRC, 13. CD45, 14. PRKCQ, 15. VCP, 16. CBL, 17. CBLB, 18. SH2D1A, 19. GRAP2, 20. SOS1, 21. SOS2, 22. RASGRP1, 23. RALGDS, 24. RAPGEF1, 25. PRKD1, 26. RAC1, 27. RHOA, 28. CDC42, 29. WASL, 30. WAS, 31. ARPC1A, 32. CORO1A, 33. DUSP2, 34. DUSP4, 35. DUSP6, 36. SOCS2, 37. CISH, 38. PIAS1, 39. PIAS3, 40. PIAS4, 41. SHP1, 42. PTPN6, 43. PTPN11, 44. INPP5D, 45. SHIP1, 46. PTEN, 47. INPP4B, 48. TRAF1, 49. TRAF2, 50. TRAF3, 51. TRAF6, 52. RIPK1, 53. TAB1, 54. TAB2, 55. TAB3, 56. MAP3K7, 57. TAK1, 58. TBK1, 59. IKBKG, 60. NEMO, 61. RELB, 62. NFKBIE, 63. NFKBIA, 64. NFKBIB, 65. BCL3, 66. MALT1, 67. PRKCB, 68. PRKCA, 69. PRKCD, 70. PRKCE, 71. PRKCZ, 72. PRKCH, 73. PRKCI, 74. PRKCQ, 75. PRKD2, 76. PRKD3, 77. CHUK, 78. IKBKB, 79. REL, 80. STAT1, 81. STAT2, 82. STAT3, 83. STAT4, 84. STAT6, 85. JAK2, 86. TYK2, 87. IL2, 88. IL6, 89. IL12A, 90. IL12B, 91. IFNG, 92. TNF, 93. IL7R, 94. IL15RA, 95. IL21, 96. IL21R, 97. IRF3, 98. IRF5, 99. IRF7, 100. IRF9, 101. ETS1, 102. RUNX3, 103. GATA1, 104. GATA2, 105. STAT6, 106. BCL2, 107. BCL2L1, 108. MCL1, 109. BAX, 110. BAK1, 111. BID, 112. BAD, 113. CASP3, 114. CASP8, 115. CASP9, 116. FADD, 117. TRADD, 118. FAS, 119. TNFRSF1A, 120. TNFRSF1B, 121. CD27, 122. CD40, 123. CD80, 124. CD86, 125. ICOSLG, 126. ICOS, 127. TNFRSF4, 128. OX40
+===================tokens=====================
+Number of prompt tokens: 1644
+Number of sampled tokens: 1048
+
+
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+            Score
+Gene             
+RUNX1    0.241920
+HAVCR2   0.202920
+CAMK2B   0.004049
+CREBBP  -0.258590
+SOCS1   -0.032417
+CHD4     0.052237
+PPP3CB  -0.302790
+EZH2     0.072959
+IKZF3    0.044012
+GZMB     0.069599
+ENTPD1  -0.152580
+STAT5A   0.004139
+PRKCQ   -0.276950
+IRF1    -0.157190
+RHEB     0.032306
+SRGN     0.036162
+BTRC    -0.241690
+TNF      0.093364
+BPTF    -0.145470
+RICTOR  -0.064260
+CALM1   -0.112410
+FASLG    0.060523
+IL4      0.103800
+ATF2    -0.082943
+CALM3    0.162540
+PRKCB   -0.125290
+CUL1    -0.300380
+MAP2K4   0.180030
+MALT1   -0.300190
+PIK3R1  -0.062783
+EIF4E    0.035544
+CREB1   -0.122900
+FOXP3   -0.099287
+IRF8     0.049331
+CALM2   -0.147130
+RORC     0.017731
+PIK3CD  -0.023301
+FOS     -0.064280
+IL10     0.019451
+TET2     0.152520
+IKZF1   -0.003380
+ATRX     0.178670
+RELA    -0.279810
+IKZF2   -0.107190
+MAP2K7  -0.027346
+USP7     0.132610
+MAP2K1  -0.034449
+CAMK2D  -0.225530
+KMT2A   -0.214430
+JAK1    -0.053599
+GSK3B   -0.070169
+TET1    -0.070394
+MAPK8    0.089889
+NFATC4  -0.073927
+CAMK2A  -0.151970
+NFKB1   -0.115020
+LAG3    -0.119730
+IKBKB    0.255820
+PPP3CC  -0.021667
+TGFB1   -0.081333
+RPTOR    0.029012
+KDM4A    0.123910
+NFATC3  -0.016831
+SMARCB1  0.150740
+MTOR    -0.009602
+ARID1A   0.180410
+DNMT1   -0.005324
+SMYD3   -0.173730
+PRF1    -0.088773
+IRF4     0.121000
+PIK3CB  -0.136300
+GSK3A    0.070889
+HDAC2    0.272680
+PIK3CA  -0.027041
+CTLA4    0.309260
+CAMK2G   0.049109
+SETD2    0.074740
+LCK      0.132590
+PDCD1   -0.231170
+RPS6KB1  0.133560
+AKT2    -0.038130
+PPP3CA  -0.004761
+PRDM1   -0.018561
+IFNG    -0.017544
+NFATC1   0.099580
+NFATC2  -0.280190
+TBX21   -0.061745
+SOCS3    0.030714
+MAPK14  -0.023640
+DNMT3A   0.062102
+ATF4    -0.125750
+MAPK9    0.104180
+HDAC1   -0.134080
+EP300   -0.067743
+MAPK1   -0.148210
+NT5E     0.305530
+KDM6A    0.096438
+TIGIT    0.047751
+USP15   -0.184400
+GATA3   -0.036215
+BCL6    -0.048463
+KMT2B   -0.119680
+BTLA    -0.050402
+FBXW7   -0.271350
+MAP2K2  -0.318010
+AKT1     0.049770
+AKT3     0.044326
+ You have successfully identified 21 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CHUK    -0.38065
+BCL10   -0.47398
+JUN     -0.37464
+IL2RA    0.57251
+CARD11  -0.46511
+CD28    -1.72620
+SMARCA4  0.43431
+TSC1     0.80855
+LAT     -0.89413
+JAK3     1.07620
+PLCG1   -1.02690
+STAT5B   0.66825
+IL2RB    1.12230
+ITK     -1.45130
+NFKB2    0.60741
+TSC2     0.37433
+VAV1    -2.91600
+BATF     0.42521
+MAPK3   -0.33118
+ZAP70   -2.78080
+HDAC3   -0.40084
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 111 out of the required 128 genes for this round. These were: 
+['BAX', 'PRKCI', 'PIAS4', 'STAT3', 'CORO1A', 'CD3D', 'BCL3', 'SOS1', 'GATA1', 'NFKBIB', 'CBL', 'SOCS2', 'CISH', 'PTPN6', 'IL6', 'FYN', 'CD3E', 'CD4', 'TBK1', 'INPP4B', 'PTEN', 'IL15RA', 'IRF7', 'IRF9', 'GATA2', 'IL7R', 'TNFRSF4', 'CBLB', 'STAT2', 'VCP', 'CD8B', 'ARPC1A', 'IRF5', 'FAS', 'PRKCA', 'PRKCD', 'PRKCZ', 'IL21R', 'GRAP2', 'BCL2', 'PTPRC', 'TYK2', 'CD3G', 'IRF3', 'CASP3', 'TRAF2', 'SOS2', 'ETS1', 'ICOS', 'NFKBIA', 'INPP5D', 'TRADD', 'TNFRSF1B', 'IL2', 'MAP3K7', 'NFKBIE', 'IL12A', 'CD8A', 'BAD', 'IKBKG', 'ICOSLG', 'PIAS1', 'TAB2', 'CD86', 'DUSP2', 'PRKCH', 'DUSP4', 'CDC42', 'BID', 'RASGRP1', 'REL', 'STAT6', 'PRKD1', 'RAPGEF1', 'IL12B', 'WAS', 'JAK2', 'PTPN11', 'PRKD3', 'SH2D1A', 'CSK', 'PIAS3', 'PTPN22', 'PRKD2', 'DUSP6', 'FADD', 'BAK1', 'MCL1', 'STAT4', 'TRAF6', 'TNFRSF1A', 'CD80', 'CASP9', 'TAB3', 'RHOA', 'RUNX3', 'IL21', 'TRAF3', 'RIPK1', 'BCL2L1', 'STAT1', 'TRAF1', 'LCP2', 'CD27', 'PRKCE', 'RALGDS', 'CASP8', 'RAC1', 'WASL', 'CD40', 'RELB']
+ Please add 17 more genes to this list. Remember not to include previously tested genes including: 
+ ['NEMO', 'TAB1', 'TAK1', 'SHIP1', 'OX40', 'CD45', 'CD3Z', 'SHP1'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: I have successfully compiled 111 high-priority candidate genes involved in T-cell receptor signaling, cytokine pathways, and transcriptional regulation of IL-2, and I now need to select the final 17 genes to complete the 128-gene set for this round. To maximize the score, I should focus on proximal TCR signaling components, co-stimulatory receptors, and downstream transcription factors or phosphatases that strongly modulate IL-2 production.
+2. Research Plan: I will select 17 untested genes that closely interact with established hits like CD28, ZAP70, and VAV1 within immune cell signaling pathways. The strategy targets key enzymes, adaptors, and transcription factors in the IL-2 regulatory network to uncover strong positive or negative regulators. This ensures the 128-gene batch is diverse, biologically coherent, and leverages prior screening insights. I will output the final 17 genes formatted appropriately.
+3. Solution: 1. LAT2, 2. GRAP, 3. SLA, 4. SLA2, 5. LIME1, 6. PAG1, 7. C3orf38, 8. SIT1, 9. TRIM, 10. CARD14, 11. CARD10, 12. BCL10, 13. MALT2, 14. PRKCQ, 15. THEMIS, 16. SHB, 17. GRAP2
+===================tokens=====================
+Number of prompt tokens: 2266
+Number of sampled tokens: 309
+
+
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+            Score
+Gene             
+RUNX1    0.241920
+HAVCR2   0.202920
+CAMK2B   0.004049
+CREBBP  -0.258590
+SOCS1   -0.032417
+CHD4     0.052237
+PPP3CB  -0.302790
+EZH2     0.072959
+IKZF3    0.044012
+GZMB     0.069599
+ENTPD1  -0.152580
+STAT5A   0.004139
+PRKCQ   -0.276950
+IRF1    -0.157190
+RHEB     0.032306
+SRGN     0.036162
+BTRC    -0.241690
+TNF      0.093364
+BPTF    -0.145470
+RICTOR  -0.064260
+CALM1   -0.112410
+FASLG    0.060523
+IL4      0.103800
+ATF2    -0.082943
+CALM3    0.162540
+PRKCB   -0.125290
+CUL1    -0.300380
+MAP2K4   0.180030
+MALT1   -0.300190
+PIK3R1  -0.062783
+EIF4E    0.035544
+CREB1   -0.122900
+FOXP3   -0.099287
+IRF8     0.049331
+CALM2   -0.147130
+RORC     0.017731
+PIK3CD  -0.023301
+FOS     -0.064280
+IL10     0.019451
+TET2     0.152520
+IKZF1   -0.003380
+ATRX     0.178670
+RELA    -0.279810
+IKZF2   -0.107190
+MAP2K7  -0.027346
+USP7     0.132610
+MAP2K1  -0.034449
+CAMK2D  -0.225530
+KMT2A   -0.214430
+JAK1    -0.053599
+GSK3B   -0.070169
+TET1    -0.070394
+MAPK8    0.089889
+NFATC4  -0.073927
+CAMK2A  -0.151970
+NFKB1   -0.115020
+LAG3    -0.119730
+IKBKB    0.255820
+PPP3CC  -0.021667
+TGFB1   -0.081333
+RPTOR    0.029012
+KDM4A    0.123910
+NFATC3  -0.016831
+SMARCB1  0.150740
+MTOR    -0.009602
+ARID1A   0.180410
+DNMT1   -0.005324
+SMYD3   -0.173730
+PRF1    -0.088773
+IRF4     0.121000
+PIK3CB  -0.136300
+GSK3A    0.070889
+HDAC2    0.272680
+PIK3CA  -0.027041
+CTLA4    0.309260
+CAMK2G   0.049109
+SETD2    0.074740
+LCK      0.132590
+PDCD1   -0.231170
+RPS6KB1  0.133560
+AKT2    -0.038130
+PPP3CA  -0.004761
+PRDM1   -0.018561
+IFNG    -0.017544
+NFATC1   0.099580
+NFATC2  -0.280190
+TBX21   -0.061745
+SOCS3    0.030714
+MAPK14  -0.023640
+DNMT3A   0.062102
+ATF4    -0.125750
+MAPK9    0.104180
+HDAC1   -0.134080
+EP300   -0.067743
+MAPK1   -0.148210
+NT5E     0.305530
+KDM6A    0.096438
+TIGIT    0.047751
+USP15   -0.184400
+GATA3   -0.036215
+BCL6    -0.048463
+KMT2B   -0.119680
+BTLA    -0.050402
+FBXW7   -0.271350
+MAP2K2  -0.318010
+AKT1     0.049770
+AKT3     0.044326
+ You have successfully identified 21 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CHUK    -0.38065
+BCL10   -0.47398
+JUN     -0.37464
+IL2RA    0.57251
+CARD11  -0.46511
+CD28    -1.72620
+SMARCA4  0.43431
+TSC1     0.80855
+LAT     -0.89413
+JAK3     1.07620
+PLCG1   -1.02690
+STAT5B   0.66825
+IL2RB    1.12230
+ITK     -1.45130
+NFKB2    0.60741
+TSC2     0.37433
+VAV1    -2.91600
+BATF     0.42521
+MAPK3   -0.33118
+ZAP70   -2.78080
+HDAC3   -0.40084
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 123 out of the required 128 genes for this round. These were: 
+['BAX', 'PRKCI', 'PIAS4', 'STAT3', 'CORO1A', 'CD3D', 'BCL3', 'SOS1', 'GATA1', 'NFKBIB', 'CBL', 'SOCS2', 'CISH', 'PTPN6', 'IL6', 'FYN', 'CD3E', 'CD4', 'TBK1', 'INPP4B', 'PTEN', 'IL15RA', 'IRF7', 'IRF9', 'GATA2', 'IL7R', 'TNFRSF4', 'CBLB', 'STAT2', 'VCP', 'CD8B', 'ARPC1A', 'IRF5', 'FAS', 'PRKCA', 'PRKCD', 'PRKCZ', 'IL21R', 'GRAP2', 'BCL2', 'PTPRC', 'TYK2', 'CD3G', 'IRF3', 'CASP3', 'TRAF2', 'SOS2', 'ETS1', 'ICOS', 'NFKBIA', 'INPP5D', 'TRADD', 'TNFRSF1B', 'IL2', 'MAP3K7', 'NFKBIE', 'IL12A', 'CD8A', 'BAD', 'IKBKG', 'ICOSLG', 'PIAS1', 'TAB2', 'CD86', 'DUSP2', 'PRKCH', 'DUSP4', 'CDC42', 'BID', 'RASGRP1', 'REL', 'STAT6', 'PRKD1', 'RAPGEF1', 'IL12B', 'WAS', 'JAK2', 'PTPN11', 'PRKD3', 'SH2D1A', 'CSK', 'PIAS3', 'PTPN22', 'PRKD2', 'DUSP6', 'FADD', 'BAK1', 'MCL1', 'STAT4', 'TRAF6', 'TNFRSF1A', 'CD80', 'CASP9', 'TAB3', 'RHOA', 'RUNX3', 'IL21', 'TRAF3', 'RIPK1', 'BCL2L1', 'STAT1', 'TRAF1', 'LCP2', 'CD27', 'PRKCE', 'RALGDS', 'CASP8', 'RAC1', 'WASL', 'CD40', 'RELB', 'SLA', 'C3orf38', 'SLA2', 'SIT1', 'LAT2', 'GRAP', 'CARD14', 'CARD10', 'SHB', 'THEMIS', 'LIME1', 'PAG1']
+ Please add 5 more genes to this list. Remember not to include previously tested genes including: 
+ ['TRIM', 'MALT2'] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: I have successfully compiled 123 high-priority candidate genes related to T cell receptor signaling, IL-2 production, and immune regulation. To complete the batch of 128 genes for this screening round, I need to select 5 additional unexplored genes with strong biological relevance to the IL-2 pathway.
+2. Research Plan: I will select five key regulatory genes involved in proximal T cell receptor signaling and downstream transcriptional activation that have not yet been tested. The selection focuses on kinases, adapters, and transcription factors that interact with the validated hits from previous rounds. By completing this set of 128, I aim to uncover novel positive and negative regulators of IL-2 production. The reasoning is to maintain a dense coverage of the immune signaling network.
+3. Solution: 1. PRKCQ, 2. BCL10, 3. CARD11, 4. MALT1, 5. VAV1
+===================tokens=====================
+Number of prompt tokens: 2294
+Number of sampled tokens: 194
+
+
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+            Score
+Gene             
+RUNX1    0.241920
+HAVCR2   0.202920
+CAMK2B   0.004049
+CREBBP  -0.258590
+SOCS1   -0.032417
+CHD4     0.052237
+PPP3CB  -0.302790
+EZH2     0.072959
+IKZF3    0.044012
+GZMB     0.069599
+ENTPD1  -0.152580
+STAT5A   0.004139
+PRKCQ   -0.276950
+IRF1    -0.157190
+RHEB     0.032306
+SRGN     0.036162
+BTRC    -0.241690
+TNF      0.093364
+BPTF    -0.145470
+RICTOR  -0.064260
+CALM1   -0.112410
+FASLG    0.060523
+IL4      0.103800
+ATF2    -0.082943
+CALM3    0.162540
+PRKCB   -0.125290
+CUL1    -0.300380
+MAP2K4   0.180030
+MALT1   -0.300190
+PIK3R1  -0.062783
+EIF4E    0.035544
+CREB1   -0.122900
+FOXP3   -0.099287
+IRF8     0.049331
+CALM2   -0.147130
+RORC     0.017731
+PIK3CD  -0.023301
+FOS     -0.064280
+IL10     0.019451
+TET2     0.152520
+IKZF1   -0.003380
+ATRX     0.178670
+RELA    -0.279810
+IKZF2   -0.107190
+MAP2K7  -0.027346
+USP7     0.132610
+MAP2K1  -0.034449
+CAMK2D  -0.225530
+KMT2A   -0.214430
+JAK1    -0.053599
+GSK3B   -0.070169
+TET1    -0.070394
+MAPK8    0.089889
+NFATC4  -0.073927
+CAMK2A  -0.151970
+NFKB1   -0.115020
+LAG3    -0.119730
+IKBKB    0.255820
+PPP3CC  -0.021667
+TGFB1   -0.081333
+RPTOR    0.029012
+KDM4A    0.123910
+NFATC3  -0.016831
+SMARCB1  0.150740
+MTOR    -0.009602
+ARID1A   0.180410
+DNMT1   -0.005324
+SMYD3   -0.173730
+PRF1    -0.088773
+IRF4     0.121000
+PIK3CB  -0.136300
+GSK3A    0.070889
+HDAC2    0.272680
+PIK3CA  -0.027041
+CTLA4    0.309260
+CAMK2G   0.049109
+SETD2    0.074740
+LCK      0.132590
+PDCD1   -0.231170
+RPS6KB1  0.133560
+AKT2    -0.038130
+PPP3CA  -0.004761
+PRDM1   -0.018561
+IFNG    -0.017544
+NFATC1   0.099580
+NFATC2  -0.280190
+TBX21   -0.061745
+SOCS3    0.030714
+MAPK14  -0.023640
+DNMT3A   0.062102
+ATF4    -0.125750
+MAPK9    0.104180
+HDAC1   -0.134080
+EP300   -0.067743
+MAPK1   -0.148210
+NT5E     0.305530
+KDM6A    0.096438
+TIGIT    0.047751
+USP15   -0.184400
+GATA3   -0.036215
+BCL6    -0.048463
+KMT2B   -0.119680
+BTLA    -0.050402
+FBXW7   -0.271350
+MAP2K2  -0.318010
+AKT1     0.049770
+AKT3     0.044326
+ You have successfully identified 21 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CHUK    -0.38065
+BCL10   -0.47398
+JUN     -0.37464
+IL2RA    0.57251
+CARD11  -0.46511
+CD28    -1.72620
+SMARCA4  0.43431
+TSC1     0.80855
+LAT     -0.89413
+JAK3     1.07620
+PLCG1   -1.02690
+STAT5B   0.66825
+IL2RB    1.12230
+ITK     -1.45130
+NFKB2    0.60741
+TSC2     0.37433
+VAV1    -2.91600
+BATF     0.42521
+MAPK3   -0.33118
+ZAP70   -2.78080
+HDAC3   -0.40084
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 123 out of the required 128 genes for this round. These were: 
+['BAX', 'PRKCI', 'PIAS4', 'STAT3', 'CORO1A', 'CD3D', 'BCL3', 'SOS1', 'GATA1', 'NFKBIB', 'CBL', 'SOCS2', 'CISH', 'PTPN6', 'IL6', 'FYN', 'CD3E', 'CD4', 'TBK1', 'INPP4B', 'PTEN', 'IL15RA', 'IRF7', 'IRF9', 'GATA2', 'IL7R', 'TNFRSF4', 'CBLB', 'STAT2', 'VCP', 'CD8B', 'ARPC1A', 'IRF5', 'FAS', 'PRKCA', 'PRKCD', 'PRKCZ', 'IL21R', 'GRAP2', 'BCL2', 'PTPRC', 'TYK2', 'CD3G', 'IRF3', 'CASP3', 'TRAF2', 'SOS2', 'ETS1', 'ICOS', 'NFKBIA', 'INPP5D', 'TRADD', 'TNFRSF1B', 'IL2', 'MAP3K7', 'NFKBIE', 'IL12A', 'CD8A', 'BAD', 'IKBKG', 'ICOSLG', 'PIAS1', 'TAB2', 'CD86', 'DUSP2', 'PRKCH', 'DUSP4', 'CDC42', 'BID', 'RASGRP1', 'REL', 'STAT6', 'PRKD1', 'RAPGEF1', 'IL12B', 'WAS', 'JAK2', 'PTPN11', 'PRKD3', 'SH2D1A', 'CSK', 'PIAS3', 'PTPN22', 'PRKD2', 'DUSP6', 'FADD', 'BAK1', 'MCL1', 'STAT4', 'TRAF6', 'TNFRSF1A', 'CD80', 'CASP9', 'TAB3', 'RHOA', 'RUNX3', 'IL21', 'TRAF3', 'RIPK1', 'BCL2L1', 'STAT1', 'TRAF1', 'LCP2', 'CD27', 'PRKCE', 'RALGDS', 'CASP8', 'RAC1', 'WASL', 'CD40', 'RELB', 'SLA', 'C3orf38', 'SLA2', 'SIT1', 'LAT2', 'GRAP', 'CARD14', 'CARD10', 'SHB', 'THEMIS', 'LIME1', 'PAG1']
+ Please add 5 more genes to this list. Remember not to include previously tested genes including: 
+ [] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: I have accumulated a robust set of 123 high-priority immune and T-cell receptor signaling genes and need just 5 more to complete this batch of 128. I will select essential downstream effectors and adaptors involved in T cell activation and cytokine regulation.
+2. Research Plan: I am selecting additional key candidates known to interact with pathways governing IL-2 production, such as proximal TCR signaling and costimulatory networks. These selections build upon previously identified hits like CD28, ZAP70, and LCK. Each gene is chosen based on its known biological relevance to immune cell function. The final five genes will complete the current 128-gene perturbation set.
+3. Solution: 1. TRAT1, 2. BCL10, 3. CD247, 4. VAV2, 5. PIK3IP1
+===================tokens=====================
+Number of prompt tokens: 2286
+Number of sampled tokens: 181
+
+
+
+===================prompt=====================
+
+
+Human: Step 1
+ You are a scientist working on problems in drug discovery.
+
+Research Problem: I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Always respond in this format exactly, with no Markdown formatting, headers, or bold text:
+
+1. Reflection: Thoughts on previous results and next steps. 
+2. Research Plan: The full high level research plan, with current status and reasoning behind each proposed approach. It should be at most 5 sentences.
+3. Solution: Propose a list of predicted genes to test separated by commas in this format: 1. <Gene name 1>, 2. <Gene name 2> ...
+Do not include any genes from this prompt (since they're already tested).
+
+
+Now let's start!
+
+
+ This is not your first round. All tested genes and their measured log fold change are: 
+            Score
+Gene             
+RUNX1    0.241920
+HAVCR2   0.202920
+CAMK2B   0.004049
+CREBBP  -0.258590
+SOCS1   -0.032417
+CHD4     0.052237
+PPP3CB  -0.302790
+EZH2     0.072959
+IKZF3    0.044012
+GZMB     0.069599
+ENTPD1  -0.152580
+STAT5A   0.004139
+PRKCQ   -0.276950
+IRF1    -0.157190
+RHEB     0.032306
+SRGN     0.036162
+BTRC    -0.241690
+TNF      0.093364
+BPTF    -0.145470
+RICTOR  -0.064260
+CALM1   -0.112410
+FASLG    0.060523
+IL4      0.103800
+ATF2    -0.082943
+CALM3    0.162540
+PRKCB   -0.125290
+CUL1    -0.300380
+MAP2K4   0.180030
+MALT1   -0.300190
+PIK3R1  -0.062783
+EIF4E    0.035544
+CREB1   -0.122900
+FOXP3   -0.099287
+IRF8     0.049331
+CALM2   -0.147130
+RORC     0.017731
+PIK3CD  -0.023301
+FOS     -0.064280
+IL10     0.019451
+TET2     0.152520
+IKZF1   -0.003380
+ATRX     0.178670
+RELA    -0.279810
+IKZF2   -0.107190
+MAP2K7  -0.027346
+USP7     0.132610
+MAP2K1  -0.034449
+CAMK2D  -0.225530
+KMT2A   -0.214430
+JAK1    -0.053599
+GSK3B   -0.070169
+TET1    -0.070394
+MAPK8    0.089889
+NFATC4  -0.073927
+CAMK2A  -0.151970
+NFKB1   -0.115020
+LAG3    -0.119730
+IKBKB    0.255820
+PPP3CC  -0.021667
+TGFB1   -0.081333
+RPTOR    0.029012
+KDM4A    0.123910
+NFATC3  -0.016831
+SMARCB1  0.150740
+MTOR    -0.009602
+ARID1A   0.180410
+DNMT1   -0.005324
+SMYD3   -0.173730
+PRF1    -0.088773
+IRF4     0.121000
+PIK3CB  -0.136300
+GSK3A    0.070889
+HDAC2    0.272680
+PIK3CA  -0.027041
+CTLA4    0.309260
+CAMK2G   0.049109
+SETD2    0.074740
+LCK      0.132590
+PDCD1   -0.231170
+RPS6KB1  0.133560
+AKT2    -0.038130
+PPP3CA  -0.004761
+PRDM1   -0.018561
+IFNG    -0.017544
+NFATC1   0.099580
+NFATC2  -0.280190
+TBX21   -0.061745
+SOCS3    0.030714
+MAPK14  -0.023640
+DNMT3A   0.062102
+ATF4    -0.125750
+MAPK9    0.104180
+HDAC1   -0.134080
+EP300   -0.067743
+MAPK1   -0.148210
+NT5E     0.305530
+KDM6A    0.096438
+TIGIT    0.047751
+USP15   -0.184400
+GATA3   -0.036215
+BCL6    -0.048463
+KMT2B   -0.119680
+BTLA    -0.050402
+FBXW7   -0.271350
+MAP2K2  -0.318010
+AKT1     0.049770
+AKT3     0.044326
+ You have successfully identified 21 hits so far over all experiment cycles! The results for the hits are: 
+           Score
+Gene            
+CHUK    -0.38065
+BCL10   -0.47398
+JUN     -0.37464
+IL2RA    0.57251
+CARD11  -0.46511
+CD28    -1.72620
+SMARCA4  0.43431
+TSC1     0.80855
+LAT     -0.89413
+JAK3     1.07620
+PLCG1   -1.02690
+STAT5B   0.66825
+IL2RB    1.12230
+ITK     -1.45130
+NFKB2    0.60741
+TSC2     0.37433
+VAV1    -2.91600
+BATF     0.42521
+MAPK3   -0.33118
+ZAP70   -2.78080
+HDAC3   -0.40084
+ Based on these results and prior knowledge of biology, make the best possible prediction of the first 128 genes that I should test to maximize the score. Use HGNC gene naming convention.DO NOT PREDICT GENES THAT HAVE ALREADY BEEN TESTED
+ You have so far predicted 127 out of the required 128 genes for this round. These were: 
+['BAX', 'PRKCI', 'PIAS4', 'STAT3', 'CORO1A', 'CD3D', 'BCL3', 'SOS1', 'GATA1', 'NFKBIB', 'CBL', 'SOCS2', 'CISH', 'PTPN6', 'IL6', 'FYN', 'CD3E', 'CD4', 'TBK1', 'INPP4B', 'PTEN', 'IL15RA', 'IRF7', 'IRF9', 'GATA2', 'IL7R', 'TNFRSF4', 'CBLB', 'STAT2', 'VCP', 'CD8B', 'ARPC1A', 'IRF5', 'FAS', 'PRKCA', 'PRKCD', 'PRKCZ', 'IL21R', 'GRAP2', 'BCL2', 'PTPRC', 'TYK2', 'CD3G', 'IRF3', 'CASP3', 'TRAF2', 'SOS2', 'ETS1', 'ICOS', 'NFKBIA', 'INPP5D', 'TRADD', 'TNFRSF1B', 'IL2', 'MAP3K7', 'NFKBIE', 'IL12A', 'CD8A', 'BAD', 'IKBKG', 'ICOSLG', 'PIAS1', 'TAB2', 'CD86', 'DUSP2', 'PRKCH', 'DUSP4', 'CDC42', 'BID', 'RASGRP1', 'REL', 'STAT6', 'PRKD1', 'RAPGEF1', 'IL12B', 'WAS', 'JAK2', 'PTPN11', 'PRKD3', 'SH2D1A', 'CSK', 'PIAS3', 'PTPN22', 'PRKD2', 'DUSP6', 'FADD', 'BAK1', 'MCL1', 'STAT4', 'TRAF6', 'TNFRSF1A', 'CD80', 'CASP9', 'TAB3', 'RHOA', 'RUNX3', 'IL21', 'TRAF3', 'RIPK1', 'BCL2L1', 'STAT1', 'TRAF1', 'LCP2', 'CD27', 'PRKCE', 'RALGDS', 'CASP8', 'RAC1', 'WASL', 'CD40', 'RELB', 'SLA', 'C3orf38', 'SLA2', 'SIT1', 'LAT2', 'GRAP', 'CARD14', 'CARD10', 'SHB', 'THEMIS', 'LIME1', 'PAG1', 'VAV2', 'TRAT1', 'PIK3IP1', 'CD247']
+ Please add 1 more genes to this list. Remember not to include previously tested genes including: 
+ [] 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Reflection: I have successfully compiled 127 candidate genes involved in T cell receptor signaling, cytokine pathways, and apoptosis regulation, and I now need to add one final gene to complete the set of 128 for this screening round. VAV3 is a strong candidate as a guanine nucleotide exchange factor homologous to the successfully identified hit VAV1, playing an essential role in T cell activation and IL-2 production.
+2. Research Plan: The current research plan focuses on screening key regulators of T cell receptor signaling and downstream transcription factors to maximize IL-2 production. By analyzing previous hits like VAV1, ZAP70, and CD28, I am targeting related adapters, kinases, and exchange factors. The current status involves completing the 128-gene library for the next experimental cycle. I will add VAV3 to the current batch of 127 genes.
+3. Solution: 1. VAV3
+===================tokens=====================
+Number of prompt tokens: 2307
+Number of sampled tokens: 191
+
+
