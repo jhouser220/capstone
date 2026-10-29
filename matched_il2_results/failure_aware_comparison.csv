@@ -1,0 +1,4 @@
+Approach,Hits found,Hit recall (%)
+Standard feedback,68,10.4
+Original reflection,56,8.56
+Failure-aware reflection,109,16.67

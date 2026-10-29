@@ -1,0 +1,195 @@
+
+===================prompt=====================
+
+
+Human: 
+You are a scientific failure-analysis agent assisting
+an iterative IL-2 gene perturbation experiment.
+
+Research problem:
+I'm planning to run a genome-wide CRISPR screen to identify genes that regulate the production of Interleukin-2 (IL-2). There are 18,939 possible  genes to perturb and I can only perturb 128 genes at a time. For each perturbation, I'm able to measure out the log fold change in Interleukin-2 (IL-2) normalized read counts which will be referred to as the score. I can only do a few rounds of experimentation.
+
+Previously tested genes that were NOT hits:
+            Score
+Gene             
+RUNX1    0.241920
+HAVCR2   0.202920
+CAMK2B   0.004049
+CREBBP  -0.258590
+SOCS1   -0.032417
+CHD4     0.052237
+PPP3CB  -0.302790
+EZH2     0.072959
+IKZF3    0.044012
+GZMB     0.069599
+ENTPD1  -0.152580
+STAT5A   0.004139
+PRKCQ   -0.276950
+IRF1    -0.157190
+RHEB     0.032306
+SRGN     0.036162
+BTRC    -0.241690
+TNF      0.093364
+BPTF    -0.145470
+RICTOR  -0.064260
+CALM1   -0.112410
+FASLG    0.060523
+IL4      0.103800
+ATF2    -0.082943
+CALM3    0.162540
+PRKCB   -0.125290
+CUL1    -0.300380
+MAP2K4   0.180030
+MALT1   -0.300190
+PIK3R1  -0.062783
+EIF4E    0.035544
+CREB1   -0.122900
+FOXP3   -0.099287
+IRF8     0.049331
+CALM2   -0.147130
+RORC     0.017731
+PIK3CD  -0.023301
+FOS     -0.064280
+IL10     0.019451
+TET2     0.152520
+IKZF1   -0.003380
+ATRX     0.178670
+RELA    -0.279810
+IKZF2   -0.107190
+MAP2K7  -0.027346
+USP7     0.132610
+MAP2K1  -0.034449
+CAMK2D  -0.225530
+KMT2A   -0.214430
+JAK1    -0.053599
+GSK3B   -0.070169
+TET1    -0.070394
+MAPK8    0.089889
+NFATC4  -0.073927
+CAMK2A  -0.151970
+NFKB1   -0.115020
+LAG3    -0.119730
+IKBKB    0.255820
+PPP3CC  -0.021667
+TGFB1   -0.081333
+RPTOR    0.029012
+KDM4A    0.123910
+NFATC3  -0.016831
+SMARCB1  0.150740
+MTOR    -0.009602
+ARID1A   0.180410
+DNMT1   -0.005324
+SMYD3   -0.173730
+PRF1    -0.088773
+IRF4     0.121000
+PIK3CB  -0.136300
+GSK3A    0.070889
+HDAC2    0.272680
+PIK3CA  -0.027041
+CTLA4    0.309260
+CAMK2G   0.049109
+SETD2    0.074740
+LCK      0.132590
+PDCD1   -0.231170
+RPS6KB1  0.133560
+AKT2    -0.038130
+PPP3CA  -0.004761
+PRDM1   -0.018561
+IFNG    -0.017544
+NFATC1   0.099580
+NFATC2  -0.280190
+TBX21   -0.061745
+SOCS3    0.030714
+MAPK14  -0.023640
+DNMT3A   0.062102
+ATF4    -0.125750
+MAPK9    0.104180
+HDAC1   -0.134080
+EP300   -0.067743
+MAPK1   -0.148210
+NT5E     0.305530
+KDM6A    0.096438
+TIGIT    0.047751
+USP15   -0.184400
+GATA3   -0.036215
+BCL6    -0.048463
+KMT2B   -0.119680
+BTLA    -0.050402
+FBXW7   -0.271350
+MAP2K2  -0.318010
+AKT1     0.049770
+AKT3     0.044326
+
+Previously tested genes that WERE hits:
+           Score
+Gene            
+LAT     -0.89413
+TSC1     0.80855
+ITK     -1.45130
+VAV1    -2.91600
+CD28    -1.72620
+STAT5B   0.66825
+MAPK3   -0.33118
+SMARCA4  0.43431
+CHUK    -0.38065
+TSC2     0.37433
+JAK3     1.07620
+BATF     0.42521
+CARD11  -0.46511
+IL2RA    0.57251
+IL2RB    1.12230
+NFKB2    0.60741
+ZAP70   -2.78080
+HDAC3   -0.40084
+PLCG1   -1.02690
+JUN     -0.37464
+BCL10   -0.47398
+
+Your task is to critically examine the experimental
+strategy, focusing on what has NOT worked.
+
+Provide four concise sections:
+
+1. Failed approaches:
+Identify observed patterns among unsuccessful tests.
+
+2. Possible blind spots:
+Identify biological directions the current strategy
+may be overemphasizing or overlooking.
+Distinguish hypotheses from observed evidence.
+
+3. Alternative strategy:
+Suggest a different biological direction or
+exploration strategy for the next round.
+
+4. Actionable guidance:
+Explain how the main agent should balance
+exploration versus exploitation.
+
+IMPORTANT:
+- Use only measured experimental outcomes.
+- Never assume you know outcomes for untested genes.
+- Do not invent biological measurements.
+- Do not recommend specific untested genes.
+- Do not repeat a generic summary of successes.
+- Keep your answer under 200 words.
+ 
+
+Assistant:
+===================gemini-3.5-flash-lite response (2000)=====================
+1. Failed approaches:
+Targeting broad epigenetic regulators (HDAC1, EZH2, TET1/2), core calcium-calcineurin signaling components (PPP3CA/B/C, CALM1/2/3, CAMK2A/B/D/G), and major transcription factor families (NFATC1-4, RELA, STAT5A) yielded near-zero log fold changes (scores between -0.3 and 0.3), failing to significantly perturb IL-2 production. 
+
+2. Possible blind spots:
+Hypothesis: The screen may be over-indexing on canonical T-cell receptor (TCR) surface receptors and downstream kinase cascades while overlooking metabolic checkpoints, mRNA stability regulators, and nuclear transport machinery. Observed evidence shows strong hits concentrate tightly in proximal TCR signaling and specific cytokine receptor subunits (LAT, ITK, VAV1, CD28, ZAP70, JAK3, IL2RB), whereas broader transcriptional modulators failed.
+
+3. Alternative strategy:
+Shift exploration toward non-canonical regulatory layers, specifically post-transcriptional control mechanisms, ubiquitin-proteasome degradation pathways, and mitochondrial metabolic regulators that govern T-cell activation states.
+
+4. Actionable guidance:
+Balance exploitation (deepening perturbations around validated nodes like the ZAP70/LAT/VAV1 and JAK3/IL2RB axes) with exploration (testing uncharacterized functional classes) at an 80/20 ratio. Avoid re-testing failed pathways (calcineurin, core HDACs) until higher-confidence novel modules are exhausted.
+===================tokens=====================
+Number of prompt tokens: 1615
+Number of sampled tokens: 331
+
+

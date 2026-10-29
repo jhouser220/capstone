@@ -1,0 +1,10 @@
+Filter,Approach,Genes retained,Hits retained,Hit recall (%),Hit rate (%)
+All benchmark hits,Standard feedback,640,68,10.4,10.62
+All benchmark hits,Original reflection,640,56,8.56,8.75
+All benchmark hits,Failure-aware,640,109,16.67,17.03
+Exclude RPL/RPS,Standard feedback,639,68,11.28,10.64
+Exclude RPL/RPS,Original reflection,632,56,9.29,8.86
+Exclude RPL/RPS,Failure-aware,587,75,12.44,12.78
+Exclude broader gene families,Standard feedback,637,68,11.7,10.68
+Exclude broader gene families,Original reflection,623,55,9.47,8.83
+Exclude broader gene families,Failure-aware,521,57,9.81,10.94

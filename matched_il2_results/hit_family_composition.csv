@@ -1,0 +1,4 @@
+Approach,Total hits,RPL/RPS hits,Other broad-family hits,Hits outside broad families,RPL/RPS share of hits (%)
+Standard feedback,68,0,0,68,0.0
+Original reflection,56,0,1,55,0.0
+Failure-aware,109,34,18,57,31.2

@@ -791,7 +791,7 @@ def agent_loop(current_history, steps, use_gpt4, log_dir, args):
                 #          + ground_truth.loc[hits].to_string()
 
             else:
-                if args.feedback_mode in ["full", "full_reflection"]:
+                if args.feedback_mode in ["full", "full_reflection", "failure_aware"]:
                     # Original BioDiscoveryAgent feedback:
                     # all non-hit scores + hit identities and scores.
                     if len(gene_readout) < 1500:
@@ -918,6 +918,71 @@ the next round, while also retaining the raw experimental results above:
 
 """ + reflection_summary
 
+
+                elif args.feedback_mode == "failure_aware":
+                    failure_prompt = f"""
+You are a scientific failure-analysis agent assisting
+an iterative IL-2 gene perturbation experiment.
+
+Research problem:
+{research_problem}
+
+Previously tested genes that were NOT hits:
+{gene_readout.drop(hits).to_string()}
+
+Previously tested genes that WERE hits:
+{ground_truth.loc[hits].to_string()}
+
+Your task is to critically examine the experimental
+strategy, focusing on what has NOT worked.
+
+Provide four concise sections:
+
+1. Failed approaches:
+Identify observed patterns among unsuccessful tests.
+
+2. Possible blind spots:
+Identify biological directions the current strategy
+may be overemphasizing or overlooking.
+Distinguish hypotheses from observed evidence.
+
+3. Alternative strategy:
+Suggest a different biological direction or
+exploration strategy for the next round.
+
+4. Actionable guidance:
+Explain how the main agent should balance
+exploration versus exploitation.
+
+IMPORTANT:
+- Use only measured experimental outcomes.
+- Never assume you know outcomes for untested genes.
+- Do not invent biological measurements.
+- Do not recommend specific untested genes.
+- Do not repeat a generic summary of successes.
+- Keep your answer under 200 words.
+"""
+
+                    failure_log = os.path.join(
+                        log_dir,
+                        f"step_{curr_step}_failure_reflection.log"
+                    )
+
+                    failure_summary = complete_text(
+                        failure_prompt,
+                        model=args.model,
+                        log_file=failure_log
+                    )
+
+                    prompt += (
+                        "\nA separate failure-analysis agent "
+                        "reviewed the previous experimental "
+                        "results. Consider its critique when "
+                        "planning the next selection, while "
+                        "retaining the measured results above:\n"
+                        + failure_summary
+                    )
+
                 elif args.feedback_mode == "hits_only":
                     # Keep anti-repeat information constant, but reveal outcomes
                     # only for genes classified as hits.
@@ -948,7 +1013,7 @@ the next round, while also retaining the raw experimental results above:
                     hits_history.append(len(hits))
 
 
-                elif args.feedback_mode not in ("full", "full_reflection"):
+                elif args.feedback_mode not in ("full", "full_reflection", "failure_aware"):
                     raise ValueError(
                         f"Unknown feedback mode: {args.feedback_mode}"
                     )

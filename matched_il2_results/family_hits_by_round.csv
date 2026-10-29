@@ -1,0 +1,16 @@
+Approach,Round,All hits,Non-RPL/RPS hits,Hits outside broad families
+Standard feedback,1,21,21,21
+Standard feedback,2,20,20,20
+Standard feedback,3,8,8,8
+Standard feedback,4,10,10,10
+Standard feedback,5,9,9,9
+Original reflection,1,21,21,21
+Original reflection,2,20,20,20
+Original reflection,3,7,7,6
+Original reflection,4,6,6,6
+Original reflection,5,2,2,2
+Failure-aware,1,21,21,21
+Failure-aware,2,16,16,16
+Failure-aware,3,10,10,10
+Failure-aware,4,16,11,10
+Failure-aware,5,46,17,0
