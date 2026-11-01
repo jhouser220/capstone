@@ -1,0 +1,45 @@
+# Gemini 3.5 Flash-Lite via Google's OpenAI-compatible endpoint.
+#
+# Credentials come from the environment, never this file:
+#   GEMINI_API_KEY=<key from Google AI Studio>      (in .env or exported)
+#
+# Usage:
+#   assayloop run --model null --acq llm_single --screen 2054 --n-steps 3 \
+#       --lm-config configs/lm/collect-gemini-3.5-flash-lite.yaml
+#
+# Not a paper model: numbers from this config are a new data point, not a
+# reproduction of the paper's table.
+
+defaults:
+  - collect-predictions
+
+model_name: "gemini-3.5-flash-lite"
+
+lm:
+  provider: "local"                       # -> the OpenAI-compatible client
+  model: "gemini-3.5-flash-lite"
+  api_base: "https://generativelanguage.googleapis.com/v1beta/openai/"
+  api_key: "${GEMINI_API_KEY}"            # unset => loud error, not a 401
+  max_tokens: 16000                       # covers thinking + the answer
+  temperature: 1.0
+
+  # Reasoning level, sent as the OpenAI-style `reasoning_effort` field. Check
+  # Google's OpenAI-compatibility page for the accepted values. Do not combine
+  # with a Gemini-native thinking_level in extra_body.
+  reasoning_effort: "minimal"
+
+  # Pace requests client-side so a free tier's RPM limit is respected instead
+  # of discovered via 429s. SET THIS AT OR BELOW YOUR TIER'S REQUESTS/MINUTE
+  # (AI Studio -> Rate limits); 10 is a placeholder, not a verified limit.
+  requests_per_minute: 15
+
+  # Retry policy (defaults shown in client.py; 429s are retried, honouring the
+  # server's suggested delay). Bound a single call to 10 minutes:
+  max_retries: 8
+  retry_max_elapsed_s: 600
+
+  # The shared base config may set vLLM-only sampling extensions; a non-vLLM
+  # endpoint can reject them with a 400. Null them out explicitly.
+  top_k: null
+  min_p: null
+  repetition_penalty: null

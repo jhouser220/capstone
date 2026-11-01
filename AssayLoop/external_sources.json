@@ -1,0 +1,68 @@
+{
+  "E224_SCHUKKEN_PAIRED_WGL": {
+    "publication_id": "10.64898/2026.04.26.720636",
+    "source_genes": 19112,
+    "source_hits": 194,
+    "source_directory": "external_aneuploid_e224_2026-10-26"
+  },
+  "E225_ABT_PARCB_DEPENDENCY": {
+    "publication_id": "41860961",
+    "source_genes": 14459,
+    "source_hits": 1398,
+    "source_directory": "external_parcb_e225_2026-10-26"
+  },
+  "E226_WILSON_MERCS_HIGH": {
+    "publication_id": "38467609",
+    "source_genes": 18458,
+    "source_hits": 394,
+    "source_directory": "external_wilson_e226_2026-10-26"
+  },
+  "E232_NGUYEN_K562_ARAC_KO_SENSITIZATION": {
+    "publication_id": "39715471",
+    "source_genes": 19111,
+    "source_hits": 240,
+    "source_directory": "external_aml_e232_2026-10-26"
+  },
+  "E236_SHAN_HEPG2_LOVASTATIN": {
+    "publication_id": "40098013",
+    "source_genes": 19063,
+    "source_hits": 368,
+    "source_directory": "shan_frozen_hsa_e236_2026-10-26"
+  },
+  "E236_SHAN_HELA_LOVASTATIN": {
+    "publication_id": "40098013",
+    "source_genes": 19063,
+    "source_hits": 359,
+    "source_directory": "shan_frozen_hsa_e236_2026-10-26"
+  },
+  "E236_SHAN_HELA_LDLR_KO": {
+    "publication_id": "40098013",
+    "source_genes": 19062,
+    "source_hits": 227,
+    "source_directory": "shan_frozen_hsa_e236_2026-10-26"
+  },
+  "E239_ORGANOID_COLO_031": {
+    "publication_id": "42557320",
+    "source_genes": 16562,
+    "source_hits": 984,
+    "source_directory": "organoid_frozen_hsa_e239_2026-10-26"
+  },
+  "E239_ORGANOID_OESO_005": {
+    "publication_id": "42557320",
+    "source_genes": 16562,
+    "source_hits": 1683,
+    "source_directory": "organoid_frozen_hsa_e239_2026-10-26"
+  },
+  "E239_ORGANOID_OVAR_018": {
+    "publication_id": "42557320",
+    "source_genes": 16562,
+    "source_hits": 1473,
+    "source_directory": "organoid_frozen_hsa_e239_2026-10-26"
+  },
+  "E245_SAMELSON_T22_LOWERING": {
+    "publication_id": "41610849",
+    "source_genes": 18818,
+    "source_hits": 728,
+    "source_directory": "tau_source_e245_2026-10-26"
+  }
+}

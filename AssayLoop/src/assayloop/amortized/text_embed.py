@@ -69,12 +69,64 @@ SHIPPED_CACHE_RESOURCE = ("assayloop.data", "text_embeddings/screen_descriptions
 # ---------------------------------------------------------------------------
 
 
+# Extra metadata appended to the rendered description, selected by the env var
+# ASSAYLOOP_DESC_EXTRA (§4.45). Default "" reproduces the shipped renderer byte for
+# byte, so the shipped embedding cache keeps hitting and every existing number stands.
+#
+# WHY THIS EXISTS. The description channel is worth ~0.9 EF on `paper_test` (a
+# screen-agnostic b_g-only ranking scores 3.017; adding the description gives 3.930),
+# and it is the only model input that can change without retraining. The renderer below
+# lists nine fields, of which `contrast_label` and `description` are empty on 100% of
+# both folds -- so it effectively renders seven. Meanwhile `notes` is populated on
+# 100% of the validation fold and 96.4% of the test fold at 233-355 characters, roughly
+# DOUBLING the description, and is never read.
+#
+# A FINDING THAT CHANGED THE DESIGN: `direction_str` is empty on 0/218 and 0/334
+# screens. §4.26(a) implied it was available and merely unrendered; it is not populated
+# at all. Selection direction is this project's most predictive screen variable (§3:
+# dropout 66-95% hit rate at EF 9.5-9.7, enrichment ~5% at EF 2.56), so the "dir"
+# variant CLASSIFIES it from the phenotype sentence with `classify_selection` instead.
+# Be clear what that is: a DERIVED label over text the model already sees, not new
+# information. It tests whether a frozen encoder benefits from an explicit canonical
+# token, which is a weaker hypothesis than `notes`.
+#
+# Everything here is bounded above by the oracle-u ceiling of +0.41/+0.84 (§4.7),
+# because it acts only through the screen latent, and carries real off-distribution
+# risk: the checkpoint was trained on the renderer as it stands.
+_DESC_EXTRA_FIELDS = {
+    "notes": [("Notes", "notes")],
+    "rationale": [("Ranking rationale", "ranking_rationale"),
+                  ("Screen rationale", "screen_rationale"),
+                  ("Significance criteria", "significance_criteria"),
+                  ("Library type", "library_type")],
+}
+
+
+def _desc_extra() -> set[str]:
+    raw = (os.environ.get("ASSAYLOOP_DESC_EXTRA") or "").strip().lower()
+    if not raw or raw == "none":
+        return set()
+    if raw == "all":
+        return {"notes", "dir", "rationale"}
+    parts = {x.strip() for x in raw.split(",") if x.strip()}
+    unknown = parts - {"notes", "dir", "rationale"}
+    if unknown:
+        raise ValueError(
+            f"ASSAYLOOP_DESC_EXTRA has unknown part(s) {sorted(unknown)}; "
+            f"expected a comma-separated subset of notes,dir,rationale, or all/none"
+        )
+    return parts
+
+
 def screen_description_text(screen) -> str:
     """Build the canonical description string we embed for a screen.
 
     Public screens often leave ``description`` empty, so we compose a rich,
     stable string from the available metadata fields. The exact text is what
     the on-disk cache is keyed on, so keep this deterministic.
+
+    ``ASSAYLOOP_DESC_EXTRA`` appends further fields; unset is the shipped behaviour.
+    See ``_DESC_EXTRA_FIELDS`` above for what each value adds and why.
     """
     ctx = screen.context() if hasattr(screen, "context") else dict(screen)
     parts: list[str] = []
@@ -92,6 +144,26 @@ def screen_description_text(screen) -> str:
         v = ctx.get(key)
         if v and str(v).strip() and str(v).strip().lower() != "not specified":
             parts.append(f"{label}: {str(v).strip()}")
+
+    extra = _desc_extra()
+    for name in ("notes", "rationale"):
+        if name in extra:
+            for label, key in _DESC_EXTRA_FIELDS[name]:
+                v = ctx.get(key)
+                if v and str(v).strip() and str(v).strip().lower() != "not specified":
+                    parts.append(f"{label}: {str(v).strip()}")
+    if "dir" in extra:
+        # Derived, because `direction_str` is empty on every screen in both folds.
+        # Classified from phenotype AND notes together whether or not `notes` is being
+        # rendered: this is a derived label, so it should be derived from the best text
+        # available. Measured coverage -- phenotype alone 96%/93% informative
+        # (validation/test), notes alone 74%/45%, both together 100%/98%.
+        from assayloop.screen_direction import classify_selection
+        d = classify_selection(
+            f"{ctx.get('phenotype') or ''}. {ctx.get('notes') or ''}")[0]
+        if d:
+            parts.append(f"Selection direction: {d}")
+
     if not parts:
         # Last resort: the rendered ranking question, or the screen name.
         q = ctx.get("question") or ctx.get("dataset_name") or ""

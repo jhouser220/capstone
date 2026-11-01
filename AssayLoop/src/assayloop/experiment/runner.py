@@ -177,6 +177,13 @@ def make_acquisition(
         o.setdefault("seed", seed)
         return GreedyFromModel(**o)
 
+    if name in ("codep_seed", "codepseed"):
+        # AssayFormer fused with DepMap co-essentiality of the confirmed hits.
+        # weight=0 reproduces `greedy` exactly, so the baseline is nested.
+        from ..acquisitions.codep_seed_acq import CodepSeedAcquisition
+        o.setdefault("seed", seed)
+        return CodepSeedAcquisition(**o)
+
     if name == "ucb":
         from ..acquisitions.ucb_from_model import UCBFromModel
         o.setdefault("seed", seed)
@@ -208,6 +215,16 @@ def make_acquisition(
         if name == "llm_single_blind":
             o.setdefault("reveal_labels", False)
         return LLMSingleAcquisition(llm=llm, **o)
+
+    # ``llm_single_topup``: llm_single, but a round that comes back short is topped up with follow-up
+    # requests (same prompt + an exclusion note) until it holds batch_size eligible genes. See
+    # acquisitions/llm_single_topup_acq.py. Tunable via ASSAYLOOP_TOPUP_MAX_ATTEMPTS / _OVERSAMPLE.
+    if name == "llm_single_topup":
+        from ..acquisitions.llm_single_topup_acq import LLMSingleTopUpAcquisition
+        from ..llm.client import LLMClientConfig
+        llm = o.pop("llm", None) or LLMClientConfig()
+        o.setdefault("seed", seed)
+        return LLMSingleTopUpAcquisition(llm=llm, **o)
 
     raise ValueError(f"Unknown acquisition name {name!r}")
 

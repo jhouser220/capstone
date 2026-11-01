@@ -80,6 +80,21 @@ VLLM_MIN_P: float | None = _opt_float("VLLM_MIN_P")
 VLLM_PRESENCE_PENALTY: float | None = _opt_float("VLLM_PRESENCE_PENALTY")
 VLLM_REPETITION_PENALTY: float | None = _opt_float("VLLM_REPETITION_PENALTY")
 
+# OpenAI-style ``reasoning_effort`` for endpoints that accept it (e.g. Gemini's
+# OpenAI-compatible endpoint; see Google's docs for the accepted values).
+# Unset => not sent. Overridable per run via ``lm.reasoning_effort`` in a
+# ``--lm-config`` YAML.
+VLLM_REASONING_EFFORT: str | None = os.getenv("VLLM_REASONING_EFFORT") or None
+
+# Client-side pacing for rate-limited (e.g. free-tier) endpoints: at most this
+# many requests per minute per (base_url, model), shared across threads.
+# Unset => no pacing (the retry loop still recovers from 429s).
+VLLM_REQUESTS_PER_MINUTE: float | None = _opt_float("VLLM_REQUESTS_PER_MINUTE")
+
+# Optional YAML overriding the open-vocabulary LLM prompt; see
+# ``assayloop.llm.prompt_override``. Unset => the built-in prompt, unchanged.
+PROMPT_FILE: Path | None = _opt_path("ASSAYLOOP_PROMPT_FILE")
+
 # ---------------------------------------------------------------------------
 # Paths (machine-local, gitignored)
 # ---------------------------------------------------------------------------

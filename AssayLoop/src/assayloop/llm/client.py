@@ -24,6 +24,9 @@ Two constructors are exposed:
 from __future__ import annotations
 
 import os
+import re
+import threading
+import time
 from dataclasses import dataclass, field
 from typing import Any, Optional
 
@@ -82,6 +85,16 @@ class LLMClientConfig:
     # / ``reasoning`` when ``content`` is empty, so a truncated
     # thinking trace still produces output.
     disable_thinking: bool = False
+    # OpenAI-style ``reasoning_effort`` (e.g. "low"), vllm provider only. Sent
+    # as a top-level request field via ``extra_body`` (independent of the
+    # installed openai SDK version). Gemini's OpenAI-compatible endpoint maps it
+    # to its thinking level. When set it supersedes ``disable_thinking``, whose
+    # vLLM-specific ``chat_template_kwargs`` a non-vLLM endpoint may reject.
+    reasoning_effort: Optional[str] = None
+    # Client-side pacing: at most this many requests per minute per
+    # (base_url, model), shared across threads. ``None`` => unpaced. Use it on
+    # rate-limited tiers so the retry loop is the exception, not the rule.
+    requests_per_minute: Optional[float] = None
     # Matches AssayBench's timeout (180s) with extra headroom.
     timeout: float = 300.0
     # Retry policy for transient failures (timeouts, connection resets, 5xx,
@@ -138,6 +151,12 @@ class LLMClientConfig:
                     self.repetition_penalty, bl_config.VLLM_REPETITION_PENALTY
                 ),
                 disable_thinking=self.disable_thinking,
+                reasoning_effort=_pick(
+                    self.reasoning_effort, bl_config.VLLM_REASONING_EFFORT
+                ),
+                requests_per_minute=_pick(
+                    self.requests_per_minute, bl_config.VLLM_REQUESTS_PER_MINUTE
+                ),
                 use_max_completion_tokens=self.use_max_completion_tokens,
                 timeout=self.timeout,
                 max_retries=self.max_retries,
@@ -163,6 +182,8 @@ class LLMClientConfig:
                 presence_penalty=self.presence_penalty,
                 repetition_penalty=self.repetition_penalty,
                 disable_thinking=self.disable_thinking,
+                reasoning_effort=self.reasoning_effort,
+                requests_per_minute=self.requests_per_minute,
                 use_max_completion_tokens=self.use_max_completion_tokens,
                 timeout=self.timeout,
                 max_retries=self.max_retries,
@@ -188,6 +209,8 @@ class LLMClientConfig:
                 presence_penalty=self.presence_penalty,
                 repetition_penalty=self.repetition_penalty,
                 disable_thinking=self.disable_thinking,
+                reasoning_effort=self.reasoning_effort,
+                requests_per_minute=self.requests_per_minute,
                 use_max_completion_tokens=self.use_max_completion_tokens,
                 timeout=self.timeout,
                 max_retries=self.max_retries,
@@ -375,6 +398,100 @@ def _within_time_budget(
     return (_t.time() - loop_start + next_delay) < cap
 
 
+# ---------------------------------------------------------------------------
+# Client-side pacing and server-directed retry delays (rate-limited tiers).
+# ---------------------------------------------------------------------------
+
+
+class _RateLimiter:
+    """Thread-safe minimum-interval pacer: at most ``rpm`` requests/minute.
+
+    A slot is reserved under the lock and slept for outside it, so concurrent
+    callers (``--parallel N``) queue up instead of serialising on the lock.
+    """
+
+    def __init__(self, rpm: float):
+        if rpm <= 0:
+            raise ValueError(f"requests_per_minute must be > 0, got {rpm}")
+        self.interval = 60.0 / rpm
+        self._lock = threading.Lock()
+        self._next_slot = 0.0
+
+    def acquire(self) -> float:
+        """Block until a request slot is free; return the seconds waited."""
+        with self._lock:
+            now = time.monotonic()
+            start = max(now, self._next_slot)
+            self._next_slot = start + self.interval
+        wait = start - now
+        if wait > 0:
+            time.sleep(wait)
+        return max(wait, 0.0)
+
+
+_RATE_LIMITERS: dict[tuple[str, str, float], _RateLimiter] = {}
+_RATE_LIMITERS_LOCK = threading.Lock()
+
+
+def _get_rate_limiter(cfg: "LLMClientConfig") -> Optional[_RateLimiter]:
+    """Shared limiter for this (endpoint, model, rpm), or ``None`` if unpaced."""
+    rpm = cfg.requests_per_minute
+    if rpm is None or rpm <= 0:
+        return None
+    key = (str(cfg.base_url), str(cfg.model), float(rpm))
+    with _RATE_LIMITERS_LOCK:
+        limiter = _RATE_LIMITERS.get(key)
+        if limiter is None:
+            limiter = _RATE_LIMITERS[key] = _RateLimiter(rpm)
+        return limiter
+
+
+# Google's 429 bodies carry ``retryDelay: "34s"`` and/or "Please retry in 34.5s".
+_RETRY_DELAY_BODY_RES = (
+    re.compile(r"retry[_ ]?delay\W{0,6}(\d+(?:\.\d+)?)\s*s", re.IGNORECASE),
+    re.compile(r"retry in\s+(\d+(?:\.\d+)?)\s*s", re.IGNORECASE),
+)
+
+
+def _server_retry_delay(exc: BaseException) -> Optional[float]:
+    """Seconds the server asked us to wait before retrying, if it said so.
+
+    Checks the ``Retry-After`` header (numeric form), then the error text.
+    """
+    headers = getattr(getattr(exc, "response", None), "headers", None)
+    if headers is not None:
+        try:
+            raw = headers.get("retry-after")
+        except Exception:  # pragma: no cover - exotic header objects
+            raw = None
+        if raw:
+            try:
+                return max(0.0, float(raw))
+            except (TypeError, ValueError):
+                pass  # HTTP-date form: fall through to the body
+    text = str(exc)
+    for rx in _RETRY_DELAY_BODY_RES:
+        m = rx.search(text)
+        if m:
+            return float(m.group(1))
+    return None
+
+
+def _is_daily_quota_error(exc: BaseException) -> bool:
+    """Heuristic: a 429 naming a per-DAY quota will not clear within a retry
+    window, so retrying only burns attempts. Matches e.g. Google's
+    ``GenerateRequestsPerDay...`` quota ids; err on the side of retrying if
+    the text is unfamiliar.
+    """
+    code = getattr(exc, "status_code", None) or getattr(
+        getattr(exc, "response", None), "status_code", None
+    )
+    names = {klass.__name__ for klass in type(exc).__mro__}
+    if not (code == 429 or "RateLimitError" in names):
+        return False
+    return "perday" in re.sub(r"[^a-z]", "", str(exc).lower())
+
+
 def complete(
     config: LLMClientConfig,
     prompt: str,
@@ -412,7 +529,14 @@ def complete_ex(
 
         from ..tracing import log_completion_call
 
-        client = OpenAI(api_key=cfg.api_key or "not-needed", base_url=cfg.base_url)
+        # max_retries=0: the loop below is the single retry policy. The SDK's
+        # own hidden retries (default 2) would bypass the rate limiter and
+        # the server-directed delay, and spend extra quota on 429s.
+        client = OpenAI(
+            api_key=cfg.api_key or "not-needed",
+            base_url=cfg.base_url,
+            max_retries=0,
+        )
         messages = []
         if system:
             messages.append({"role": "system", "content": system})
@@ -424,7 +548,9 @@ def complete_ex(
         # bridgebuilder/bridgebuilder/tools/bridge.py for the original
         # diagnosis. We also merge any user-provided extra_kwargs.
         extra_body: dict[str, Any] = {}
-        if cfg.disable_thinking:
+        if cfg.reasoning_effort:
+            extra_body["reasoning_effort"] = cfg.reasoning_effort
+        elif cfg.disable_thinking:
             extra_body["chat_template_kwargs"] = {"enable_thinking": False}
         user_extra_body = (cfg.extra_kwargs or {}).get("extra_body")
         if isinstance(user_extra_body, dict):
@@ -443,6 +569,7 @@ def complete_ex(
             if _v is not None:
                 extra_body[_k] = _v
         # Standard OpenAI sampling params (top-level). Only include when set.
+        limiter = _get_rate_limiter(cfg)
         sampling: dict[str, Any] = {}
         if cfg.top_p is not None:
             sampling["top_p"] = cfg.top_p
@@ -462,6 +589,8 @@ def complete_ex(
             usage_dict: dict[str, Any] | None = None
             response_model: str | None = None
             try:
+                if limiter is not None:
+                    limiter.acquire()
                 create_kwargs: dict[str, Any] = dict(
                     model=cfg.model,
                     messages=messages,
@@ -535,6 +664,8 @@ def complete_ex(
                         "presence_penalty": cfg.presence_penalty,
                         "repetition_penalty": cfg.repetition_penalty,
                         "disable_thinking": cfg.disable_thinking,
+                        "reasoning_effort": cfg.reasoning_effort,
+                        "requests_per_minute": cfg.requests_per_minute,
                         "attempt": attempt,
                     },
                 )
@@ -543,8 +674,19 @@ def complete_ex(
             # completely-empty completions are retried so a single flaky call
             # never silently turns into a zero-gene batch.
             if exc is not None:
+                if _is_daily_quota_error(exc):
+                    _log.error(
+                        "vLLM call hit a per-DAY quota (%s); retrying cannot "
+                        "help, failing this call now.", err,
+                    )
+                    raise exc
                 if _is_transient_error(exc) and _retries_remaining(attempt, cfg.max_retries):
                     delay = _retry_backoff_seconds(attempt, cfg)
+                    suggested = _server_retry_delay(exc)
+                    if suggested is not None:
+                        # The server said when capacity returns; waiting less
+                        # just burns another attempt.
+                        delay = max(delay, suggested + 1.0)
                     if not _within_time_budget(loop_start, cfg, delay):
                         _log.error(
                             "vLLM call giving up after %.0fs wall-clock "

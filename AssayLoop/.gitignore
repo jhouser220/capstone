@@ -7,7 +7,7 @@
 *.pem
 *.pfx
 credentials.json
-
+CLAUDE.md
 # Python build / cache
 __pycache__/
 *.pyc
@@ -15,6 +15,9 @@ __pycache__/
 *.egg-info/
 build/
 dist/
+HANDOFF.md
+methods_summary.csv
+
 
 # assayloop runtime data (gitignored, machine-local)
 viking_data/
@@ -51,3 +54,10 @@ deployment/.model-cache/
 .vscode/
 .idea/
 *.swp
+
+# HSA reproduction bundle (third-party, ~380 MB): the frozen inputs for the
+# AssayLoop+HSA comparison, plus the pinned upstream source it ships. Hash and
+# provenance are in HANDOFF.md section 15; re-fetchable from the GitHub release.
+_reproduction/
+.ipynb_checkpoints/
+.Rhistory

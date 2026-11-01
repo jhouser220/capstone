@@ -34,13 +34,16 @@ from __future__ import annotations
 import logging
 import random
 import re
+from pathlib import Path
 from typing import Any
 
 from assaybench.core.acquisition import AcquisitionFunction
 from assaybench.core.types import ModelPrediction, StepRecord
 from assaybench.llm.history_format import format_history_by_round
+from .. import config as bl_config
 from ..llm.client import LLMClientConfig, complete_ex
 from ..llm.parse_genes import extract_gene_list, organism_suffix
+from ..llm.prompt_override import load_prompt_override, render_template
 
 log = logging.getLogger("assayloop.acquisitions.llm_single")
 
@@ -142,6 +145,19 @@ def _build_screen_prompt(
     )
 
 
+def _llm_trace_dict(llm: LLMClientConfig) -> dict[str, Any]:
+    """Resolved client config for the step trace, minus credentials.
+
+    ``resolved().__dict__`` includes ``api_key`` (and ``extra_headers`` may
+    carry auth), which would otherwise be written into ``result.json``.
+    """
+    d = dict(llm.resolved().__dict__)
+    d.pop("api_key", None)
+    if d.get("extra_headers"):
+        d["extra_headers"] = {k: "***" for k in d["extra_headers"]}
+    return d
+
+
 class LLMSingleAcquisition(AcquisitionFunction):
     """Open-vocabulary single-call LLM acquisition.
 
@@ -186,6 +202,11 @@ class LLMSingleAcquisition(AcquisitionFunction):
             (e.g. GEPA) to inject a candidate system prompt. The dynamic
             count / convention / organism are already restated in the user
             message, so a static override loses no required guidance.
+        prompt_file: optional YAML overriding the system message, the final
+            instruction, the screen-block wording and/or the whole user-message
+            layout (see :mod:`assayloop.llm.prompt_override`). Defaults to
+            ``ASSAYLOOP_PROMPT_FILE`` when set. Precedence for the system
+            message: ``system_prompt`` argument > ``prompt_file`` > built-in.
     """
 
     def __init__(
@@ -197,6 +218,7 @@ class LLMSingleAcquisition(AcquisitionFunction):
         oversample_factor: float = 1.0,
         seed: int = 42,
         system_prompt: str | None = None,
+        prompt_file: str | Path | None = None,
     ):
         self.llm = llm or LLMClientConfig()
         self.include_history_summary = include_history_summary
@@ -204,6 +226,13 @@ class LLMSingleAcquisition(AcquisitionFunction):
         self.oversample_factor = float(oversample_factor)
         self.seed = int(seed)
         self.system_prompt = system_prompt or None
+        _pf = prompt_file or bl_config.PROMPT_FILE
+        self.prompt_override = load_prompt_override(_pf) if _pf else None
+        if self.prompt_override is not None:
+            log.info(
+                "Using prompt override %s (sha256 %s...)",
+                self.prompt_override.path, self.prompt_override.sha256[:12],
+            )
         self._rng = random.Random(seed)
         self._last_trace: dict[str, Any] = {}
 
@@ -236,10 +265,19 @@ class LLMSingleAcquisition(AcquisitionFunction):
         convention = ctx.get("gene_symbol_convention") or (
             "HGNC" if "sapiens" in str(organism).lower() else "MGI"
         )
+        po = self.prompt_override
+        values: dict[str, Any] = {
+            "batch_size": n_requested,
+            "n_requested": n_requested,
+            "convention": convention,
+            "organism": organism,
+        }
         if self.system_prompt:
             # Optimizer-supplied prompt: use verbatim (no .format). The
             # count / convention / organism are carried by the user message.
             system = self.system_prompt
+        elif po is not None and po.system is not None:
+            system = render_template(po.system, values)
         else:
             system = _SYSTEM_PROMPT.format(
                 batch_size=n_requested,
@@ -248,17 +286,31 @@ class LLMSingleAcquisition(AcquisitionFunction):
             )
 
         screen_block = _build_screen_prompt(ctx, n_requested)
+        if po is not None:
+            screen_block = po.apply_screen_replace(screen_block)
         history_block = (
             format_history_by_round(history, include_labels=self.reveal_labels)
             if self.include_history_summary else ""
         )
         suffix = organism_suffix(ctx)
-        user = (
-            f"{screen_block}{history_block}\n\n"
-            f"=== Final instruction ===\n"
-            f"Return ONLY a comma-separated list of {n_requested} gene "
-            f"symbols (no prose, no numbers, no markdown). {suffix}"
-        )
+        values["suffix"] = suffix
+        if po is not None and po.final_instruction is not None:
+            final = render_template(po.final_instruction, values)
+        else:
+            final = (
+                f"=== Final instruction ===\n"
+                f"Return ONLY a comma-separated list of {n_requested} gene "
+                f"symbols (no prose, no numbers, no markdown). {suffix}"
+            )
+        if po is not None and po.user is not None:
+            user = render_template(po.user, {
+                **values,
+                "screen_block": screen_block,
+                "history_block": history_block,
+                "final_instruction": final,
+            })
+        else:
+            user = f"{screen_block}{history_block}\n\n{final}"
         return system, user, n_requested
 
     def suggest(
@@ -293,6 +345,9 @@ class LLMSingleAcquisition(AcquisitionFunction):
                 "shortfall": batch_size,
                 "raw_response_preview": "",
                 "n_requested_from_llm": n_requested,
+                "prompt_override": (
+                    self.prompt_override.describe() if self.prompt_override else None
+                ),
             }
             return []
 
@@ -339,7 +394,10 @@ class LLMSingleAcquisition(AcquisitionFunction):
         self._last_trace = {
             "acquisition": "llm_single_blind" if not self.reveal_labels else "llm_single",
             "reveal_labels": self.reveal_labels,
-            "llm": self.llm.resolved().__dict__,
+            "llm": _llm_trace_dict(self.llm),
+            "prompt_override": (
+                self.prompt_override.describe() if self.prompt_override else None
+            ),
             "n_candidates_in_prompt": 0,  # open-vocab: no list shown
             "n_requested_from_llm": n_requested,
             "raw_response_preview": text[:600],

@@ -1,0 +1,31 @@
+# Prompt override for the open-vocabulary LLM acquisitions (llm_single and
+# llm_single_blind). Activate with:
+#   export ASSAYLOOP_PROMPT_FILE=configs/prompts/example.yaml
+#
+# As shipped this file REPRODUCES THE BUILT-IN PROMPT EXACTLY (tests/
+# test_gemini_client.py checks it), so edit from a known baseline. Delete any
+# key to fall back to the built-in text for that part.
+#
+# Placeholders: {batch_size} {n_requested} {convention} {organism} {suffix}
+# and, in `user` only, {screen_block} {history_block} {final_instruction}.
+# Other braces are sent as-is. Output must stay parseable: a comma-separated
+# list, a JSON object with a "genes" key, or <Final Answer>...</Final Answer>.
+
+system: |
+  You are a computational biologist. Given a CRISPR screen description, produce a ranked list of {batch_size} gene symbols ({convention} nomenclature for {organism}) that you believe are MOST LIKELY to be hits in this screen, ordered strongest first. Use only your knowledge of biology — no chain-of-thought in the output. Return ONLY a comma-separated list of {batch_size} symbols, no prose, no numbering.
+
+final_instruction: |
+  === Final instruction ===
+  Return ONLY a comma-separated list of {n_requested} gene symbols (no prose, no numbers, no markdown). {suffix}
+
+# Reword parts of AssayBench's screen text with regex substitutions, e.g.:
+# screen_replace:
+#   - pattern: "ranked from strongest to weakest"
+#     repl: "ranked from most to least confident"
+
+# Full control of the message layout (must contain {screen_block}; keep
+# {history_block} or the model receives no hit/non-hit feedback):
+# user: |
+#   {screen_block}{history_block}
+#
+#   {final_instruction}

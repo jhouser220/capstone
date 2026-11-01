@@ -91,6 +91,7 @@ def _parse_kv_params(params: Optional[list[str]]) -> dict[str, Any]:
 _ZERO_SHOT_ACQS = {
     "llm_single",
     "llm_single_blind",
+    "llm_single_topup",
 }
 
 
@@ -118,6 +119,7 @@ def _warn_if_warm_start_wasted(warm_start: int, acqs: list[str]) -> None:
 _LLM_CLIENT_ACQS = {
     "llm_single",
     "llm_single_blind",
+    "llm_single_topup",
     "llm",
 }
 
@@ -127,6 +129,7 @@ _LLM_CLIENT_ACQS = {
 _OPEN_VOCAB_LLM_ACQS = {
     "llm_single",
     "llm_single_blind",
+    "llm_single_topup",
     "llm",
     "llm_single_call",
 }
@@ -188,7 +191,7 @@ def _load_lm_config_or_exit(lm_config: Optional[str]):
 @app.command()
 def run(
     model: str = typer.Option("knn", help="See make_model() in experiment/runner.py for the full list."),
-    acq: str = typer.Option("greedy", help="random|greedy|ucb|bio_ucb|llm_single (open-vocab, AssayBench-style)|llm_single_blind (ablation: history shown without hit labels). The LLM->AssayFormer handoff is its own command, eval-ranker-handoff."),
+    acq: str = typer.Option("greedy", help="random|greedy|ucb|bio_ucb|llm_single (open-vocab, AssayBench-style)|llm_single_blind (ablation: history shown without hit labels)|llm_single_topup (llm_single + follow-up requests until each round holds batch_size eligible genes). The LLM->AssayFormer handoff is its own command, eval-ranker-handoff."),
     screen_set: str = typer.Option("paper_test", help="paper_test|paper_validation|train|validation|test|/path/to.yaml"),
     screen: Optional[str] = typer.Option(None, help="Comma-sep dataset_names to run (overrides screen_set)"),
     batch_size: int = typer.Option(100),
@@ -224,6 +227,7 @@ def run(
         "acquisition's default prompt.",
     ),
     model_param: Optional[list[str]] = typer.Option(None, "--model-param", help="Model override as key=value (repeatable)"),
+    acq_param: Optional[list[str]] = typer.Option(None, "--acq-param", help="Acquisition override as key=value (repeatable), e.g. --acq-param weight=1.0"),
     no_persist: bool = typer.Option(False, "--no-persist"),
     sweep_id: Optional[str] = typer.Option(None, "--sweep-id", help="Fixed sweep ID (required for --resume to match prior run directories)."),
     resume: bool = typer.Option(False, "--resume", help="Skip screens whose result.json already exists from a prior run."),
@@ -237,7 +241,7 @@ def run(
 
     _warn_if_warm_start_wasted(warm_start, [acq])
 
-    acq_overrides: dict = {}
+    acq_overrides: dict = _parse_kv_params(acq_param)
     loaded_lm = _load_lm_config_or_exit(lm_config)
     if loaded_lm is not None:
         if acq.lower() in _LLM_CLIENT_ACQS:

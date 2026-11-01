@@ -221,6 +221,10 @@ def load_lm_config(
         presence_penalty=_num("presence_penalty"),
         repetition_penalty=_num("repetition_penalty"),
         disable_thinking=resolved_disable_thinking,
+        reasoning_effort=(
+            str(lm["reasoning_effort"]) if lm.get("reasoning_effort") else None
+        ),
+        requests_per_minute=_num("requests_per_minute"),
         use_max_completion_tokens=bool(lm.get("use_max_completion_tokens", False)),
         timeout=float(lm["timeout"]) if lm.get("timeout") is not None else 300.0,
         extra_headers={str(k): str(v) for k, v in extra_headers.items()},

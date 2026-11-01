@@ -1,0 +1,56 @@
+# OpenAI GPT-OSS-120B through Amazon Bedrock's Mantle gateway (OpenAI-compatible route).
+#
+# Why this model rather than GPT-5.6 Sol: the proprietary OpenAI models (gpt-5.6-sol, gpt-6-sol,
+# gpt-5.5) return "not available for this account" on this account, through every route tried --
+# Converse, the bedrock-runtime /openai/v1 route, and the Mantle /v1 route -- with both a Bedrock
+# API key and SigV4. GPT-OSS-120B is an OpenAI model that this account's Mantle key does grant,
+# and at 120B it is a far stronger warm start than Gemini 3.5 Flash-Lite.
+#
+# Credentials and endpoint come from the environment, never this file:
+#   AWS_BEARER_TOKEN_BEDROCK=<Mantle API key, the ABSK... one>
+#   BEDROCK_BASE_URL=https://bedrock-mantle.us-east-1.api.aws/v1
+#
+# Usage:
+#   assayloop run --model null --acq llm_single --screen-set paper_validation --n-steps 3 \
+#       --lm-config configs/lm/collect-gpt-oss-120b-bedrock.yaml
+#
+# Measure spend with:
+#   uv run python bedrock_cost.py <sweep-id> --in-price <in> --out-price <out>
+
+defaults:
+  - collect-predictions
+
+model_name: "gpt-oss-120b"
+
+lm:
+  provider: "local"                       # -> the OpenAI-compatible client
+  model: "openai.gpt-oss-120b"            # verified invocable with this account's Mantle key
+  api_base: "${BEDROCK_BASE_URL}"         # unset => loud error, not a 401
+  api_key: "${AWS_BEARER_TOKEN_BEDROCK}"
+
+  # This route takes max_completion_tokens, not max_tokens. GPT-OSS reasons before answering and
+  # the reasoning counts against this budget: a 10-gene answer already cost ~516 tokens, so leave
+  # generous headroom for a 100-gene batch and watch finish_reason for "length".
+  use_max_completion_tokens: true
+  max_tokens: 16000
+
+  temperature: 1.0
+
+  # GPT-OSS accepts reasoning_effort (low|medium|high; default medium). Left unset so the pilot
+  # measures the model's natural spend -- set it to "low" if output tokens dominate the bill.
+
+  # Pace requests client-side to stay inside the Bedrock per-model quota for your account
+  # (Service Quotas -> Amazon Bedrock -> requests per minute). 20 is a placeholder.
+  requests_per_minute: 20
+
+  timeout: 900
+  max_retries: 8
+  retry_max_elapsed_s: 1800
+
+  # The shared base config may set vLLM-only sampling extensions; this endpoint rejects them
+  # with a 400. Null them out explicitly.
+  top_p: null
+  top_k: null
+  min_p: null
+  presence_penalty: null
+  repetition_penalty: null

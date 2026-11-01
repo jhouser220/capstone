@@ -96,6 +96,157 @@ Open-vocabulary LLM acquisitions use the paper's shared f2 gene universe by defa
 are replayed from that sweep, then AssayFormer continues with them as context. For the llm
 provider you set `ASSAYLOOP_LLM_PROVIDER` and that provider's key in `.env`.
 
+## AssayFormer + DepMap
+
+A fork addition, and this project's standard method: AssayFormer's ranking fused by
+reciprocal rank with a **DepMap co-essentiality** kernel. Each round, the genes already
+revealed as hits define a query direction in 808-dimensional dependency-profile space
+(difference of means between revealed hits and non-hits); every candidate is scored by its
+profile's agreement with that direction, and the two rankings are combined.
+
+Held out on the benchmark folds it is worth **+0.307 adjusted EF per screen
+[+0.222, +0.398]** over AssayFormer alone (348 screens, family bootstrap). The acquisition
+is `codep_seed`; it makes no API calls.
+
+### Prerequisites
+
+Download DepMap `CRISPRGeneEffect.csv` (as `achilles.csv`) and `Model.csv` into one
+directory, then:
+
+```bash
+# 1. cache the wide CSVs as .npz (minutes -> seconds on every later run)
+python scripts/diagnostics/depmap_to_npz.py ~/depmap
+
+# 2. build the ablated atlas. The default output is achilles_noeval2.npz (764 lines).
+python scripts/diagnostics/build_noeval_atlas.py --depmap-dir ~/depmap
+
+# 3. confirm no evaluation screen's own cell line survives in it (exits 1 if one does)
+python scripts/diagnostics/audit_atlas_lines.py --depmap-dir ~/depmap \
+    --atlas ~/depmap/achilles_noeval2.npz
+```
+
+An ablated atlas is `achilles.npz` with every Achilles cell line used by an evaluation
+screen removed, so that "no screen's own cell line is in the atlas" holds **by
+construction** rather than by audit. `achilles.npz` itself (all 808 lines) is superseded.
+
+**There are two ablated atlases, and the difference matters for reading old results.**
+
+| file | lines | status |
+|---|---|---|
+| `achilles_noeval.npz` | 768 | what **every recorded result in this repo used**. Drops the 40 lines a name match reaches. Four hTERT-RPE1 subclones (`RPE1-ss6/ss48/ss51/ss77`) survive it, and 61 evaluation screens use that line — so for 11% of the folds the by-construction claim does **not** hold. Rebuild it with `--legacy`. |
+| `achilles_noeval2.npz` | **764** | the corrected default. Adds those four via the builder's `EXTRA_DROP`. Audits clean. **Use this for new campaigns.** |
+
+The gap was a name-matching failure, not a build failure: the drop set is keyed on
+`cell_line` strings, and `norm("hTERT-RPE1")` shares no form with `norm("RPE1-ss48")`.
+Step 3 is the check that catches this class of problem; run it after any atlas rebuild.
+
+**It changes no result.** Re-running AF + DepMap on all 61 affected screens against the
+corrected atlas moves the paired delta by **-0.0012** on the `validation` fold and
+**-0.0070** on `test` — against a reported +0.307 [+0.222, +0.398] per screen, about 2% of
+the effect and far inside the interval. Per screen the median change is exactly **0.0**,
+43 of 61 are unchanged in hits, and the direction is 18 worse / 21 better. The recorded
+numbers stand as reported; they need the exception stated rather than the blanket claim.
+
+**Do not mix the two in one table**, and do not overwrite `achilles_noeval.npz` — every
+stored `result.json` names it, and replacing it in place would make their provenance wrong.
+The scripts under `scripts/external/` still default to the 768-line file so their recorded
+outputs stay reproducible; pass `--atlas ~/depmap/achilles_noeval2.npz` for new work.
+
+### Running it
+
+```bash
+CKPT=<assayformer-ckpt-dir>        # the HF snapshot holding model_last.pt and vocab.json
+
+uv run assayloop run --model amortized_ranker --acq codep_seed \
+    --screen-set paper_test --n-steps 10 --batch-size 100 \
+    --full-genome --min-screen-freq 2 \
+    --model-param checkpoint=$CKPT --model-param ckpt_file=model_last.pt \
+    --model-param device=cuda \
+    --acq-param profile_npz=~/depmap/achilles_noeval2.npz \
+    --acq-param weight=0.5 --acq-param knn_weight=0.0 \
+    --acq-param query=diffmeans --acq-param fuse=rrf \
+    --sweep-id my-codep-run --tag my-codep-run
+```
+
+| `--acq-param` | Default | What |
+|---|---|---|
+| `profile_npz` | *required* | the atlas; required even at `weight=0`, where it is loaded and contributes nothing |
+| `weight` | `1.0` | DepMap kernel weight. **0.5 is the deployed value**; it peaks there in both directions |
+| `knn_weight` | `0.0` | a second, screen-kNN term. Unresolved and negative on three of four sets — leave off |
+| `query` | `diffmeans` | `diffmeans` subtracts the non-hit mean; `centroid` uses hits only and is weaker |
+| `fuse` | `rrf` | `rrf` is scale-free rank fusion; `zsum` standardises instead |
+| `min_seeds` | `2` | revealed hits needed before the kernel engages. Optimal in both directions |
+
+**The baseline is nested.** `--acq-param weight=0.0` reproduces plain AssayFormer pick for
+pick (`tests/test_codep_seed.py` pins this), so run it as the paired control rather than
+`--acq greedy` and every other code path stays identical:
+
+```bash
+# ... same command, only this line changes
+    --acq-param weight=0.0 --acq-param knn_weight=0.0 \
+```
+
+### The candidate pool matters, and is not a free choice
+
+`--full-genome --min-screen-freq 2` acquires from the **f2 universe**: the union of the
+screen set's libraries, keeping genes measured in at least two. Picks landing outside the
+screen being scored are *forgiven* — they consume a slot but do not count against EF, so
+the effective budget is `1000 - forgiven`, not 1000.
+
+That convention exists for **open-vocabulary LLM policies**, which name genes a given
+library never measured. `codep_seed` is a closed-vocabulary ranker over a supplied
+candidate list, so it needs no such protection, and the forgiveness inflates its absolute
+EF unevenly across sets (mean effective budget 915 on `paper_test`, 823 on the
+`validation` fold, **309** on the `test` fold).
+
+| you want to… | pool | flag |
+|---|---|---|
+| report absolute performance | the screen's own library | omit `--full-genome` (the default), or `--screen-library` |
+| compare against the paper's table | the shared f2 universe | `--full-genome --min-screen-freq 2` |
+| compare against an LLM arm | whatever that arm used | must match, since LLM arms require the shared pool |
+
+The paired AF vs AF + DepMap delta is robust to the choice (+0.229 library pool, +0.249
+shared f2, same 348 screens) because both arms absorb identical forgiveness. Absolute EF
+is not. **Never put numbers from two different pools in one table.**
+
+### Scoring a run
+
+```bash
+# paired delta against the nested weight-0 baseline, family bootstrap
+python scripts/diagnostics/codep_gated.py --screen-set validation \
+    --off <baseline-sweep-id> --on <codep-sweep-id> \
+    --dir output/runs --exclude-set paper_validation --quiet
+```
+
+`output/runs` is sorted into one folder per method tested, so a family's baseline and its
+treatment arm live in different directories (`af_alone_baseline/` and `af_depmap/`). The
+scorers resolve a sweep id to whichever folder holds it via
+`scripts/diagnostics/run_paths.py`, so passing the root is correct.
+`output/runs/README.md` indexes every folder. Note `--resume` does **not** search: move a
+sweep back up to `output/runs/` before resuming it.
+
+### Screens outside AssayBench
+
+`scripts/external/run_external.py` runs both arms over externally built `ScreenRecord`s
+(seven published papers are set up this way; see `scripts/external/SOURCES.md` for each
+source file, sheet and hit-call column, plus rebuild commands):
+
+```bash
+python scripts/external/run_external.py --screens <pickle> \
+    --atlas ~/depmap/achilles_noeval2.npz --tag mypaper \
+    --out output/runs/external/mypaper_results.json
+```
+
+`--atlas` is passed explicitly here because the script's own default is still the 768-line
+`achilles_noeval.npz`, which is what its recorded results used.
+
+It defaults to the screen's own library as the pool, so every pick is measured and the
+effective budget is exactly 1000. Pass `--universe <genes.json>` for a fixed cross-screen
+pool instead. A screen outside AssayBench cannot share a cell line with an evaluation
+screen by definition, so the atlas ablation is not what protects it — the leakage argument
+there is that the paper postdates every fold, which `scripts/external/SOURCES.md` records
+per dataset.
+
 ## Screen sets
 
 ```python

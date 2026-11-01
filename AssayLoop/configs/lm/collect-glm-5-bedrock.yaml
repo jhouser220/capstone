@@ -1,0 +1,60 @@
+# GLM-5 through Amazon Bedrock's OpenAI-compatible Chat Completions endpoint.
+#
+# Why this model: GPT-5.6 Sol, GPT-6 Sol and GPT-5.5 all return 403 "not available for this
+# account" on this Bedrock account (proprietary OpenAI models need a separate entitlement).
+# GLM-5 is the closest available match to a model the paper actually reports: the paper's
+# GLM-5.1 row is the teacher whose traces AssayLLM was fine-tuned on (configs/lm/collect-GLM-5.1.yaml
+# serves `zai-org/GLM-5.1-FP8` locally; Bedrock hosts `zai.glm-5`).
+#
+# Credentials and endpoint come from the environment, never this file:
+#   AWS_BEARER_TOKEN_BEDROCK=<Mantle API key, the ABSK... one>
+#   BEDROCK_BASE_URL=https://bedrock-mantle.us-east-1.api.aws/v1
+# (Verified working on the Mantle /v1 route. Note the Mantle /openai/v1 route is OpenAI-models
+# only and rejects zai.glm-5 with "isn't supported on this route".)
+#
+# Usage:
+#   assayloop run --model null --acq llm_single --screen-set paper_validation --n-steps 3 \
+#       --lm-config configs/lm/collect-glm-5-bedrock.yaml
+#
+# Cost: ~$1/M input, ~$3.20/M output (third-party aggregators, May-Jun 2026 -- verify on the AWS
+# pricing page). The 60-call n=3 warm start is ~$0.06 of input plus the output term, so cents to
+# a few dollars depending on how much the model thinks. Measure it with bedrock_cost.py:
+#   uv run python bedrock_cost.py <sweep-id> --in-price 1.0 --out-price 3.20
+
+defaults:
+  - collect-predictions
+
+model_name: "glm-5"
+
+lm:
+  provider: "local"                       # -> the OpenAI-compatible client
+  model: "zai.glm-5"                      # verified invocable on this account
+  api_base: "${BEDROCK_BASE_URL}"         # unset => loud error, not a 401
+  api_key: "${AWS_BEARER_TOKEN_BEDROCK}"
+
+  # Bedrock's OpenAI-compatible endpoint takes max_completion_tokens.
+  use_max_completion_tokens: true
+  max_tokens: 16000                       # covers thinking + the ~500-token answer
+
+  temperature: 1.0
+  top_p: 0.95                             # matches the paper's GLM-5.1 config
+
+  # Thinking stays ON (inherited enable_thinking: true), matching the paper's GLM-5.1 run.
+  # reasoning_effort is deliberately NOT set: this endpoint has not been checked for it, and an
+  # unknown field in extra_body risks a 400. Watch finish_reason for "length" instead.
+
+  # Pace requests client-side to stay inside the Bedrock per-model quota for your account
+  # (Service Quotas -> Amazon Bedrock -> requests per minute). 20 is a placeholder.
+  requests_per_minute: 20
+
+  # A thinking call can take minutes; bound a single call and retry transient errors.
+  timeout: 900
+  max_retries: 8
+  retry_max_elapsed_s: 1800
+
+  # The shared base config may set vLLM-only sampling extensions; Bedrock rejects them
+  # with a 400. Null them out explicitly.
+  top_k: null
+  min_p: null
+  presence_penalty: null
+  repetition_penalty: null

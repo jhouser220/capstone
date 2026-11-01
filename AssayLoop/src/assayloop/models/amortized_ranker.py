@@ -78,6 +78,32 @@ class AmortizedRankerModel(Model):
         desc_emb_by_name: optional ``{dataset_name: vector}`` to avoid
             recomputing description embeddings during evaluation.
         device: "auto" | "cpu" | "cuda".
+
+        ctx_ensemble: number of context variants to encode per prediction (K).
+            The screen latent û is a deterministic function of the observed-gene
+            *set*, so bagging that set gives K different û for the same history;
+            their rankings are then fused. ``1`` (the default) is the released
+            model's exact behaviour -- the baseline is nested, so the worst case
+            is parity. Costs K forward passes and no API calls. The checkpoint is
+            ``variational: false`` with ``dropout: 0.0``, so perturbing the
+            context is the only available source of û spread.
+        ctx_subsample: fraction of observations kept in each variant when
+            ``ctx_ensemble > 1``. The first variant always keeps the full
+            context, so the ensemble contains the unmodified model.
+        ctx_fuse: "mean" (average the scores) or "rrf" (reciprocal rank fusion
+            over the K rankings, k=60).
+        ctx_weak_hits: what to do with revealed hits whose ``relevance_score``
+            is in the weakest ``ctx_weak_q`` quantile of this screen's revealed
+            hits -- "keep" (default, unmodified), "drop" (remove the observation
+            from the context) or "negative" (keep the gene but flip its label).
+            ``relevance_score`` is revealed per acquisition by the task
+            (gene_batch.py), so this uses no privileged information. Motivated by
+            the measurement that the weak tail of the hit labels is close to
+            noise on annotation coverage.
+        ctx_weak_q: the quantile boundary for the above (0.25 = weakest quarter).
+        ctx_seed: seed for the subsampling RNG. Variants are drawn from a
+            generator seeded by (ctx_seed, number of observations), so a given
+            round of a given screen is reproducible.
     """
 
     def __init__(
@@ -93,6 +119,13 @@ class AmortizedRankerModel(Model):
         tokenizer: Any = None,
         ignore_context: bool = False,
         device: str | None = "auto",
+        ctx_ensemble: int = 1,
+        ctx_subsample: float = 0.8,
+        ctx_fuse: str = "mean",
+        ctx_weak_hits: str = "keep",
+        ctx_weak_q: float = 0.25,
+        ctx_seed: int = 0,
+        score_mode: str = "full",
     ):
         from ..amortized.data import GeneVocab
         from ..amortized.model import RankerConfig, RankerNet
@@ -108,6 +141,30 @@ class AmortizedRankerModel(Model):
         # one-shot ranking). Lets eval-ranker measure the marginal value of
         # the context.
         self.ignore_context = bool(ignore_context)
+
+        # -- test-time context interventions (no retraining; K=1 + "keep" is
+        # -- exactly the released model)
+        self.ctx_ensemble = max(1, int(ctx_ensemble))
+        self.ctx_subsample = float(ctx_subsample)
+        self.ctx_fuse = str(ctx_fuse)
+        self.ctx_weak_hits = str(ctx_weak_hits)
+        self.ctx_weak_q = float(ctx_weak_q)
+        self.ctx_seed = int(ctx_seed)
+        # Ablation ladder over the two additive terms of a(g) = u.v_g + b_g:
+        #   full       both terms (the released model)
+        #   no_bias    drop b_g -- the purely screen-conditioned part
+        #   bias_only  drop u.v_g -- a fixed global gene ranking that ignores
+        #              the screen entirely, the floor any policy should beat
+        self.score_mode = str(score_mode)
+        if self.score_mode not in ("full", "no_bias", "bias_only"):
+            raise ValueError(f"score_mode must be full|no_bias|bias_only, got {score_mode!r}")
+        if self.ctx_fuse not in ("mean", "rrf"):
+            raise ValueError(f"ctx_fuse must be 'mean' or 'rrf', got {ctx_fuse!r}")
+        if self.ctx_weak_hits not in ("keep", "drop", "negative"):
+            raise ValueError(
+                f"ctx_weak_hits must be 'keep', 'drop' or 'negative', got {ctx_weak_hits!r}")
+        if not 0.0 < self.ctx_subsample <= 1.0:
+            raise ValueError(f"ctx_subsample must be in (0, 1], got {ctx_subsample}")
 
         if checkpoint is not None:
             ckpt = Path(checkpoint)
@@ -197,6 +254,62 @@ class AmortizedRankerModel(Model):
             enc["input_ids"].to(self.device), enc["attention_mask"].to(self.device)
         )
 
+    # -- test-time context interventions -----------------------------------
+
+    def _denoise(self, ids: list[int], hits: list[int],
+                 rels: list[float]) -> tuple[list[int], list[int], int]:
+        """Act on the weakest revealed hits. Returns (ids, hits, n_touched).
+
+        ``rels`` holds the ``relevance_score`` the task revealed with each
+        observation. Only hits are considered: a non-hit carries no strength to
+        be weak about, and dropping one would also discard the "already tested"
+        signal the context exists to convey.
+        """
+        if self.ctx_weak_hits == "keep":
+            return ids, hits, 0
+        hit_rels = [r for h, r in zip(hits, rels) if h and r == r]   # r == r drops NaN
+        if len(hit_rels) < 4:          # too few to define a quantile meaningfully
+            return ids, hits, 0
+        thr = float(np.quantile(hit_rels, self.ctx_weak_q))
+        out_ids, out_hits, touched = [], [], 0
+        for i, h, r in zip(ids, hits, rels):
+            weak = bool(h) and r == r and r <= thr
+            if not weak:
+                out_ids.append(i); out_hits.append(h); continue
+            touched += 1
+            if self.ctx_weak_hits == "drop":
+                continue
+            out_ids.append(i); out_hits.append(0)      # "negative"
+        return out_ids, out_hits, touched
+
+    def _context_variants(self, ids: list[int], hits: list[int]
+                          ) -> list[tuple[list[int], list[int]]]:
+        """K (ids, hits) context sets. Variant 0 is always the full context, so
+        the ensemble strictly contains the unmodified model."""
+        variants = [(ids, hits)]
+        if self.ctx_ensemble == 1 or not ids:
+            return variants
+        keep = max(1, int(round(self.ctx_subsample * len(ids))))
+        if keep >= len(ids):
+            return variants * self.ctx_ensemble
+        rng = np.random.default_rng((self.ctx_seed, len(ids)))
+        for _ in range(self.ctx_ensemble - 1):
+            sel = np.sort(rng.choice(len(ids), size=keep, replace=False))
+            variants.append(([ids[i] for i in sel], [hits[i] for i in sel]))
+        return variants
+
+    def _fuse(self, scores: np.ndarray) -> np.ndarray:
+        """(K, L) per-variant scores -> (L,) fused score, higher is better."""
+        if scores.shape[0] == 1:
+            return scores[0]
+        if self.ctx_fuse == "mean":
+            return scores.mean(axis=0)
+        # RRF: rank 0 = best within each variant, then sum 1/(60 + rank).
+        order = np.argsort(-scores, axis=1, kind="stable")
+        ranks = np.empty_like(order)
+        np.put_along_axis(ranks, order, np.arange(scores.shape[1])[None, :], axis=1)
+        return (1.0 / (60.0 + ranks)).sum(axis=0)
+
     def name(self) -> str:
         return "amortized_ranker"
 
@@ -217,6 +330,7 @@ class AmortizedRankerModel(Model):
         # Diagnostic ablation: drop the AL context entirely (static ranking).
         obs = [] if self.ignore_context else observations
         n_context = len(obs)
+        n_weak = 0
         if self.encoder_type == "modernbert_text":
             desc_repr = self._encode_text_context(ctx, obs)  # (1, d_gene)
         else:
@@ -231,32 +345,60 @@ class AmortizedRankerModel(Model):
             # Build the observed-gene context from cumulative observations.
             ctx_ids: list[int] = []
             ctx_hits: list[int] = []
+            ctx_rels: list[float] = []
             for o in obs:
                 lbl = o.label
-                hit = bool(lbl.get("hit")) if isinstance(lbl, dict) else bool(lbl)
+                is_d = isinstance(lbl, dict)
+                hit = bool(lbl.get("hit")) if is_d else bool(lbl)
                 ctx_ids.append(self.vocab.to_idx(str(o.candidate)))
                 ctx_hits.append(1 if hit else 0)
+                ctx_rels.append(float(lbl.get("relevance_score", float("nan")))
+                                if is_d else float("nan"))
 
-            if ctx_ids:
-                ci = torch.tensor([ctx_ids], dtype=torch.int64, device=self.device)
-                ch = torch.tensor([ctx_hits], dtype=torch.int64, device=self.device)
-                cpad = torch.zeros(1, len(ctx_ids), dtype=torch.bool, device=self.device)
+            ctx_ids, ctx_hits, n_weak = self._denoise(ctx_ids, ctx_hits, ctx_rels)
+            variants = self._context_variants(ctx_ids, ctx_hits)
+            K = len(variants)
+            Lc = max(len(v[0]) for v in variants)
+
+            if Lc:
+                ci = torch.zeros(K, Lc, dtype=torch.int64, device=self.device)
+                ch = torch.zeros(K, Lc, dtype=torch.int64, device=self.device)
+                cpad = torch.ones(K, Lc, dtype=torch.bool, device=self.device)
+                for b, (vi, vh) in enumerate(variants):
+                    n = len(vi)
+                    if not n:
+                        continue
+                    ci[b, :n] = torch.tensor(vi, dtype=torch.int64, device=self.device)
+                    ch[b, :n] = torch.tensor(vh, dtype=torch.int64, device=self.device)
+                    cpad[b, :n] = False
             else:
-                ci = torch.zeros(1, 0, dtype=torch.int64, device=self.device)
-                ch = torch.zeros(1, 0, dtype=torch.int64, device=self.device)
-                cpad = torch.zeros(1, 0, dtype=torch.bool, device=self.device)
+                ci = torch.zeros(K, 0, dtype=torch.int64, device=self.device)
+                ch = torch.zeros(K, 0, dtype=torch.int64, device=self.device)
+                cpad = torch.zeros(K, 0, dtype=torch.bool, device=self.device)
 
-            desc_repr = self.net.encode(desc, ci, ch, cpad)  # (1, d_gene)
+            desc_repr = self.net.encode(desc.expand(K, -1), ci, ch, cpad)  # (K, d_gene)
 
+        K = desc_repr.shape[0]
         cand_ids = torch.tensor(
             [[self.vocab.to_idx(str(c)) for c in candidates]],
             dtype=torch.int64, device=self.device,
-        )
-        scores = self.net.score_ids(desc_repr, cand_ids)[0].float().cpu().numpy()
+        ).expand(K, -1)
+        if self.score_mode == "bias_only":
+            per_variant = self.net.gene_bias[cand_ids].float().cpu().numpy()
+        elif self.score_mode == "no_bias":
+            per_variant = torch.einsum(
+                "bd,bld->bl", desc_repr, self.net.gene_emb(cand_ids)
+            ).float().cpu().numpy()
+        else:
+            per_variant = self.net.score_ids(desc_repr, cand_ids).float().cpu().numpy()
+        scores = self._fuse(per_variant)
 
         score_map = {c: float(scores[i]) for i, c in enumerate(candidates)}
         self._meta = {"n_context": n_context, "n_candidates": len(candidates),
-                      "ignore_context": self.ignore_context}
+                      "ignore_context": self.ignore_context,
+                      "ctx_ensemble": K, "ctx_fuse": self.ctx_fuse,
+                      "ctx_weak_hits": self.ctx_weak_hits,
+                      "ctx_weak_dropped": int(n_weak)}
         return ModelPrediction(
             scores=score_map,
             metadata={"name": self.name(), "checkpoint": self._ckpt, **self._meta},

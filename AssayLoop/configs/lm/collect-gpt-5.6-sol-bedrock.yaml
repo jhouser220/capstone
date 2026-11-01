@@ -1,0 +1,58 @@
+# GPT-5.6 Sol through Amazon Bedrock's OpenAI-compatible Chat Completions endpoint.
+#
+# Credentials and endpoint come from the environment, never this file:
+#   AWS_BEARER_TOKEN_BEDROCK=<Bedrock API key from the AWS console>
+#   BEDROCK_BASE_URL=https://bedrock-runtime.us-west-2.amazonaws.com/openai/v1
+#     (or the newer endpoint AWS now recommends:
+#      https://bedrock-mantle.us-west-2.api.aws/v1)
+#
+# Usage:
+#   assayloop run --model null --acq llm_single --screen-set paper_validation --n-steps 3 \
+#       --lm-config configs/lm/collect-gpt-5.6-sol-bedrock.yaml
+#
+# Cost: input is negligible for this task (~1k tokens/call); output dominates and REASONING
+# TOKENS ARE BILLED AS OUTPUT. At the Aug-2026 promotional rate ($4/M in, $20/M out) the
+# 60-call n=3 warm start costs ~$0.75 if the model barely reasons and ~$77 if every call runs
+# to a 64k ceiling. Hence the conservative reasoning_effort and max_tokens below -- raise them
+# deliberately, and watch finish_reason for "length" (a truncated answer still bills in full).
+
+defaults:
+  - collect-predictions
+
+model_name: "gpt-5.6-sol"
+
+lm:
+  provider: "local"                       # -> the OpenAI-compatible client
+  # Bedrock inference profile ID. Use the one your account/region has access to:
+  #   us.openai.gpt-5.6-sol      (US cross-region)
+  #   global.openai.gpt-5.6-sol  (global cross-region)
+  model: "us.openai.gpt-5.6-sol"
+  api_base: "${BEDROCK_BASE_URL}"         # unset => loud error, not a 401
+  api_key: "${AWS_BEARER_TOKEN_BEDROCK}"
+
+  # Reasoning models take max_completion_tokens, not max_tokens.
+  use_max_completion_tokens: true
+  max_tokens: 16000                       # covers reasoning + the ~500-token answer
+
+  # Cost control. Omit this field to get the model's default effort, which is likely
+  # several times more expensive. Accepted values per OpenAI: minimal|low|medium|high.
+  reasoning_effort: "low"
+
+  temperature: 1.0                        # reasoning models expect 1.0
+
+  # Pace requests client-side to stay inside the Bedrock per-model quota for your account
+  # (Service Quotas -> Amazon Bedrock -> requests per minute). 20 is a placeholder.
+  requests_per_minute: 20
+
+  # A reasoning call can take minutes; bound a single call and retry transient errors.
+  timeout: 900
+  max_retries: 8
+  retry_max_elapsed_s: 1800
+
+  # The shared base config may set vLLM-only sampling extensions; Bedrock rejects them
+  # with a 400. Null them out explicitly.
+  top_p: null
+  top_k: null
+  min_p: null
+  presence_penalty: null
+  repetition_penalty: null
