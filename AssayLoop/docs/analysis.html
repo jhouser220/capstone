@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Analysis — AssayLoop</title>
+<meta name="description" content="How Gemini and AssayFormer behave on two distinct screens, which biology LLMs favor, and how observed hits change AssayFormer's predictions."/>
+<link rel="stylesheet" href="assets/css/site.css?v=ce86ddc2"/>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+  <div class="container-wide">
+    <p class="kicker">Qualitative analysis</p>
+    <h1>What the models learned</h1>
+    <p class="lede">
+      The enrichment factor says which method found more hits. It does not say how these methods
+      did that. We dig into two distinct screens to understand the difference between Gemini and
+      AssayFormer, as well as how they combine.
+    </p>
+
+    <h2 id="handoff">How Gemini and AssayFormer differ across two screens</h2>
+    <p>
+      The figure follows an NF-&kappa;B / TNF signaling screen on the left and an AAV transgene
+      silencing screen on the right. Each screen is run with AssayFormer, Gemini-3.1-Pro, and the
+      AssayLoop handoff from Gemini to AssayFormer. Within each panel, the upper histogram shows
+      the Reactome composition of the genes proposed in each round; the lower histogram shows the
+      pathways represented among the hits. For example, DNA repair is the largest category in
+      AssayFormer's first proposed batch for the AAV screen.
+    </p>
+    <ul class="bullets">
+      <li>Gemini and AssayFormer begin with substantially different pathway compositions.</li>
+      <li>Gemini finds more hits in the first three rounds, but its yield drops afterward.</li>
+      <li>When AssayFormer takes over after round three, it proposes a different set of genes that
+        contains more hits.</li>
+      <li>AssayFormer proposes more genes in the <em>Other</em> category, consistent with Gemini
+        favoring better-known genes and pathways.</li>
+      <li>Gemini does not always use the full 100-gene acquisition budget.</li>
+    </ul>
+    <div data-figures="rollout_composition"></div>
+
+    <hr class="section-divider"/>
+
+    <h2 id="feedback-example">How feedback changes the next batch</h2>
+    <p>
+      In a representative NF-&kappa;B / TNF signaling screen, AssayFormer recovers 60 of 169 true
+      hits in ten rounds. At round four, the 24 hit labels already observed rerank the next batch:
+      the label-aware policy recovers 11 hits spanning nine pathway categories, compared with seven
+      hits spanning four categories when the labels are withheld. Leave-one-label-out
+      counterfactuals identify which observations drive individual rank changes. For example,
+      CYFIP1 rises from rank 1,078 without labels to rank 18 with labels; withholding just the
+      observed KCTD10 hit lowers CYFIP1 from rank 18 to rank 62.
+    </p>
+    <figure class="hero-figure">
+      <img src="assets/figures/paper_worked_example.png?v=97cf05c3"
+           alt="AssayFormer trajectory on an NF-kappa-B screen, a comparison of the next batch with and without hit labels, and rank changes caused by experimental feedback." loading="lazy"/>
+      <figcaption>
+        <strong>Figure 3E&ndash;G: a worked AssayFormer trajectory.</strong> The complete trajectory
+        (E), composition of the fourth batch with and without labels (F), and changes in candidate
+        rank induced by the observed outcomes (G).
+      </figcaption>
+    </figure>
+
+    <hr class="section-divider"/>
+
+    <h2 id="pathways">LLMs converge on similar biological programs</h2>
+    <p>
+      The heatmap aggregates every requested gene across the 20 test screens and assigns it to a
+      top-level Reactome pathway. We calculate a random baseline as the composition expected from
+      uniform sampling over the full candidate universe. Each cell compares a model's observed
+      pathway share with that random expectation: orange is over-represented, blue is
+      under-represented, and the color scale is capped from 0.5&times; to 2&times;.
+    </p>
+    <p>
+      The LLMs have strikingly similar acquisition signatures. They favor RNA and protein
+      metabolism while under-representing bulk metabolism and developmental biology. Differences
+      among LLMs are small compared with their differences from methods such as Screen-kNN, and their
+      effective pathway counts fall in a narrow range. Kimi-K2.6 and Claude Opus-4.8 also request
+      fewer unique genes because they often return fewer than the requested 100 genes, possibly
+      reflecting constraints from biological safety training. Hover any cell to see its raw
+      pathway share, EP-D, total unique genes, and percentage of Reactome-annotated picks. The
+      <a href="diversity.html">diversity explorer</a> explains effective pathways in more detail.
+    </p>
+    <div class="plot" id="pathway-heatmap"></div>
+    <p class="figure-caption" id="pathway-heatmap-caption"></p>
+
+    <hr class="section-divider"/>
+
+    <h2 id="influence">What one hit tells AssayFormer about the rest</h2>
+    <p>
+      For a probe gene and a target gene, influence is the change in AssayFormer's predicted score
+      for the target when the probe is added to the context as a hit. The interactive matrix uses
+      12 canonical cancer drivers as probes and 19 representative functional-module genes, plus
+      ATM, as targets. Orange means the observation raises the target score; blue means it lowers
+      it. Figure 5B deliberately uses a fixed, generic screen description and averages over ten
+      randomized 50-gene background histories, isolating context-independent relationships learned
+      by the model.
+    </p>
+    <p>
+      In the full analysis, influences among cancer drivers are generally weak, consistent with
+      these genes acting through distinct pathways such as RTK/RAS, PI3K, p53, Wnt, TGF-&beta;, and
+      homologous-recombination repair. The strongest effects occur within functional modules whose
+      members co-vary, including ribosome biogenesis, mitochondrial complex I and Fe-S assembly,
+      and mRNA decapping. Influence is also directional rather than symmetric: the correlation
+      between the matrix and its transpose is only 0.16, and 44% of reciprocal pairs have opposite
+      signs. For example, observing MDM2 raises PFDN4 by 0.33, whereas observing PFDN4 lowers MDM2
+      by 0.46.
+    </p>
+    <div class="plot" id="influence-matrix"></div>
+    <p class="figure-caption" id="influence-matrix-caption"></p>
+
+    <p>
+      After removing pairs already represented in STRING, CORUM, SIGNOR, MSigDB, or Reactome, the
+      strongest remaining positive and negative influences provide candidate hypotheses rather
+      than established interactions.
+    </p>
+    <div data-figures="influence"></div>
+
+    <h3>From generic to screen-specific context</h3>
+    <p>
+      The generic context in Figure 5B motivates a stricter question: because AssayFormer conditions
+      jointly on the screen description and observed history, do learned influences change in real,
+      specific assay contexts? Figure 5C searches for relationships that are substantially stronger
+      in one held-out screen than across the other 19. Both genes must be true hits in the focal
+      screen, and pairs already represented in STRING, CORUM, SIGNOR, MSigDB, or Reactome are
+      excluded.
+    </p>
+    <figure class="hero-figure">
+      <img src="assets/figures/bio_diversity_pairs_panel.svg?v=cf017fe3"
+           alt="Three screen-specific gene links with model influence in the matching screen versus other screens and a literature-supported biological rationale." loading="lazy"/>
+      <figcaption>
+        <strong>Figure 5C: literature-supported, screen-specific gene links.</strong> DCAF1 and
+        ZNF638 converge on the HUSH complex; IGHMBP2 and GCN1 connect through the response to
+        stalled ribosomes; and GTF3C1 and the ACTR5-containing INO80 complex converge at tRNA
+        genes. The darker bar is influence in the matching screen and the lighter bar is the mean
+        across the other 19 test screens.
+      </figcaption>
+    </figure>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js?v=4373b8c6" data-build="4bc6f836"></script>
+<script src="assets/js/figure-strip.js?v=2438d889"></script>
+<script src="assets/js/analysis.js?v=6fb76cfc"></script>
+</body>
+</html>

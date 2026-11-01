@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Results — AssayLoop</title>
+<meta name="description" content="The full AssayLoop results table: enrichment factor, nAUC, fraction of hits, shortfall, essentiality, and effective pathway coverage for every method in the paper."/>
+<link rel="stylesheet" href="assets/css/site.css?v=ce86ddc2"/>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+  <div class="container-wide">
+    <p class="kicker">Main results</p>
+    <h1>How the methods compare</h1>
+    <p class="lede">
+      All <span id="n-methods">&mdash;</span> methods from the paper's results table, on the same
+      <span id="n-screens">&mdash;</span> held-out screens and the same full-genome candidate pool.
+      Sort any column, filter by family, or search for a method.
+    </p>
+
+    <!-- Shown only when build_data.py was run with --allow-unavailable, i.e.
+         when some method in the table has no result on this build. Rows are
+         also individually marked; this says how many and why, so the gap is
+         legible before the reader starts scanning dashes. -->
+    <div class="callout danger" id="unavailable-note" hidden></div>
+
+    <div class="controls" id="controls">
+      <div class="control">
+        <label for="search">Search</label>
+        <input type="search" id="search" placeholder="e.g. Gemini, GRPO, BPMF"/>
+      </div>
+      <div class="control">
+        <label for="family">Family</label>
+        <select id="family"><option value="">All families</option></select>
+      </div>
+      <div class="control">
+        <label for="ablations">Ablations</label>
+        <select id="ablations">
+          <option value="hide">Hide ablation rows</option>
+          <option value="show">Show ablation rows</option>
+        </select>
+      </div>
+      <div class="control">
+        <label>&nbsp;</label>
+        <button class="button secondary" id="reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="leaderboard" id="table">
+        <thead><tr id="head"></tr></thead>
+        <tbody id="body"></tbody>
+      </table>
+    </div>
+    <p id="status" class="chart-status"></p>
+
+    <h2>Reading the columns</h2>
+    <ul class="bullets" id="notes"></ul>
+
+    <h2 id="scaling">Scaling</h2>
+    <p>
+      <strong>Performance scales with data, but not model size.</strong> AssayFormer models
+      (without input screen descriptions) are trained to identify scaling of in-context learning
+      capabilities. <strong>Top:</strong> Models are trained on varying amounts of data from 1 to
+      all training screens, and average performance curves are plotted. Both SFT and RL show this
+      performance increase, with RL boosting SFT performance. <strong>Top left plot:</strong> EF at
+      <em>k</em> acquisition steps shows that scaling is most effective during the first few steps
+      of the experiment. At 100 steps (10,000 genes sampled), models approach similar performance.
+      This is expected because even a random model will find all hits if it samples the entire
+      genome. <strong>Top right plot:</strong> Budget to acquire enough hits to satisfy a recall
+      threshold <em>m</em>. For example, to find <em>m</em> = 50% of the hits, the &lsquo;1349&rsquo;
+      model requires sampling less than 30% of the full genome. Note that RL rollouts stop at 10
+      steps during training, so these curves reflect out-of-distribution gains for RL performance.
+      <strong>Bottom:</strong> We also consider scaling model size from XS (0.28M parameters) to XL
+      (10.97M parameters), given the full training set. Here, we do not observe meaningful scaling
+      laws. We posit that larger pretraining datasets are required to show evidence of model
+      scaling. Note that scaling models has shown useful performance gains in pretrained LLMs on
+      the non-active learning setting of AssayBench (Figure 4).
+    </p>
+    <div data-figures="scaling"></div>
+
+    <h2 id="label-ablation">Who actually uses the feedback?</h2>
+    <p>
+      Run the same ten-round loop twice: once with the previous rounds' hit labels in the prompt,
+      and once with them stripped. The gap is a direct measurement of how much of a method's
+      performance comes from adapting to the experiment rather than from its prior. Every LLM
+      family gains from the feedback, but their in-context learning ability is worse than
+      AssayFormer, which motivates the AssayLoop handoff.
+    </p>
+    <div class="plot" id="ablation-chart"></div>
+
+    <hr class="section-divider"/>
+
+    <h2 id="lopo">Does it generalize to phenotypes it never saw?</h2>
+    <p>
+      Yes. We remove every training screen belonging to the phenotype category being evaluated and
+      then score the resulting leave-one-phenotype-out models across the full 20-screen test set.
+      AssayFormer falls from EF 4.83 to 4.59, a smaller drop than Screen-kNN (3.40 to 2.98), and the
+      LOPO AssayFormer remains above Screen-kNN trained on all phenotypes.
+    </p>
+    <div class="plot" id="lopo-chart"></div>
+    <p class="figure-caption">
+      <span class="label">Generalization to unseen phenotypes.</span> Enrichment factor on the full
+      test set for Screen-kNN and AssayFormer, trained either on all phenotype categories or with
+      the evaluated category excluded. This replaces the earlier per-phenotype breakdown.
+    </p>
+
+    <p class="footnote" id="dash">
+      A dash in an EP column is a refusal to score, not a zero: a method whose picks are mostly
+      unannotated cannot supply enough genes to calculate the metric.
+      <a href="diversity.html">More on what those columns measure &rarr;</a>
+    </p>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js?v=4373b8c6" data-build="4bc6f836"></script>
+<script src="assets/js/figure-strip.js?v=2438d889"></script>
+<script src="assets/js/results.js?v=33854161"></script>
+<script src="assets/js/lopo.js?v=560d9f70"></script>
+</body>
+</html>

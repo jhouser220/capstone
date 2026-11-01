@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pathway diversity — AssayLoop</title>
+<meta name="description" content="What biology each method actually goes after: effective Reactome pathway coverage at batch, screen, and dataset scope, and whether breadth costs enrichment."/>
+<link rel="stylesheet" href="assets/css/site.css?v=ce86ddc2"/>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+  <div class="container-wide">
+    <p class="kicker">Interactive</p>
+    <h1>What biology does each method go after?</h1>
+    <p class="lede">
+      Two methods can recover the same number of hits from completely different parts of the cell.
+      Effective Pathways counts how many distinct Reactome pathways a method's picks span. This is
+      done at the scale of a single 100-gene batch (EP-B), a whole screen (EP-S), and the full test
+      dataset (EP-D). The vocabulary is Reactome's 186 <strong>level-2 groups</strong> (Innate
+      Immune System, Cell Cycle Mitotic, Signaling by Receptor Tyrosine Kinases, &hellip;), so the
+      numbers read as counts of named biological programs. For example, you could say,
+      &ldquo;The average batch predicted by AssayFormer reflects EP-B = 19.3 Reactome pathways,
+      and predictions for the whole dataset cover EP-D = 65 pathways.&rdquo; For reference,
+      the expectation across uniform draws is <strong>21.7 / 56.4 / 81.6</strong> at the three scopes.
+    </p>
+
+    <h2>Effective pathways by scope</h2>
+    <div class="controls" id="controls">
+      <div class="control">
+        <label for="scope">Scope</label>
+        <select id="scope">
+          <option value="ep_b">EP-B &mdash; per batch (M = 30)</option>
+          <option value="ep_s">EP-S &mdash; per screen (M = 200)</option>
+          <option value="ep_d">EP-D &mdash; whole test set (M = 6000)</option>
+          <option value="vendi">Vendi score &mdash; embedding diversity</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="family">Family filter</label>
+        <select id="family"><option value="">All families</option></select>
+      </div>
+      <div class="control">
+        <label for="ablations">Ablations</label>
+        <select id="ablations">
+          <option value="hide">Hide ablation rows</option>
+          <option value="show">Show ablation rows</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="order">Order</label>
+        <select id="order">
+          <option value="value">By value</option>
+          <option value="table">Paper's table order</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="plot plot-tall" id="bars"></div>
+    <p class="figure-caption" id="bars-caption"></p>
+
+    <h2>How the metric works</h2>
+    <ul class="bullets">
+      <li><strong>Map genes to broad Reactome pathways.</strong> Each Reactome-annotated picked gene
+        is mapped to one of 186 level-2 pathway groups. We use these broad groups because
+        Reactome's 2,012 narrow leaf pathways are too specific: almost every gene in a 30-gene
+        sample would fall into a different group, making nearly every method look equally diverse.</li>
+      <li><strong>Give every gene one vote.</strong> If a gene belongs to several pathways, one of
+        them is sampled at random and the calculation is repeated many times. This prevents
+        well-studied genes with many pathway annotations from counting more heavily.</li>
+      <li><strong>Turn the spread into an intuitive count.</strong> The pathway distribution is
+        summarized as an effective number. A score of 19.3 means the picks are as broadly spread
+        as they would be across 19.3 equally represented pathways. Concentrating most picks in one
+        pathway lowers the score.</li>
+      <li><strong>Compare equal sample sizes.</strong> Every method is evaluated using the same
+        number of Reactome-annotated genes: <code id="m-batch">&mdash;</code> per batch,
+        <code id="m-screen">&mdash;</code> per screen, and
+        <code id="m-dataset">&mdash;</code> across the test dataset. This resampling step, called
+        rarefaction, prevents methods with more annotated picks from appearing more diverse simply
+        because they contributed more data. Compare methods within an EP column; the three scopes
+        use different sample sizes and should not be compared directly with one another.</li>
+      <li><strong>Leave unreliable comparisons blank.</strong> A score is reported only when at
+        least <span class="retention-floor" id="retention-floor">&mdash;</span> of the units at that
+        scope contain
+        enough annotated genes. Otherwise, keeping only the better-annotated units would make the
+        method look artificially diverse. Incomplete batches are excluded first because their
+        missing picks are already measured by Shortfall.</li>
+    </ul>
+
+    <h2>What that looks like</h2>
+    <p>
+      A visual illustration of the biology used by selected methods. Each sunburst lays one
+      method's proposed genes out over Reactome. The inner ring shows the eight largest top-level
+      categories plus everything else; the outer ring shows the more specific level-2 groups used
+      by the EP metric.
+    </p>
+    <div class="controls">
+      <div class="control">
+        <label for="sunburst-method">Show</label>
+        <select id="sunburst-method"></select>
+      </div>
+    </div>
+    <div class="swatch-key" id="sunburst-legend"></div>
+    <div class="plot" id="sunburst"></div>
+    <p class="figure-caption" id="sunburst-caption"></p>
+    <p class="figure-caption">
+      The methods are pulling from visibly different parts of the cell.
+      <a href="analysis.html#pathways">The analysis page has a heatmap showing the over- and
+      under-representation of different types of biology &rarr;</a>
+    </p>
+
+    <h2>Does breadth cost enrichment?</h2>
+    <p>
+      Does recovering more hits require a method to concentrate on fewer biological pathways? Each
+      point compares one method's enrichment factor with its pathway diversity. LLMs show clearly
+      lower diversity within individual batches (EP-B) and screens (EP-S), meaning their picks are
+      more concentrated in particular kinds of biology. That difference largely disappears at the
+      dataset level (EP-D): across all 20 test screens, LLMs collectively cover a similarly broad
+      range of biology. Switch the diversity axis to see how the relationship changes by scope, and
+      hover over a point to identify the method.
+    </p>
+    <div class="controls">
+      <div class="control">
+        <label for="scatter-scope">Diversity axis</label>
+        <select id="scatter-scope">
+          <option value="ep_s">EP-S &mdash; per screen</option>
+          <option value="ep_b">EP-B &mdash; per batch</option>
+          <option value="ep_d">EP-D &mdash; whole test set</option>
+          <option value="vendi">Vendi score</option>
+        </select>
+      </div>
+    </div>
+    <div class="plot" id="scatter"></div>
+    <p class="figure-caption" id="scatter-caption"></p>
+
+    <p class="footnote" id="floor">
+      A dash is not a zero. It means fewer than <span class="retention-floor">&mdash;</span> of the
+      relevant units contained enough Reactome-annotated genes for a fair comparison. Reporting
+      only the better-annotated units would bias the method's score upward, so the value is omitted.
+    </p>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js?v=4373b8c6" data-build="4bc6f836"></script>
+<script src="assets/js/diversity.js?v=cb5455fd"></script>
+<script src="assets/js/sunburst.js?v=d3123ba8"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Method — AssayLoop</title>
+<meta name="description" content="How AssayLoop is built: the benchmark as a sequential decision problem, BPMF initialisation, supervised training, the context-delta RL reward, and the LLM-to-AssayFormer handoff."/>
+<link rel="stylesheet" href="assets/css/site.css?v=ce86ddc2"/>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+  <div class="container">
+    <p class="kicker">Method</p>
+    <h1>How the loop is built</h1>
+    <p class="lede">
+      The work comprises three pieces: a framework that turns historical CRISPR screens into a
+      sequential decision problem, a transformer that learns an acquisition policy across all of
+      them, and a handoff rule that combines the strong priors of an LLM with the stronger adaptive
+      policy. This page covers the pipeline and every metric the paper reports.
+    </p>
+
+    <h2 id="pipeline">The pipeline</h2>
+    <p>
+      The whole method on one page. Panels A&ndash;B set up the task, C&ndash;E build AssayFormer,
+      and F&ndash;H put it all together into AssayLoop.
+    </p>
+    <figure class="hero-figure">
+      <img src="assets/figures/pipeline.png"
+           alt="Eight-panel overview of AssayLoop, from the benchmark construction through BPMF initialisation, supervised training and GRPO to the LLM handoff."/>
+    </figure>
+
+    <!-- The composed figure and the panel walkthrough are the same eight boxes
+         at two sizes, so without a break between them the page reads as the
+         figure repeating itself. -->
+    <hr class="section-divider"/>
+
+    <h2 id="panels-h">Panel by panel</h2>
+    <div id="panels" class="panel-grid"></div>
+    <p id="panels-status" class="chart-status"></p>
+
+    <hr class="section-divider"/>
+
+    <h2 id="metrics">The metrics</h2>
+    <p>
+      The most straightforward way to measure the performance of hit-discovery models would be to
+      report the value of the utility function, but this is complicated by two factors. First, all
+      possible genes are not necessarily measured in every screen, yet sampling a non-measured gene
+      should not be penalized. Second, some models, such as large language models, can hallucinate
+      genes outside the gene universe or suggest a shorter gene list than prescribed. The metrics
+      below account for these limitations.
+    </p>
+    <p>
+      We let <em>G</em> denote the set of all possible genes, <em>L</em> the set of genes in the gene
+      library of a given screen (the genes for which a label is available), <em>H</em> the set of hits
+      in <em>L</em>, and <em>G<sub>t</sub></em> the set of genes acquired by the model over
+      <em>t</em> rounds.
+    </p>
+
+    <div data-figures="ef_metrics"></div>
+
+    <h3 id="ef">Hit enrichment factor (EF)</h3>
+    <p>
+      Our main metric is the hit enrichment factor (EF), that measures the ratio between the number
+      of hits found and the expected number of hits found by random selection.
+    </p>
+    <p>
+      We write <em>N<sub>L</sub></em> = |<em>G<sub>T</sub></em> &cap; <em>L</em>| for the number
+      of acquired genes over the full trajectory present in the screen library,
+      <em>N<sub>G</sub></em> = |<em>G<sub>T</sub></em> &cap; <em>G</em>| for the number of valid
+      acquired genes, <em>N&#x0304;<sub>G</sub></em> = |<em>G<sub>T</sub></em> &setminus;
+      <em>G</em>| for the number of hallucinated acquired genes that do not represent valid genes,
+      <em>N<sub>miss</sub></em> for the total number of unfilled acquisition slots over the
+      <em>T</em> rounds, and
+      <em>h</em><sub>rand</sub> = |<em>H</em>|/|<em>L</em>| for the random hit rate. We define the
+      hit enrichment factor as
+    </p>
+    <p class="equation">
+      EF = |<em>G<sub>T</sub></em> &cap; <em>H</em>| &frasl;
+      &#8202;[ (<em>N<sub>L</sub></em> + <em>N&#x0304;<sub>G</sub></em> +
+      <em>N<sub>miss</sub></em>) &middot;
+      <em>h</em><sub>rand</sub> ]
+    </p>
+    <p>
+      This formula differs from the classical enrichment factor in the number of acquired genes
+      used for the normalization. By normalizing with (<em>N<sub>L</sub></em> +
+      <em>N&#x0304;<sub>G</sub></em> + <em>N<sub>miss</sub></em>), we do not penalize acquisition of
+      real genes that are not part of the screen library, but do penalize hallucinated genes and
+      unfilled acquisition slots.
+    </p>
+
+    <h3 id="nauc">Normalized area under the cumulative-hits curve (nAUC)</h3>
+    <p>
+      We also report the normalized area under the cumulative-hits curve (nAUC), which captures the
+      full acquisition trajectory rather than only the endpoint. We construct the curve by plotting
+      the fraction of hits found against the fraction of the library effectively queried, with one
+      point per acquisition batch. For each batch <em>t</em> = 1, &hellip;, <em>T</em>, we denote
+      <em>N<sub>L,t</sub></em> and <em>N&#x0304;<sub>G,t</sub></em> the cumulative numbers of
+      in-library and invalid acquired genes in <em>G<sub>t</sub></em>, respectively, and
+      <em>N<sub>H,t</sub></em> = |<em>G<sub>t</sub></em> &cap; <em>H</em>| the number of hits in
+      <em>G<sub>t</sub></em>. Unlike EF, unfilled acquisition slots do not advance
+      <em>x<sub>t</sub></em>; an under-supplying policy ends its curve at a smaller value instead
+      of being carried flat to the full budget. The cumulative-hits curve is composed of points
+      with coordinates
+    </p>
+    <p class="equation">
+      (<em>x<sub>t</sub></em>, <em>y<sub>t</sub></em>) =
+      ( (<em>N<sub>L,t</sub></em> + <em>N&#x0304;<sub>G,t</sub></em>) / |<em>L</em>|,
+      <em>N<sub>H,t</sub></em> / |<em>H</em>| ).
+    </p>
+    <p>
+      The area under this piecewise-linear curve is computed by trapezoidal integration and
+      normalized by the AUC of a perfect oracle that ranks all hits before any non-hit over the same
+      effective budget. The perfect-oracle curve has coordinates
+      (<em>x<sub>t</sub></em>, min(<em>x<sub>t</sub></em> |<em>L</em>| / |<em>H</em>|, 1)).
+    </p>
+    <p class="equation">
+      nAUC = AUC / AUC<sub>oracle</sub>
+    </p>
+    <p>
+      A value of 1.0 indicates the model acquires all hits in the screen first. Random acquisition
+      yields nAUC &asymp; |<em>H</em>|/|<em>L</em>| (the hit rate) in expectation when
+      |<em>G<sub>T</sub></em>| &lt; |<em>H</em>|.
+    </p>
+
+    <h3 id="fh">Fraction of hits (FH)</h3>
+    <p>
+      We report the fraction of hits found over the whole trajectory, measuring the recall of the
+      acquisition policy. Using the same notation, this is defined as
+    </p>
+    <p class="equation">
+      FH = |<em>G<sub>T</sub></em> &cap; <em>H</em>| / |<em>H</em>|.
+    </p>
+    <p>
+      This is the number of hits acquired by the model divided by the total number of hits in the
+      screen. Only in-library genes can be hits, so out-of-library and hallucinated acquisitions do
+      not contribute to the numerator. A value of 1.0 means all hits in the screen were found within
+      the acquisition budget.
+    </p>
+
+    <h3 id="sf">Shortfall (SF)</h3>
+    <p>
+      We report the shortfall as the fraction of acquired genes that fall outside the screen's gene
+      library. Using the same notation,
+    </p>
+    <p class="equation">
+      SF = |<em>G<sub>T</sub></em> &setminus; <em>L</em>| / |<em>G<sub>T</sub></em>|.
+    </p>
+    <p>
+      This is the number of acquired genes not present in the screen library divided by the total
+      number of acquisitions. It includes both real genes outside the library
+      (<em>G<sub>T</sub></em> &cap; (<em>G</em> &setminus; <em>L</em>)) and hallucinated genes
+      (<em>G<sub>T</sub></em> &setminus; <em>G</em>).
+    </p>
+
+    <h3 id="ess">Percentage of essential genes (%<sub>ess</sub>)</h3>
+    <p>
+      Some genes are hits in a given screen just because these genes typically lead to cell death in
+      general, also known as essential genes. While these genes are genuine hits, they do not always
+      reflect the particularities of the biology studied in the screen. To reflect the number of
+      found hits that are specific to the biology of interest, we also report the percentage of
+      essential genes among the hits found. We use the list of 1,827 common essential genes from the
+      Cancer Dependency Map (DepMap). Let <em>E</em> denote the set of common essential genes. The
+      percentage of essential genes is
+    </p>
+    <p class="equation">
+      %<sub>ess</sub> = |<em>G<sub>T</sub></em> &cap; <em>H</em> &cap; <em>E</em>| /
+      |<em>G<sub>T</sub></em> &cap; <em>H</em>|.
+    </p>
+    <p>
+      This is the number of acquired hits that are common essentials divided by the total number of
+      acquired hits.
+    </p>
+
+    <h3 id="vendi">Vendi score (VS)</h3>
+    <p>
+      We report two complementary diversity metrics for the acquired batches, measuring whether the
+      model selects functionally diverse genes or concentrates on a narrow biological neighborhood
+      at each step. For each batch, we compute gene embeddings using GenePT, construct the
+      cosine-similarity Gram matrix <em>K</em> of all acquired genes <em>G<sub>t</sub></em>, and
+      compute its Vendi score, which corresponds to the effective number of distinct genes in
+      <em>G<sub>t</sub></em> (1 means all embeddings of genes in <em>G<sub>t</sub></em> are
+      collinear and |<em>G<sub>t</sub></em>| means all embeddings are orthogonal). We report the
+      Vendi ratio, which is normalized by |<em>G<sub>t</sub></em>| and averaged across batches. A
+      higher Vendi ratio means the genes acquired in the batch are more diverse.
+    </p>
+
+    <h3 id="po">Pathway overlap (PO)</h3>
+    <p>
+      Pathway overlap is the pairwise Jaccard similarity of the acquired genes' pathways, normalized
+      by random. Values greater than 1 indicate more redundant pathway coverage than random.
+    </p>
+
+    <h3 id="ep">Effective pathways (EP-B / EP-S / EP-D)</h3>
+    <p>
+      We measure how much distinct biology a method interrogates using the effective number of
+      Reactome pathway groups in a set of acquired genes, computed by the Hill number of order 1 of
+      the induced pathway distribution. Using the second hierarchy tier of Reactome (186 groups),
+      each gene is assigned to one of its groups uniformly at random, leading to an empirical
+      distribution over pathway groups.
+    </p>
+    <p class="equation">
+      EP = exp(<em>H</em>(<em>p</em>)).
+    </p>
+    <p>
+      We compute EP over distinct scopes: <strong>EP-B</strong> over a single acquisition batch
+      (<em>b</em> = 100 genes), <strong>EP-S</strong> over all picks within a screen
+      (<em>b</em> &times; <em>T</em> = 1,000 genes), and <strong>EP-D</strong> over all picks pooled
+      across the test set. Each scope is subsampled to a fixed annotated-gene count (30, 200, and
+      6,000, respectively), so the three metrics are not directly comparable across scopes. Higher
+      EP values indicate that the method is exploring a broader range of biological pathways (the
+      maximum attainable value is the total number of groups, 186), while lower values suggest a
+      focus on a narrower set of pathways.
+    </p>
+
+    <h3 id="metric-interpretation" class="interpretation-heading">Interpretation</h3>
+    <ul class="bullets">
+      <li><strong>EF</strong> compares endpoint hit yield with random selection while accounting for
+        invalid proposals and unfilled acquisition slots. EF = 1 is random performance.</li>
+      <li><strong>nAUC</strong> rewards methods that recover hits early in the trajectory, while
+        <strong>FH</strong> reports endpoint recall and <strong>SF</strong> reports proposals outside
+        the measured screen library. <a href="recovery.html">See the recovery curves &rarr;</a></li>
+      <li><strong>%<sub>ess</sub></strong>, <strong>VS</strong>, <strong>PO</strong>, and
+        <strong>EP</strong> describe which biology a method selects: common-essential hits,
+        embedding diversity, within-batch pathway redundancy, and pathway breadth at batch, screen,
+        and dataset scope. <a href="diversity.html">See the diversity explorer &rarr;</a></li>
+      <li><a href="results.html">Compare every reported metric in the results table &rarr;</a></li>
+    </ul>
+
+    <hr class="section-divider"/>
+
+    <h2>Where to go next</h2>
+    <div class="feature-grid">
+      <a class="feature-card" href="results.html">
+        <div class="feature-kicker">Table</div>
+        <h3>Full results</h3>
+        <p>Every method in the paper's main table, sortable, with the leave-one-phenotype-out,
+          scaling, and label-ablation panels.</p>
+        <div class="feature-cta">Open the table &rarr;</div>
+      </a>
+      <a class="feature-card" href="recovery.html">
+        <div class="feature-kicker">Interactive</div>
+        <h3>Recovery curves</h3>
+        <p>Hits accumulating round by round, for any subset of the methods, averaged or screen by
+          screen.</p>
+        <div class="feature-cta">Open the explorer &rarr;</div>
+      </a>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js?v=4373b8c6" data-build="4bc6f836"></script>
+<script src="assets/js/figure-strip.js?v=2438d889"></script>
+<script src="assets/js/method.js?v=6dffd10b"></script>
+</body>
+</html>
