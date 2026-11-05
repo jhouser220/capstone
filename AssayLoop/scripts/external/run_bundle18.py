@@ -32,6 +32,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import logging
 from pathlib import Path
@@ -65,11 +66,21 @@ ARMS = {
     "HSA + DepMap eq":           dict(_CD, weight=1.0, hsa_weight=1.0, af_weight=0.0),
     "HSA + DepMap dm2":          dict(_CD, weight=2.0, hsa_weight=1.0, af_weight=0.0),
     "AF alone (greedy)":         dict(acq="greedy"),
+    # DepMap weight sweep against hsa=1.0 with NO duplicate AF rank term. HSA already
+    # contains AssayFormer (prior centre `z`, design columns 0-9 = W[ids]), so af_weight=0
+    # is the non-double-counting form. The argument is structural; the measured value is
+    # small -- +0.033 EF on paper_test in the project's canonical adjusted EF. (HANDOFF 24.12
+    # quoted +0.305, which is `n_hits_vs_random` units and overstates it 9x; see 24.29.)
+    "DepMap + HSA dm.25":        dict(_CD, weight=0.25, hsa_weight=1.0, af_weight=0.0),
+    "DepMap + HSA dm.50":        dict(_CD, weight=0.50, hsa_weight=1.0, af_weight=0.0),
+    "DepMap + HSA dm.75":        dict(_CD, weight=0.75, hsa_weight=1.0, af_weight=0.0),
+    "DepMap + HSA dm1.0":        dict(_CD, weight=1.00, hsa_weight=1.0, af_weight=0.0),
 }
 NEEDS_BANK = {k for k, v in ARMS.items() if v.get("hsa_weight")}
 
 
-def make_hsa_scorer(bundle: Path, sid: str, model, desc, draw: int = 0):
+def make_hsa_scorer(bundle: Path, sid: str, model, desc, draw: int = 0,
+                    zero_mean: bool = False):
     """Wrap the reference `historical_only` recipient as a per-round score callable.
 
     Imported lazily and from the caller's own path: their package is not a dependency
@@ -79,6 +90,11 @@ def make_hsa_scorer(bundle: Path, sid: str, model, desc, draw: int = 0):
     from experiments.odysseus.assayloop_comparison.adapter import Recipient, SourceState
     from experiments.odysseus.assayloop_comparison.assets import HistoricalBank
     bank = HistoricalBank.load(bundle / "banks" / f"{sid}.npz")
+    if zero_mean:
+        # Ablate the only per-target array. `mean` is a ~0.01-logit offset inside a
+        # prior 47 units wide (HANDOFF section 24.10), so this asks whether the
+        # frozen `W_text32` is needed at all to run HSA on a new screen.
+        bank.mean = np.zeros_like(bank.mean)
     rec = Recipient("historical_only", model, SourceState(model, desc), bank, sid, draw)
 
     def score(observations, candidates, task_context):
@@ -112,6 +128,8 @@ def main() -> None:
     ap.add_argument("--draw", type=int, default=0, choices=(0, 1),
                     help="repetition index handed to the HSA scorer (it pins 0/1)")
     ap.add_argument("--screen", default="", help="one screen id (smoke test)")
+    ap.add_argument("--zero-mean", action="store_true",
+                    help="zero bank.mean in every HSA arm (ablates the text prior)")
     ap.add_argument("--out", required=True, type=Path)
     a = ap.parse_args()
 
@@ -142,7 +160,8 @@ def main() -> None:
             if acq_name == "codep_seed":
                 over["profile_npz"] = a.atlas
             if arm in NEEDS_BANK:
-                over["hsa_scorer"] = make_hsa_scorer(a.bundle, sid, model, desc, a.draw)
+                over["hsa_scorer"] = make_hsa_scorer(a.bundle, sid, model, desc, a.draw,
+                                                     zero_mean=a.zero_mean)
             acq = make_acquisition(acq_name, overrides=over, seed=0)
             cfg = RunConfig(
                 model="amortized_ranker",
@@ -172,14 +191,19 @@ def main() -> None:
                              picks=len(picks), n_unknown=unknown,
                              n_measured=len(picks) - unknown,
                              hits=int(m["n_hits"]),
-                             ef=float(m.get("n_hits_vs_random", float("nan")))))
+                             ef=float(m.get("n_hits_vs_random", float("nan"))),
+                             zero_mean=bool(a.zero_mean),
+                             picks_sha=hashlib.sha256(
+                                 "\n".join(picks).encode()).hexdigest()[:16],
+                             pick_list=picks))
             log.info("%-18s %-16s hits=%4d measured=%4d ef=%.3f",
                      arm, sid, rows[-1]["hits"], rows[-1]["n_measured"], rows[-1]["ef"])
 
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(json.dumps(rows, indent=1))
     with open(a.out.with_suffix(".csv"), "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(rows[0]))
+        cols = [c for c in rows[0] if c != "pick_list"]
+        w = csv.DictWriter(fh, fieldnames=cols, extrasaction="ignore")
         w.writeheader()
         w.writerows(rows)
     print(f"\nwrote {a.out} and {a.out.with_suffix('.csv')}  ({len(rows)} rows)")
