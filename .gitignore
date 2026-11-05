@@ -14,3 +14,8 @@ run_script.sh
 simple_benchmark_plot.ipynb
 .DS_Store
 venv/
+
+# Python bytecode caches: regenerated on every run, so tracking them dirties the
+# working tree constantly and blocks rebases.
+__pycache__/
+*.pyc
