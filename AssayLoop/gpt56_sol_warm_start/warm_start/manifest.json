@@ -1,0 +1,40 @@
+{
+ "model": "gpt-5.6-sol",
+ "route": "OpenAI direct (api.openai.com/v1)",
+ "method": "AssayLoop default: --acq llm_single, k=3 warm rounds, batch 100, no top-up",
+ "reasoning_effort": "unset (OpenAI default = medium)",
+ "screen_set": "paper_test",
+ "n_screens": 20,
+ "n_usable": 15,
+ "n_blocked": 5,
+ "blocked_screens": [
+  "1827",
+  "U_1863_inc",
+  "U_1987_merged",
+  "2060",
+  "2076"
+ ],
+ "blocked_reason": "OpenAI bio_policy filter, HTTP 400 'flagged for possible biological risk'; llm_single returns an empty batch and never pads",
+ "candidate_universe": {
+  "name": "f2 (min_screen_freq=2) over paper_test",
+  "size": 21147
+ },
+ "seed": 0,
+ "batch_size": 100,
+ "n_warm_rounds": 3,
+ "totals": {
+  "hits": 620,
+  "input_tokens": 47457,
+  "output_tokens": 201750,
+  "reasoning_tokens": 180375
+ },
+ "note": "config.json from the original run dirs is deliberately NOT included: it embeds the live API key in acq_overrides.llm.",
+ "call_log_naming": "calls/<screen>.jsonl holds the raw calls. A `_declined` suffix means gpt-5.6-sol refused at least one of that screen's calls on bio_policy grounds (HTTP 400, 'flagged for possible biological risk'); the refusal rows carry error/usage=null.",
+ "declined_screens": [
+  "1827",
+  "2060",
+  "2076",
+  "U_1863_inc",
+  "U_1987_merged"
+ ]
+}
