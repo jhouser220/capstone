@@ -1,0 +1,17 @@
+defaults:
+  - collect-predictions
+
+model_name: "gpt-oss-120b-groq"
+
+lm:
+  provider: "local"
+  model: "openai/gpt-oss-120b"
+  api_base: "https://api.groq.com/openai/v1"
+  api_key: "${GROQ_API_KEY}"
+  max_tokens: 8000
+  temperature: 1.0
+  top_k: null
+  min_p: null
+  repetition_penalty: null
+  max_retries: 8
+  retry_max_elapsed_s: 600
