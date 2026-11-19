@@ -1,60 +1,53 @@
-# GPT-OSS 120B matched handoff experiment
+# GPT-OSS 120B Matched Handoff Experiment
 
 ## Purpose
 
-Extend the team's existing LLM-to-numerical handoff analysis to
-GPT-OSS 120B.
+Extend the team's existing LLM-to-numerical handoff evaluation to
+GPT-OSS 120B as a new LLM condition.
 
-Protocol:
+## Protocol
 
-1. GPT-OSS 120B selects genes for rounds 1-3.
-2. The exact same three-round warm start is replayed into:
-   - AssayFormer
-   - HSA
-3. The numerical method controls rounds 4-10.
+For each AssayLoop paper-test screen:
 
-This matched design holds the LLM starting condition fixed so the
-downstream difference is attributable to the continuation method.
+1. GPT-OSS 120B performs rounds 1-3.
+2. The same initial GPT-OSS rounds are used for both downstream arms.
+3. AssayFormer or HSA controls rounds 4-10.
 
-## Current status
+## Status
 
-13 of the planned 15 paper-test screens are complete.
+Primary paper-test experiment complete:
 
-Still missing because of Groq quota limits:
+- 15 / 15 paper-test screens
+- 3 GPT-OSS rounds + 7 numerical rounds
+- AssayFormer vs HSA
 
-- U_2423_merged
-- U_2427_dec
+## Final results
 
-## Preliminary 13-screen result
+| Metric | AssayFormer | HSA |
+|---|---:|---:|
+| Total hits | 1,373 | 1,509 |
+| Mean hits / screen | 91.53 | 100.60 |
+| Mean recall | 0.2503 | 0.2567 |
+| Mean enrichment factor | 5.2931 | 5.4276 |
+| Pooled measured hit rate | 10.23% | 10.50% |
 
-- AssayFormer total hits: 1,301
-- HSA total hits: 1,441
-- HSA delta: +140 hits
-- HSA wins on total hits: 9 / 13 screens
-- AssayFormer measurable selections: 11,602
-- HSA measurable selections: 12,407
-- AssayFormer pooled measured hit rate: 11.21%
-- HSA pooled measured hit rate: 11.61%
+HSA found 136 more total hits and produced more hits on 10 of 15 screens.
 
-A substantial portion of HSA's total-hit advantage comes from keeping
-more proposed genes within the measurable assay universe. Ranking
-performance remains heterogeneous across screens.
-
-These results are preliminary until the remaining two screens are
-completed.
+HSA also produced 950 more measurable selections
+(14,365 vs 13,415), so part of the total-hit advantage reflects better
+coverage of the measurable gene universe. HSA had the higher
+measured-gene hit rate on 5 of 15 screens.
 
 ## Files
 
 - `run_matched_methods.py`
-  - matched AssayFormer/HSA continuation runner
-
-- `warm_start_rounds_13_of_15.json`
-  - saved GPT-OSS rounds 1-3 for the 13 completed screens
-
-- `gptoss_13screen_handoff_results.csv`
-  - current matched handoff results
-
 - `collect-gpt-oss-120b-groq.yaml`
-  - GPT-OSS/Groq configuration
-  - API key is referenced through the `GROQ_API_KEY` environment
-    variable and is not stored in this repository
+- `warm_start_rounds_15_of_15.json`
+- `gptoss_15screen_handoff_results.csv`
+
+## Next experiments
+
+1. AssayLoop validation set
+2. External reconstructed datasets
+3. Secondary hybrid condition
+4. AssayLLM confirmation
